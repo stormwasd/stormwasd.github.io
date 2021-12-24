@@ -6,6 +6,4 @@ comment: true
 
 ## About me
 
-```markdown
-XPoet「 Keep core developer 」
-```
+This blog was launched at the end of 2021, and I hope it will be a place to share my daily life and my humble opinions, and I will continue to update my technical articles.

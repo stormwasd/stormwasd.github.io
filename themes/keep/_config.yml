@@ -55,13 +55,13 @@ social_contact:
   enable: true
   links:
     github: https://github.com/stormwasd # your GitHub URL
-    weixin: # your WeChat QR-Code URL
+    weixin: https://s4.ax1x.com/2021/12/24/TJH2VO.jpg # your WeChat QR-Code URL
     qq: # your QQ QR-Code URL
-    weibo: # your WeiBo URL
-    zhihu: # your ZhiHu URL
-    twitter: # your twitter URL
+    weibo: https://weibo.com/newlogin?tabtype=weibo&gid=102803&url=https%3A%2F%2Fweibo.com%2F # your WeiBo URL
+    zhihu: https://www.zhihu.com/people/joker-16-36-89 # your ZhiHu URL
+    twitter: https://www.cnblogs.com/HackerEarl/ # your twitter URL
     facebook: # your facebook URL
-    email: # your email
+    email: 18979685341@163.com # your email
 
 # ---------------------------------------------------------------------------------------
 # Navigation menu
@@ -69,11 +69,14 @@ social_contact:
 menu:
   Home: /
   Archives: /archives
-  Categories: /categories
-  Tags: /tags
-  # Links: /links
+#  Categories: /categories
+#  Tags: /tags
+#  Links: /links
   About: /about
-  Changelog: /changelog
+#  Changelog: /changelog
+  Cnblogs: https://www.cnblogs.com/
+  Csdn: https://www.csdn.net/
+  LeetCode: https://leetcode-cn.com/
   # ......
 
 # ---------------------------------------------------------------------------------------
@@ -153,13 +156,13 @@ website_count:
 # ---------------------------------------------------------------------------------------
 local_search:
   enable: true
-  preload: true # Preload the search data when the page loads
+  preload: false # Preload the search data when the page loads
 
 # ---------------------------------------------------------------------------------------
 # Comment plugin
 # ---------------------------------------------------------------------------------------
 comment:
-  enable: false
+  enable: true
   use: valine # values: valine | gitalk | twikoo
 
   # Valine
@@ -171,11 +174,11 @@ comment:
 
   # Gitalk
   # See: https://github.com/gitalk/gitalk
-  gitalk:
-    github_id: stormwasd # GitHub repo owner
-    repository: hexo-site-comments # Repository name to store issues
-    client_id: 45d11537752a3ec12cef # GitHub Application Client ID
-    client_secret: 7cd257078b5d21a80376c875c4c597e3d0f7b660 # GitHub Application Client Secret
+#  gitalk:
+#    github_id: stormwasd # GitHub repo owner
+#    repository: hexo-site-comments # Repository name to store issues
+#    client_id: 45d11537752a3ec12cef # GitHub Application Client ID
+#    client_secret: 7cd257078b5d21a80376c875c4c597e3d0f7b660 # GitHub Application Client Secret
 
   # Twikoo
   # See: https://github.com/imaegoo/twikoo
