@@ -54,12 +54,12 @@ style:
 social_contact:
   enable: true
   links:
-    github: https://github.com/stormwasd # your GitHub URL
+    github: https://github.com/ # your GitHub URL
     weixin: https://s4.ax1x.com/2021/12/24/TJH2VO.jpg # your WeChat QR-Code URL
     qq: # your QQ QR-Code URL
-    weibo: https://weibo.com/newlogin?tabtype=weibo&gid=102803&url=https%3A%2F%2Fweibo.com%2F # your WeiBo URL
-    zhihu: https://www.zhihu.com/people/joker-16-36-89 # your ZhiHu URL
-    twitter: https://www.cnblogs.com/HackerEarl/ # your twitter URL
+    weibo: https://weibo.com/ # your WeiBo URL
+#    zhihu: https://www.zhihu.com/ # your ZhiHu URL
+    twitter: https://www.cnblogs.com/ # your twitter URL
     facebook: # your facebook URL
     email: 18979685341@163.com # your email
 
@@ -67,16 +67,16 @@ social_contact:
 # Navigation menu
 # ---------------------------------------------------------------------------------------
 menu:
-  Home: /
+  Python: /
+  Java: /Java
+  Node: /Node
+  C&C++: /C&C++
+  Go: /Go
+  Front: /Front
+  Algorithm: /Algorithm
+  Database: /Database
+  English: /English
   Archives: /archives
-#  Categories: /categories
-#  Tags: /tags
-#  Links: /links
-  About: /about
-#  Changelog: /changelog
-  Cnblogs: https://www.cnblogs.com/
-  Csdn: https://www.csdn.net/
-  LeetCode: https://leetcode-cn.com/
   # ......
 
 # ---------------------------------------------------------------------------------------
