@@ -9,7 +9,7 @@
     
     <title>
         
-            Python中with...as...语句的深度解刨 |
+            Archive: 2021/12 |
         
         Alexander
     </title>
@@ -24,7 +24,8 @@
     KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -64,8 +65,8 @@
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class="active"
-                               href="/Python"
+                            <a class=""
+                               href="/"
                             >
                                 PYTHON
                             </a>
@@ -89,9 +90,17 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/C&C++"
+                               href="/C"
                             >
-                                C&amp;C++
+                                C
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Cpp"
+                            >
+                                CPP
                             </a>
                         </li>
                     
@@ -105,6 +114,14 @@
                     
                         <li class="menu-item">
                             <a class=""
+                               href="/English"
+                            >
+                                ENGLISH
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class="active"
                                href="/archives"
                             >
                                 ARCHIVES
@@ -141,8 +158,8 @@
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/Python">PYTHON</a>
+                    <a class=""
+                       href="/">PYTHON</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -157,7 +174,12 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/C&C++">C&amp;C++</a>
+                       href="/C">C</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Cpp">CPP</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -167,6 +189,11 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
+                       href="/English">ENGLISH</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -191,28 +218,52 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="page-template-container">
+    <div class="archive-container ">
         
-        
-        <div class="page-template-content markdown-body">
-            
-                <p>任何一门编程语言中，文件的输入输出、数据库的连接断开等，都是很常见的资源管理操作。但资源都是有限的，在写程序时，必须保证这些资源在使用过后得到释放，不然就容易造成资源泄露，轻者使得系统处理缓慢，严重时会使系统崩溃。</p>
-<p>例如，前面在介绍文件操作时，一直强调打开的文件最后一定要关闭，否则会程序的运行造成意想不到的隐患。但是，即便使用 close() 做好了关闭文件的操作，如果在打开文件或文件操作过程中抛出了异常，还是无法及时关闭文件。</p>
-<p>为了更好地避免此类问题，不同的编程语言都引入了不同的机制。在 <a class="link"   target="_blank" rel="noopener" href="http://c.biancheng.net/python/" >Python<i class="fas fa-external-link-alt"></i></a> 中，对应的解决方式是使用 with as 语句操作上下文管理器（context manager），它能够帮助我们自动分配并且释放资源，代码示例如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line"><span class="comment"># 等价于</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>)</span><br><span class="line">    data = file.read()</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure>
-
-<p>with…as…语句只会捕获异常而不会处理异常，代码示例如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若没有test.txt，会出现以下错误,程序会就此停下，说明并不会处理异常</span></span><br><span class="line"></span><br><span class="line">FileNotFoundError Traceback (most recent call last)</span><br><span class="line">&lt;ipython-<span class="built_in">input</span>-<span class="number">4</span>-bf5e860f28d5&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">      <span class="number">1</span> <span class="keyword">try</span>:</span><br><span class="line">----&gt; <span class="number">2</span>     file = <span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>)</span><br><span class="line">      <span class="number">3</span>     data = file.read()</span><br><span class="line">      <span class="number">4</span>     <span class="built_in">print</span>(data)</span><br><span class="line">      <span class="number">5</span> <span class="comment"># except Exception as err:</span></span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;test.txt&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-            
-        </div>
-        <div class="page-template-comments">
-            
-        </div>
-    </div>
+<div class="archive-list-container">
+    
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2021</span>
+                <span class="archive-year-post-count">[4]</span>
+            </div>
+            <ul class="article-list">
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/12/28/Python%E4%B8%ADwith...as...%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E5%88%A8/"
+                        >Python中with...as...语句的深度解刨</a>
+                        <span class="article-date">12-28</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/12/28/hello-world/"
+                        >Hello World</a>
+                        <span class="article-date">12-28</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/12/25/Python%E7%B1%BB%E4%B8%ADcall%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8/"
+                        >Python类中call函数的作用</a>
+                        <span class="article-date">12-25</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/12/25/%E5%85%B3%E4%BA%8ERedis%E7%9A%84%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/"
+                        >关于Redis的高频面试题</a>
+                        <span class="article-date">12-25</span>
+                    </li>
+                
+            </ul>
+        </section>
+    
 </div>
 
+    </div>
+</div>
 
                 
             </div>
