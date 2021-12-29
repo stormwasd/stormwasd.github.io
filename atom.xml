@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-29T01:47:55.888Z</updated>
+  <updated>2021-12-29T02:29:22.280Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中pip和pip3的区别</title>
+    <link href="http://example.com/2021/12/29/Python%E4%B8%ADpip%E5%92%8Cpip3%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://example.com/2021/12/29/Python%E4%B8%ADpip%E5%92%8Cpip3%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2021-12-29T02:21:30.000Z</published>
+    <updated>2021-12-29T02:29:22.280Z</updated>
+    
+    <content type="html"><![CDATA[<p>pip是Python的一款很好用的包管理工具，类似于node中的npm，Python有Python2和Python3的区别，那么pip也有pip和pip3的区别,大概是这样的: </p><p>相同点(虽然主要是区别，但还是有相同点的撒):</p><ol><li>pip和pip3版本不同，但二者都位于Script\目录下</li></ol><p>不同点：</p><ol><li>如果系统中只安装了Python2，那么就只能用pip</li><li>如果系统中只安装了Python3，那么既可以使用pip也可以使用pip3，二者是等价的</li><li>如果系统中同时安装了Python2和Python3，则pip默认给Python2使用，pip3默认给Python3使用</li><li>重要: 在虚拟环境中，若只存在一个Python版本，可以认为在用系统中的pip和pip3命令都是相同作用的</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;pip是Python的一款很好用的包管理工具，类似于node中的npm，Python有Python2和Python3的区别，那么pip也有pip和pip3的区别,大概是这样的: &lt;/p&gt;
+&lt;p&gt;相同点(虽然主要是区别，但还是有相同点的撒):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;pip</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python如何升级pip,以及如何查看pip版本</title>
+    <link href="http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/"/>
+    <id>http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/</id>
+    <published>2021-12-29T02:04:30.000Z</published>
+    <updated>2021-12-29T02:19:37.192Z</updated>
+    
+    <content type="html"><![CDATA[<p>有些时候我们用pip安装包的时候会报红提示说安装失败，也有时候会出现一串黄色的警告说pip版本太低，这个时候我们可能就该考虑升级下pip，升级pip会获得更好的体验然后很多新的包也会收录在新版本的pip下，我们来看下如何升级: </p><ol><li><p>打开命令行键入以下命令:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade pip -i <span class="string">&quot;https://pypi.mirrors.ustc.edu.cn/simple&quot;</span></span><br></pre></td></tr></table></figure><p>对以上命令做下解释:</p><ul><li>pip3: 如果在系统中既有Python2又有Python3那么且两个都有pip工具,pip3就是为Python3服务</li><li>-i: 指定包的源</li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;有些时候我们用pip安装包的时候会报红提示说安装失败，也有时候会出现一串黄色的警告说pip版本太低，这个时候我们可能就该考虑升级下pip，升级pip会获得更好的体验然后很多新的包也会收录在新版本的pip下，我们来看下如何升级: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;打开命令行键</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python每个版本都自带pip嘛,以及如何安装pip</title>
