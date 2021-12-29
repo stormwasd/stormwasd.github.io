@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-28T07:29:11.606Z</updated>
+  <updated>2021-12-29T01:47:55.888Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python每个版本都自带pip嘛,以及如何安装pip</title>
+    <link href="http://example.com/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/"/>
+    <id>http://example.com/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/</id>
+    <published>2021-12-29T01:26:20.000Z</published>
+    <updated>2021-12-29T01:47:55.888Z</updated>
+    
+    <content type="html"><![CDATA[<p>pip是Python的包管理工具，该工具提供了对Python包的查找、下载、安装、以及卸载的功能，目前如果你在Python.org下载最新版本的安装包，则是已经自带了该工具，Python2.7.9+或者Python3.4+以上版本都自带pip工具(通常跟wheel.exe在同一个目录下)</p><p>下面讲讲如果安装的时候没有自带pip工具那么如何安装pip工具：</p><ol><li>访问<a class="link"   href="https://bootstrap.pypa.io/get-pip.py%E8%BF%99%E4%B8%AA%E7%BD%91%E5%9D%80%EF%BC%8C%E7%84%B6%E5%90%8ECtrl+S%E5%B0%86get-pip.py%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0%E4%BD%A0%E6%89%80%E5%AE%89%E8%A3%85%E7%9A%84Python%E7%9A%84Script%E7%9B%AE%E5%BD%95%E4%B8%8B" >https://bootstrap.pypa.io/get-pip.py这个网址，然后Ctrl+S将get-pip.py文件保存到你所安装的Python的Script目录下<i class="fas fa-external-link-alt"></i></a></li><li>然后进入Script目录，并且在该目录下进入下命令行界面</li><li>在命令行界面输入python get-pip.py，pip3工具就会自动安装</li><li>安装成功之后输入python -m pip –version，确保成功安装了pip</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;pip是Python的包管理工具，该工具提供了对Python包的查找、下载、安装、以及卸载的功能，目前如果你在Python.org下载最新版本的安装包，则是已经自带了该工具，Python2.7.9+或者Python3.4+以上版本都自带pip工具(通常跟wheel.exe在</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python魔法方法总览</title>
