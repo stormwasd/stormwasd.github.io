@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-29T02:29:22.280Z</updated>
+  <updated>2021-12-29T02:39:22.040Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中常用的国内pip源</title>
+    <link href="http://example.com/2021/12/29/Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84pip%E6%BA%90/"/>
+    <id>http://example.com/2021/12/29/Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84pip%E6%BA%90/</id>
+    <published>2021-12-29T02:32:25.000Z</published>
+    <updated>2021-12-29T02:39:22.040Z</updated>
+    
+    <content type="html"><![CDATA[<p>在我们下载包的时候，很可能由于网络原因会很卡，这个时候可能需要科学上网，但是我们又没有买节点，或者没有搭建海外服务器，这个时候我们就可以访问一些国内的pip源，这里面和国外上传的pip源几乎是一样的，也是一段时间就会更新:</p><ol><li>阿里云: <a class="link"   href="http://mirrors.aliyun.com/pypi/simple/" >http://mirrors.aliyun.com/pypi/simple/<i class="fas fa-external-link-alt"></i></a></li><li>中国科学技术大学: <a class="link"   href="https://pypi.mirrors.ustc.edu.cn/simple/" >https://pypi.mirrors.ustc.edu.cn/simple/<i class="fas fa-external-link-alt"></i></a></li><li>豆瓣: <a class="link"   href="http://pypi.douban.com/simple/" >http://pypi.douban.com/simple/<i class="fas fa-external-link-alt"></i></a></li><li>清华大学: <a class="link"   href="https://pypi.tuna.tsinghua.edu.cn/simple/" >https://pypi.tuna.tsinghua.edu.cn/simple/<i class="fas fa-external-link-alt"></i></a></li><li>华中科技大学: <a class="link"   href="http://pypi.hustunique.com/" >http://pypi.hustunique.com/<i class="fas fa-external-link-alt"></i></a></li></ol><p><strong>注意</strong>: 新版ubuntu要求使用https源</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在我们下载包的时候，很可能由于网络原因会很卡，这个时候可能需要科学上网，但是我们又没有买节点，或者没有搭建海外服务器，这个时候我们就可以访问一些国内的pip源，这里面和国外上传的pip源几乎是一样的，也是一段时间就会更新:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;阿里云: &lt;a clas</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python中pip和pip3的区别</title>
