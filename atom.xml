@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-29T02:39:22.040Z</updated>
+  <updated>2021-12-29T02:45:17.111Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python如何修改pip源</title>
+    <link href="http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9pip%E6%BA%90/"/>
+    <id>http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9pip%E6%BA%90/</id>
+    <published>2021-12-29T02:41:30.000Z</published>
+    <updated>2021-12-29T02:45:17.111Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果每次都pip用-i指定源会比较麻烦，我们可以把某个国内源设置为默认，这样下次就会从默认源里面寻找包并且下载，来看看如何设为默认:</p><p>在命令行中键入以下命令:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure><p>以上以清华源的为例</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;如果每次都pip用-i指定源会比较麻烦，我们可以把某个国内源设置为默认，这样下次就会从默认源里面寻找包并且下载，来看看如何设为默认:&lt;/p&gt;
+&lt;p&gt;在命令行中键入以下命令:&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python中常用的国内pip源</title>
