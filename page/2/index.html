@@ -9,8 +9,6 @@
     
     <title>
         
-            对Docker的认识 |
-        
         Alexander
     </title>
     
@@ -65,7 +63,7 @@
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/"
                             >
                                 NOTE
@@ -110,7 +108,7 @@
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/">NOTE</a>
                 </li>
             
@@ -139,202 +137,166 @@
             <div class="main-content">
 
                 
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">对Docker的认识</span>
-        </div>
-
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
         
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Lhj</span>
-                        
-                            <span class="author-label">Lv2</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2021-12-29 16:07:30</span>
-        <span class="mobile">2021-12-29 16:07</span>
-    </span>
-    
-    
+            <li class="home-article-item">
 
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>189 Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/">
+                        Python如何升级pip,以及如何查看pip版本
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        有些时候我们用pip安装包的时候会报红提示说安装失败，也有时候会出现一串黄色的警告说pip版本太低，这个时候我们可能就该考虑升级下pip，升级pip会获得更好的体验然后很多新的包也会收录在新版本的pip下，我们来看下如何升级: 
+
+打开命令行键入以下...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Dec 29 2021 10:04:30 GMT+0800">2021-12-29</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
-                    </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/">
+                        Python每个版本都自带pip嘛,以及如何安装pip
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        pip是Python的包管理工具，该工具提供了对Python包的查找、下载、安装、以及卸载的功能，目前如果你在Python.org下载最新版本的安装包，则是已经自带了该工具，Python2.7.9+或者Python3.4+以上版本都自带pip工具(通...
+                    
                 </div>
-            </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Dec 29 2021 09:26:20 GMT+0800">2021-12-29</span></span>
         
-
-        <div class="article-content markdown-body">
-            <p>首先，Docker是个容器，使用的是宿主机的资源，因为都是Linux，所以内核资源是可以共用的，无论什么发行版，他们的内核都是Linux kernel，所以Docker才能实现，Docker其实只共用了宿主机的内核，然后我们可以在里面安装镜像，运行一个隔离于系统的独立系统，但是默认是不和宿主机发生交互的，如果要使用到宿主机的文件，就要用volumn将宿主机的文件挂载到容器中，让容器可以访问</p>
-<p>现在windows上也可以安装Docker，其实windows上的Docker只是一个客户端，实际上还是开了一个虚拟机跑Linux，然后Linux里再跑Docker</p>
-
-        </div>
-
         
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>Post title：对Docker的认识</li>
-        <li>Post author：Lhj</li>
-        <li>Create time：2021-12-29 16:07:30</li>
-        <li>
-            Post link：https://keep.xpoet.cn/2021/12/29/对Docker的认识/
-        </li>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
+    </div>
+
+    <a href="/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/12/28/Python%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E6%80%BB%E8%A7%88/">
+                        Python魔法方法总览
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        关于魔法方法: 使用魔法方法可以使Python的自由度变得更高，当不需要重写魔法方法也可以在规定的默认情况下生效，在需要重写时也可以让使用者根据自己的需求来重写部分方法来达到自己的预期。而且众所周知Python是支持面向对象的语言，其基本魔法方法就使...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Dec 28 2021 15:22:30 GMT+0800">2021-12-28</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/12/28/Python%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E6%80%BB%E8%A7%88/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/12/28/Python%E4%B8%ADwith...as...%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E5%88%A8/">
+                        Python中with...as...语句的深度解刨
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        任何一门编程语言中，文件的输入输出、数据库的连接断开等，都是很常见的资源管理操作。但资源都是有限的，在写程序时，必须保证这些资源在使用过后得到释放，不然就容易造成资源泄露，轻者使得系统处理缓慢，严重时会使系统崩溃。
+例如，前面在介绍文件操作时，一直强...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Dec 28 2021 11:35:51 GMT+0800">2021-12-28</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/12/28/Python%E4%B8%ADwith...as...%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%A7%A3%E5%88%A8/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/12/25/Python%E7%B1%BB%E4%B8%ADcall%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8/">
+                        Python类中call函数的作用
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        本节再介绍 Python类中一个非常特殊的实例方法，即 call()。该方法的功能类似于在类中重载 () 运算符，使得类实例对象可以像调用普通函数那样，以“对象名()”的形式使用，一句话总结: call函数可以把类变成函数来调用
+123456clas...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Dec 25 2021 16:37:29 GMT+0800">2021-12-25</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/12/25/Python%E7%B1%BB%E4%B8%ADcall%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
     </ul>
-</div>
 
-            </div>
-        
-
-        
-
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/12/29/%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85Python3.7/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">在Docker中安装Python3.7</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2021/12/29/Python%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9pip%E6%BA%90/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python如何修改pip源</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
-            <div class="comment-container">
-                <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;Comments</i>
-    </div>
+    <div class="home-paginator">
+        <div class="paginator">
+    
+        <a class="prev btn"
+           href="/"
+        >Prev</a>
     
 
-        
-            
-    <div class="valine-container">
-        <script data-pjax
-                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
-        <div id="vcomments"></div>
-        <script data-pjax>
-            function loadValine() {
-                new Valine({
-                    el: '#vcomments',
-                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
-                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
-                    meta: ['nick', 'mail', 'link'],
-                    avatar: 'wavatar',
-                    enableQQ: true,
-                    placeholder: '😜 尽情吐槽吧~',
-                    lang: 'en'.toLowerCase()
-                });
-
-                function getAuthor(language) {
-                    switch (language) {
-                        case 'en':
-                            return 'Author';
-                        case 'zh-CN':
-                            return '博主';
-                        default:
-                            return 'Master';
-                    }
-                }
-
-                // Add "Author" identify
-                const getValineDomTimer = setInterval(() => {
-                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
-                    if (vcards.length > 0) {
-                        let author = 'Lhj';
-
-                        if (author) {
-                            for (let vcard of vcards) {
-                                const vnick_dom = vcard.querySelector('.vhead .vnick');
-                                const vnick = vnick_dom.innerHTML;
-                                if (vnick === author) {
-                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
-                                }
-                            }
-                        }
-                        clearInterval(getValineDomTimer);
-                    } else {
-                        clearInterval(getValineDomTimer);
-                    }
-                }, 2000);
-            }
-
-            if ('true') {
-                const loadValineTimeout = setTimeout(() => {
-                    loadValine();
-                    clearTimeout(loadValineTimeout);
-                }, 1000);
-            } else {
-                window.addEventListener('DOMContentLoaded', loadValine);
-            }
-        </script>
-    </div>
-
-
-
-        
     
 </div>
 
-            </div>
-        
     </div>
 </div>
 
@@ -381,27 +343,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fas fa-comment"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -458,14 +399,6 @@
     </div>
 
     
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        
-    </div>
-</div>
-        </aside>
-    
 
     <div class="image-viewer-container">
     <img src="">
@@ -507,6 +440,7 @@
 
 
 
+
 <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
 
 
@@ -522,8 +456,6 @@
 
 
 <div class="post-scripts pjax">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 

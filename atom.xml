@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-29T08:22:42.527Z</updated>
+  <updated>2021-12-29T10:08:28.199Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,130 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于入门Go需要知道的几个特性</title>
+    <link href="http://example.com/2021/12/29/%E5%85%B3%E4%BA%8E%E5%85%A5%E9%97%A8Go%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>http://example.com/2021/12/29/%E5%85%B3%E4%BA%8E%E5%85%A5%E9%97%A8Go%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
+    <published>2021-12-29T10:01:33.781Z</published>
+    <updated>2021-12-29T10:08:28.199Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>go的关键字比较少，只有25个，这样可以简化编码过程中的混乱和复杂度</p></li><li><p>go没有类和继承的概念，但它通过接口的概念来实现多态</p></li><li><p>go支持交叉编译，比如说可以在运行Linux系统的计算机开发能在windows上运行的应用，这是第一门完全支持UTF-8的编程语言，就连他的源码文件格式都是使用UTF-8编码</p></li><li><p>go被设计成一门应用与搭载web服务器，存储集群或类似用途的巨型中央服务器的系统编程语言，对于高性能分布式系统领域而言，go有着更高的开发效率，提供了海量并行的支持，这对于游戏服务端的开发最好不过了</p></li><li><p>尽管go编译器产生的是本地可执行代码，这些代码仍旧运行在go的runtime中，这个runtime类似java和.net所用到的虚拟机，它负责管理包括内存分配，垃圾回收，栈处理、goroutine、channel、切片，map和反射等</p></li><li><p>go fmt，这是个工具用来将你的源代码格式化成符合官方统一标准的风格</p></li><li><p>go doc，这是个工具从go程序和包文件中提取顶级声明的首行注释以及每个对象的相关注释，并生成相关文档</p></li><li><p>go install, 这是go的包的安装工具，类似Ruby中的rubygems</p></li><li><p>go test是一个轻量级的单元测试框架</p></li><li><p>go fix用于将你的go代码从旧的发行版迁移到最新的发行版</p></li><li><p>cgo提供了对FFI(外部函数接口)的支持，能够使用go代码安全地调用c语言库，cgo会代替go编译器来产生可以组合在同一个包中的go和c代码</p></li><li><p>在go代码中使用c语言需要用<code>import&quot;C&quot;</code>来导入，一般还需要<code>import&quot;unsafe&quot;</code>,然后你可以在<code>import&quot;C&quot;</code>之前使用注释(但行或多行注释均可)的形势导入C语言库(甚至有效的C语言代码)，注意他们之间没有空格</p></li><li><p>左大括号需要放在函数定义这一行</p></li><li><p>fmt.Println和fmt.Print只差了一个空格</p><p>2021-12-29 18:08:20</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;go的关键字比较少，只有25个，这样可以简化编码过程中的混乱和复杂度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;go没有类和继承的概念，但它通过接口的概念来实现多态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;go支持交叉编译，比如说可以在运行Linux系统的计算机开发能在</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2021/12/29/%E5%85%B3%E4%BA%8E%E5%85%A5%E9%97%A8Go%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E6%80%A7/"/>
+    <id>http://example.com/2021/12/29/%E5%85%B3%E4%BA%8E%E5%85%A5%E9%97%A8Go%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E6%80%A7/</id>
+    <published>2021-12-29T09:25:22.422Z</published>
+    <updated>2021-12-29T09:25:22.422Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux(ubuntu)提示command not fonund的解决</title>
+    <link href="http://example.com/2021/12/29/Linux(ubuntu)%E6%8F%90%E7%A4%BAcommand%20not%20fonund%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
+    <id>http://example.com/2021/12/29/Linux(ubuntu)%E6%8F%90%E7%A4%BAcommand%20not%20fonund%E7%9A%84%E8%A7%A3%E5%86%B3/</id>
+    <published>2021-12-29T09:17:20.000Z</published>
+    <updated>2021-12-29T09:23:25.502Z</updated>
+    
+    <content type="html"><![CDATA[<p>Linux系统中，-bash: wget: comment not found是找不到命令的意思，也就是无法执行下载命令，这是因为系统太干净了，没有安装下载命令的控制器，我们给系统安装个下载命令即可:</p><p>CentOS系统:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y</span><br></pre></td></tr></table></figure><p>Debian/Ubuntu系统:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -get install -y wget</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Linux系统中，-bash: wget: comment not found是找不到命令的意思，也就是无法执行下载命令，这是因为系统太干净了，没有安装下载命令的控制器，我们给系统安装个下载命令即可:&lt;/p&gt;
+&lt;p&gt;CentOS系统:&lt;/p&gt;
+&lt;figure class=&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>查看Docker是否安装成功以及使用Docker安装nginx</title>
+    <link href="http://example.com/2021/12/29/%E6%9F%A5%E7%9C%8BDocker%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85nginx/"/>
+    <id>http://example.com/2021/12/29/%E6%9F%A5%E7%9C%8BDocker%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85nginx/</id>
+    <published>2021-12-29T08:54:30.000Z</published>
+    <updated>2021-12-29T09:08:08.391Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>检查是否安装成功</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure><p>使用docker搜索nginx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search nginx</span><br></pre></td></tr></table></figure></li><li><p>使用 docker安装nginx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure><p>运行nignx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run nginx</span><br></pre></td></tr></table></figure></li><li><p>检查Docker是否安装成功可以使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure><p>有client和service两部分表示docker安装启动都成功了</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;检查是否安装成功&lt;/p&gt;
+&lt;p&gt;使用命令:&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在ubuntu16中安装Python</title>
+    <link href="http://example.com/2021/12/29/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu16%E4%B8%AD%E5%AE%89%E8%A3%85Python/"/>
+    <id>http://example.com/2021/12/29/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu16%E4%B8%AD%E5%AE%89%E8%A3%85Python/</id>
+    <published>2021-12-29T08:40:00.000Z</published>
+    <updated>2021-12-29T08:41:42.968Z</updated>
+    
+    <content type="html"><![CDATA[<p>详情见:(我这采用的是第二种方法)<a class="link"   href="https://www.runoob.com/docker/ubuntu-docker-install.html" >https://www.runoob.com/docker/ubuntu-docker-install.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;详情见:(我这采用的是第二种方法)&lt;a class=&quot;link&quot;   href=&quot;https://www.runoob.com/docker/ubuntu-docker-install.html&quot; &gt;https://www.runoob.com/docker/ubuntu-</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在Docker中安装Python3.7</title>
+    <link href="http://example.com/2021/12/29/%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85Python3.7/"/>
+    <id>http://example.com/2021/12/29/%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85Python3.7/</id>
+    <published>2021-12-29T08:25:09.941Z</published>
+    <updated>2021-12-29T08:37:12.959Z</updated>
+    
+    <content type="html"><![CDATA[<p>详情见: </p><p><a class="link"   href="https://www.icode9.com/content-1-120863.html" >https://www.icode9.com/content-1-120863.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;详情见: &lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;link&quot;   href=&quot;https://www.icode9.com/content-1-120863.html&quot; &gt;https://www.icode9.com/content-1-120863.html&lt;i class=</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>对Docker的认识</title>

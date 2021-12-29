@@ -9,7 +9,7 @@
     
     <title>
         
-            对Docker的认识 |
+            关于入门Go需要知道的几个特性 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">对Docker的认识</span>
+            <span class="title-hover-animation">关于入门Go需要知道的几个特性</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2021-12-29 16:07:30</span>
-        <span class="mobile">2021-12-29 16:07</span>
+        <span class="pc">2021-12-29 18:01:33</span>
+        <span class="mobile">2021-12-29 18:01</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>189 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>576 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -192,8 +192,37 @@
         
 
         <div class="article-content markdown-body">
-            <p>首先，Docker是个容器，使用的是宿主机的资源，因为都是Linux，所以内核资源是可以共用的，无论什么发行版，他们的内核都是Linux kernel，所以Docker才能实现，Docker其实只共用了宿主机的内核，然后我们可以在里面安装镜像，运行一个隔离于系统的独立系统，但是默认是不和宿主机发生交互的，如果要使用到宿主机的文件，就要用volumn将宿主机的文件挂载到容器中，让容器可以访问</p>
-<p>现在windows上也可以安装Docker，其实windows上的Docker只是一个客户端，实际上还是开了一个虚拟机跑Linux，然后Linux里再跑Docker</p>
+            <ol>
+<li><p>go的关键字比较少，只有25个，这样可以简化编码过程中的混乱和复杂度</p>
+</li>
+<li><p>go没有类和继承的概念，但它通过接口的概念来实现多态</p>
+</li>
+<li><p>go支持交叉编译，比如说可以在运行Linux系统的计算机开发能在windows上运行的应用，这是第一门完全支持UTF-8的编程语言，就连他的源码文件格式都是使用UTF-8编码</p>
+</li>
+<li><p>go被设计成一门应用与搭载web服务器，存储集群或类似用途的巨型中央服务器的系统编程语言，对于高性能分布式系统领域而言，go有着更高的开发效率，提供了海量并行的支持，这对于游戏服务端的开发最好不过了</p>
+</li>
+<li><p>尽管go编译器产生的是本地可执行代码，这些代码仍旧运行在go的runtime中，这个runtime类似java和.net所用到的虚拟机，它负责管理包括内存分配，垃圾回收，栈处理、goroutine、channel、切片，map和反射等</p>
+</li>
+<li><p>go fmt，这是个工具用来将你的源代码格式化成符合官方统一标准的风格</p>
+</li>
+<li><p>go doc，这是个工具从go程序和包文件中提取顶级声明的首行注释以及每个对象的相关注释，并生成相关文档</p>
+</li>
+<li><p>go install, 这是go的包的安装工具，类似Ruby中的rubygems</p>
+</li>
+<li><p>go test是一个轻量级的单元测试框架</p>
+</li>
+<li><p>go fix用于将你的go代码从旧的发行版迁移到最新的发行版</p>
+</li>
+<li><p>cgo提供了对FFI(外部函数接口)的支持，能够使用go代码安全地调用c语言库，cgo会代替go编译器来产生可以组合在同一个包中的go和c代码</p>
+</li>
+<li><p>在go代码中使用c语言需要用<code>import&quot;C&quot;</code>来导入，一般还需要<code>import&quot;unsafe&quot;</code>,然后你可以在<code>import&quot;C&quot;</code>之前使用注释(但行或多行注释均可)的形势导入C语言库(甚至有效的C语言代码)，注意他们之间没有空格</p>
+</li>
+<li><p>左大括号需要放在函数定义这一行</p>
+</li>
+<li><p>fmt.Println和fmt.Print只差了一个空格</p>
+<p>2021-12-29 18:08:20</p>
+</li>
+</ol>
 
         </div>
 
@@ -201,11 +230,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：对Docker的认识</li>
+        <li>Post title：关于入门Go需要知道的几个特性</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2021-12-29 16:07:30</li>
+        <li>Create time：2021-12-29 18:01:33</li>
         <li>
-            Post link：https://keep.xpoet.cn/2021/12/29/对Docker的认识/
+            Post link：https://keep.xpoet.cn/2021/12/29/关于入门Go的几个注意事项/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -221,29 +250,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/12/29/%E5%9C%A8Docker%E4%B8%AD%E5%AE%89%E8%A3%85Python3.7/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">在Docker中安装Python3.7</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/12/29/Python%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9pip%E6%BA%90/"
+                           href="/2021/12/29/%E5%85%B3%E4%BA%8E%E5%85%A5%E9%97%A8Go%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E6%80%A7/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python如何修改pip源</span>
+                                <span class="post-nav-title-item"></span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
