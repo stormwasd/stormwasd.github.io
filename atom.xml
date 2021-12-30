@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-30T02:44:01.942Z</updated>
+  <updated>2021-12-30T03:19:56.160Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Scrapy添加User-agent的方法</title>
+    <link href="http://example.com/2021/12/30/Scrapy%E6%B7%BB%E5%8A%A0User-agent%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2021/12/30/Scrapy%E6%B7%BB%E5%8A%A0User-agent%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <published>2021-12-30T03:19:30.000Z</published>
+    <updated>2021-12-30T03:19:56.160Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>直接在spider中指定，比如在Scrapy项目中有一个项目grasp_baidu:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">graspbaidu</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;graspbaidu&#x27;</span></span><br><span class="line">    allowed_domians = [<span class="string">&#x27;www.baidu.com&#x27;</span>]</span><br><span class="line">    start_urls = [<span class="string">&quot;http//:www.baidu.com&quot;</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        self.logger.debug(response.text)</span><br></pre></td></tr></table></figure><p>这里的start_urls会默认由scrapy自带的start_request处理，然后再交给parse函数，我们就可以重写个start_request，然后里面带个UA即可，比如：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_request</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">    url = f<span class="string">f&#x27;https://api2.fx361.com/JunJiProject/JUNJI_012_001/getSearchList?bkpagesize=14&amp;pagesize=30&amp;keyword=%E7%9B%91%E7%90%86%E5%88%9B%E6%96%B0&amp;pageIndex=<span class="subst">&#123;i&#125;</span>&amp;fragmentSize=150&#x27;</span></span><br><span class="line">    req = scrapy.Request(url, callback=self.parse, dont_filter=<span class="literal">True</span>, headers=self.headers)</span><br></pre></td></tr></table></figure></li><li><p>在配置文件settings.py中设置(一劳永逸):</p><p>将settings.py中的USER_AGENT修改一下即可</p></li><li><p>如果想修改的更加灵活，比如设置随机的Ua，那就需要如下用到一个库:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br></pre></td></tr></table></figure><p>然后需要在middlewares.py文件中添加一个RandomUserAgentMiddleware的类，如下:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomUserAgentMiddleware</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="comment"># 随机更换 user_agent</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,srawler</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RandomUserAgentMiddleware,self).__init__()</span><br><span class="line">        self.ua = UserAgent()</span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_crawler</span>(<span class="params">cls,crawler</span>):</span></span><br><span class="line">        <span class="keyword">return</span> cls(crawler)</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span>(<span class="params">self,request,spider</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">get_ua</span>():</span></span><br><span class="line">        request.headers.setdefault(<span class="string">&#x27;User-Agent&#x27;</span>,self.ua.random)</span><br><span class="line">        </span><br></pre></td></tr></table></figure><p>然后后我们在settings.py中调用这个中间件:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware&#x27;</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">&#x27;scrapydownloadertest.middlewares.RandomUserAgentMiddleware&#x27;</span>: <span class="number">543</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;直接在spider中指定，比如在Scrapy项目中有一个项目grasp_baidu:&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode最大回文子串</title>
