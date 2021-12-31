@@ -67,16 +67,9 @@ social_contact:
 # Navigation menu
 # ---------------------------------------------------------------------------------------
 menu:
-  Python: /
-  Java: /Java
-  Node: /Node
-  C&C++: /C&C++
-  Go: /Go
-  Front: /Front
-  Algorithm: /Algorithm
-  Database: /Database
-  English: /English
+  Note: /
   Archives: /archives
+  About: /about
   # ......
 
 # ---------------------------------------------------------------------------------------
