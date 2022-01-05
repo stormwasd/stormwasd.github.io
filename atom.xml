@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-31T06:54:14.789Z</updated>
+  <updated>2022-01-05T08:39:32.981Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker最详细入门教程</title>
+    <link href="http://example.com/2022/01/05/Docker%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2022/01/05/Docker%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</id>
+    <published>2022-01-05T08:39:30.000Z</published>
+    <updated>2022-01-05T08:39:32.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>请参考: <a class="link"   href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" >http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;请参考: &lt;a class=&quot;link&quot;   href=&quot;http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html&quot; &gt;http://www.ruanyifeng.com/blog/2018/02/docker-</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>推荐一款基于GitHub好用的在线图床工具</title>
+    <link href="http://example.com/2021/12/31/%E6%8E%A8%E8%8D%90%E4%B8%80%E6%AC%BE%E5%9F%BA%E4%BA%8Egitgub%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/"/>
+    <id>http://example.com/2021/12/31/%E6%8E%A8%E8%8D%90%E4%B8%80%E6%AC%BE%E5%9F%BA%E4%BA%8Egitgub%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%9B%BE%E5%BA%8A%E5%B7%A5%E5%85%B7/</id>
+    <published>2021-12-31T07:24:30.000Z</published>
+    <updated>2021-12-31T07:28:26.997Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一款基于GItHubAPI开发的图床神器，图片外链使用jsDriver进行CDN加速，免下载，免安装，打开网站简单配置后即可直接使用，免费，稳定，高效</p><p>PicX官网: <a class="link"   href="https://picx.xpoet.cn/#/upload" >https://picx.xpoet.cn/#/upload<i class="fas fa-external-link-alt"></i></a></p><p>PicXGitHub地址: <a class="link"   href="https://github.com/XPoet/picx" >https://github.com/XPoet/picx<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这是一款基于GItHubAPI开发的图床神器，图片外链使用jsDriver进行CDN加速，免下载，免安装，打开网站简单配置后即可直接使用，免费，稳定，高效&lt;/p&gt;
+&lt;p&gt;PicX官网: &lt;a class=&quot;link&quot;   href=&quot;https://picx.xpoet.c</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>科学上网教程</title>
+    <link href="http://example.com/2021/12/31/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2021/12/31/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/</id>
+    <published>2021-12-31T07:19:30.000Z</published>
+    <updated>2021-12-31T07:21:25.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在搭hexo博客的时候在一篇theme配置教程中看到了一个开源的图床项目，里面有关于科学上网的介绍，这里我把它搬出来，详情请点击:<a class="link"   href="https://github.com/Alvin9999/new-pac/wiki" >https://github.com/Alvin9999/new-pac/wiki<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近在搭hexo博客的时候在一篇theme配置教程中看到了一个开源的图床项目，里面有关于科学上网的介绍，这里我把它搬出来，详情请点击:&lt;a class=&quot;link&quot;   href=&quot;https://github.com/Alvin9999/new-pac/wiki&quot; &gt;ht</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>什么是宝塔面板</title>
@@ -383,68 +444,6 @@
 &lt;p&gt;相同点(虽然主要是区别，但还是有相同点的撒):&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;pip</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python如何升级pip,以及如何查看pip版本</title>
-    <link href="http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/"/>
-    <id>http://example.com/2021/12/29/Python%E5%A6%82%E4%BD%95%E5%8D%87%E7%BA%A7pip,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bpip%E7%89%88%E6%9C%AC/</id>
-    <published>2021-12-29T02:04:30.000Z</published>
-    <updated>2021-12-29T02:19:37.192Z</updated>
-    
-    <content type="html"><![CDATA[<p>有些时候我们用pip安装包的时候会报红提示说安装失败，也有时候会出现一串黄色的警告说pip版本太低，这个时候我们可能就该考虑升级下pip，升级pip会获得更好的体验然后很多新的包也会收录在新版本的pip下，我们来看下如何升级: </p><ol><li><p>打开命令行键入以下命令:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade pip -i <span class="string">&quot;https://pypi.mirrors.ustc.edu.cn/simple&quot;</span></span><br></pre></td></tr></table></figure><p>对以上命令做下解释:</p><ul><li>pip3: 如果在系统中既有Python2又有Python3那么且两个都有pip工具,pip3就是为Python3服务</li><li>-i: 指定包的源</li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;有些时候我们用pip安装包的时候会报红提示说安装失败，也有时候会出现一串黄色的警告说pip版本太低，这个时候我们可能就该考虑升级下pip，升级pip会获得更好的体验然后很多新的包也会收录在新版本的pip下，我们来看下如何升级: &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;打开命令行键</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python每个版本都自带pip嘛,以及如何安装pip</title>
-    <link href="http://example.com/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/"/>
-    <id>http://example.com/2021/12/29/Python%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%83%BD%E8%87%AA%E5%B8%A6pip%E5%98%9B,%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85pip/</id>
-    <published>2021-12-29T01:26:20.000Z</published>
-    <updated>2021-12-29T01:47:55.888Z</updated>
-    
-    <content type="html"><![CDATA[<p>pip是Python的包管理工具，该工具提供了对Python包的查找、下载、安装、以及卸载的功能，目前如果你在Python.org下载最新版本的安装包，则是已经自带了该工具，Python2.7.9+或者Python3.4+以上版本都自带pip工具(通常跟wheel.exe在同一个目录下)</p><p>下面讲讲如果安装的时候没有自带pip工具那么如何安装pip工具：</p><ol><li>访问<a class="link"   href="https://bootstrap.pypa.io/get-pip.py%E8%BF%99%E4%B8%AA%E7%BD%91%E5%9D%80%EF%BC%8C%E7%84%B6%E5%90%8ECtrl+S%E5%B0%86get-pip.py%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E5%88%B0%E4%BD%A0%E6%89%80%E5%AE%89%E8%A3%85%E7%9A%84Python%E7%9A%84Script%E7%9B%AE%E5%BD%95%E4%B8%8B" >https://bootstrap.pypa.io/get-pip.py这个网址，然后Ctrl+S将get-pip.py文件保存到你所安装的Python的Script目录下<i class="fas fa-external-link-alt"></i></a></li><li>然后进入Script目录，并且在该目录下进入下命令行界面</li><li>在命令行界面输入python get-pip.py，pip3工具就会自动安装</li><li>安装成功之后输入python -m pip –version，确保成功安装了pip</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;pip是Python的包管理工具，该工具提供了对Python包的查找、下载、安装、以及卸载的功能，目前如果你在Python.org下载最新版本的安装包，则是已经自带了该工具，Python2.7.9+或者Python3.4+以上版本都自带pip工具(通常跟wheel.exe在</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python魔法方法总览</title>
-    <link href="http://example.com/2021/12/28/Python%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E6%80%BB%E8%A7%88/"/>
-    <id>http://example.com/2021/12/28/Python%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E6%80%BB%E8%A7%88/</id>
-    <published>2021-12-28T07:22:30.000Z</published>
-    <updated>2021-12-28T07:29:11.606Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于魔法方法: 使用魔法方法可以使Python的自由度变得更高，当不需要重写魔法方法也可以在规定的默认情况下生效，在需要重写时也可以让使用者根据自己的需求来重写部分方法来达到自己的预期。而且众所周知Python是支持面向对象的语言，其基本魔法方法就使得Python在面向对象方面做得更好。</p><p>今天在CSDN上看到了有一篇文章整理得还不错，讲述了很多魔法方法以及其作用，详情见:<a class="link"   href="https://blog.csdn.net/qq_38520096/article/details/79237593?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164067535716780261982154%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=164067535716780261982154&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-8-79237593.first_rank_v2_pc_rank_v29&amp;utm_term=python%E7%9A%84%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95&amp;spm=1018.2226.3001.4187" >https://blog.csdn.net/qq_38520096/article/details/79237593?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164067535716780261982154%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=164067535716780261982154&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-8-79237593.first_rank_v2_pc_rank_v29&amp;utm_term=python%E7%9A%84%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95&amp;spm=1018.2226.3001.4187<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;关于魔法方法: 使用魔法方法可以使Python的自由度变得更高，当不需要重写魔法方法也可以在规定的默认情况下生效，在需要重写时也可以让使用者根据自己的需求来重写部分方法来达到自己的预期。而且众所周知Python是支持面向对象的语言，其基本魔法方法就使得Python在面向对象</summary>
       
     
     
