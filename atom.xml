@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-05T08:39:32.981Z</updated>
+  <updated>2022-01-05T09:21:36.725Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bash脚本教程</title>
+    <link href="http://example.com/2022/01/05/Bash%E8%84%9A%E6%9C%AC%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2022/01/05/Bash%E8%84%9A%E6%9C%AC%E6%95%99%E7%A8%8B/</id>
+    <published>2022-01-05T09:20:30.000Z</published>
+    <updated>2022-01-05T09:21:36.725Z</updated>
+    
+    <content type="html"><![CDATA[<p>请参考: <a class="link"   href="https://www.ruanyifeng.com/blog/2020/04/bash-tutorial.html" >https://www.ruanyifeng.com/blog/2020/04/bash-tutorial.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;请参考: &lt;a class=&quot;link&quot;   href=&quot;https://www.ruanyifeng.com/blog/2020/04/bash-tutorial.html&quot; &gt;https://www.ruanyifeng.com/blog/2020/04/bash-tu</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SSH最详细入门教程</title>
+    <link href="http://example.com/2022/01/05/SSH%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2022/01/05/SSH%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</id>
+    <published>2022-01-05T09:03:30.000Z</published>
+    <updated>2022-01-05T09:03:47.413Z</updated>
+    
+    <content type="html"><![CDATA[<p>请参考: <a class="link"   href="https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html" >https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;请参考: &lt;a class=&quot;link&quot;   href=&quot;https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html&quot; &gt;https://www.ruanyifeng.com/blog/2020/12/ssh-tuto</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Docker最详细入门教程</title>
@@ -397,53 +437,6 @@
     <summary type="html">&lt;p&gt;如果每次都pip用-i指定源会比较麻烦，我们可以把某个国内源设置为默认，这样下次就会从默认源里面寻找包并且下载，来看看如何设为默认:&lt;/p&gt;
 &lt;p&gt;在命令行中键入以下命令:&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python中常用的国内pip源</title>
-    <link href="http://example.com/2021/12/29/Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84pip%E6%BA%90/"/>
-    <id>http://example.com/2021/12/29/Python%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84pip%E6%BA%90/</id>
-    <published>2021-12-29T02:32:25.000Z</published>
-    <updated>2021-12-29T07:00:28.997Z</updated>
-    
-    <content type="html"><![CDATA[<p>在我们下载包的时候，很可能由于网络原因会很卡，这个时候可能需要科学上网，但是我们又没有买节点，或者没有搭建海外服务器，这个时候我们就可以访问一些国内的pip源，这里面和国外上传的pip源几乎是一样的，也是一段时间就会更新:</p><ol><li>阿里云: <a class="link"   href="http://mirrors.aliyun.com/pypi/simple/" >http://mirrors.aliyun.com/pypi/simple/<i class="fas fa-external-link-alt"></i></a></li><li>中国科学技术大学: <a class="link"   href="https://pypi.mirrors.ustc.edu.cn/simple/" >https://pypi.mirrors.ustc.edu.cn/simple/<i class="fas fa-external-link-alt"></i></a></li><li>豆瓣: <a class="link"   href="http://pypi.douban.com/simple/" >http://pypi.douban.com/simple/<i class="fas fa-external-link-alt"></i></a></li><li>清华大学: <a class="link"   href="https://pypi.tuna.tsinghua.edu.cn/simple/" >https://pypi.tuna.tsinghua.edu.cn/simple/<i class="fas fa-external-link-alt"></i></a></li><li>华中科技大学: <a class="link"   href="http://pypi.hustunique.com/" >http://pypi.hustunique.com/<i class="fas fa-external-link-alt"></i></a></li></ol><p><strong>注意</strong>: 新版ubuntu要求使用https源</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;在我们下载包的时候，很可能由于网络原因会很卡，这个时候可能需要科学上网，但是我们又没有买节点，或者没有搭建海外服务器，这个时候我们就可以访问一些国内的pip源，这里面和国外上传的pip源几乎是一样的，也是一段时间就会更新:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;阿里云: &lt;a clas</summary>
-      
-    
-    
-    
-    <category term="Database" scheme="http://example.com/categories/Database/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python中pip和pip3的区别</title>
-    <link href="http://example.com/2021/12/29/Python%E4%B8%ADpip%E5%92%8Cpip3%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://example.com/2021/12/29/Python%E4%B8%ADpip%E5%92%8Cpip3%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
-    <published>2021-12-29T02:21:30.000Z</published>
-    <updated>2021-12-29T02:29:22.280Z</updated>
-    
-    <content type="html"><![CDATA[<p>pip是Python的一款很好用的包管理工具，类似于node中的npm，Python有Python2和Python3的区别，那么pip也有pip和pip3的区别,大概是这样的: </p><p>相同点(虽然主要是区别，但还是有相同点的撒):</p><ol><li>pip和pip3版本不同，但二者都位于Script\目录下</li></ol><p>不同点：</p><ol><li>如果系统中只安装了Python2，那么就只能用pip</li><li>如果系统中只安装了Python3，那么既可以使用pip也可以使用pip3，二者是等价的</li><li>如果系统中同时安装了Python2和Python3，则pip默认给Python2使用，pip3默认给Python3使用</li><li>重要: 在虚拟环境中，若只存在一个Python版本，可以认为在用系统中的pip和pip3命令都是相同作用的</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;pip是Python的一款很好用的包管理工具，类似于node中的npm，Python有Python2和Python3的区别，那么pip也有pip和pip3的区别,大概是这样的: &lt;/p&gt;
-&lt;p&gt;相同点(虽然主要是区别，但还是有相同点的撒):&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;pip</summary>
       
     
     
