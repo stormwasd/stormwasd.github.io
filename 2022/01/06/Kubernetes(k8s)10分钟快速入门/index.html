@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            Kubernetes(k8s)10分钟快速入门 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Kubernetes(k8s)10分钟快速入门</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-06 11:27:30</span>
+        <span class="mobile">2022-01-06 11:27</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ol>
+<li><p>首先来看看Kubernetes用来解决一个什么样的问题</p>
+<p>我们知道Docker就像是一个轻量型的虚拟机，它将应用程序的代码，工具库和运行环境全部都封装到了一个容器中:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_11-30-24.1xg7pjpery0w.webp"
+                      alt="Snipaste_2022-01-06_11-30-24"
+                ></p>
+<p>因此大大降低了测试和部署的难度，我们要做的不过是在服务器上运行一条指令而已:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_11-31-59.55wt7na4mi80.webp"
+                      alt="Snipaste_2022-01-06_11-31-59"
+                ></p>
+<p>但如果你要部署的是像购物系统这类架构复杂，规模庞大的应用，他们需要根据访问量自动分配服务器，网络资源，并且在某个容器宕机之后自动进行灾难恢复，故障转移：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_11-34-45.69pk7agfuvo0.webp"
+                      alt="Snipaste_2022-01-06_11-34-45"
+                ></p>
+<p>这个时候Kubernetes就可以大显身手了</p>
+</li>
+<li><p>我们先从整体上来认识下Kubernetes的工作原理</p>
+<p>我们知道，Kubernetes是一个用于大规模部署分布式应用的平台，他管理着一系列的主机或者服务器：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_11-38-08.13gnkn1jyotc.webp"
+                      alt="Snipaste_2022-01-06_11-38-08"
+                ><br>他们被称作Node(节点)，每个节点运行了相对独立的pod：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_11-39-32.1s8cewpm3ti8.webp"
+                      alt="Snipaste_2022-01-06_11-39-32"
+                ></p>
+<p>pod是Kubernetes中可以部署的最小执行单元，说白了他就是一个或者多个容器的集合，其中运行了我们应用的某一部分核心组件，比如数据库，web服务器等等，当然这么多的pod，他们需要相互协调才能做到负载均衡或者故障转移，这就需要一台中心计算机来集中管理，这个中心计算机被称作Control Plane(控制面板):<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-18-15.6r5yi5pq4ls0.webp"
+                      alt="Snipaste_2022-01-06_14-18-15"
+                ></p>
+<p>控制平面通过专有的API与各个节点进行通信，他会实时监测节点的网络状态来平衡服务器的负载，或者临时下发指令来应对突发的状况，比如Kubernetes发现某个容器或者pod挂掉了，他会立即启用在后台预先准别好的，随时待命的备用容器来替换它，这些容器被称作Replica Set(副本集合),正是由于他们的存在，才让我们的应用能够长时间，不间断地可靠运行，而以上讲到的所有节点连同控制面板，一起被称作一个cluster(集群)集群代表了Kubernetes所管理的全部主机节点，要配置一个Kubernetes集群，我们当然可以亲自租用服务器去搭建环境，不过步骤会稍微繁琐一点，另一种做法是使用现成的、预先配置好的云服务提供商:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-34-30.2e26p4k77yv4.webp"
+                      alt="Snipaste_2022-01-06_14-34-30"
+                ></p>
+<p>一种完全免费的方法是使用minikube在本地模拟一个Kubernetes集群，这也是我接下来要用到的方法：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-39-18.4vsvzhoq8gi0.webp"
+                      alt="Snipaste_2022-01-06_14-39-18"
+                ></p>
+</li>
+<li><p>使用Kubernetes</p>
+<p>上面我们提到，使用minikube在本地模拟一个Kubernetes集群，在这里面，我们照样可以使用Kubernetes的全部功能，只不过他不是一个真实的生产环境而已</p>
+<p>我们按照这里的步骤下载并安装对应的版本:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-45-40.sr621c5plm8.webp"
+                      alt="Snipaste_2022-01-06_14-45-40"
+                ></p>
+<p>随后只需要一行指令minikube start启动本地模拟的集群即可:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-47-00.6w0twd2xjjk0.webp"
+                      alt="Snipaste_2022-01-06_14-47-00"
+                ></p>
+<p>我们来讲下如何在上面部署一个应用</p>
+<p>首先我们需要创建一个yaml文件，里面定义了我们应用的基本信息，比如它由哪些pod组成，里面运行了哪些容器，以及网络配置等等，它和docker中的dockerfile很类似，你可以把它当做一个自动化脚本，里面描述了应用部署的整个过程，另外在vscode中，强烈建议去安装一个Kubernetes插件，他除了提供基本的语法检测、代码提示，在左侧面板中该显示了我们急缺的各种信息、运行状态：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_14-55-58.fl5umn41mrk.webp"
+                      alt="Snipaste_2022-01-06_14-55-58"
+                ></p>
+<p>整个部署的过程也都可以通过图形界面完成</p>
+<p>这里我们先创建一个deployment.yaml文件，然后输入deployment:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-02-30.4o9wyk7wep00.webp"
+                      alt="Snipaste_2022-01-06_15-02-30"
+                ></p>
+<p>让vscode帮我们生成一个最最基本的配置：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-03-41.5b1fj6dhj600.webp"
+                      alt="Snipaste_2022-01-06_15-03-41"
+                ></p>
+<p>可以看到这里列出了相当多的属性，我们可以将鼠标悬停在上面找到每个属性的详细用法:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-05-07.13s9ujkcnqlc.webp"
+                      alt="Snipaste_2022-01-06_15-05-07"
+                ></p>
+<p>接下来我们去修改其中我们关系的部分即可，首先第一步我们先将所有的myapp改成我们应用的名字，这里的replicas指定了连同备用pod在内的所有pod数量:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-11-08.6di15uk8zn00.webp"
+                      alt="Snipaste_2022-01-06_15-11-08"
+                ></p>
+<p>然后最重要的是这里的这个templates，它里面定义了与pod相关的所有信息：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-13-53.5808geph7nw0.webp"
+                      alt="Snipaste_2022-01-06_15-13-53"
+                ></p>
+<p>比如下面的container指定了pod中运行的所有容器</p>
+<p>这里我还是用上个视频同样的项目，一个简单的记账工具(一个非常简单的web应用)作为演示，不过我事先将他的镜像(image)上传到了Docker Hub上：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106152000150.png"
+                      alt="image-20220106152000150"
+                ></p>
+<p>这样Kubernetes可以自动拉取到它，于是我们这里直接填写镜像的名称即可：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-22-05.2u5xwz58da00.webp"
+                      alt="Snipaste_2022-01-06_15-22-05"
+                ></p>
+<p>另外我们可以通过这里的limits为每一个pod设置合理的cpu和内存配额：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-23-41.2adum5srhrvo.webp"
+                      alt="Snipaste_2022-01-06_15-23-41"
+                ></p>
+<p>最下面的containerPort指定了容器需要对外暴露的端口：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-24-43.6u1fzl28ce00.webp"
+                      alt="Snipaste_2022-01-06_15-24-43"
+                ></p>
+<p>比如我们web容器使用的是5000端口</p>
+<p>在默认情况下，我们的pod只能与同一个集群内的其他pod进行通信，虽然每一个pod都拥有一个独立的ip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-28-53.6dwb57d7qhw0.webp"
+                      alt="Snipaste_2022-01-06_15-28-53"
+                ></p>
+<p>但这个ip地址对于外网是不可见的，如果要从外网访问我们的应用，我们还需要用到Kubernetes中另一个重要的组件–服务(Services)</p>
+<p>现在我们讲一种最最基础的服务，NodePort，它是一种最原始的将应用端口暴露给外网的方式：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-32-07.3qv9xytyt9c0.webp"
+                      alt="Snipaste_2022-01-06_15-32-07"
+                ></p>
+<p>建立在它之上，Kubernetes还提供LoadBalancer或者更加复杂的ingress来实现负载的均衡，不过这里就不展开讨论了，我们先在下方用三个横线隔开(yaml中列表的语法)，然后输入Service来添加一个服务：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-36-59.1pbvhe08o0u8.webp"
+                      alt="Snipaste_2022-01-06_15-36-59"
+                ><br>接下来我们在selectors中指定应当将数据转发到哪一个pod上,这里直接填写之前的应用名称即可：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-39-12.3eim258jpq00.webp"
+                      alt="Snipaste_2022-01-06_15-39-12"
+                ></p>
+<p>随后的type指定了服务的类型，也就是NodePort:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-40-48.77cyp47g6i40.webp"
+                      alt="Snipaste_2022-01-06_15-40-48"
+                ></p>
+<p>后面的port和targetport我们设置成5000和容器端口保持一致，最后的nodeport指定了暴露给外网的端口，这里我设置成了30080，当然我们也可以省略这一行让Kubernetes自动进行分配：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-44-28.56i2v9l83g80.webp"
+                      alt="Snipaste_2022-01-06_15-44-28"
+                ></p>
+<p>到这里我们的配置文件就完成了，接下来到了真正应用部署的环节：</p>
+</li>
+<li><p>应用部署</p>
+<p>这里我们会用到一个命令行工具kubectl来与kubernetes集群进行交互：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-49-20.3cxi4q0rmzc0.webp"
+                      alt="Snipaste_2022-01-06_15-49-20"
+                ></p>
+<p>这是一个所有平台通用的工具，就好比我们之前用到的docker命令一样，他可以操纵任何的集群，包括我们本地模拟的ninikube，通常Docker的桌面版本都自带了cubectl命令，但如果你计算机中没有安装Docker，则需要去这里额外下载:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-52-21.2ysxqfl38660.webp"
+                      alt="Snipaste_2022-01-06_15-52-21"
+                ></p>
+<p>安装完毕后，我么可以使用kubectl apply来部署我们的应用，并且传入之前创建的这个yaml文件：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-53-35.71trrei7r8w0.webp"
+                      alt="Snipaste_2022-01-06_15-53-35"
+                ></p>
+<p>可以看到这个命令被成功执行，此时kubernetes会在后台开始应用的部署：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_15-57-01.5wsor0ur4lg.webp"
+                      alt="Snipaste_2022-01-06_15-57-01"
+                ></p>
+<p>我们可以通过kubectl get pods查看所有pod的运行状态，这里显示了我们之前指定的其中包括pod在内的三个pod,他们目前都是正常运行的状态:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-00-05.3lfq5ss9te80.webp"
+                      alt="Snipaste_2022-01-06_16-00-05"
+                ></p>
+<p>另外使用kubectl get services可以查看所有创建的服务</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-03-31.2nmij0s7r620.webp"
+                      alt="Snipaste_2022-01-06_16-03-31"
+                ></p>
+<p>看到这里，既然应用已经被成功部署，我们自然可以去浏览器中访问它。由于这里我们用到的是minikube模拟的集群，所以需要用到一个专门的指令minikube service 后面跟上我们服务的名字：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-07-06.4z5b5q4k4nk0.webp"
+                      alt="Snipaste_2022-01-06_16-07-06"
+                ></p>
+<p>这样minikube会自动在浏览器中打开我们的应用，另外顺便提一下，之前所有的操作也都可以通过vscode中的插件完成，里面可以查看各个节点，pod，服务的运行状态，停止或者删除它们：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-09-46.2xaoloj3u1o0.webp"
+                      alt="Snipaste_2022-01-06_16-09-46"
+                ></p>
+</li>
+<li><p>更新应用</p>
+<p>这个时候如果我们想要更新应用，比如切换容器镜像的版本，或者重新分配cpu和内存资源，我们只需要去修改之前的deployment.yaml文件：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-12-08.2c07pz6vufs.webp"
+                      alt="Snipaste_2022-01-06_16-12-08"
+                ></p>
+<p>然后再次调用kubectl apply即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-13-00.5xjzjcawlfs0.webp"
+                      alt="Snipaste_2022-01-06_16-13-00"
+                ></p>
+<p>kubernetes会在后台无缝地更新我们的应用，确保新版本运行起来以后再去销毁旧的版本，因此用户不会遇到服务停机的问题，类似的，如果我们不再需要这个应用，那么可以通过kubectl delete命令从集群上完全移除它：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220106/Snipaste_2022-01-06_16-16-10.4dyacckkq08.webp"
+                      alt="Snipaste_2022-01-06_16-16-10"
+                ></p>
+<p>后面我们传入相同的配置文件即可</p>
+<p>讲到这里，我们也不是是介绍了kubernetes中一个非常简单的应用部署，通常生产环境下的应用比这个要复杂得多，如果大家想继续深入的话，还是建议去阅读下官方的文档，里面可以找到各种实用的案例，包括安全配置，网络管理，故障排除甚至是GPU调度等等</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Kubernetes(k8s)10分钟快速入门</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-06 11:27:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/06/Kubernetes(k8s)10分钟快速入门/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/05/Docker10%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Docker10分钟快速入门</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
