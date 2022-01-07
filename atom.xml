@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-06T10:55:21.045Z</updated>
+  <updated>2022-01-07T01:11:02.352Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac终端美化教程</title>
+    <link href="http://example.com/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/</id>
+    <published>2022-01-07T01:08:30.000Z</published>
+    <updated>2022-01-07T01:11:02.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>mac终端美化请参考:<a class="link"   href="https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz" >https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;mac终端美化请参考:&lt;a class=&quot;link&quot;   href=&quot;https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz&quot; &gt;https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVy</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Puppeteer10分钟快速上手</title>
@@ -419,26 +439,6 @@
 &lt;li&gt;&lt;p&gt;检查是否安装成功&lt;/p&gt;
 &lt;p&gt;使用命令:&lt;/p&gt;
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何在ubuntu16中安装Python</title>
-    <link href="http://example.com/2021/12/29/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu16%E4%B8%AD%E5%AE%89%E8%A3%85Python/"/>
-    <id>http://example.com/2021/12/29/%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu16%E4%B8%AD%E5%AE%89%E8%A3%85Python/</id>
-    <published>2021-12-29T08:40:00.000Z</published>
-    <updated>2021-12-29T08:41:42.968Z</updated>
-    
-    <content type="html"><![CDATA[<p>详情见:(我这采用的是第二种方法)<a class="link"   href="https://www.runoob.com/docker/ubuntu-docker-install.html" >https://www.runoob.com/docker/ubuntu-docker-install.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;详情见:(我这采用的是第二种方法)&lt;a class=&quot;link&quot;   href=&quot;https://www.runoob.com/docker/ubuntu-docker-install.html&quot; &gt;https://www.runoob.com/docker/ubuntu-</summary>
       
     
     
