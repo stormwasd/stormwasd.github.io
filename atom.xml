@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-07T08:39:16.240Z</updated>
+  <updated>2022-01-07T10:32:43.496Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次sourcetree推送代码进度条一直在动可就是推不上去的错误解决方法</title>
+    <link href="http://example.com/2022/01/07/%E8%AE%B0%E4%B8%80%E6%AC%A1sourcetree%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E8%BF%9B%E5%BA%A6%E6%9D%A1%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%8A%A8%E5%8F%AF%E5%B0%B1%E6%98%AF%E6%8E%A8%E4%B8%8D%E4%B8%8A%E5%8E%BB%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2022/01/07/%E8%AE%B0%E4%B8%80%E6%AC%A1sourcetree%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E8%BF%9B%E5%BA%A6%E6%9D%A1%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%8A%A8%E5%8F%AF%E5%B0%B1%E6%98%AF%E6%8E%A8%E4%B8%8D%E4%B8%8A%E5%8E%BB%E7%9A%84%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2022-01-07T10:27:30.000Z</published>
+    <updated>2022-01-07T10:32:43.496Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在某个本地仓库新增了一些数据，然后想着把数据提交一下，然后在使用sourcetree的时候提交进度条在移动然后始终推送不上去，后面在网上查阅资料说可能是安装了git但是没有给surcetree权限:</p><p><a class="link"   href="https://blog.csdn.net/Baron0071/article/details/84062638?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-84062638.pc_agg_new_rank&amp;utm_term=sourcetree%E6%8E%A8%E9%80%81%E4%B8%80%E7%9B%B4%E8%BD%AC&amp;spm=1000.2123.3001.4430" >https://blog.csdn.net/Baron0071/article/details/84062638?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~aggregatepage~first_rank_ecpm_v1~rank_v31_ecpm-1-84062638.pc_agg_new_rank&amp;utm_term=sourcetree%E6%8E%A8%E9%80%81%E4%B8%80%E7%9B%B4%E8%BD%AC&amp;spm=1000.2123.3001.4430<i class="fas fa-external-link-alt"></i></a></p><p>我照着他的步骤执行了一遍发现我确实是这么配置的但是在我点击确定后就能推送上去了，这可能是soucetree的一个小bug叭</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天在某个本地仓库新增了一些数据，然后想着把数据提交一下，然后在使用sourcetree的时候提交进度条在移动然后始终推送不上去，后面在网上查阅资料说可能是安装了git但是没有给surcetree权限:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;link&quot;   href=&quot;http</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>0.1+02等于0.3嘛，无可避免的浮点误差</title>
@@ -416,28 +437,6 @@
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;直接在spider中指定，比如在Scrapy项目中有一个项目grasp_baidu:&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode最大回文子串</title>
-    <link href="http://example.com/2021/12/30/Leetcode%E6%9C%80%E5%A4%A7%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"/>
-    <id>http://example.com/2021/12/30/Leetcode%E6%9C%80%E5%A4%A7%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</id>
-    <published>2021-12-30T02:43:20.000Z</published>
-    <updated>2021-12-30T02:44:01.942Z</updated>
-    
-    <content type="html"><![CDATA[<p>动态规划:</p><p>对于一个字串而言，如果它是回文串，并且长度大于2，那么将它首位的两个字母去掉之后，它仍然是个回文串，根据这个思路，我们就可以用动态规划的方法解决本题，我们用s[i, j]表示字符串s的第i个到第j个字母组成的串是否为回文串:</p><p>我们可以得到只有s[i+1, j-1]是回文串，并且s的第i个和第j个字母相同时，s[i, j]才会是回文串</p><p>上文所有讨论都是建立在字串长度大于2的前提上的，我们还需要考虑动态规划中的边界条件，就是字串的长度为1或2。对于长度为1的字串，他显然是个回文串，对于长度为2的字串，只要它的两个字母相同，他就是一个回文串，因此我们就可以得到动态规划的边界条件</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        </span><br><span class="line">        max_len = <span class="number">1</span></span><br><span class="line">        begin = <span class="number">0</span></span><br><span class="line">        <span class="comment"># dp[i][j] 表示 s[i..j] 是否是回文串</span></span><br><span class="line">        dp = [[<span class="literal">False</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            dp[i][i] = <span class="literal">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 递推开始</span></span><br><span class="line">        <span class="comment"># 先枚举子串长度</span></span><br><span class="line">        <span class="keyword">for</span> L <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 枚举左边界，左边界的上限设置可以宽松一些</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="comment"># 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得</span></span><br><span class="line">                j = L + i - <span class="number">1</span></span><br><span class="line">                <span class="comment"># 如果右边界越界，就可以退出当前循环</span></span><br><span class="line">                <span class="keyword">if</span> j &gt;= n:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                    </span><br><span class="line">                <span class="keyword">if</span> s[i] != s[j]:</span><br><span class="line">                    dp[i][j] = <span class="literal">False</span> </span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> j - i &lt; <span class="number">3</span>:</span><br><span class="line">                        dp[i][j] = <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置</span></span><br><span class="line">                <span class="keyword">if</span> dp[i][j] <span class="keyword">and</span> j - i + <span class="number">1</span> &gt; max_len:</span><br><span class="line">                    max_len = j - i + <span class="number">1</span></span><br><span class="line">                    begin = i</span><br><span class="line">        <span class="keyword">return</span> s[begin:begin + max_len]</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;动态规划:&lt;/p&gt;
-&lt;p&gt;对于一个字串而言，如果它是回文串，并且长度大于2，那么将它首位的两个字母去掉之后，它仍然是个回文串，根据这个思路，我们就可以用动态规划的方法解决本题，我们用s[i, j]表示字符串s的第i个到第j个字母组成的串是否为回文串:&lt;/p&gt;
-&lt;p&gt;我们可以</summary>
       
     
     
