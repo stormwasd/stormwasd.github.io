@@ -9,7 +9,7 @@
     
     <title>
         
-            mac终端美化教程 |
+            Linux系统启动过程 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">mac终端美化教程</span>
+            <span class="title-hover-animation">Linux系统启动过程</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-07 09:08:30</span>
-        <span class="mobile">2022-01-07 09:08</span>
+        <span class="pc">2022-01-07 09:19:30</span>
+        <span class="mobile">2022-01-07 09:19</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>14 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>264 Words</span>
         </span>
     
     
@@ -192,7 +192,57 @@
         
 
         <div class="article-content markdown-body">
-            <p>mac终端美化请参考:<a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz" >https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz<i class="fas fa-external-link-alt"></i></a></p>
+            <p>按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?</p>
+<p>我们先来看看一个整体的流程图:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-21-28.5sqouvy7v7g0.webp"
+                      alt="Snipaste_2022-01-07_09-21-28"
+                ></p>
+<p>Linux系统在启动过程中，首先是固件(PC上大多是CMOS/BIOS)的物理检测，诸如检测系统的显卡，CPU和硬盘等，可从系统按下电源键后看到此检测信息；检测没有问题后，将读取硬盘的MBR(主引导记录)中的自举程序，Linux中常用的自举程序如LILO和GRUB。自举程序GRUB在系统启动期间只有一个作用，就是启动内核，内核在引导期间有两个主要的作用，一个是驱动系统硬件，另一个是启动系统init，init进程将读取其配置文件/etc/initab完成后继续所有的引导。</p>
+<p>整个过程基本可以分为六个步骤:BIOS–&gt;MBR(GRUB)–&gt;Kernel–&gt;Init–&gt;Runlevel:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-30-19.10of2bn2nfrk.webp"
+                      alt="Snipaste_2022-01-07_09-30-19"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-31-22.tv1ntom0xc0.webp"
+                      alt="Snipaste_2022-01-07_09-31-22"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-05.1kg0n3aym7s0.webp"
+                      alt="Snipaste_2022-01-07_09-32-05"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-47.7h1x4nh4sps0.webp"
+                      alt="Snipaste_2022-01-07_09-32-47"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-33-50.7ab7flt0yr40.webp"
+                      alt="Snipaste_2022-01-07_09-33-50"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-34-15.157a06qsnr4w.webp"
+                      alt="Snipaste_2022-01-07_09-34-15"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-35-46.7ub8ya0rze4.webp"
+                      alt="Snipaste_2022-01-07_09-35-46"
+                ></p>
 
         </div>
 
@@ -200,11 +250,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：mac终端美化教程</li>
+        <li>Post title：Linux系统启动过程</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-07 09:08:30</li>
+        <li>Create time：2022-01-07 09:19:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/07/mac终端美化教程/
+            Post link：https://keep.xpoet.cn/2022/01/07/Linux系统启动过程/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -220,29 +270,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux系统启动过程</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/06/Puppeteer10%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/"
+                           href="/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Puppeteer10分钟快速上手</span>
+                                <span class="post-nav-title-item">mac终端美化教程</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

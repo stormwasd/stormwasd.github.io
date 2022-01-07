@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-07T01:11:02.352Z</updated>
+  <updated>2022-01-07T01:36:06.166Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux系统启动过程</title>
+    <link href="http://example.com/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/"/>
+    <id>http://example.com/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</id>
+    <published>2022-01-07T01:19:30.000Z</published>
+    <updated>2022-01-07T01:36:06.166Z</updated>
+    
+    <content type="html"><![CDATA[<p>按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?</p><p>我们先来看看一个整体的流程图:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-21-28.5sqouvy7v7g0.webp"                      alt="Snipaste_2022-01-07_09-21-28"                ></p><p>Linux系统在启动过程中，首先是固件(PC上大多是CMOS/BIOS)的物理检测，诸如检测系统的显卡，CPU和硬盘等，可从系统按下电源键后看到此检测信息；检测没有问题后，将读取硬盘的MBR(主引导记录)中的自举程序，Linux中常用的自举程序如LILO和GRUB。自举程序GRUB在系统启动期间只有一个作用，就是启动内核，内核在引导期间有两个主要的作用，一个是驱动系统硬件，另一个是启动系统init，init进程将读取其配置文件/etc/initab完成后继续所有的引导。</p><p>整个过程基本可以分为六个步骤:BIOS–&gt;MBR(GRUB)–&gt;Kernel–&gt;Init–&gt;Runlevel:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-30-19.10of2bn2nfrk.webp"                      alt="Snipaste_2022-01-07_09-30-19"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-31-22.tv1ntom0xc0.webp"                      alt="Snipaste_2022-01-07_09-31-22"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-05.1kg0n3aym7s0.webp"                      alt="Snipaste_2022-01-07_09-32-05"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-47.7h1x4nh4sps0.webp"                      alt="Snipaste_2022-01-07_09-32-47"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-33-50.7ab7flt0yr40.webp"                      alt="Snipaste_2022-01-07_09-33-50"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-34-15.157a06qsnr4w.webp"                      alt="Snipaste_2022-01-07_09-34-15"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-35-46.7ub8ya0rze4.webp"                      alt="Snipaste_2022-01-07_09-35-46"                ></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?&lt;/p&gt;
+&lt;p&gt;我们先来看看一个整体的流程图:&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+      </summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>mac终端美化教程</title>
@@ -416,29 +440,6 @@
     <summary type="html">&lt;p&gt;Linux系统中，-bash: wget: comment not found是找不到命令的意思，也就是无法执行下载命令，这是因为系统太干净了，没有安装下载命令的控制器，我们给系统安装个下载命令即可:&lt;/p&gt;
 &lt;p&gt;CentOS系统:&lt;/p&gt;
 &lt;figure class=&quot;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>查看Docker是否安装成功以及使用Docker安装nginx</title>
-    <link href="http://example.com/2021/12/29/%E6%9F%A5%E7%9C%8BDocker%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85nginx/"/>
-    <id>http://example.com/2021/12/29/%E6%9F%A5%E7%9C%8BDocker%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85nginx/</id>
-    <published>2021-12-29T08:54:30.000Z</published>
-    <updated>2021-12-29T09:08:08.391Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p>检查是否安装成功</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure><p>使用docker搜索nginx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search nginx</span><br></pre></td></tr></table></figure></li><li><p>使用 docker安装nginx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure><p>运行nignx:</p><p>使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run nginx</span><br></pre></td></tr></table></figure></li><li><p>检查Docker是否安装成功可以使用命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure><p>有client和service两部分表示docker安装启动都成功了</p></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;检查是否安装成功&lt;/p&gt;
-&lt;p&gt;使用命令:&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;</summary>
       
     
     
