@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            10个Python编程技巧 让你的代码更上一层楼 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">10个Python编程技巧 让你的代码更上一层楼</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-08 11:40:30</span>
+        <span class="mobile">2022-01-08 11:40</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Python可以说是近十年来增长速度最快、应用最广泛，并且是世界范围内最受欢迎的编程语言之一，今天，我来给大家讲10个我个人觉得非常实用，但可能并不是所有人都知道的Python编程技巧，保持这些良好的编程习惯，可以让我们写出更清晰、更优雅、更易读、更赏心悦目的代码</p>
+<p>Python语言其实在设计之初就有在考虑它语法的简洁性和可读性，可能有人听说过Python之禅(Zen of Python)这其实是Tim Peters在Python中留下的一个彩蛋，如果你进入Python，然后输入import this，你会看到作者留下的一条条编程建议:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_11-54-02.4wecqbxpa320.webp"
+                      alt="Snipaste_2022-01-08_11-54-02"
+                ></p>
+<p>其中列出的这20条规制，就是在告诉你Python程序编写的指导方针，另外，大家如果听说过Pythonic这个词，它其实是用Python加上后缀ic创造出来的一个英语单词，它指的也是具有Python独特风格、简介而优雅的代码，最后甚至在Python语言的提案PEP8中也定义了一条条让代码更清晰、更简洁的代码规范，这里我筛选出了10个重要的技巧，接下来我们就用实例来一一讲解下叭:</p>
+<ol>
+<li><p>变量交换</p>
+<p>在很多编程语言中，如果我们需要交换变量a和b中的内容，通常我们可以定义一个临时变量，先将a的内容存放在其中，然后将a设置为b，再将b设置成这个临时变量:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-23-34.78erv3xig4w0.webp"
+                      alt="Snipaste_2022-01-08_14-23-34"
+                ></p>
+<p>不过，上面这段代码在Python中其实可以被改成这样:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-25-13.6oi91vfs7wg0.webp"
+                      alt="Snipaste_2022-01-08_14-25-13"
+                ></p>
+<p>这样的话，程序的可读性是不是提高了很多呢</p>
+</li>
+<li><p>字符串格式化(String Formatting)</p>
+<p>通常在程序中我们需要组合或者拼接字符串的话，我们可以用加号来做字符串的连接:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-32-12.4w4i9ea66080.webp"
+                      alt="Snipaste_2022-01-08_14-32-12"
+                ></p>
+<p>如果只是做两个字符串的拼接，这样写其实没有什么问题，不过如果字符串比较多的话，类似于这种情况:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-35-21.znow1ceqdy8.webp"
+                      alt="Snipaste_2022-01-08_14-35-21"
+                ></p>
+<p>这样的程序会显得非常杂乱并且不易阅读，而且，当我们在连接整形数据的时候还需要进行类型的转换，不然程序也会报错:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-37-45.2ofd4ka17qc0.webp"
+                      alt="Snipaste_2022-01-08_14-37-45"
+                ></p>
+<p>其实我们可以把程序写成这个样子:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-38-43.4g0gepw1iwi0.webp"
+                      alt="Snipaste_2022-01-08_14-38-43"
+                ></p>
+<p>利用Python中的百分号语法来格式化字符串，其中%s代表这里的内容会被替换成一个字符串，这里的s是string的首字母，这里的%d会被替换成一个十进制数，d是decimal的缩写，最后面这个%()中定义了需要被替换的内容，虽然程序写成这样已经好看很多了，我们在这里还可以做的更好一些，我们可以利用Python中的format()函数和花括号语法，把程序写成这样:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-43-00.3dg7mi1rlqg0.webp"
+                      alt="Snipaste_2022-01-08_14-43-00"
+                ></p>
+<p>format()在这里是字符串对象的一个方法，调用它会返回被格式化后的新字符串，而花括号中的内容会被最终替换成format()函数中传入的各个参数</p>
+<p>使用这种方式的另一个好处是，如果你有重复的需要被替换的内容，你可以在花括号中写入被替换参数的索引，就像这样:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-47-36.2bm5qdc6j0ro.webp"
+                      alt="Snipaste_2022-01-08_14-47-36"
+                ></p>
+<p>因此这里的两个花括号都会被替换成同一个内容，也就是这里索引为0的第一个参数name，最后如果你使用的是Python3.6以上的版本，这里有一个最简单的写法:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_14-49-37.32cqrdce7600.webp"
+                      alt="Snipaste_2022-01-08_14-49-37"
+                ></p>
+<p>也是我最喜欢的，叫做f-string，我们只需要在字符串开头写一个f，花括号中的内容就会被自动替换成指定表达式的值，注意，这里我说的是<strong>表达式</strong>，比如我们可以把这里的age改成age+1,Python将会把表达式运行的结果也就是29替换在字符串中，由于这里可以填写任意的表达式，所以你甚至可以调用一个函数返回一个数值，并替换在字符串中，这也是没有问题的</p>
+</li>
+<li><p>Python中的yield语法</p>
+<p>比如在这里，我们定义了一个函数fibonacci()，来列举斐波那契数列中的前n个数</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_17-12-52.fsxvrpqmals.webp"
+                      alt="Snipaste_2022-01-08_17-12-52"
+                ></p>
+<p>斐波那契数列大家应该都听说过，简而言之，就是除了最前面两个数之外，其中每个数字都是前两个数字之和，比如这里的5是前面2跟3的和:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_17-15-35.k38fmc3axps.webp"
+                      alt="Snipaste_2022-01-08_17-15-35"
+                ></p>
+<p>这个程序里面有两个变量:a和b，他们分别代表前一个数和当前的数，这里的循环会执行n次，而每次循环，程序都会把之前的数存放在一个叫做nums的列表中，然后之前的数会被替换成当前这个数，当前这个数会被替换成前两个数之和，然后程序就会循环往复地执行下去，直到计算出第n个数为止，此时，如果我们使用print()在屏幕上显示这10个数，我们会得到这样的结果:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_17-49-48.33xnlkoxgkq0.webp"
+                      alt="Snipaste_2022-01-08_17-49-48"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_17-51-26.2arfs94p3v28.webp"
+                      alt="Snipaste_2022-01-08_17-51-26"
+                ></p>
+<p>在这里，我们可以修改这个fibonacci()函数来使用Python的yield语法</p>
+<p>我们首先把“list末尾添加元素”的操作替换成yield a</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-02-00.6qsylq66e200.webp"
+                      alt="Snipaste_2022-01-08_18-02-00"
+                ></p>
+<p>然后删掉这里的nums列表，这样修改后的程序会完成和之前一样的操作:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-03-10.1pzeo0xksra8.webp"
+                      alt="Snipaste_2022-01-08_18-03-10"
+                ></p>
+<p>这里的yield表示每当我们计算出一个元素，就立马把这个元素给送出去，也就是说外面的for loop中就会立即输出这个数，因此使用yield的好处是，我们并不需要等待整个列表都生成完毕后再来一个一个地输出，yield在英文中的意思是产出，单从字面上来看还是比较抽象的，不过它和return的区别是，当你的函数yield一个数值以后，函数并不会立即停止，而会继续执行下去，yield的优势在于一些非常耗时的操作，比如我们可以写一个函数来从网络上下载一系列文档，并输入每个文档的内容，如果我们使用yield，则可以保证在一个文被下载成功后，就立马输出它的内容，而无需等待所有文档都下载完毕</p>
+</li>
+<li><p>列表解析式(List Comprehension)</p>
+<p>比如在这里我们有一系列水果的名字</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-44-27.3dc9u4lbx6g0.webp"
+                      alt="Snipaste_2022-01-08_18-44-27"
+                ></p>
+<p>存放在一个叫fruit的列表中，如果我们希望把这些名字都改为大写，这里有很多种办法，比如写一个for loop遍历所有名字，并把他们改写成大写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-46-14.7cl79qyi4co.webp"
+                     
+                ></p>
+<p>其实这里有一个更为简单的语法，之前的代码可以直接被改写成这样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-48-02.4ryjocvm98k0.webp"
+                      alt="Snipaste_2022-01-08_18-48-02"
+                ></p>
+<p>后面这个方括号语法实际上是在构造一个新的列表，并把它赋值给之前的这个fruit变量，我们可以这样来理解这个语法，方括号的后半部分实际上是在告诉Python我需要枚举fruit变量中的所有元素，而其中的每一个元素的名字叫做x，而方括号里的前半部分x.upper()则是将这里的每个字符串x转换成大写，列表解析式其实还有另外一种应用，筛选或者过滤列表中的元素，比如，如果我们希望挑选出列表里以a开头的水果，那么一种常见的方法是写一个循环，然后挑选出需要的元素存放在一个新列表中，其实利用我们之前讲到的列表解析式，我们可以将程序改写成这样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-08_18-54-55.1pliv3vjrqhs.webp"
+                      alt="Snipaste_2022-01-08_18-54-55"
+                ></p>
+</li>
+<li><p>Python中关于循环的技巧:Enumerate()函数</p>
+<p>还是使用之前的例子，如果我们需要按顺序输出某一个列表中的所有元素，我们可以使用for…in的语法，如果我们希望同时得到每一个水果在列表中对应的索引值，比如apple的索引是0，pear是1，我们可以使用一个叫做enumerate()的函数，把程序改成这样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-17-55.11pxlhlu3p5s.webp"
+                      alt="Snipaste_2022-01-10_15-17-55"
+                ></p>
+<p>这里的enumerate()函数会在每一次循环的过程中提供两个参数。第一个i代表列表元素的索引值，第二个x代表元素中的内容</p>
+</li>
+<li><p>反向遍历</p>
+<p>这个其实是对上一个技巧的延伸，如果我们希望将fruit中的元素后往前依次输出，那么我们应该怎么做呢，其实我们只需要在遍历元素的时候加入reversed()函数就搞定了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-36-55.rlf3odyuz2o.webp"
+                      alt="Snipaste_2022-01-10_15-36-55"
+                ></p>
+</li>
+<li><p>按顺序遍历</p>
+<p>这里我们再延伸一下，如果我们希望输出的元素是按照水果名字的字典顺序，也就是说名字以a开头的排在最前面，以z开头的排在最后面，应该怎么办呢，这里我们可以使用到Python中的一个内建函数sorted()，将fruit用这个函数括起来就好了，sorted()函数会返回一个新的并经过排序后的列表，因此我们在使用循环输出时，内容就已经被事先排序好了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-42-47.wkix30z6leo.webp"
+                      alt="Snipaste_2022-01-10_15-42-47"
+                ></p>
+</li>
+<li><p>字典的合并操作</p>
+<p>比如在这里我们有两个字典，其中存放不同用户的用户名和密码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-47-37.5xx6izyno840.webp"
+                      alt="Snipaste_2022-01-10_15-47-37"
+                ></p>
+<p>这时候，我们可以写这么一个程序将这两个字典合并成一个字典，也就是这里的c</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-49-15.19iy6klu9aqo.webp"
+                      alt="Snipaste_2022-01-10_15-49-15"
+                ></p>
+<p>不过我们可以将这里的5行代码，改成更加简洁的形式<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_15-51-49.5pmfw8dnesk0.webp"
+                      alt="Snipaste_2022-01-10_15-51-49"
+                ></p>
+<p>他们都会执行完全一样的操作，这里的这两个*在Python中叫做解包(unpacking)，也就是说这里的<code>**a和**b</code>相当于是将字典a和b中的内容直接填写到了这里</p>
+</li>
+<li><p>Python中的三元运算符</p>
+<p>在Python程序中，我们经常会完成这么一项操作:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-01-23.3fadnzig1360.webp"
+                      alt="Snipaste_2022-01-10_16-01-23"
+                ></p>
+<p>将一个变量设置成不同的值，比如在这个例子中，我们会根据score里面存储的数值是否大于60，来决定s里面的内容是pass还是fail，其实这里的代码可以直接被改成这样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-04-22.1lutpipjotr4.webp"
+                      alt="Snipaste_2022-01-10_16-04-22"
+                ></p>
+<p>这里的if…else称为Python中的三元运算符，当if后面的条件满足时，表达式会输出前面的这个值，当条件不满足时，表达式会输出后面这个值，它的功能等价于c或者java中的三元运算符，尽管它们的写法完全不一样</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-08-05.1jojo34mquxs.webp"
+                      alt="Snipaste_2022-01-10_16-08-05"
+                ></p>
+</li>
+<li><p>Python中序列的解包</p>
+<p>比如我们在这里，我们定义了一个变量name，里面存储了张三同学的姓和名</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-12-37.ydom3lly7p.webp"
+                      alt="Snipaste_2022-01-10_16-12-37"
+                ></p>
+<p>如果我们想单独提取出它的姓和名，并把它们存放在不同的变量里，我们可以利用字符串对象中的split()方法，把这个字符串按空格分割成多个字符串，然后我们再利用列表的索引提取出对应的姓和名</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-15-07.5k8nx16us7g0.webp"
+                      alt="Snipaste_2022-01-10_16-15-07"
+                ></p>
+<p>不过这段程序可以被我们改成这个样子:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-15-58.6yd0md0o0vc0.webp"
+                      alt="Snipaste_2022-01-10_16-15-58"
+                ></p>
+<p>这里，我们直接将split()函数返回的列表中的元素赋值给first_name和last_name,中间以逗号的形式隔开，这个操作在Python中被称作序列解包，需要注意的是，这里的”序列”其实并不一定需要是列表，它也可以是元组，甚至是range，因为它们都代表一系列元素，也就是序列</p>
+</li>
+<li><p>Python中的with语句</p>
+<p>在Python中，如果我们想读取某一个文件的内容，我们可以使用open()函数打开一个文件，并利用返回的这个文件对象f来对文件进行操作</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-24-23.2g2y8fusrav4.webp"
+                      alt="Snipaste_2022-01-10_16-24-23"
+                ></p>
+<p>不过，当我们完成对文件的读取，不在需要这个对象之后，一定不要忘记调用close()方法来关闭这个文件，如果你忘记关闭这个文件，Python将一直占用这个文件的系统资源，直到你的程序完全退出为止，对于一个小脚本来说，这不是什么大事，但是对于一个需要长时间在服务器里运行的程序，你的系统资源可能很快就被吃光，然后你的程序就会崩溃，所以一个好的习惯是使用Python的with语句，将程序改写成这种形式</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-10_16-30-16.1ce8ks2vy7z4.webp"
+                      alt="Snipaste_2022-01-10_16-30-16"
+                ></p>
+<p>这样写的话，就不需要手动的调用close()函数了，当with语句之后的代码执行完毕之后，这个文件就会自动被Python关闭</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：10个Python编程技巧 让你的代码更上一层楼</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-08 11:40:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/08/10个Python编程技巧 让你的代码更上一层楼/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/07/Git+Github10%E5%88%86%E9%92%9F%E5%AE%8C%E5%85%A8%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8AGit%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2GitKraken%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Git+Github10分钟完全入门以及Git图形界面GitKraken的基础使用</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
