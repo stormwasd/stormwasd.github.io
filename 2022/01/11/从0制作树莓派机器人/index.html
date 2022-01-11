@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            从0制作树莓派机器人 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">从0制作树莓派机器人</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-11 14:51:30</span>
+        <span class="mobile">2022-01-11 14:51</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>大家一定都听说过树莓派，Arduino，单片机，卡片电脑，嵌入式之类的术语</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_14-53-27.5x5bdjy5m1g0.webp"
+                      alt="Snipaste_2022-01-11_14-53-27"
+                ></p>
+<p>这些到底有什么区别呢，并且我们可以用它们能做出哪些有趣的东西呢，今天我来带大家从零制作一个可以远程控制的树莓派机器人</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_14-56-01.2nt7kgo1gq80.webp"
+                      alt="Snipaste_2022-01-11_14-56-01"
+                ></p>
+<p>你可以通过手机远程访问，并实时监测家里的安全，当然除此之外，我们也可以用它来做一些有意识的应用，比如你可以把它当做一个可以人脸追踪的摄像头</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_14-58-27.5f9uqgecsfw0.webp"
+                      alt="Snipaste_2022-01-11_14-58-27"
+                ></p>
+<p>在你和亲朋好友的视频聊天中让机器人自动跟随你的视角，让你成为通话的焦点</p>
+<p>树莓派其实是一款单板电脑</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-00-49.4g81cn4jtno0.webp"
+                      alt="Snipaste_2022-01-11_15-00-49"
+                ></p>
+<p>它使用的是博通ARM架构的64位处理器，和大家平时使用的智能手机芯片同属于一种架构，上面集成了可以用作图像渲染的GPU，1-4不等的LPDDR(Low Power DDR)内存，以及USB、HDMI、以太网接口等等，它可以运行包括Linux，甚至WIndows在内的多个操作系统，其实完全可以当做一台低配置电脑来使用，这里顺便提一下，经常拿来和树莓派作比较的Arduino其实是一款单板的微处理器，它的用途和功能相比树莓派来说要简单和纯粹许多，Arduino板搭载的基本是Atmel的8位微处理器，主频在16MHZ，速度还远不及树莓派的百分之一，不过这恰恰是Arduino的优点，造价便宜，耗电量低，由于没有操作系统的束缚，也非常适合拿来做一些实性很高的应用，大家如果玩过无人机，应该听说过这款著名的开源飞控(飞行控制器)APM，它就是基于Arduino开发的</p>
+<p>另外我们经常听到的一个术语是单片机，单片机又被称作微控制器，或者MCU(Microcontaoller Unit)它是将处理器，存储器，内存还有各种io端口都集成在芯片内部的电路上，严格意义上Arduino不能被称作是单片机，不过上面搭载的Ateml微控制器是单片机，树莓派上的博通芯片也不能称作单片机，因为他的复杂程度已经远远超过单片机的范畴，相反它被称作“”芯片上系统“，又叫做SOC(System on Chip),这里我使用树莓派作为主控板的主要原因是因为它开发效率高，工具库全，对新手也非常友好</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-23-23.2tmqp5pl4k20.webp"
+                      alt="Snipaste_2022-01-11_15-23-23"
+                ></p>
+<p>你想想几乎整个Linux生态的软件、工具库都可以拿来使用，它可以做的事情实在是太多了</p>
+<p>接下来我们来看一看机器人上其他硬件的组成</p>
+<p>电机驱动模块</p>
+<p>大家都知道，微处理器上的IO端口通常只能提供非常有限的电流，以树莓派为例，单个GPIO端口只能提供16mA的最大电流，这个电流用来驱动一个发光二极管(LED)绰绰有余，但直流电机的额定电流通常都比它高出一到两个数量级，直接用IO端口驱动电机是根本不可能实现的，且不谈电机换向的问题，这也为什么我们需要使用外部电路来驱动电机的原因，电机的驱动模块有很多种，比如大家经常听到的价格也很便宜的H桥电机驱动芯片L293D</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-32-17.1x2fg8sfjoo0.webp"
+                      alt="Snipaste_2022-01-11_15-32-17"
+                ></p>
+<p>我这里使用的是类似的另一种，导通电阻很低，效率远超L293D的驱动芯片TB6612FNG，</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-33-54.1xfx2q3n93nk.webp"
+                      alt="Snipaste_2022-01-11_15-33-54"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-34-27.2veuaufaaug0.webp"
+                      alt="Snipaste_2022-01-11_15-34-27"
+                ></p>
+<p>主要还是考虑到省电的原因，大家在选择驱动电路时，一定要结合自己的需要，比如你需要同时驱动多少个电机，最大电压和电流是多少，以及芯片待机时的功耗是多少等等，价格最贵的不一定是最合适的</p>
+<p>机器人的电池</p>
+<p>我使用的电池是从旧的移动电源里拆解下来的锂电池，这里的锂电池又叫做聚合物锂离子电池，锂电池的优点有很多: 循环寿命长、重量轻、容量大、并且能量密度高，这也是数码设备无一例外使用锂电池的原因，这里需要注意的是，我们并不能直接将锂电池连接到树莓派和电机驱动电路上</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_15-40-49.5u7uzxvfb8k0.webp"
+                      alt="Snipaste_2022-01-11_15-40-49"
+                ></p>
+<p>因为锂电池的标称电压是3.7V，而电机驱动电路和树莓派都工作在5V上下，直接连接是不能够驱动设备的，当然这里还有一个原因是，锂电池都非常脆弱，过充和过放都会导致电池的永久损伤甚至是爆炸，因此，锂电池的使用必须搭配额外的保护电路，这里我使用的是一款带开关，支持microUSB充电的锂电池保护电路，它同时支持向两个USB接口输出2.5A的最大电流，刚好符合我们的要求，通常这类保护电路是为移动电源提供的，它们的功能比较单一，价格也很便宜，所以可以很轻松地在网上购买到</p>
+<p>机器人的运动系统</p>
+<p>机器人的运动系统可以分为很多种，有轮式的，履带式的，关节式的，还有仿生机器人式的，我这里使用的是双轮差速的驱动方式，也是在消费领域应用最广泛的，例如，家里的扫地机器人就是这种方式驱动的，它有两个显著的有点:机械构造简单，并且支持原地的旋转</p>
+<p>电机</p>
+<p>电机的部分，我使用的是型号为N20的直流减速电机，减速电机其实就是在普通电机的基础上，加上了齿轮减速箱，在功率恒定的情况下，虽然降低了电机的转速，但是可以提供了较大的力矩，由于我们的机器人使用的都是小功率的配件，并且安装上电池后会有一定的重量，在这种情况下，使用减速电机是非常适合的</p>
+<p>摄像头</p>
+<p>摄像头我使用的是带红外的USB摄像头</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-07-19.447vn7h8f300.webp"
+                      alt="Snipaste_2022-01-11_16-07-19"
+                ></p>
+<p>这样在弱光或是夜间也可以正常使用，我们在使用USB摄像头的时候只需要看摄像头是否支持UVC(USB Video Class)协议即可，现在市面上已经很少见到不使用UVC协议的摄像头了，所以家里面闲置的摄像头，通常也可以直接拿来在树莓派上使用，当然在树莓派上也可以使用MIPI/CSI接口的摄像头模块</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-25-30.4bjgtfpc5fs0.webp"
+                      alt="Snipaste_2022-01-11_16-25-30"
+                ></p>
+<p>这个接口在移动设备上会被广泛用到</p>
+<p>主要因为它支持更高带宽，更高分辨率图像的传输</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-26-57.6mwjusq3lu40.webp"
+                      alt="Snipaste_2022-01-11_16-26-57"
+                ></p>
+<p>操作系统的安装</p>
+<p>首先，必须要准备一张空白的SD卡，当然读写速度越快越好</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-29-19.792lokpepc00.webp"
+                      alt="Snipaste_2022-01-11_16-29-19"
+                ></p>
+<p>然后去树莓派官网下载叫做Respbery Pi OS(Lite)的操作系统</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-30-43.npej6m1qn80.webp"
+                      alt="Snipaste_2022-01-11_16-30-43"
+                ></p>
+<p>这个操作系统是基于Debian的，Debian是使用人数最多的Linux发行版之一，比如大家经常听到的Ubuntu就是基于Debian的，然后我们可以根据官网上提供的步骤，另外再下载一个Raspberry Pi Imager的工具，然后将下载的操作系统映像写入SD卡</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-34-12.6d2a0cwrxos0.webp"
+                      alt="Snipaste_2022-01-11_16-34-12"
+                ></p>
+<p>写入完毕之后呢，我们只需要将SD卡放回树莓派，接上USB电源启动即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-36-24.2g8ygm0yw8u8.webp"
+                      alt="Snipaste_2022-01-11_16-36-24"
+                ></p>
+<p>你可以通过使用外接USB键盘和显示器的方式来使用树莓派，不过这样比较麻烦，因为你还得专门准备一个显示器和键盘，这里我是使用远程操作的方式来使用树莓派的，先让树莓派连接上家里的WiFi，然后用ssh来访问树莓派，ssh(secure shell)在Linux上是一个经常被用到的工具，它是用来和远程服务器通行的一种加密传输协议，在这里呢，我们会利用它从你的PC，Mac或者Linux系统里远程操作你的树莓派</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-41-49.75bicjpv1y00.webp"
+                      alt="Snipaste_2022-01-11_16-41-49"
+                ></p>
+<p>启用ssh的方式其实很简单，在操作系统被写入SD卡之后，先不要着急取下SD卡，我们可以在计算机上找到这个叫做boot的分区</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-43-59.4pw3voxtk2s0.webp"
+                      alt="Snipaste_2022-01-11_16-43-59"
+                ></p>
+<p>然后新建一个空文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-44-54.6xlua6k9l3o0.webp"
+                      alt="Snipaste_2022-01-11_16-44-54"
+                ></p>
+<p>并命名为ssh就好了，配置WiFi信息的方法也很类似，我们同样在这个分区里面创建一个wpa_supplicant.conf文件，然后把下面这段文字粘贴进去</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220110/Snipaste_2022-01-11_16-47-33.5ce9pf4b1do0.webp"
+                      alt="Snipaste_2022-01-11_16-47-33"
+                ></p>
+<p>未完待续，参考自:<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14g4y1q7yf?spm_id_from=333.999.0.0" >https://www.bilibili.com/video/BV14g4y1q7yf?spm_id_from=333.999.0.0<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：从0制作树莓派机器人</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-11 14:51:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/11/从0制作树莓派机器人/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/10/2021%20Web%E5%BC%80%E5%8F%91%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">2021 Web开发完全指南</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
