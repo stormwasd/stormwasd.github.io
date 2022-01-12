@@ -9,7 +9,7 @@
     
     <title>
         
-            免费的内网穿透工具推荐(win) |
+            一次性搞懂线程同步机制 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">免费的内网穿透工具推荐(win)</span>
+            <span class="title-hover-animation">一次性搞懂线程同步机制</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-12 09:39:30</span>
-        <span class="mobile">2022-01-12 09:39</span>
+        <span class="pc">2022-01-12 15:11:30</span>
+        <span class="mobile">2022-01-12 15:11</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>17 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -192,7 +192,165 @@
         
 
         <div class="article-content markdown-body">
-            <p>此内容参考自今日头条:<a class="link"   target="_blank" rel="noopener" href="https://www.toutiao.com/a7028937143393206815/?log_from=27e046c60a8e6_1641951433723" >https://www.toutiao.com/a7028937143393206815/?log_from=27e046c60a8e6_1641951433723<i class="fas fa-external-link-alt"></i></a></p>
+            <p>使用线程，我们可以并发地在各个CPU核心上执行任务，最大化CPU的利用率，但线程也可能导致各种奇怪的资源竞争问题</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uaCgP"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uaCgP.png"
+                      alt="7uaCgP.png"
+                ></a></p>
+<p>相信大家一定都看过这个经典案例</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uaMvV"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uaMvV.png"
+                      alt="7uaMvV.png"
+                ></a></p>
+<p>用不同的线程去更新同一段内存数据，比如我们这里总共创建10个线程</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uaWxP"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uaWxP.png"
+                      alt="7uaWxP.png"
+                ></a></p>
+<p>每个线程累加这个数字1000000次，运行程序你会发现得到的结果并不是预期的10000000，实际显示的数字可能会比它小很多，并且每次输出的结果还都不一样</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uaOx0"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uaOx0.png"
+                      alt="7uaOx0.png"
+                ></a></p>
+<p>这里我会向大家解释为什么会出现这种情况，以及各种常见的线程同步机制</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7udPi9"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7udPi9.png"
+                      alt="7udPi9.png"
+                ></a></p>
+<p>我们先来回顾一下刚才的这段程序，其实问题就出在数字累加的这行代码上，虽然在程序中我们简单地写作n++，但是当程序被编译成机器代码时，n++其实被翻译成三条不同的机器指令(machine code)</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uddij"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uddij.png"
+                      alt="7uddij.png"
+                ></a></p>
+<p>它们分别是，将内存中的数据加载到CPU的寄存器eax中，然后将eax中的数据+1，最后再将计算结果写回内存，换句话说，这里的n++并不是原子操作(atomic operation)，原子操作指的是不能被继续拆分、或者被其他操作打断的指令，这里顺带解释一下，寄存器(Registers)是CPU内部的小型存储器</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uwgjP"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uwgjP.png"
+                      alt="7uwgjP.png"
+                ></a></p>
+<p>用来临时存放计算数据，CPU中的运算都离不开寄存器，它们的容量非常有限，但读写速度会比内存快很多，回到刚才的代码，如果不同的线程按照顺序依次执行</p>
+<p>比如线程A先将数据5读入寄存器，然后+1得到6并写回内存，然后线程B再将数据6读入寄存器，+1得到7并写回内存，这样没有任何问题，但问题在于线程是并发执行的</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u05qK"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u05qK.png"
+                      alt="7u05qK.png"
+                ></a></p>
+<p>可能线程A还未将累加后的数据写会内存，线程B就已经开始读取数据到寄存器，这样线程B就会读到修改之前的旧数据，最后的结果是数据只被累加了一次，这个就是我们平时说的线程资源竞争而导致的数据不一致问题，要解决这个问题，我们需要对线程进行同步，也就是让原先异步的操作依次有序地执行，而锁(lock)是我们接下来要讲的第一种，也是最最基本的线程同步机制，它的概念非常简单，<strong>在同一时间，只有一个线程可以获得(acquire)锁的拥有权(ownership)，此时其他的线程只能干等着，直到这个锁被持有者释放掉(release)</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7usuo8"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7usuo8.png"
+                      alt="7usuo8.png"
+                ></a></p>
+<p>锁的获取和释放有时候也被叫做上锁(lock)和解锁(unlock)，在不同的语言或者操作系统中，通常会用到不同的锁的实现，比如C++或者Go中的mutex互斥锁</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u2AbR"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u2AbR.png"
+                      alt="7u2AbR.png"
+                ></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u21rd"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u21rd.png"
+                      alt="7u21rd.png"
+                ></a></p>
+<p>java则允许使用synchronized关键字来对某个函数、对象或者代码上锁</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uRQYV"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uRQYV.png"
+                      alt="7uRQYV.png"
+                ></a></p>
+<p>当然更底层一些，我们甚至可以调用操作系统的API来实现锁的功能，其他的你可能听过的还包括自旋锁、读写锁等等</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uWpX4"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uWpX4.png"
+                      alt="7uWpX4.png"
+                ></a></p>
+<p>总而言之，锁的核心概念是非常简单的</p>
+<p>我们只需要记住在访问共享资源之前上锁，并在结束之后解锁即可</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uWDNq"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uWDNq.png"
+                      alt="7uWDNq.png"
+                ></a></p>
+<p>修改运行程序，我们可以看到，这里输出了我们的预期结果10000000，虽然这是一个样例程序，但是频繁加锁和解锁的操作是非常低效的</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uWvVA"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uWvVA.png"
+                      alt="7uWvVA.png"
+                ></a></p>
+<p>这样会完全打破线程的并发执行</p>
+<p>其实我们完全可以在线程中创建一个临时变量做计算，然后再将最终的结果累加到全局的共享变量中，这样只有最后一个操作需要同步，而线程的主体仍能并发地执行，另外在使用锁的时候需要格外小心，<strong>多个锁的嵌套使用很可能导致线程的死锁(deadlock)现象</strong></p>
+<p>比如这里有两个线程和两把锁</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uhg0J"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uhg0J.png"
+                      alt="7uhg0J.png"
+                ></a></p>
+<p>线程1先获取锁1再获取锁2，线程2刚好相反，先获取锁2在获取锁1，如果这俩个线程同时运行，恰好线程q先获取了锁1，然后线程2获取了锁2，然后线程1继续执行，由于锁2被线程2占用，所以线程1会被阻塞，同时由于锁1被线程1占用，所以线程2也会被阻塞</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u5Zad"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u5Zad.png"
+                      alt="7u5Zad.png"
+                ></a></p>
+<p>于是线程1和线程2同时被阻塞，也就造成了线程的死锁，这里关键的问题在于上锁的顺序，如果我们让所有线程都按照同样的顺序上锁，其实是可以避免这种情况的，不过实际情况肯恩远比这个复杂，每个线程会用到不同的锁，并且加锁和解锁的操作分散在代码的各个角落，所以另一种做法是，干脆就用单个锁来保护所有的共享资源</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uoWDO"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uoWDO.png"
+                      alt="7uoWDO.png"
+                ></a></p>
+<p>并且仅仅在访问资源的时候再去上锁，虽然这么做会损失掉一部分线程的并发性(concurrency)，但好处在于程序的逻辑会更容易维护</p>
+<p>讲到这里，我们顺便提一下部分语言支持的atomic语法修饰，这是一种不使用锁(如果硬件支持)但依然能够解决资源竞争的方法，比如像之前简单的加减操作，在机器内部会直接翻译成硬件支持的原子操作</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u7Elt"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u7Elt.png"
+                      alt="7u7Elt.png"
+                ></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7u7MkQ"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7u7MkQ.png"
+                      alt="7u7MkQ.png"
+                ></a></p>
+<p>也就说指令已经是不可拆分的最小步骤，因此不需要同步，它的效率通常比使用锁更高</p>
+<p>另外建立在锁之上，线程中还有其它更复杂、更高级的同步机制，比如信号量、条件变量等等，虽然它们也可以用来保护共享资源，但更主要的用途是在线程中传递信号(signaling)，比如使用条件变量，你可以让线程进入等待，直到某个条件成立后再继续执行，这个条件可能是网络资源被成功加载，或者某项数据准备完毕等等</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7uH4VU"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7uH4VU.png"
+                      alt="7uH4VU.png"
+                ></a></p>
+<p>而信号量则更加灵活一点，你可以先让所有的线程进行等待，但在同一时间内，只让特定数量的线程被唤醒</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7ubCRA"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s4.ax1x.com/2022/01/12/7ubCRA.png"
+                      alt="7ubCRA.png"
+                ></a></p>
+<p>在后面我将再向大家详细解释信号量和条件变量的工作原理，因为它们很容易和锁混淆，但实际用途却完全不一样</p>
 
         </div>
 
@@ -200,11 +358,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：免费的内网穿透工具推荐(win)</li>
+        <li>Post title：一次性搞懂线程同步机制</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-12 09:39:30</li>
+        <li>Create time：2022-01-12 15:11:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/12/免费的内网穿透工具推荐(win)/
+            Post link：https://keep.xpoet.cn/2022/01/12/一次性搞懂线程同步机制/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -220,29 +378,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/12/%E4%B8%80%E6%AC%A1%E6%80%A7%E6%90%9E%E6%87%82%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">一次性搞懂线程同步机制</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"
+                           href="/2022/01/12/%E5%85%8D%E8%B4%B9%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90(win)/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">计算机操作系统基础笔记</span>
+                                <span class="post-nav-title-item">免费的内网穿透工具推荐(win)</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
