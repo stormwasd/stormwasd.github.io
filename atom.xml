@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-12T10:52:59.853Z</updated>
+  <updated>2022-01-13T01:16:33.997Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python实例方法、类方法、静态方法的区别与作用</title>
+    <link href="http://example.com/2022/01/13/Python%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E3%80%81%E7%B1%BB%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%9C%E7%94%A8/"/>
+    <id>http://example.com/2022/01/13/Python%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E3%80%81%E7%B1%BB%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%9C%E7%94%A8/</id>
+    <published>2022-01-13T01:08:30.000Z</published>
+    <updated>2022-01-13T01:16:33.997Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>实例方法</p><p>定义: 第一个参数必须是实例对象，该参数名一般约定为“self”，通过它来传递实例的属性和方法(也可以传类的属性和方法)，简而言之，实例方法就是类的实例能够使用的方法</p><p>调用: 只能由实例对象调用</p></li><li><p>类方法</p><p>定义: 使用装饰器@classmethod。第一个参数必须是当前类对象，该参数名一般约定为“cls”，通过它来传递类的属性和方法(不能传实例的属性和方法)，原则上，类方法是将类本身作为对象进行操作的方法。假设有个方法，且这个方法在逻辑上采用类本身作为对象来调用更合理，那么这个方法就可以定义为类方法。另外，如果需要继承，也可以定义为类方法</p><p>调用: 实例对象和类对象都可以调用</p></li><li><p>静态方法</p><p>定义: 使用装饰器@staticmethod。参数随意，没有“self”和“cls”参数，但是方法体中不能使用类或实例的任何属性和方法</p><p>调用: 实例对象和类对象都可以调用</p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实例方法&lt;/p&gt;
+&lt;p&gt;定义: 第一个参数必须是实例对象，该参数名一般约定为“self”，通过它来传递实例的属性和方法(也可以传类的属性和方法)，简而言之，实例方法就是类的实例能够使用的方法&lt;/p&gt;
+&lt;p&gt;调用: 只能由实例对象调用&lt;/p&gt;
+&lt;/li&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>“并发、并行、异步、同步”的区别</title>
@@ -424,26 +449,6 @@
       
       
     <summary type="html">&lt;p&gt;请参考: &lt;a class=&quot;link&quot;   href=&quot;https://www.ruanyifeng.com/blog/2020/04/bash-tutorial.html&quot; &gt;https://www.ruanyifeng.com/blog/2020/04/bash-tu</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SSH最详细入门教程</title>
-    <link href="http://example.com/2022/01/05/SSH%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2022/01/05/SSH%E6%9C%80%E8%AF%A6%E7%BB%86%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</id>
-    <published>2022-01-05T09:03:30.000Z</published>
-    <updated>2022-01-05T09:03:47.413Z</updated>
-    
-    <content type="html"><![CDATA[<p>请参考: <a class="link"   href="https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html" >https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;请参考: &lt;a class=&quot;link&quot;   href=&quot;https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html&quot; &gt;https://www.ruanyifeng.com/blog/2020/12/ssh-tuto</summary>
       
     
     
