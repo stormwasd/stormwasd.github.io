@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            软件构建CMake 快速入门 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">软件构建CMake 快速入门</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-13 09:26:20</span>
+        <span class="mobile">2022-01-13 09:26</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>今天我们来讲一下软件构建工具，无论你用的是什么平台、什么编程语言，构建(Build)都是软件开发中必不可少的一个步骤</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-28-51.4r66svbqwbs0.webp"
+                      alt="Snipaste_2022-01-13_09-28-51"
+                ></p>
+<p>如果你的项目只有一个源文件，我们当然可以用一行命令完成编译、链接的整个过程</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-32-52.llvqtbn80cg.webp"
+                      alt="Snipaste_2022-01-13_09-32-52"
+                ></p>
+<p>但如果你面对的是一个复杂的项目，其中包含不同的模块、组件，每个组件由若干个源文件组成，里面还用到了不少的第三方库</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-35-14.37bgecfd1z80.webp"
+                      alt="Snipaste_2022-01-13_09-35-14"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-35-43.69948jblt2o0.webp"
+                      alt="Snipaste_2022-01-13_09-35-43"
+                ></p>
+<p>这时候如果我们再去手动编译链接，将会非常的低效，而软件构建所做的就是全自动完成代码编译、链接、打包的整个过程，并且还能管理不同组件、甚至包括第三方库的关联，我们平时使用的IDE大多都内置了构建系统，只是我们没有留意罢了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-39-11.6ihfm3a2r600.webp"
+                      alt="Snipaste_2022-01-13_09-39-11"
+                ></p>
+<p>每一个构建工具通常有各自擅长的领域，如果你在VS中做C++开发，那么多半用到的是微软自己的MSBuild</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-41-13.48jcqdensgo0.webp"
+                      alt="Snipaste_2022-01-13_09-41-13"
+                ></p>
+<p>如果你使用Android Stuiod写移动端的程序，那么多半用到的是Gradle等等</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-42-27.50s3cij5n1k0.webp"
+                      alt="Snipaste_2022-01-13_09-42-27"
+                ></p>
+<p>当然还有一些更复杂、更万能的构建系统，比如Bazel、BUCK</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-43-44.26b508ka13gg.webp"
+                      alt="Snipaste_2022-01-13_09-43-44"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-44-13.5gr7yq3g6yg0.webp"
+                      alt="Snipaste_2022-01-13_09-44-13"
+                ></p>
+<p>它们试图使用单个工具来完成各种语言在不同环境下的构建，今天我会以CMake为例专门介绍一下C和C++程序的构建</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-46-02.1ya1r6riui2o.webp"
+                      alt="Snipaste_2022-01-13_09-46-02"
+                ></p>
+<p>它是一个被广泛使用的、开源免费使用并且完全跨平台的构建工具，如果你希望在不同平台上编译运行你的软件，以后就不再需要手动配置Makefile，vs或者Xcode工程了，我们今天讲到的CMake会自动帮你做到这一切</p>
+<p> 首先我们看看CMake的安装，我们可以直接在官网下载最新的安装包</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-51-20.3nd1mselb9o0.webp"
+                      alt="Snipaste_2022-01-13_09-51-20"
+                ></p>
+<p>也可以使用操作系统自带的包管理工具</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-51-20.3nd1mselb9o0.webp"
+                      alt="Snipaste_2022-01-13_09-51-20"
+                ></p>
+<p>随后可以试着在命令行中输入CMake命令</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-53-54.6mcka3o1hq80.webp"
+                      alt="Snipaste_2022-01-13_09-53-54"
+                ></p>
+<p>这里如果找不到命令的话可能还需要手动配置安装路径到PATH环境变量下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-13_09-54-33.5syfzrje21k.webp"
+                      alt="Snipaste_2022-01-13_09-54-33"
+                ></p>
+<p>另外我们要确保计算机上安装有C++的编译工具，比如windows下的MSBuild工具链或者直接安装Visual Studio，在Linux下则需要安装gcc或者clang等等，这是因为CMake自身是不带编译工具的，他会根据你编写的构建规则，也就是我们马上要讲道德CMakeLists文件，来自动生成目标平台下的原生工程文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_09-59-25.7e55kb6z1yc0.webp"
+                      alt="Snipaste_2022-01-13_09-59-25"
+                ></p>
+<p>比如windows下的VS工程或者Linux下的Makefile等等，因此要顺利完成编译，C++工具链是必不可少的，接下来我会从最简单的，只有单个源文件的例子来介绍CMake的基本用法，最后我会用之前视频中创建的一个黑洞渲染的工程，来讲解相对复杂一点的情况，刚好这个工程包含多个源文件、图片资源还会有一些第三方库，因此更加贴近与实际项目一些</p>
+<p>首先我们要做的第一件事是在项目的根目录下创建一个CMakeLists.txt文件，对于一个最简单的、只有一个源文件的工程，这三行代码是必不可少的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-07-17.6e4og08tza00.webp"
+                      alt="Snipaste_2022-01-13_10-07-17"
+                ></p>
+<p>首先第一行指定了构建项目所需的最低CMake版本，第二行指定了工程的名字，我们随后输出的可执行文件也会和它同一个名称</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-09-44.4prnh08hhf0.webp"
+                      alt="Snipaste_2022-01-13_10-09-44"
+                ></p>
+<p>第三行表示我们的项目需要构建一个可执行文件，并且它由main.cpp编译而成</p>
+<p>随后我们需要根据这个CMakeList文件生成目标平台下的原生工程，这个过程在CMake中叫做”配置”</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-11-50.5lh2kup3dm80.webp"
+                      alt="Snipaste_2022-01-13_10-11-50"
+                ></p>
+<p>我们可以在菜单中找到CMake Configure命令</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-14-39.6gbnapdrz6w0.webp"
+                      alt="Snipaste_2022-01-13_10-14-39"
+                ></p>
+<p>或者VScode在打开项目时会自动提示你进行项目“配置”</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-15-56.60lvfdsl9cg0.webp"
+                      alt="Snipaste_2022-01-13_10-15-56"
+                ></p>
+<p>我们只需要选择平台原生的C++构建工具然后等待配置完成即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-17-41.xscb8wyamy8.webp"
+                      alt="Snipaste_2022-01-13_10-17-41"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-19-13.4hyns6v2b8c0.webp"
+                      alt="Snipaste_2022-01-13_10-19-13"
+                ></p>
+<p>接下来到了真正构建环节</p>
+<p>这里我们可以使用快捷键F7，或者在菜单中运行CMake: Build命令</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-21-37.6r7j7wyyoeo0.webp"
+                      alt="Snipaste_2022-01-13_10-21-37"
+                ></p>
+<p>如果一切顺利的话，面板中会输出成功编译的可执行文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-22-40.3ssas4n706k0.webp"
+                      alt="Snipaste_2022-01-13_10-22-40"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-23-18.un7g3s9i5cg.webp"
+                      alt="Snipaste_2022-01-13_10-23-18"
+                ></p>
+<p>另外我们所做的“配置”和“构建”操作都有对应的命令行指令，我们也可以在输出面板中找到它们</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-24-58.2gwvtoonrl40.webp"
+                      alt="Snipaste_2022-01-13_10-24-58"
+                ></p>
+<p>在通常情况下，使用菜单或者图形界面自然更方便一些，但入股哦我们想在服务器上做持续继承(CI)，进行自动化的编译和测试，这里的命令行就格外有用了</p>
+<p>接下来，我们来看第二个相对复杂一点的工程配置，之前我们讲到这个工程包含了多个源文件、图片资源还有一些第三方库，因此这里的CmakeLists也会相对复杂一些</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-30-09.5w098ggtap40.webp"
+                      alt="Snipaste_2022-01-13_10-30-09"
+                ></p>
+<p>首先前两行和我们之前讲到的完全一样，它们定义了CMake最低版本和工程文件名，随后映入眼帘的是一系列的find_package()命令，它会在你的计算机中寻找符合要求的第三方库</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-33-08.i325z0d4cg0.webp"
+                      alt="Snipaste_2022-01-13_10-33-08"
+                ></p>
+<p>首先你需要确保计算机中事先安装好了它们</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-34-24.757o3s9eb4k0.webp"
+                      alt="Snipaste_2022-01-13_10-34-24"
+                ></p>
+<p>关于库的安装我后面再说</p>
+<p>其次这些库也需要支持用CMake进行构建，这个一般没有问题，因为大多数常见的C++库都提供了CMake的支持，这个命令的第一个参数是各个库的名字，后面的REQUIRED代表这个库是必须的，如果计算机中没有安装则会直接报错</p>
+<p>我们继续来看后面这个命令，由于这个项目由多个源文件组成，所以我们先调用file GLOB命令通过通配符匹配所有的C++源文件，并将它存放在变量SRC_FILE中，随后我们调用相同的add_executable()命令来构建一个可执行文件，第一个参数是工程文件的名字，这里的CMAKE_PROJECT_NAME是一个宏，会被自动替换成这里的工程名Blackhole，第二个禅师则是我们之前匹配的所有源文件</p>
+<p>由于我们项目用到了一些第三方库，所以自然少不了链接(Link)库的操作</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-49-11.40jxqoj5oli0.webp"
+                      alt="Snipaste_2022-01-13_10-49-11"
+                ></p>
+<p>如果忘记了这个步骤，那么你应该会遇到经典的符号无法解析的错误</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-50-31.5fqvyvhzjdk0.webp"
+                      alt="Snipaste_2022-01-13_10-50-31"
+                ></p>
+<p>并且由于我们项目用到了C++17以上的语法，所以这里需要通过target_compile_fetures()打开对C++17的支持，最后我们用到这个命令add_custom_command</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-53-45.73e3byhz3s80.webp"
+                      alt="Snipaste_2022-01-13_10-53-45"
+                ></p>
+<p>这里的POST_BUILD也就是字面意思代表编译之后要执行的操作，我们会调用CMake命令将根目录下的assets文件夹拷贝到输出路径下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-57-02.1yww4k1wrcqo.webp"
+                      alt="Snipaste_2022-01-13_10-57-02"
+                ></p>
+<p>这一步只是一个简单的自动化，避免了文件的手动复制，这样在构建完成之后我们可以在输出路径下找到应用所需所有文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_10-58-46.38dd3y0fzhe0.webp"
+                      alt="Snipaste_2022-01-13_10-58-46"
+                ></p>
+<p>在最后我们来讲下C++第三方库的安装</p>
+<p>由于CMake只是一个构建工具，它并不包含库的安装和管理，如果我们的项目用到了第三方库，则需要确保计算机中事先安装好了它们，常见的安装方式有直接下载库的源文件，然后手动构建并指定CMake库的路径，当然对于Linux和mac我们也可以直接通过包管理工具安装，不过缺点是，每安装一个库都需要执行许多繁琐的步骤，并且不同平台下的配置过程也不太一样，因此这里推荐一个微软的开源工具vcpkg</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_11-05-25.2s4onmlme0o0.webp"
+                      alt="Snipaste_2022-01-13_11-05-25"
+                ></p>
+<p>虽然名字叫vcpkg，不过它是一个跨平台的C++库管理工具，类似Python的pip，你要做的是先调用vcpkg install 安装第三方库</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_11-07-26.65cbb60k54w0.webp"
+                      alt="Snipaste_2022-01-13_11-07-26"
+                ></p>
+<p>然后在CMake构建的时候指定vcpkg工具链即可，如果你用过的是命令行，只需要额外传递一个参数CMAKE_TOOLCHAIN_FILE</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_11-09-04.a738lwx508g.webp"
+                      alt="Snipaste_2022-01-13_11-09-04"
+                ></p>
+<p>如果你用的是vscode插件，那么在设置中添加这个路径即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_11-10-02.3kbngsv7tv40.webp"
+                      alt="Snipaste_2022-01-13_11-10-02"
+                ></p>
+<p>关于vcpkg的安装步骤大家可以参考官方详细的文档</p>
+<p>CMake其实是一个非常灵活但也非常复杂的工具，这个最好还是边学边用</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：软件构建CMake 快速入门</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-13 09:26:20</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/13/软件构建CMake 快速入门/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/13/Python%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E3%80%81%E7%B1%BB%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%9C%E7%94%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python实例方法、类方法、静态方法的区别与作用</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
