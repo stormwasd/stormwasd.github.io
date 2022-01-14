@@ -9,7 +9,7 @@
     
     <title>
         
-            JS逆向的时候Python如何调用JavaScript代码呢 |
+            Python 中__new__和__init__的异同点 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">JS逆向的时候Python如何调用JavaScript代码呢</span>
+            <span class="title-hover-animation">Python 中__new__和__init__的异同点</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-14 11:35:30</span>
-        <span class="mobile">2022-01-14 11:35</span>
+        <span class="pc">2022-01-14 11:50:30</span>
+        <span class="mobile">2022-01-14 11:50</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>40 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>679 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -192,7 +192,26 @@
         
 
         <div class="article-content markdown-body">
-            <p>今天在逛崔庆才博客的时候发现这个讲得还不错，是关于Python如何调用JS代码的，点击<a class="link"   target="_blank" rel="noopener" href="https://cuiqingcai.com/9581.html" >这里<i class="fas fa-external-link-alt"></i></a>调转阅读</p>
+            <p>同: 二者均是Python面向对象语言中的函数，__new__比较少用，__init__则用的比较多</p>
+<p>异: </p>
+<ul>
+<li><code>__new__</code>是在实例创建之前被调用的，因为它的任务就是创建实例然后直接返回该实例对象，是个<strong>静态方法</strong></li>
+<li><code>__init__</code>是当实例对象创建完成后被调用的，然后设置对象属性的一些初始值，通常在初始化一个类实例的时候被调用，是一个<strong>实例方法</strong></li>
+</ul>
+<p>总结来说也就是: <code>__new__</code>先被调用，<code>__init__</code>后被调用，<code>__new__</code>的返回值（实例）将传递给<code>__init__</code>方法的第一个参数，然后<code>__init__</code>给这个实例设置一些参数</p>
+<p>一些说明:</p>
+<ol>
+<li>继承自object的新式类才有<code>__new__</code></li>
+<li><code>__new__</code>至少要有一个参数cls，代表当前类，此参数在实例化时由Python解释器自动识别</li>
+<li><code>__new__</code><strong>必须要有返回值</strong>，返回实例化出来的实例，这点在自己实现<code>__new__</code>时要特别注意，可以return父类<code>__new__</code>出来的实例，或者是直接object<code>__new__</code>出来的 实例</li>
+<li><code>__init__</code>有一个参数self，这个就是<code>__new__</code>返回的实例，<code>__init__</code>在<code>__new__</code>的基础上可以完成一些其它初始化的操作，<code>__init__</code><strong>不需要返回值</strong></li>
+<li>如果<code>__new__</code>创建的是当前类的实例，会自动调用<code>__init__</code>函数，通过return语句里面调用的<code>__new__</code>函数的第一个参数是cls来保证是当前类实例，如果是其它类的类名，那么实际创建返回的就是其他类的实例</li>
+<li>在定义子类时没有重新定义<code>__new__</code>时，Python默认是调用该类的直接父类的<code>__new__</code>来构造该类的实例，如果该类的父类也没有重写<code>__new__</code>，那么将一直按此规矩追溯至object的<code>__new__</code>方法，因为object是所有新式类的基类</li>
+<li>而如果子类中重写了<code>__new__</code>，那么你可以自由选择任意一个的其他新式类(必定要是新式类，只有新式类必定都有<code>__new__</code>，因为所有新式类都是object的后代，而经典类则没有<code>__new__</code>方法)的<code>__new__</code>方法来制造实例</li>
+<li>对于子类的<code>__init__</code>，其调用规制跟<code>__new__</code>是一致的，当然如果子类和父类的<code>__init__</code>都想调用，可以在子类的<code>__init__</code>中加入对父类<code>__init__</code>的调用</li>
+<li>我们在使用时，尽量使用<code>__init__</code>，不要去自定义<code>__new__</code>，因为这两者在继承派生时的特性还是很不一样的</li>
+<li><strong>将类比作制造商，<code>__new__</code>方法就是前期的原料购买环节，<code>__init__</code>方法就是在原有材料的基础上加工、初始化商品化环节</strong></li>
+</ol>
 
         </div>
 
@@ -200,11 +219,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：JS逆向的时候Python如何调用JavaScript代码呢</li>
+        <li>Post title：Python 中__new__和__init__的异同点</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-14 11:35:30</li>
+        <li>Create time：2022-01-14 11:50:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/14/JS逆向的时候Python如何调用JavaScript代码呢/
+            Post link：https://keep.xpoet.cn/2022/01/14/Python 中__new__和__init__的异同点/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -220,29 +239,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/14/Python%20%E4%B8%AD__new__%E5%92%8C__init__%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python 中__new__和__init__的异同点</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/14/Python%E7%88%AC%E8%99%AB%E7%99%BB%E5%BD%95%E7%9A%84%E6%81%A9%E6%81%A9%E6%80%A8%E6%80%A8/"
+                           href="/2022/01/14/JS%E9%80%86%E5%90%91%E7%9A%84%E6%97%B6%E5%80%99Python%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8JavaScript%E4%BB%A3%E7%A0%81%E5%91%A2/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python爬虫登录的恩恩怨怨</span>
+                                <span class="post-nav-title-item">JS逆向的时候Python如何调用JavaScript代码呢</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
