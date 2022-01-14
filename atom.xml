@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-14T02:49:54.758Z</updated>
+  <updated>2022-01-14T03:08:33.838Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python爬虫登录的恩恩怨怨</title>
+    <link href="http://example.com/2022/01/14/Python%E7%88%AC%E8%99%AB%E7%99%BB%E5%BD%95%E7%9A%84%E6%81%A9%E6%81%A9%E6%80%A8%E6%80%A8/"/>
+    <id>http://example.com/2022/01/14/Python%E7%88%AC%E8%99%AB%E7%99%BB%E5%BD%95%E7%9A%84%E6%81%A9%E6%81%A9%E6%80%A8%E6%80%A8/</id>
+    <published>2022-01-14T02:58:30.000Z</published>
+    <updated>2022-01-14T03:08:33.838Z</updated>
+    
+    <content type="html"><![CDATA[<p>曾几何时，登录是一件很简单的事情，一个账户及其密码，POST给服务器，服务器验证通过即可。那是一个美好的朴素年代，服务器不设防，用户不贪婪。然而，时过境迁，人心变了。越来越多的人想要收集数据，爬虫也就越来越多；而网站就有了网络请求压力，也有了死守数据私心。天下熙熙，皆为利来；天下攘攘，皆为利往。现在的互联网，就成了一个利字当头、魔高一尺道高一丈的战场</p><p>如今，各种网站都设置了复杂的登录这堵高高的墙来阻止爬虫大量甚至全部获取网站的数据。比如，12306的验证码是点选图片，微博是变形的字母验证码，知乎是点选倒立的汉字，哔哩哔哩通过拖动滑块拼图来验证。这些<em>变态的验证</em>过程都是加入人的交互来防止爬虫自动登录，从而阻止爬虫自动化的大批量抓取</p><p>小猿们都已经知道，HTTP协议是无状态的，用户登录的状态靠cookies在浏览器和服务器之间来回传送来记录。完成登录后，cookies在一定时间范围内是保持不变的，直接获得这个cookies给爬虫用，就可以让爬虫有了登录的状态，进而进行后面的抓取，当然，这个抓取只能持续到cookies过期之前</p><p>在这里我们来看看爬虫登录的三种层次，完成登录这个过程，最好是程序自动化实现，那么你写好程序就可以一边玩去了，然而好多时候，事情不是那么让人省心，登录还需要人工参与一下下；总结下来，实现登陆有以下三种层次:</p><ol><li>简单的PODT账户密码就可以实现自动化登录</li><li>通过程序可以模拟出登录流程实现自动化登录</li><li>登录需要人工智能介入，人工智能实现自动化登录</li></ol><p>第一个层次，使用requests模块加一两行代码就可以实现，关键是现如今很少有这样的良心网站了</p><p>第二个层次，是很有挑战性的，也是爬虫界人士力求达到的层次</p><p>第三个层次，就需要接入人工智能，利用人工智能识别验证码</p><p>由此看来，登录状态的cookies的获取，主要还是靠模拟登录流程或者人工智能识别验证码为主</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;曾几何时，登录是一件很简单的事情，一个账户及其密码，POST给服务器，服务器验证通过即可。那是一个美好的朴素年代，服务器不设防，用户不贪婪。然而，时过境迁，人心变了。越来越多的人想要收集数据，爬虫也就越来越多；而网站就有了网络请求压力，也有了死守数据私心。天下熙熙，皆为利来</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python中eval函数的用法</title>
@@ -425,29 +445,6 @@
       
     <summary type="html">&lt;p&gt;今天在某个本地仓库新增了一些数据，然后想着把数据提交一下，然后在使用sourcetree的时候提交进度条在移动然后始终推送不上去，后面在网上查阅资料说可能是安装了git但是没有给surcetree权限:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&quot;link&quot;   href=&quot;http</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>0.1+02等于0.3嘛，无可避免的浮点误差</title>
-    <link href="http://example.com/2022/01/07/0.1+02%E7%AD%89%E4%BA%8E0.3%E5%98%9B%EF%BC%8C%E6%97%A0%E5%8F%AF%E9%81%BF%E5%85%8D%E7%9A%84%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE/"/>
-    <id>http://example.com/2022/01/07/0.1+02%E7%AD%89%E4%BA%8E0.3%E5%98%9B%EF%BC%8C%E6%97%A0%E5%8F%AF%E9%81%BF%E5%85%8D%E7%9A%84%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE/</id>
-    <published>2022-01-07T06:49:30.000Z</published>
-    <updated>2022-01-07T08:39:16.240Z</updated>
-    
-    <content type="html"><![CDATA[<p>在我们印象中，计算机总是能高效准确地进行运算:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_14-52-48.1wye498a9hpc.webp"                      alt="Snipaste_2022-01-07_14-52-48"                ><br>直到有一天你满怀欣喜地打开最喜欢的编程环境，输入0.1+0.2，但计算机却返回这个:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_14-55-07.6gskzi8s9r80.webp"                      alt="Snipaste_2022-01-07_14-55-07"                ></p><p>你下意识觉得这可能是一个bug，然后在不同语言中反复求证，却一致地得到相同的答案：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_14-56-53.2ru1tt7usii0.webp"                      alt="Snipaste_2022-01-07_14-56-53"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_14-58-10.1kaelcxf7wow.webp"                      alt="Snipaste_2022-01-07_14-58-10"                ></p><p>究竟是道德的沦丧还是人性的扭曲</p><p>这一切都要从一个盛行了三十多年的标准IEEE-754讲起，IEEE-754定义了浮点数的格式、存储和运算：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-01-45.e7tycge22rc.webp"                      alt="Snipaste_2022-01-07_15-01-45"                ></p><p>它对浮点数的表示和我们熟知的科学计数法如出一辙</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-04-49.4t9wogbsbgc0.webp"                      alt="Snipaste_2022-01-07_15-04-49"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-05-24.2vmwyt2bqae0.webp"                      alt="Snipaste_2022-01-07_15-05-24"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-06-02.1utl8yp4rmlc.webp"                      alt="Snipaste_2022-01-07_15-06-02"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-06-37.4jlfyyrr3uw0.webp"                      alt="Snipaste_2022-01-07_15-06-37"                ></p><p>一个浮点数会被分成两部分存储,第一部分尾数(mantissa)也叫做有效数字(signigicand)，也就是下图用红色高亮的部分，第二部分指数(exponent)也就是这里黄色高亮的部分：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-10-09.6x5lemv66k40.webp"                      alt="Snipaste_2022-01-07_15-10-09"                ></p><p>由于尾数和指数分开存储，使得浮点数天生可以表示很大范围的数字，你可以用它表示整个星系的大小，也可以表示微观粒子的半径，并且现代计算机对浮点数做了大量优化，能够在很短时间内进行相当复杂的运算，一个典型的例子就图形渲染，每秒60帧的画面，每帧几百万的像素点同时参与光照计算，大家可以想想这个计算量</p><p>为了了解计算机中的浮点数，我们先来看看十进制世界的我们是如何表示小数的</p><p>首先在整数部分，我们有个位，十位，百位，千位，同样在小数部分我们有1/10,1/100,1/1000等等：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-23-17.j7q4ml5ek5c.webp"                      alt="Snipaste_2022-01-07_15-23-17"                ></p><p>比如我们写上在个位写0，在小数部分的1/10上写1就可以精确表示0.1，但是计算机使用的是二进制，每一位只能是0或者1，并且逢二进一，因此整数位分别表示有多少个一，多少个二，多少个四多少个八，其实这对应着2的一次方，2的二次方，2的三次方等等，小数部分则表示1/2,1/4,1/8,1/16等等：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-29-55.5hw30ljq2pc0.webp"                      alt="Snipaste_2022-01-07_15-29-55"                ></p><p>在二进制中，我们可以轻易地表示1/2,1/4或者3/4没有任何问题，但是二进制中没有1/10,求出的答案与1十分接近但却不等于1:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-34-27.2vftqxmqm720.webp"                      alt="Snipaste_2022-01-07_15-34-27"                ></p><p>虽然计算机不总是能精确地表示小数，但在大多数情况下这并不是问题，比如在物理引擎中，我们会用到浮点数来计算物体的坐标，假设误差导致每一帧中物体的位置偏离0.00001，由于这个量实在太小，即便累加一秒，可能还不及一个像素点的长度，用户根本无法察觉，但是另一方面如果银行使用浮点数来表示货币，每存入0.1块钱，由于浮点误差的存在，导致账号中会多累加这么多钱:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-43-32.30x8voh3a4o0.webp"                      alt="Snipaste_2022-01-07_15-43-32"                ></p><p>在频繁的交易下，这种误差积少成多对银行来说就是巨大的损失</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-44-51.76dilr2t0c00.webp"                      alt="Snipaste_2022-01-07_15-44-51"                ></p><p>要解决这个问题，最容易想到的就是用整型来替代浮点数</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_15-48-03.388qiargpu20.webp"                      alt="Snipaste_2022-01-07_15-48-03"                ></p><p>比如1块钱当作整型数100来存储，这样1分钱就可以准确无误地用数值1来表示，最后我们只需要在显示货币的时候除以一百即可：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-13-09.lomzvbjhtb4.webp"                      alt="Snipaste_2022-01-07_16-13-09"                ></p><p>另外现代的编程语言或者数据库中都提供一个特殊的数据类型decimal(十进制定点数),专门用来表示任意精度的十进制数：</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-15-25.fip8e9p4pdc.webp"                      alt="Snipaste_2022-01-07_16-15-25"                ></p><p>用它来进行运算不会产生任何的精度问题</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-20-24.26roiloj8s5c.webp"                      alt="Snipaste_2022-01-07_16-20-24"                ></p><p>当然在大多数时候，我们依然会用到浮点数，因为浮点数能高效地进行运算，并且节省内存空间，只要我们心里有数，知道程序出现误差可能会导致出现逻辑错误，并且加以防范就好了，比如直接用等号去判断两个浮点数是否相等，这种用操作是很不可靠的，正确的做法应当是去计算这两个数的差别是否小于某个误差范围：</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-27-52.1lv7vyc5fty8.webp"                      alt="Snipaste_2022-01-07_16-27-52"                ></p><p>在现代的编程语言中大多都内置了判断浮点数是否相等的工具函数，比如python中的isclose：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-29-56.2wyo5cb3gki0.webp"                      alt="Snipaste_2022-01-07_16-29-56"                ></p><p>使用他们可以规避很多由浮点误差而导致的程序逻辑错误：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-31-01.31h8gdlny0y0.webp"                      alt="Snipaste_2022-01-07_16-31-01"                ></p><p>浮点数的这些奇怪特性可能一开始让很多人摸不着头脑，但在了解之后发现他不过是一个基本的数学概念，科学计数法的二进制版本，仅此而已：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-33-16.2p49xq738jc0.webp"                      alt="Snipaste_2022-01-07_16-33-16"                ></p><p>由于0.1在二进制中是无限循环小数，计算机没有办法精确表示，从而丢失了精度，也就造就了为什么我们输入0.1+0.2但计算机返回的却不是0.3的情况：<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_16-37-39.15r619y0x0sg.webp"                      alt="Snipaste_2022-01-07_16-37-39"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;在我们印象中，计算机总是能高效准确地进行运算:&lt;br&gt;&lt;img  
-                     lazyload
-                     src=&quot;/images/loading.svg&quot;
-                     data-</summary>
       
     
     
