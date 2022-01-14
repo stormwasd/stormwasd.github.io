@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            理解Python asyncio原理和简洁使用方式 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">理解Python asyncio原理和简洁使用方式</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-14 15:08:30</span>
+        <span class="mobile">2022-01-14 15:08</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>13 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>异步IO是个好东西，在网络读写场景中可以大大提高程序的并发能力，比如爬虫、web服务等；这样好的东西自然也要用到Python中，不过，在漫长的Python2时代，官方并没有推出一个自己的异步IO库，到了Python3.4才推出；我们先来看看异步IO在Python中的发展历史</p>
+<p><strong>Python2的异步IO库</strong></p>
+<p>Python2时代官方并没有异步IO的支持，但是有几个第三方库通过事件或者事件循环(Event Loop)实现了异步IO，它们是:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_15-14-33.4lfwna8nmx60.webp"
+                      alt="Snipaste_2022-01-14_15-14-33"
+                ></p>
+<p><strong>Python3官方的异步IO库</strong></p>
+<p>Python 3.4 加入了asyncio 库，使得Python有了支持异步IO的官方库。这个库，底层是事件循环(EventLoop)，上层是协程和任务。asyncio自从3.4 版本加入到最新的 3.7版一直在改进中，Python 3.4 刚开始的asyncio的协程还是基于生成器的，通过 yield from 语法实现，可以通过装饰器 @asyncio.coroutine (已过时)装饰一个函数来定义一个协程</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_15-21-07.5q7wn2pm54s0.webp"
+                      alt="Snipaste_2022-01-14_15-21-07"
+                ></p>
+<p>Python 3.5 引入了两个新的关键字 await 和 async 用来替换 @asyncio.coroutine 和 yield from ，从语言本身来支持异步IO。从而使得异步编程更加简洁，并和普通的生成器区别开来.</p>
+<p>注意： 对基于生成器的协程的支持已弃用，并计划在 Python 3.10 中移除。所以，写异步IO程序时只需使用 async 和 await 即可</p>
+<p>Python 3.7 又进行了优化，把API分组为高层级API和低层级API。我们先看看下面的代码，发现与上面的有什么不同？</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_15-22-28.78a59h5g84w0.webp"
+                      alt="Snipaste_2022-01-14_15-22-28"
+                ></p>
+<p>除了用 async 替换 @asyncio.coroutine 和用 await 替换 yield from 外，最大的变化就是关于eventloop的代码不见了，只有一个 async.run()。这就是 3.7 的改进，把eventloop相关的API归入到低层级API，新引进run()作为高层级API让写应用程序的开发者调用，而不用再关心eventloop。除非你要写异步库（比如MySQL异步库）才会和eventloop打交道</p>
+<p><strong>理解asyncio</strong></p>
+<p>理解asyncio并不难，关键是要动起手来，接下来我们以下面代码为例动手实践一番，通过实践来理解它</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	<span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	<span class="keyword">return</span> sec</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">		<span class="keyword">await</span> hi(i, i)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码很简单，我们定义了两个协程函数(在def前面加上async)，其中hi()我们把它叫做功能函数，通过一个asyncio.sleep()来模拟一个耗时的异步IO操作，(比如下载网页)，main函数叫做入口函数，其实就是在main()里面调用hi()函数，通过不断改变main()的行为来理解异步IO()来理解异步IO(协程函数的调用)的运行过程</p>
+<p><strong>1. 协程函数如何运行？</strong></p>
+<p>首先我们要明确一个道理，hi()是一个协程函数，直接调用它返回的是一个协程对象，并没有真正运行它，把main函数改成如下，我们来仔细看看协程函数hi()的运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	<span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	<span class="keyword">return</span> sec</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">	a = hi(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;a is:&#x27;</span>, a)</span><br><span class="line">	b = <span class="keyword">await</span> a</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;b is:&#x27;</span>, b)</span><br><span class="line">	<span class="comment"># for i in range(1, 5):</span></span><br><span class="line">	<span class="comment"># 	await hi(i, i)</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>下面是运行结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">main() begin at <span class="number">15</span>:<span class="number">56</span>:<span class="number">58</span></span><br><span class="line">a <span class="keyword">is</span>: &lt;coroutine <span class="built_in">object</span> hi at <span class="number">0x0000000002D6A9C8</span>&gt;</span><br><span class="line">enter hi(), a @<span class="number">15</span>:<span class="number">56</span>:<span class="number">58</span></span><br><span class="line">exit hi() a @<span class="number">15</span>:<span class="number">56</span>:<span class="number">59</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">1</span></span><br><span class="line">main() end at <span class="number">15</span>:<span class="number">56</span>:<span class="number">59</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>代码12行，我们像运行普通函数一样运行hi()，得到的a只是一个协程对象:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">is</span>: &lt;coroutine <span class="built_in">object</span> hi at <span class="number">0x0000000002D6A9C8</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个协程对象a虽然生成了，但是还没有运行，它需要一个时机，也就是asyncio的时间循环正在运行main函数，还没有空去运行它，代码第14行，通过await关键字告诉event_loop(时间循环)，main协程停在这里，你去运行其他协程叭，这时候envent_loop就去执行a协程，也就是去执行hi()函数里面的代码，等hi()运行完，event_loop再回到main协程继续从14行开始执行，把hi()的返回值赋值给b，这个时候b的值是1</p>
+<p><strong>enve_loop在整个异步IO的过程中扮演着一个管家的角色，在不同的协程之间切换运行代码，切换是通过事件来进行的，通过await离开当前协程，当await的协程完成后又回到之前的协程对应的地方继续执行</strong></p>
+<p><strong>2. 协程函数如何并发</strong></p>
+<p>异步IO的好处就是并发，但如何实现呢?我们先来看一个不是并发的栗子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">return</span> sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">        b = <span class="keyword">await</span> hi(i, i)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;b is:&quot;</span>, b)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这次，我们把main修改成一个for循环执行4次，看看它运行的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">main() begin at <span class="number">16</span>:<span class="number">20</span>:<span class="number">22</span></span><br><span class="line">enter hi(), <span class="number">1</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">22</span></span><br><span class="line">exit hi() <span class="number">1</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">23</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">1</span></span><br><span class="line">enter hi(), <span class="number">2</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">23</span></span><br><span class="line">exit hi() <span class="number">2</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">25</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">2</span></span><br><span class="line">enter hi(), <span class="number">3</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">25</span></span><br><span class="line">exit hi() <span class="number">3</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">28</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">3</span></span><br><span class="line">enter hi(), <span class="number">4</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">28</span></span><br><span class="line">exit hi() <span class="number">4</span> @<span class="number">16</span>:<span class="number">20</span>:<span class="number">32</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">4</span></span><br><span class="line">main() end at <span class="number">16</span>:<span class="number">20</span>:<span class="number">32</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>整个过程从16:20:22到16:20:32结束，用了10秒，而hi()的执行时间分别是1秒，2秒，3秒，4秒总共10秒，也就是4个hi()虽然是异步的，但是是顺序执行的，没有并发</p>
+<p>接下来，就到了真正并发实现了，通过asyncio.creat_task()即可:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">return</span> sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    tasks = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">        t = asyncio.create_task(hi(i, i))</span><br><span class="line">        tasks.append(t)</span><br><span class="line">        <span class="comment"># b = await hi(i, i)</span></span><br><span class="line">        <span class="comment"># print(&quot;b is:&quot;, b)</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tasks:</span><br><span class="line">        b = <span class="keyword">await</span> t</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;b is:&quot;</span>, b)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>通过create_task()我们在for循环里面生成了4个task(也就是协程对象)，但是这4个协程任务并没有被执行，他们需要等待一个时机:当前携程(main)遇到await</p>
+<p>第二个for循环开始逐一await协程，此时event_loop就可以空出手来去执行那4个协程，过程大致如下:</p>
+<p>先执行hi(1, 1) ，打印“enter hi(), 1 @16:30:18”，遇到await asyncio.sleep(1)，当前协程挂起；</p>
+<p>接着执行 hi(2, 2)，执行打印命令，遇到await asyncio.sleep(2) ，当前协程挂起；</p>
+<p>接着执行 hi(3, 3)，执行打印命令，遇到await asyncio.sleep(3) ，当前协程挂起；</p>
+<p>接着执行 hi(4, 4)，执行打印命令，遇到await asyncio.sleep(4) ，当前协程挂起；</p>
+<p>以上4步只是协程的切换和打印语句，执行非常快，我们可以任务它们是同时执行起来的。</p>
+<p>1秒后，hi(1,1)的sleep结束它会发出事件告诉 event_loop 我await结束了，过来执行我，event_loop 此时空闲就来执行它，继续执行sleep后面的打印语句；</p>
+<p>2秒后，hi(2,2)的sleep结束它会发出事件告诉 event_loop 我await结束了，过来执行我，event_loop 此时空闲就来执行它，继续执行sleep后面的打印语句；</p>
+<p>3秒后，hi(3,3)的sleep结束它会发出事件告诉 event_loop 我await结束了，过来执行我，event_loop 此时空闲就来执行它，继续执行sleep后面的打印语句；</p>
+<p>4秒后，hi(4,4)的sleep结束它会发出事件告诉 event_loop 我await结束了，过来执行我，event_loop 此时空闲就来执行它，继续执行sleep后面的打印语句；</p>
+<p>4秒后，生成的4个协程任务就都执行完毕。总耗时4秒，也就是我们的4个任务并发完成了。</p>
+<p>上面代码的运行结果为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">main() begin at <span class="number">16</span>:<span class="number">30</span>:<span class="number">17</span></span><br><span class="line">enter hi(), <span class="number">1</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">17</span></span><br><span class="line">enter hi(), <span class="number">2</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">17</span></span><br><span class="line">enter hi(), <span class="number">3</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">17</span></span><br><span class="line">enter hi(), <span class="number">4</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">17</span></span><br><span class="line">exit hi() <span class="number">1</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">18</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">1</span></span><br><span class="line">exit hi() <span class="number">2</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">19</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">2</span></span><br><span class="line">exit hi() <span class="number">3</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">20</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">3</span></span><br><span class="line">exit hi() <span class="number">4</span> @<span class="number">16</span>:<span class="number">30</span>:<span class="number">21</span></span><br><span class="line">b <span class="keyword">is</span>: <span class="number">4</span></span><br><span class="line">main() end at <span class="number">16</span>:<span class="number">30</span>:<span class="number">21</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 错误的运行</strong></p>
+<p>上面的并发很完美，但有时候你可能会犯错，比如下面的main()，你可能只是并发hi()，但不需要返回它的结果，于是就有了下面的main()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">return</span> sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">        asyncio.create_task(hi(i, i))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>下面是运行结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">main() begin at <span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">main() end at <span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">enter hi(), <span class="number">1</span> @<span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">enter hi(), <span class="number">2</span> @<span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">enter hi(), <span class="number">3</span> @<span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">enter hi(), <span class="number">4</span> @<span class="number">16</span>:<span class="number">45</span>:<span class="number">42</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>main()的for循环只是生成了4个task协程，然后就退出了，event_loop收到main退出的事件就空出来去执行了那4个协程，进去了但都碰到了sleep，然后envent_loop就空闲了，这个时候run()就收到了main()执行完毕的事件信号，run()就执行完了，最后执行print，整个程序就退出了，从main退出到整个程序退出那就是一瞬间的事情，那4个协程还在傻傻地睡着，如果把它们也加入任务列表就不会这样了，如果不加入，那默认任务列表就只有main函数，其他的只是微微带过，如果main函数结束了，它们也会立马结束</p>
+<p>我们如果在main()中加入一个sleep会出现什么结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hi</span>(<span class="params">msg, sec</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;enter hi(), &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(sec)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;exit hi() &#123;&#125; @&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(msg, time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">return</span> sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() begin at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">        asyncio.create_task(hi(i, i))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;mian() sleep at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main() end at &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">main() begin at <span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">mian() sleep at <span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">enter hi(), <span class="number">1</span> @<span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">enter hi(), <span class="number">2</span> @<span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">enter hi(), <span class="number">3</span> @<span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">enter hi(), <span class="number">4</span> @<span class="number">17</span>:06:<span class="number">59</span></span><br><span class="line">exit hi() <span class="number">1</span> @<span class="number">17</span>:07:<span class="number">00</span></span><br><span class="line">exit hi() <span class="number">2</span> @<span class="number">17</span>:07:01</span><br><span class="line">main() end at <span class="number">17</span>:07:01</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这边main函数sleep了两秒就让两次hi函数执行完毕，如果我们让main函数sleep更长时间那就4个hi函数都会执行完毕</p>
+<p>说明，功能函数如果不加入任务列表，那就要求入口函数有足够长的执行时间，因为在入口函数的长执行时间中就会有机会去执行功能函数</p>
+<p><strong>4. 如何判断是否要把函数定义为协程函数</strong></p>
+<p>定义一个协程函数很简单，在def前面加async即可，那么如何判断一个函数该不该定义为协程函数呢?</p>
+<p>记住一个原则: 如果该函数是要进行IO操作(读写网络、读写文件、读写数据库等)，就把它定义为协程函数，否则就是普通函数</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：理解Python asyncio原理和简洁使用方式</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-14 15:08:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/14/理解Python asyncio原理和简洁使用方式/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/14/Python%20%E4%B8%AD__new__%E5%92%8C__init__%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python 中__new__和__init__的异同点</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
