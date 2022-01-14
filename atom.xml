@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-13T09:43:48.237Z</updated>
+  <updated>2022-01-14T02:49:54.758Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中eval函数的用法</title>
+    <link href="http://example.com/2022/01/14/Python%E4%B8%ADeval%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://example.com/2022/01/14/Python%E4%B8%ADeval%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95/</id>
+    <published>2022-01-14T02:46:30.000Z</published>
+    <updated>2022-01-14T02:49:54.758Z</updated>
+    
+    <content type="html"><![CDATA[<p>eval()函数用来执行一个字符串表达式，并返回表达式的值</p><p>以下是eval()函数的语法:</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(expression[, <span class="built_in">globals</span>[, <span class="built_in">locals</span>]])</span><br></pre></td></tr></table></figure><p>实例:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x = <span class="number">7</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">eval</span>( <span class="string">&#x27;3 * x&#x27;</span> )</span><br><span class="line"><span class="number">21</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">eval</span>(<span class="string">&#x27;pow(2,2)&#x27;</span>)</span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">eval</span>(<span class="string">&#x27;2 + 2&#x27;</span>)</span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n=<span class="number">81</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">eval</span>(<span class="string">&quot;n + 4&quot;</span>)</span><br><span class="line"><span class="number">85</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;eval()函数用来执行一个字符串表达式，并返回表达式的值&lt;/p&gt;
+&lt;p&gt;以下是eval()函数的语法:&lt;/p&gt;
+&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;lin</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python中format函数的用法</title>
+    <link href="http://example.com/2022/01/14/Python%E4%B8%ADformat%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://example.com/2022/01/14/Python%E4%B8%ADformat%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95/</id>
+    <published>2022-01-14T02:36:30.000Z</published>
+    <updated>2022-01-14T02:45:06.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python2.6开始便新增了一种格式化字符串的str.format()函数，基本语法是通过<code>&#123;&#125;</code>和<code>:</code>来代替以前的<code>%</code></p><p>format函数可以接受不限个数的参数，位置可以不按顺序</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="string">&quot;&#123;&#125; &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>)    <span class="comment"># 不设置指定位置，按默认顺序</span></span><br><span class="line"><span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&quot;&#123;0&#125; &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>)  <span class="comment"># 设置指定位置</span></span><br><span class="line"><span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&quot;&#123;1&#125; &#123;0&#125; &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>)  <span class="comment"># 设置指定位置</span></span><br><span class="line"><span class="string">&#x27;world hello world&#x27;</span></span><br></pre></td></tr></table></figure><p>也可以设置参数</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;网站名：&#123;name&#125;, 地址 &#123;url&#125;&quot;</span>.<span class="built_in">format</span>(name=<span class="string">&quot;菜鸟教程&quot;</span>, url=<span class="string">&quot;www.runoob.com&quot;</span>))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 通过字典设置参数</span></span><br><span class="line">site = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;菜鸟教程&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;www.runoob.com&quot;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;网站名：&#123;name&#125;, 地址 &#123;url&#125;&quot;</span>.<span class="built_in">format</span>(**site))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 通过列表索引设置参数</span></span><br><span class="line">my_list = [<span class="string">&#x27;菜鸟教程&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;网站名：&#123;0[0]&#125;, 地址 &#123;0[1]&#125;&quot;</span>.<span class="built_in">format</span>(my_list))  <span class="comment"># &quot;0&quot; 是必须的</span></span><br></pre></td></tr></table></figure><p>也可以向str.format()传入对象</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AssignValue</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.value = value</span><br><span class="line">my_value = AssignValue(<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;value 为: &#123;0.value&#125;&#x27;</span>.<span class="built_in">format</span>(my_value))  <span class="comment"># &quot;0&quot; 是可选的</span></span><br></pre></td></tr></table></figure><p>format还可以进行数字格式化，这个用到的不多</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Python2.6开始便新增了一种格式化字符串的str.format()函数，基本语法是通过&lt;code&gt;&amp;#123;&amp;#125;&lt;/code&gt;和&lt;code&gt;:&lt;/code&gt;来代替以前的&lt;code&gt;%&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;format函数可以接受不限个数的参数，位置可</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python十大高级用法</title>
@@ -405,50 +448,6 @@
                      lazyload
                      src=&quot;/images/loading.svg&quot;
                      data-</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Linux系统启动过程</title>
-    <link href="http://example.com/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/"/>
-    <id>http://example.com/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</id>
-    <published>2022-01-07T01:19:30.000Z</published>
-    <updated>2022-01-07T01:36:06.166Z</updated>
-    
-    <content type="html"><![CDATA[<p>按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?</p><p>我们先来看看一个整体的流程图:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-21-28.5sqouvy7v7g0.webp"                      alt="Snipaste_2022-01-07_09-21-28"                ></p><p>Linux系统在启动过程中，首先是固件(PC上大多是CMOS/BIOS)的物理检测，诸如检测系统的显卡，CPU和硬盘等，可从系统按下电源键后看到此检测信息；检测没有问题后，将读取硬盘的MBR(主引导记录)中的自举程序，Linux中常用的自举程序如LILO和GRUB。自举程序GRUB在系统启动期间只有一个作用，就是启动内核，内核在引导期间有两个主要的作用，一个是驱动系统硬件，另一个是启动系统init，init进程将读取其配置文件/etc/initab完成后继续所有的引导。</p><p>整个过程基本可以分为六个步骤:BIOS–&gt;MBR(GRUB)–&gt;Kernel–&gt;Init–&gt;Runlevel:<br><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-30-19.10of2bn2nfrk.webp"                      alt="Snipaste_2022-01-07_09-30-19"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-31-22.tv1ntom0xc0.webp"                      alt="Snipaste_2022-01-07_09-31-22"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-05.1kg0n3aym7s0.webp"                      alt="Snipaste_2022-01-07_09-32-05"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-32-47.7h1x4nh4sps0.webp"                      alt="Snipaste_2022-01-07_09-32-47"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-33-50.7ab7flt0yr40.webp"                      alt="Snipaste_2022-01-07_09-33-50"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-34-15.157a06qsnr4w.webp"                      alt="Snipaste_2022-01-07_09-34-15"                ></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220107/Snipaste_2022-01-07_09-35-46.7ub8ya0rze4.webp"                      alt="Snipaste_2022-01-07_09-35-46"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?&lt;/p&gt;
-&lt;p&gt;我们先来看看一个整体的流程图:&lt;/p&gt;
-&lt;p&gt;&lt;img  
-                     lazyload
-      </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>mac终端美化教程</title>
-    <link href="http://example.com/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/</id>
-    <published>2022-01-07T01:08:30.000Z</published>
-    <updated>2022-01-07T01:11:02.352Z</updated>
-    
-    <content type="html"><![CDATA[<p>mac终端美化请参考:<a class="link"   href="https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz" >https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;mac终端美化请参考:&lt;a class=&quot;link&quot;   href=&quot;https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVyz&quot; &gt;https://www.wolai.com/fishc/exwe9Srj8St6THjGE6YVy</summary>
       
     
     
