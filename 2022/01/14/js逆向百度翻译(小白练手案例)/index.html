@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            js逆向百度翻译(小白练手案例) |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">js逆向百度翻译(小白练手案例)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-14 17:51:30</span>
+        <span class="mobile">2022-01-14 17:51</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>12 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>首先我们打开<a class="link"   target="_blank" rel="noopener" href="https://fanyi.baidu.com/" >百度翻译<i class="fas fa-external-link-alt"></i></a>然后按F12打开抓包工具，我们点击Fetch/XHR，然后我们随便输入一个中文，点击翻译，我们需要关注的是v2transapiform=zh&amp;to=en这个post请求</p>
+<p>首先我们输入你好然后回车(或者点击翻译触发)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_17-57-25.75uih5lkygg0.webp"
+                      alt="Snipaste_2022-01-14_17-57-25"
+                ></p>
+<p>我们再翻译一个他们</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_17-59-20.2ajraqbd1ajo.webp"
+                      alt="Snipaste_2022-01-14_17-59-20"
+                ></p>
+<p>再翻译一个我们</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_18-00-49.112slao8x7y8.webp"
+                      alt="Snipaste_2022-01-14_18-00-49"
+                ></p>
+<p>这个过程中我们不难发现，formdata中变的就两个，一个是query，另一个是sign</p>
+<p>现在我们知道了要构造请求的参数，以及变化且需要破解的参数，我们就可以着手去做了</p>
+<p>我们先全局搜索下sign这个参数，我们发现搜索出来的东西很多，但是我定睛一看，发现有一个js文件中出现了很多的sign字样，其他的出现得比较少而且很多assign混在其中，这使我有想法去看看这个js文件(或者试试搜索/v2transapi，这个搜出来应该只有一个，而且可以很快定位表单数据)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_18-13-14.14mi2mf1urb4.webp"
+                      alt="Snipaste_2022-01-14_18-13-14"
+                ></p>
+<p>那么我是如何定位到这个js文件的呢，首先看下面这个红框，我会记住这个js文件的名字和路径然后点击工具栏中的source，根据刚刚的路径就能快速定位到这个js文件</p>
+<p>定位到之后，这个js文件的排版是很乱的，我们可以点击左下角的花括号去做一次排版，使我们看得更舒服，然后我们同样在这个js文件中做一次搜索，CTRL+F，然后搜索sign，会发现一共有13个，我们一个一个筛选，最终发现了第10个是最符合我们预期的，因为它最完整，和前面的formdata都一一对上了</p>
+<p>我们在这个sign所在的行打上一个断点</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_18-19-45.54fn2luukw40.webp"
+                      alt="Snipaste_2022-01-14_18-19-45"
+                ></p>
+<p>然后在网页中翻译一个词语，回车后会发现程序断在了刚刚打断点的前面，然后我们鼠标悬停在L(e)函数上，会出现一个悬浮框，然后我们点击悬浮框中的e(r)函数跳转进入e(r)函数</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_18-25-32.639vii0gnec0.webp"
+                      alt="Snipaste_2022-01-14_18-25-32"
+                ></p>
+<p>跳转进e(r)函数是这样的</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220114/Snipaste_2022-01-14_18-27-16.773t1gfdjbk0.webp"
+                      alt="Snipaste_2022-01-14_18-27-16"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220115/Snipaste_2022-01-15_14-57-10.71lax0bd91c0.webp"
+                      alt="Snipaste_2022-01-15_14-57-10"
+                ></p>
+<p>这里我们发现e(r)中牵扯到了其他两个函数，一个是a(r)，另一个是n(r, o)，所以这两个三个函数都要扣出来，然后我们发现还有一个未知的是window[1]</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220115/Snipaste_2022-01-15_15-14-47.66u2pvh2u500.webp"
+                      alt="Snipaste_2022-01-15_15-14-47"
+                ></p>
+<p>这里有一句关键的代码我们来分析下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u = <span class="literal">null</span> !== i ? i : (i = <span class="built_in">window</span>[l] || <span class="string">&quot;&quot;</span>) || <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 这是一个js中的三元表达式，而我们看到下面定义了var i = null;所以null !== i 为假所以u的值为(i = window[l] || &quot;&quot;)，u的值也就是window[1]</span></span><br></pre></td></tr></table></figure>
+
+<p>我们经过多次调试发现这个u是一个确定的值，u=320305.131321201，我们可以直接用一个变量代替</p>
+<p>下面就是我们抠出来的js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">jsCode = <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    function a(r) &#123;</span></span><br><span class="line"><span class="string">        if (Array.isArray(r)) &#123;</span></span><br><span class="line"><span class="string">            for (var o = 0, t = Array(r.length); o &lt; r.length; o++)</span></span><br><span class="line"><span class="string">                t[o] = r[o];</span></span><br><span class="line"><span class="string">            return t</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        return Array.from(r)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    function n(r, o) &#123;</span></span><br><span class="line"><span class="string">        for (var t = 0; t &lt; o.length - 2; t += 3) &#123;</span></span><br><span class="line"><span class="string">            var a = o.charAt(t + 2);</span></span><br><span class="line"><span class="string">            a = a &gt;= &quot;</span>a<span class="string">&quot; ? a.charCodeAt(0) - 87 : Number(a),</span></span><br><span class="line"><span class="string">            a = &quot;</span>+<span class="string">&quot; === o.charAt(t + 1) ? r &gt;&gt;&gt; a : r &lt;&lt; a,</span></span><br><span class="line"><span class="string">            r = &quot;</span>+<span class="string">&quot; === o.charAt(t) ? r + a &amp; 4294967295 : r ^ a</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        return r</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    var i = null;</span></span><br><span class="line"><span class="string">    function e(r) &#123;</span></span><br><span class="line"><span class="string">        var t = r.length;</span></span><br><span class="line"><span class="string">        t &gt; 30 &amp;&amp; (r = &quot;</span><span class="string">&quot; + r.substr(0, 10) + r.substr(Math.floor(t / 2) - 5, 10) + r.substr(-10, 10))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        var u = void 0, l = &quot;</span><span class="string">&quot; + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107);</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        u = null !== i ? i : (i = &#x27;320305.131321201&#x27; || &quot;</span><span class="string">&quot;) || &quot;</span><span class="string">&quot;;</span></span><br><span class="line"><span class="string">        for (var d = u.split(&quot;</span>.<span class="string">&quot;), m = Number(d[0]) || 0, s = Number(d[1]) || 0, S = [], c = 0, v = 0; v &lt; r.length; v++) &#123;</span></span><br><span class="line"><span class="string">            var A = r.charCodeAt(v);</span></span><br><span class="line"><span class="string">            128 &gt; A ? S[c++] = A : (2048 &gt; A ? S[c++] = A &gt;&gt; 6 | 192 : (55296 === (64512 &amp; A) &amp;&amp; v + 1 &lt; r.length &amp;&amp; 56320 === (64512 &amp; r.charCodeAt(v + 1)) ? (A = 65536 + ((1023 &amp; A) &lt;&lt; 10) + (1023 &amp; r.charCodeAt(++v)),</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 18 | 240,</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 12 &amp; 63 | 128) : S[c++] = A &gt;&gt; 12 | 224,</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 6 &amp; 63 | 128),</span></span><br><span class="line"><span class="string">            S[c++] = 63 &amp; A | 128)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        for (var p = m, F = &quot;</span><span class="string">&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(97) + (&quot;</span><span class="string">&quot; + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(54)), D = &quot;</span><span class="string">&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(51) + (&quot;</span><span class="string">&quot; + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(98)) + (&quot;</span><span class="string">&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(102)), b = 0; b &lt; S.length; b++)</span></span><br><span class="line"><span class="string">            p += S[b],</span></span><br><span class="line"><span class="string">            p = n(p, F);</span></span><br><span class="line"><span class="string">        return p = n(p, D),</span></span><br><span class="line"><span class="string">        p ^= s,</span></span><br><span class="line"><span class="string">        0 &gt; p &amp;&amp; (p = (2147483647 &amp; p) + 2147483648),</span></span><br><span class="line"><span class="string">        p %= 1e6,</span></span><br><span class="line"><span class="string">        p.toString() + &quot;</span>.<span class="string">&quot; + (p ^ m)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line">query = <span class="string">&#x27;汉语中文&#x27;</span></span><br><span class="line">sign = execjs.compile(jsCode).call(<span class="string">&quot;e&quot;</span>, query)</span><br><span class="line">print(sign)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220115/Snipaste_2022-01-15_15-45-22.1whcvuiqyf5s.webp"
+                      alt="Snipaste_2022-01-15_15-45-22"
+                ></p>
+<p>接下就简单了，构造一个post请求然后解析json数据，拿到翻译结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> test_baidu_jscode <span class="keyword">import</span> get_word_sign</span><br><span class="line"><span class="keyword">import</span> jsonpath</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://fanyi.baidu.com/v2transapi?from=zh&amp;to=en&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua&#x27;</span>: <span class="string">&#x27;&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;97&quot;, &quot;Chromium&quot;;v=&quot;97&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;*/*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded; charset=UTF-8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;X-Requested-With&#x27;</span>: <span class="string">&#x27;XMLHttpRequest&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-mobile&#x27;</span>: <span class="string">&#x27;?0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &#x27;</span></span><br><span class="line">                  <span class="string">&#x27;Chrome/97.0.4692.71 Safari/537.36&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-platform&#x27;</span>: <span class="string">&#x27;&quot;Windows&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;https://fanyi.baidu.com&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Site&#x27;</span>: <span class="string">&#x27;same-origin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Mode&#x27;</span>: <span class="string">&#x27;cors&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Dest&#x27;</span>: <span class="string">&#x27;empty&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;https://fanyi.baidu.com/?aldtype=16047&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.9&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;BIDUPSID=CF86A0FA51038D0CA02DA9FC43B164F5; PSTM=1639146064; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BAIDUID=CF86A0FA51038D0CFFCCCD08415508DA:FG=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;__yjs_duid=1_689d947b2f957f0b0d895ae63c66114f1639229602485; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BAIDUID_BFESS=3A9FDFF925D6EA302A897713757BE825:FG=1; BDRCVFR[iqrboYocJ-C]=kRxlD0AvOmRPjIMTz4WUvY; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BDRCVFR[fq555l35Iot]=EBD6F1bEM2tXZKdrHn8mvqV; delPer=0; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BDRCVFR[3lgytkvnri6]=mk3SLVN4HKm; H_PS_PSSID=; REALTIME_TRANS_SWITCH=1; FANYI_WORD_SWITCH=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;HISTORY_SWITCH=1; SOUND_PREFER_SWITCH=1; SOUND_SPD_SWITCH=1; APPGUIDE_10_0_2=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;Hm_lvt_64ecd82404c51e03dc91cb9e8c025574=1642227471,1642227478; PSINO=6; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BA_HECTOR=2hag052ha52h010lkt1gu4ujh0r; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1642233008; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;ab_sr=1.0&#x27;</span></span><br><span class="line">              <span class="string">&#x27;.1_NjI2ZDk1Y2JmYzQ2ZTBiNTZmNWIyZjllNTU4ZjE4MmM1ZTI2ZmVjMjAyNmJhN2E5NGJhNWVjYmM2OWFmMTRjOTE0ZDQ2M2Y5MmY5N2RmNDUzNzYwNGJjZmZlYmVhZjZjMjgzYWI5YjhhZDJlNzg0NTNiZjRmNjhmMzU5ZDIxNzhkNzhiNDlmYTQyODhhMmZmOGM3MmM2NzhhMTlhZDU2NQ==; __yjs_st=2_NTA2ZGI3NzkyZGNmMzE4M2JkNzk0MTNkMWRmMzBkZmQwNjBlOTYzMDRhZjZmOTJhZGYzOGFjZWRlMTE1NjU4ZTA5ZDljMGQyMjA3Nzk0OWE3NmZhNThjY2YzYTBmMjVhMzAxYmQyZmFkM2VhMTc0YjE5MmJlM2VmZGZlMjhiMzkxMTQzMWY4NGYyNzZkNjM1YjE2ZjNhYjA4M2ViZmNmZDU2YWQzMzc0N2YzMGFiZGVhZTY5NzRiMjc0MzdlMjdjYTM2MGU2OGJmYTJhM2VhZWJiNzIxYWEyODc1ODZlZTBlOGYwOTM1ZWNkMjE4YzM0ZDFiMTY1YjgwMDNmZjhjZV83X2NjZDQ3NTdj &#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_word_means</span>():</span></span><br><span class="line">    query = <span class="built_in">input</span>(<span class="string">&#x27;Please input you query words:&#x27;</span>)</span><br><span class="line">    sign = get_word_sign(query)</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;from&quot;</span>: <span class="string">&quot;zh&quot;</span>,</span><br><span class="line">        <span class="string">&quot;to&quot;</span>: <span class="string">&quot;en&quot;</span>,</span><br><span class="line">        <span class="string">&quot;query&quot;</span>: query,</span><br><span class="line">        <span class="string">&quot;transtype&quot;</span>: <span class="string">&quot;translang&quot;</span>,</span><br><span class="line">        <span class="string">&quot;simple_means_flag&quot;</span>: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;sign&quot;</span>: sign,</span><br><span class="line">        <span class="string">&quot;token&quot;</span>: <span class="string">&quot;cb25a0d7b1d3837fe7864c5c87559d98&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.request(<span class="string">&quot;POST&quot;</span>, url, headers=headers, data=data)</span><br><span class="line">    json_result = response.json()</span><br><span class="line">    result = jsonpath.jsonpath(json_result, <span class="string">&quot;$..word_means&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_word_means()</span><br></pre></td></tr></table></figure>
+
+<p>下面附上完整代码:</p>
+<p>js_reverse_baidufanyi:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    function a(r) &#123;</span></span><br><span class="line"><span class="string">        if (Array.isArray(r)) &#123;</span></span><br><span class="line"><span class="string">            for (var o = 0, t = Array(r.length); o &lt; r.length; o++)</span></span><br><span class="line"><span class="string">                t[o] = r[o];</span></span><br><span class="line"><span class="string">            return t</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        return Array.from(r)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    function n(r, o) &#123;</span></span><br><span class="line"><span class="string">        for (var t = 0; t &lt; o.length - 2; t += 3) &#123;</span></span><br><span class="line"><span class="string">            var a = o.charAt(t + 2);</span></span><br><span class="line"><span class="string">            a = a &gt;= &quot;a&quot; ? a.charCodeAt(0) - 87 : Number(a),</span></span><br><span class="line"><span class="string">            a = &quot;+&quot; === o.charAt(t + 1) ? r &gt;&gt;&gt; a : r &lt;&lt; a,</span></span><br><span class="line"><span class="string">            r = &quot;+&quot; === o.charAt(t) ? r + a &amp; 4294967295 : r ^ a</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        return r</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    var i = null;</span></span><br><span class="line"><span class="string">    function e(r) &#123;</span></span><br><span class="line"><span class="string">        var t = r.length;</span></span><br><span class="line"><span class="string">        t &gt; 30 &amp;&amp; (r = &quot;&quot; + r.substr(0, 10) + r.substr(Math.floor(t / 2) - 5, 10) + r.substr(-10, 10))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        var u = void 0, l = &quot;&quot; + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        u = null !== i ? i : (i = &#x27;320305.131321201&#x27; || &quot;&quot;) || &quot;&quot;;</span></span><br><span class="line"><span class="string">        for (var d = u.split(&quot;.&quot;), m = Number(d[0]) || 0, s = Number(d[1]) || 0, S = [], c = 0, v = 0; v &lt; r.length; v++) &#123;</span></span><br><span class="line"><span class="string">            var A = r.charCodeAt(v);</span></span><br><span class="line"><span class="string">            128 &gt; A ? S[c++] = A : (2048 &gt; A ? S[c++] = A &gt;&gt; 6 | 192 : (55296 === (64512 &amp; A) &amp;&amp; v + 1 &lt; r.length &amp;&amp; 56320 === (64512 &amp; r.charCodeAt(v + 1)) ? (A = 65536 + ((1023 &amp; A) &lt;&lt; 10) + (1023 &amp; r.charCodeAt(++v)),</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 18 | 240,</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 12 &amp; 63 | 128) : S[c++] = A &gt;&gt; 12 | 224,</span></span><br><span class="line"><span class="string">            S[c++] = A &gt;&gt; 6 &amp; 63 | 128),</span></span><br><span class="line"><span class="string">            S[c++] = 63 &amp; A | 128)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        for (var p = m, F = &quot;&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(97) + (&quot;&quot; + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(54)), D = &quot;&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(51) + (&quot;&quot; + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(98)) + (&quot;&quot; + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(102)), b = 0; b &lt; S.length; b++)</span></span><br><span class="line"><span class="string">            p += S[b],</span></span><br><span class="line"><span class="string">            p = n(p, F);</span></span><br><span class="line"><span class="string">        return p = n(p, D),</span></span><br><span class="line"><span class="string">        p ^= s,</span></span><br><span class="line"><span class="string">        0 &gt; p &amp;&amp; (p = (2147483647 &amp; p) + 2147483648),</span></span><br><span class="line"><span class="string">        p %= 1e6,</span></span><br><span class="line"><span class="string">        p.toString() + &quot;.&quot; + (p ^ m)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_word_sign</span>(<span class="params">query</span>):</span></span><br><span class="line">    sign = execjs.<span class="built_in">compile</span>(jsCode).call(<span class="string">&quot;e&quot;</span>, query)</span><br><span class="line">    <span class="keyword">return</span> sign</span><br></pre></td></tr></table></figure>
+
+<p>test_baidu_jscode:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> test_baidu_jscode <span class="keyword">import</span> get_word_sign</span><br><span class="line"><span class="keyword">import</span> jsonpath</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://fanyi.baidu.com/v2transapi?from=zh&amp;to=en&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua&#x27;</span>: <span class="string">&#x27;&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;97&quot;, &quot;Chromium&quot;;v=&quot;97&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;*/*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded; charset=UTF-8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;X-Requested-With&#x27;</span>: <span class="string">&#x27;XMLHttpRequest&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-mobile&#x27;</span>: <span class="string">&#x27;?0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &#x27;</span></span><br><span class="line">                  <span class="string">&#x27;Chrome/97.0.4692.71 Safari/537.36&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-platform&#x27;</span>: <span class="string">&#x27;&quot;Windows&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;https://fanyi.baidu.com&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Site&#x27;</span>: <span class="string">&#x27;same-origin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Mode&#x27;</span>: <span class="string">&#x27;cors&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Dest&#x27;</span>: <span class="string">&#x27;empty&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;https://fanyi.baidu.com/?aldtype=16047&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.9&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;BIDUPSID=CF86A0FA51038D0CA02DA9FC43B164F5; PSTM=1639146064; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BAIDUID=CF86A0FA51038D0CFFCCCD08415508DA:FG=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;__yjs_duid=1_689d947b2f957f0b0d895ae63c66114f1639229602485; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BAIDUID_BFESS=3A9FDFF925D6EA302A897713757BE825:FG=1; BDRCVFR[iqrboYocJ-C]=kRxlD0AvOmRPjIMTz4WUvY; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BDRCVFR[fq555l35Iot]=EBD6F1bEM2tXZKdrHn8mvqV; delPer=0; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BDRCVFR[3lgytkvnri6]=mk3SLVN4HKm; H_PS_PSSID=; REALTIME_TRANS_SWITCH=1; FANYI_WORD_SWITCH=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;HISTORY_SWITCH=1; SOUND_PREFER_SWITCH=1; SOUND_SPD_SWITCH=1; APPGUIDE_10_0_2=1; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;Hm_lvt_64ecd82404c51e03dc91cb9e8c025574=1642227471,1642227478; PSINO=6; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;BA_HECTOR=2hag052ha52h010lkt1gu4ujh0r; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1642233008; &#x27;</span></span><br><span class="line">              <span class="string">&#x27;ab_sr=1.0&#x27;</span></span><br><span class="line">              <span class="string">&#x27;.1_NjI2ZDk1Y2JmYzQ2ZTBiNTZmNWIyZjllNTU4ZjE4MmM1ZTI2ZmVjMjAyNmJhN2E5NGJhNWVjYmM2OWFmMTRjOTE0ZDQ2M2Y5MmY5N2RmNDUzNzYwNGJjZmZlYmVhZjZjMjgzYWI5YjhhZDJlNzg0NTNiZjRmNjhmMzU5ZDIxNzhkNzhiNDlmYTQyODhhMmZmOGM3MmM2NzhhMTlhZDU2NQ==; __yjs_st=2_NTA2ZGI3NzkyZGNmMzE4M2JkNzk0MTNkMWRmMzBkZmQwNjBlOTYzMDRhZjZmOTJhZGYzOGFjZWRlMTE1NjU4ZTA5ZDljMGQyMjA3Nzk0OWE3NmZhNThjY2YzYTBmMjVhMzAxYmQyZmFkM2VhMTc0YjE5MmJlM2VmZGZlMjhiMzkxMTQzMWY4NGYyNzZkNjM1YjE2ZjNhYjA4M2ViZmNmZDU2YWQzMzc0N2YzMGFiZGVhZTY5NzRiMjc0MzdlMjdjYTM2MGU2OGJmYTJhM2VhZWJiNzIxYWEyODc1ODZlZTBlOGYwOTM1ZWNkMjE4YzM0ZDFiMTY1YjgwMDNmZjhjZV83X2NjZDQ3NTdj &#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_word_means</span>():</span></span><br><span class="line">    query = <span class="built_in">input</span>(<span class="string">&#x27;Please input you query words:&#x27;</span>)</span><br><span class="line">    sign = get_word_sign(query)</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;from&quot;</span>: <span class="string">&quot;zh&quot;</span>,</span><br><span class="line">        <span class="string">&quot;to&quot;</span>: <span class="string">&quot;en&quot;</span>,</span><br><span class="line">        <span class="string">&quot;query&quot;</span>: query,</span><br><span class="line">        <span class="string">&quot;transtype&quot;</span>: <span class="string">&quot;translang&quot;</span>,</span><br><span class="line">        <span class="string">&quot;simple_means_flag&quot;</span>: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;sign&quot;</span>: sign,</span><br><span class="line">        <span class="string">&quot;token&quot;</span>: <span class="string">&quot;cb25a0d7b1d3837fe7864c5c87559d98&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.request(<span class="string">&quot;POST&quot;</span>, url, headers=headers, data=data)</span><br><span class="line">    json_result = response.json()</span><br><span class="line">    result = jsonpath.jsonpath(json_result, <span class="string">&quot;$..word_means&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    get_word_means()</span><br></pre></td></tr></table></figure>
+
+<p>运行效果:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220115/Snipaste_2022-01-15_17-53-39.2t4fdto41e00.webp"
+                      alt="Snipaste_2022-01-15_17-53-39"
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：js逆向百度翻译(小白练手案例)</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-14 17:51:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/14/js逆向百度翻译(小白练手案例)/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/14/%E7%90%86%E8%A7%A3Python%20asyncio%E5%8E%9F%E7%90%86%E5%92%8C%E7%AE%80%E6%B4%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">理解Python asyncio原理和简洁使用方式</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
