@@ -9,7 +9,7 @@
     
     <title>
         
-            Git命令行提交代码到GitHub或GitLab的几个基础步骤 |
+            GoLand编辑器运行Go代码报错-package XXX is not in GOROOT (XXXXGosrcXXX)的解决方法 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Git命令行提交代码到GitHub或GitLab的几个基础步骤</span>
+            <span class="title-hover-animation">GoLand编辑器运行Go代码报错-package XXX is not in GOROOT (XXXXGosrcXXX)的解决方法</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-15 22:51:18</span>
-        <span class="mobile">2022-01-15 22:51</span>
+        <span class="pc">2022-01-16 18:47:18</span>
+        <span class="mobile">2022-01-16 18:47</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>771 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>137 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -192,39 +192,16 @@
         
 
         <div class="article-content markdown-body">
-            <p>首先我们有一个项目，它有如下文件:</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220115/Snipaste_2022-01-15_22-52-44.4dwu2qvyzlk0.webp"
-                      alt="Snipaste_2022-01-15_22-52-44"
-                ></p>
-<p>其实只有两个文件是真正属于我们项目中的，红框中的<code>.idea</code>是Jetbrain这一款编辑器自动生成的，这里由于我已经提交过所以生成了红框之外的<code>.git</code>文件，这里我们看到这个<code>.git</code>文件夹的颜色有点透明，这表明这个是个隐藏文件，只不过我设置了显示隐藏文件所以能看到，实际上它是由Git命令<code>git init</code>生成的</p>
-<p>这里我们假设项目中只有红框中的后两个文件，那么如何提交呢</p>
-<p>第一步: <code>git init</code></p>
-<p>命令解释: <strong>初始化(生成并做一些默认配置)一个空的git本地仓库</strong>，执行完上面的命令，当前目录下会自动生成<code>.git</code>隐藏文件夹，该隐藏文件夹就是<code>git</code>版本库</p>
-<p>第二步: <code>git remote add origin 远程仓库地址</code></p>
-<p>命令解释: 这是一个<strong>添加远程仓库的命令，<code>origin</code>是给远程仓库起的一个别名</strong></p>
-<p>命令格式:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add [shortname] [url]</span><br></pre></td></tr></table></figure>
+            <p>操作系统: win10</p>
+<p>Go版本: 1.17.3</p>
+<p>集成开发环境版本: GoLand 2019.3</p>
+<p>GoLand编辑器运行Go代码报错: package XXX is not in GOROOT (XXXXGosrcXXX)</p>
+<p>问题分析:</p>
+<p>报错显示它是在寻找GOROOT下的包，应该是路径问题，或者环境设置问题，输入go env检查了一下环境，发现GO111MODULE=on，编译器没有去gopath下找包，在 gomod 模式下，查找包就不会去 gopath 查找</p>
+<p>解决方法:</p>
+<p>打开cmd，然后输入以下命令(设置GO111MODULE为off即可):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=off</span><br></pre></td></tr></table></figure>
 
-<p>第三步: <code>git add 要上传的文件</code></p>
-<p>命令解释: <strong>添加要上传的文件，提交到暂缓区</strong>，如果全部添加就<code>git add .</code>，这里的<code>.</code>就代表当前目录下的所有文件</p>
-<p>第四步: <code>git commit -m &quot;备注信息&quot;</code></p>
-<p>命令解释: 这是<strong>将暂缓区内容提交到本地仓库</strong>，然后-m后面可以用引号包裹一些备注信息</p>
-<p>扩展一下，将<code>-m</code>改成<code>-a</code>的话，那下次如果修改这个文件就需要执行<code>git add</code>命令，直接就提交到本地仓库，后面仍然可以用引号包裹一些备注信息</p>
-<p>第五步: <code>git push -u origin master</code></p>
-<p>命令格式: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
-
-<p>命令解释: 上面的命令是<strong>将本地的master分支推送到origin仓库的master分支</strong>；如果后者不存在，则会被新建，比如<code>git push origin master</code>，同时**<code>-u</code>指定origin为默认主机，后面就可以不加任何参数使用<code>git push</code>直接提交**</p>
-<p>注意: 分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;，上面命令没有写冒号，这表示本地和远程都是master分支，而如果带了冒号且省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支，下面的命令表示删除origin仓库的master分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin :master</span><br><span class="line">等同于:</span><br><span class="line">git push origin --delete master</span><br></pre></td></tr></table></figure>
-
-<p>题外话: 在你接管别人的工作电脑之后，你需要重设提交的用户信息，包括用户名和邮箱:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#x27;username&#x27;</span><br><span class="line">git config --global user.email test@abc.com</span><br></pre></td></tr></table></figure>
-
-<p>如果<strong>去掉 <code>--global</code> 参数就表示只对当前仓库有效</strong></p>
 
         </div>
 
@@ -232,11 +209,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Git命令行提交代码到GitHub或GitLab的几个基础步骤</li>
+        <li>Post title：GoLand编辑器运行Go代码报错-package XXX is not in GOROOT (XXXXGosrcXXX)的解决方法</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-15 22:51:18</li>
+        <li>Create time：2022-01-16 18:47:18</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/15/Git命令行提交代码到GitHub或GitLab的几个基础步骤/
+            Post link：https://keep.xpoet.cn/2022/01/16/GoLand编辑器运行Go代码报错-package XXX is not in GOROOT (XXXXGosrcXXX)的解决方法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -252,29 +229,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/16/GoLand%E7%BC%96%E8%BE%91%E5%99%A8%E8%BF%90%E8%A1%8CGo%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-package%20XXX%20is%20not%20in%20GOROOT%20(XXXXGosrcXXX)%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">GoLand编辑器运行Go代码报错-package XXX is not in GOROOT (XXXXGosrcXXX)的解决方法</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/15/Goland%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AEGOROOT%E6%97%B6%E6%8A%A5%E9%94%99The%20selected%20directory%20is%20not%20a%20valid%20home%20for%20Go%20SDK%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"
+                           href="/2022/01/15/Git%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%88%B0GitHub%E6%88%96GitLab%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E6%AD%A5%E9%AA%A4/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Goland编辑器配置GOROOT时报错The selected directory is not a valid home for Go SDK的解决方法</span>
+                                <span class="post-nav-title-item">Git命令行提交代码到GitHub或GitLab的几个基础步骤</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
