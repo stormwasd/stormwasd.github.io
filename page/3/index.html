@@ -145,6 +145,40 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2022/01/12/%E4%B8%80%E6%AC%A1%E6%80%A7%E6%90%9E%E6%87%82%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/">
+                        一次性搞懂线程同步机制
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        使用线程，我们可以并发地在各个CPU核心上执行任务，最大化CPU的利用率，但线程也可能导致各种奇怪的资源竞争问题
+
+相信大家一定都看过这个经典案例
+
+用不同的线程去更新同一段内存数据，比如我们这里总共创建10个线程
+
+每个线程累加这个数字100000...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Jan 12 2022 15:11:30 GMT+0800">2022-01-12</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/12/%E4%B8%80%E6%AC%A1%E6%80%A7%E6%90%9E%E6%87%82%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2022/01/12/%E5%85%8D%E8%B4%B9%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90(win)/">
                         免费的内网穿透工具推荐(win)
                     </a>
@@ -408,38 +442,6 @@ https://blog.csdn.net/B...
 
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/01/07/0.1+02%E7%AD%89%E4%BA%8E0.3%E5%98%9B%EF%BC%8C%E6%97%A0%E5%8F%AF%E9%81%BF%E5%85%8D%E7%9A%84%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE/">
-                        0.1+02等于0.3嘛，无可避免的浮点误差
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        在我们印象中，计算机总是能高效准确地进行运算:直到有一天你满怀欣喜地打开最喜欢的编程环境，输入0.1+0.2，但计算机却返回这个:
-你下意识觉得这可能是一个bug，然后在不同语言中反复求证，却一致地得到相同的答案：
-
-究竟是道德的沦丧还是人性的扭曲
-...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Jan 07 2022 14:49:30 GMT+0800">2022-01-07</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/01/07/0.1+02%E7%AD%89%E4%BA%8E0.3%E5%98%9B%EF%BC%8C%E6%97%A0%E5%8F%AF%E9%81%BF%E5%85%8D%E7%9A%84%E6%B5%AE%E7%82%B9%E8%AF%AF%E5%B7%AE/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
     </ul>
 
     <div class="home-paginator">
@@ -560,43 +562,9 @@ https://blog.csdn.net/B...
 
     
 
-    .image-viewer-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  padding: 6%;
-  box-sizing: border-box;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    background: rgba(0, 0, 0, 0.5);
-    visibility: visible;
-
-    img {
-      cursor: zoom-out;
-      transform: scale(1);
-      padding: 2px;
-      background: var(--background-color);
-    }
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    transform: scale(0);
-    transition-t("transform", "0", "0.3", "ease");
-  }
-}
-
-
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
     

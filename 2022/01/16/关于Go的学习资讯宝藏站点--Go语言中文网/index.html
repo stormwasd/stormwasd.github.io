@@ -9,7 +9,7 @@
     
     <title>
         
-            “并发、并行、异步、同步”的区别 |
+            关于Go的学习资讯宝藏站点--Go语言中文网 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">“并发、并行、异步、同步”的区别</span>
+            <span class="title-hover-animation">关于Go的学习资讯宝藏站点--Go语言中文网</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-12 17:30:30</span>
-        <span class="mobile">2022-01-12 17:30</span>
+        <span class="pc">2022-01-16 23:57:20</span>
+        <span class="mobile">2022-01-16 23:57</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>57 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -192,111 +192,13 @@
         
 
         <div class="article-content markdown-body">
-            <p>并发、并行、异步、同步，这些术语之间到底有什么区别和联系呢</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7K9ibd"><img  
+            <p>今天在查资料的时候偶然访问到这个站点，发现挺不错的，有各种优质的文章和技术分享，项目以及图书，还有关于Go的官方文档，<a class="link"   target="_blank" rel="noopener" href="https://studygolang.com/" >点击跳转<i class="fas fa-external-link-alt"></i></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7NXXZV"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7K9ibd.png"
-                      alt="7K9ibd.png"
+                     data-src="https://s4.ax1x.com/2022/01/16/7NXXZV.png"
+                      alt="7NXXZV.png"
                 ></a></p>
-<p>首先并发是一个比较宽泛的概念，<strong>它单纯地代表计算机能够同时执行多项任务</strong></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7K9aMF"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7K9aMF.png"
-                      alt="7K9aMF.png"
-                ></a></p>
-<p>至于计算机怎么做到“并发”则有许多不同的形式，比如对于一个单核处理器，计算机可以通过分配时间片的方式，让一个任务运行一段时间，然后切换另一个任务，再运行一段时间，不同的任务会这样交替往复地一直执行下去，这个过程也被称作是进程或者线程的上下文切换(context switching)</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KCgkn"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KCgkn.png"
-                      alt="7KCgkn.png"
-                ></a></p>
-<p>当然对于多核处理器，情况就有所不同了，我们<strong>可以在不同的核心上真正并行地执行任务，而不用通过分配时间片的方式运行</strong>，这种情况也就是我们所说的并行(parallelism)</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KPlhq"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KPlhq.png"
-                      alt="7KPlhq.png"
-                ></a></p>
-<p>至于同步和异步则是两种不同的编程模型，<strong>“同步”代表需要等到必须前一个任务执行完毕之后才能进行下一个任务</strong>，因此在同步中并没有并发或者并行的概念，而<strong>“异步“”则代表不同的任务之间并不会相互等待，也就是说，你在执行任务A的时候，也可以同时运行任务B</strong>，一个典型实现异步的方式则是通过多线程编程，你可以创建多个线程，并且启动它们</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7Ki7J1"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7Ki7J1.png"
-                      alt="7Ki7J1.png"
-                ></a></p>
-<p>在多核的情况下，每个线程就会被分配到独立的核心上运行，实现真正的“并行”，当然如果你使用的是单核处理器，或者通过设置亲和力(Affinity)强制将线程绑定到某个核心上，操作系统则会通过分配时间片的方式来执行这些线程，这些线程依然是在“并发”地执行，当然像某些编程语言，比如JavaScript本身是没有多线程的概念的，不过通过它的函数回调(function callback)机制，我们依然能做到单线程的“并发”，比如你可以通过fetch()同时访问多个网络资源</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7Kk5CR"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7Kk5CR.png"
-                      alt="7Kk5CR.png"
-                ></a></p>
-<p>我们在调用fetch()函数的时候，程序并不会等待，而会直接继续执行下去，当获取到网路资源以后</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KAMrT"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KAMrT.png"
-                      alt="7KAMrT.png"
-                ></a></p>
-<p>回调函数才会被掉起，需要注意的是，虽然主函数和回调函数看起来是同时进行的</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KAgzt"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KAgzt.png"
-                      alt="7KAgzt.png"
-                ></a></p>
-<p>但它们依然是运行在同一个线程中</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KEX9A"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KEX9A.png"
-                      alt="7KEX9A.png"
-                ></a></p>
-<p>因此通过这种异步编程方式，我们完全可以做到单线程的“并发”，而且这并不是JavaScript的专利，很多语言也都提供了原生的异步编程方式，比如C#，Rusut，C++2.0中的co_await，Python中的asyncio等等等等</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KVgDf"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KVgDf.png"
-                      alt="7KVgDf.png"
-                ></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KV2b8"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KV2b8.png"
-                      alt="7KV2b8.png"
-                ></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7KVTvq"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/01/12/7KVTvq.png"
-                      alt="7KVTvq.png"
-                ></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-39-15.3sta87zfdyg0.webp"
-                      alt="Snipaste_2022-01-12_18-39-15"
-                ></p>
-<p>那到这里你肯定会问，对于多线程编程和这种单线程的异步编程，我们应当如何选择呢，简而言之，对于I/O密集型的应用程序，比如Web应用，就会经常执行网络操作，数据库访问，这类应用就非常适合使用异步编程的方式，反之如果我们使用多线程的方式，则会浪费不少的系统资源，因为每个线程的绝大多数时间都是在等待这些I/O操作，而线程自身会占用额外的内存，线程的切换也会有额外的开销，更不用说线程之间的资源竞争问题</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-46-30.h7nel7qo0fc.webp"
-                      alt="Snipaste_2022-01-12_18-46-30"
-                ></p>
-<p>而多线程编程则非常适合于计算量密集的应用</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-47-43.4urgzy14uec0.webp"
-                      alt="Snipaste_2022-01-12_18-47-43"
-                ></p>
-<p>比如视频图像处理，科学计算等等，它能让每一个CPU核心发挥最大的功效，而不是消耗在空闲的等待上</p>
-<p>纠错:</p>
-<p>关于Python的例子我举得不太恰当，CPython中的GIL会导致Python代码的线程并不能做到真正并发，使用htop查看CPU使用率尽管在多核处理器也不会超过100%</p>
 
         </div>
 
@@ -304,11 +206,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：“并发、并行、异步、同步”的区别</li>
+        <li>Post title：关于Go的学习资讯宝藏站点--Go语言中文网</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-12 17:30:30</li>
+        <li>Create time：2022-01-16 23:57:20</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/12/“并发、并行、异步、同步”的区别/
+            Post link：https://keep.xpoet.cn/2022/01/16/关于Go的学习资讯宝藏站点--Go语言中文网/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -324,29 +226,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/13/Python%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E3%80%81%E7%B1%BB%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%9C%E7%94%A8/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python实例方法、类方法、静态方法的区别与作用</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/12/%E4%B8%80%E6%AC%A1%E6%80%A7%E6%90%9E%E6%87%82%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/"
+                           href="/2022/01/16/CSDN%E7%9A%84%E7%A4%BE%E5%8C%BA%E6%9D%BF%E5%9D%97--%E4%B8%80%E5%9D%97%E5%AE%9D%E5%9C%B0/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">一次性搞懂线程同步机制</span>
+                                <span class="post-nav-title-item">CSDN的社区板块--一块宝地</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
