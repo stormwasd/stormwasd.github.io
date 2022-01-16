@@ -145,6 +145,37 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/">
+                        Linux系统启动过程
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        按下系统的电源开关，过一会儿就可以看到Linux的登录界面，你是否想过，从按下电源开关到登录界面的出现，这后面到底发生了什么?
+我们先来看看一个整体的流程图:
+
+Linux系统在启动过程中，首先是固件(PC上大多是CMOS/BIOS)的物理检测，诸如...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Jan 07 2022 09:19:30 GMT+0800">2022-01-07</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/07/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2022/01/07/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/">
                         mac终端美化教程
                     </a>
@@ -409,35 +440,6 @@ PicXGitH...
 
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/12/31/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/">
-                        科学上网教程
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        最近在搭hexo博客的时候在一篇theme配置教程中看到了一个开源的图床项目，里面有关于科学上网的介绍，这里我把它搬出来，详情请点击:https://github.com/Alvin9999/new-pac/wiki
-
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Dec 31 2021 15:19:30 GMT+0800">2021-12-31</span></span>
-        
-        
-    </div>
-
-    <a href="/2021/12/31/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
     </ul>
 
     <div class="home-paginator">
@@ -558,9 +560,43 @@ PicXGitH...
 
     
 
-    <div class="image-viewer-container">
-    <img src="">
-</div>
+    .image-viewer-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  z-index: $z-index-8;
+  padding: 6%;
+  box-sizing: border-box;
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
+
+  &.active {
+    background: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+
+    img {
+      cursor: zoom-out;
+      transform: scale(1);
+      padding: 2px;
+      background: var(--background-color);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    transform: scale(0);
+    transition-t("transform", "0", "0.3", "ease");
+  }
+}
+
+
 
 
     
