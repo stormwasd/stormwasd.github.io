@@ -9,7 +9,7 @@
     
     <title>
         
-            推荐一个关于Go文档以及面试题的网站--来自Go学习群 |
+            Python爬虫框架Scrapy的运行流程详解 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">推荐一个关于Go文档以及面试题的网站--来自Go学习群</span>
+            <span class="title-hover-animation">Python爬虫框架Scrapy的运行流程详解</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-18 17:20:30</span>
-        <span class="mobile">2022-01-18 17:20</span>
+        <span class="pc">2022-01-17 15:29:30</span>
+        <span class="mobile">2022-01-17 15:29</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>50 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -192,14 +192,71 @@
         
 
         <div class="article-content markdown-body">
-            <p>今天在Go语言中文网的QQ群中发现了一个分享Go文档以及面试题的网站，感觉挺不错的，<a class="link"   target="_blank" rel="noopener" href="https://www.topgoer.cn/" >点击跳转<i class="fas fa-external-link-alt"></i></a>:</p>
+            <p>首先来看看Scrapy框架的介绍:</p>
+<p>Scrapy是用纯Python语言实现的一个为爬取网站数据、提取结构性数据而编写的应用框架，Scrapy使用了Twisted异步网络框架来处理网络通信，可以加快我们的下载速度，不用自己去实现异步框架，并且包含了各种中间件接口，可以灵活地实现各种需求；Scrapy可以应用在包括数据挖掘、信息处理或存储历史数据等一系列的程序中，其最初是为页面抓取(更确切地说是网络抓取)而设计的，也可以应用于获取API所返回的数据(例如Amazon Associates Web Services)或者通用的网络爬虫</p>
+<p>Scrapy框架的安装方法:</p>
+<ol>
+<li><p>通过anaconda安装: 通过anaconda→environments→最右边界面的第一个选项all，在搜索框里搜索scrapy→选择安装</p>
+</li>
+<li><p>在terminal或者cmd中使用pip安装:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>Scrapy内部实现了包括并发请求、免登录、URL去重等很多复杂操作，用户不需要明白Scrapy内部具体的爬取策略，只需要根据自己的需求去编写小部分的代码，就能抓取到所需要的数据</p>
+<p>Scrapy框架整体流程图如下所示:</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_14-22-11.4q114603jaw0.webp"
-                      alt="Snipaste_2022-01-17_14-22-11"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_15-35-02.5sgg7iybmc00.webp"
+                      alt="Snipaste_2022-01-17_15-35-02"
                 ></p>
-<p>关于Go面试题，<a class="link"   target="_blank" rel="noopener" href="https://www.topgoer.cn/docs/gomianshiti/mianshiti" >点这里直达<i class="fas fa-external-link-alt"></i></a></p>
+<p>上图所表达的大致意思为: 首先从初始URL开始，<strong>调度器</strong>(Scheduler)会将其交给<strong>下载器</strong>(Downloader)，下载器向<strong>网络服务器</strong>(Internet)发送服务请求以进行下载，得到响应后将下载的数据交给<strong>爬虫</strong>(Spider，爬虫会对网页进行分析，分析出来的结果有两种：一种是需要进一步抓取的链接，这些链接会被传回调度器；另一种是需要保存的数据，它们则被送到<strong>项目管道</strong>（Item Pipeline），Item会定义数据格式，最后由Pipeline对数据进行清洗、去重等处理，继而存储到文件或数据库，这里面的<strong>引擎是负责统筹协调</strong></p>
+<p>Scrapy框架内组件及其作用:</p>
+<ul>
+<li><strong>爬虫中间件</strong>(Spider Middleware):位于Scrapy引擎和爬虫之间的框架，主要用于处理爬虫的请求输入和响应输出</li>
+<li><strong>调度器中间件</strong>(Scheduler Middleware): 位于Scrapy引擎和调度器之间的框架，主要用于处理从Scrapy引擎发送到调度器的请求和响应</li>
+<li><strong>调度器：</strong>用来接收引擎发过来的请求，压入队列中，并在引擎再次请求的时候返回。它就像是一个URL的优先队列，由它来决定下一个要抓取的网址是什么，同时在这里会去除重复的网址</li>
+<li><strong>下载器中间件</strong>(Downloader Middleware): 位于Scrapy引擎和下载器之间的框架，主要用于处理Scrapy引擎与下载器之间的请求及响应; 代理IP和用户代理可以在这里设置</li>
+<li><strong>下载器：</strong>用于下载网页内容，并将网页内容返回给爬虫</li>
+<li><strong>Scrapy引擎</strong>(ScrapyEngine): 用来控制整个系统的数据处理流程，并进行事务处理的触发</li>
+<li>爬虫主要是干活的，用于从特定网页中提取自己需要的信息，即所谓的项目(又称实体); 也可以从中提取URL，让Scrapy继续爬取下一个页面</li>
+<li><strong>项目管道：</strong>负责处理爬虫从网页中爬取的项目，主要的功能就是持久化项目(保存数据)、验证项目的有效性、清除不需要的信息。当页面被爬虫解析后，将被送到项目管道，并经过几个特定的次序来处理其数据</li>
+</ul>
+<p>Scrapy框架运行流程如下:</p>
+<ol>
+<li>引擎从调度器中取出一个URL用于接下来的抓取</li>
+<li>引擎把URL封装成一个请求（request）传给下载器</li>
+<li>下载器把资源下载下来，并封装成一个响应(response)</li>
+<li>爬虫解析响应</li>
+<li>解析出的是项目，则交给项目管道进行进一步的处理(持久化存储)</li>
+<li>解析出的是链接URL，则把URL交给调度器等待下一步的抓取</li>
+</ol>
+<p>Scrapy框架数据流向:</p>
+<p>Scrapy数据流是由执行流程的核心引擎来控制的，如下图所示:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_15-49-23.t7exlb838v4.webp"
+                      alt="Snipaste_2022-01-17_15-49-23"
+                ></p>
+<ol>
+<li>引擎打开网站，找到处理该网站的爬虫并要求该爬虫请求第一个要爬取的URL(入口URL)</li>
+<li>引擎从爬虫中获取到第一个要爬取的URL，并在调度器中以请求调度</li>
+<li>引擎向调度器请求下一个要爬取的URL</li>
+<li>调度器返回下一个要爬取的URL给引擎，引擎通过下载中间件转给下载器</li>
+<li>一旦页面下载完毕，下载器便会生成一个该页面的响应，并通过下载器中间件将其发送给引擎</li>
+<li>引擎从下载器中接收到响应并通过爬虫中间件发送给爬虫处理</li>
+<li>爬虫处理响应，并返回爬取到的项目及新的请求给引擎</li>
+<li>引擎将爬虫爬取到的项目传给项目管道，将爬虫返回的请求传给调度器</li>
+<li>从第2步重复直到调度器中没有更多的请求，引擎便会关闭该网站</li>
+</ol>
+<p>Scrapy框架中的Selector</p>
+<p>当我们取得了网页的响应之后，最关键的就是如何从繁杂的网页中把我们需要的数据提取出来，Python中常用以下模块来处理HTTP文本解析问题</p>
+<ul>
+<li><strong>BeautifulSoup</strong>: 作为程序员间非常流行的网页分析库，它通常基于HTML代码的结构来构造一个Python对象，对不良标记的处理也非常合理，但它有一个缺点，就是“慢”</li>
+<li><strong>lxml</strong>: 一个基于ElementTree的Python化的XML解析库</li>
+</ul>
+<p>我们可以在Scrapy中使用任意熟悉的网页数据提取工具，如上面的两种，但是，Scrapy本身也为我们提供了一套提取数据的机制，我们称之为选择器Selector，它通过特定的XPath或者CSS表达式来选择HTML文件中的某个部分</p>
+<p><strong>XPath</strong>是一门用来在XML文件中选择节点的语言，也可以用在HTML上。<strong>CSS</strong>是一门将HTML文档样式化的语言。选择器由它定义，并与特定的HTML元素的样式相关连</p>
+<p>Selector是基于lxml来构建的，支持XPath选择器、CSS选择器以及正则表达式，功能全面、解析速度快且和准确度高</p>
 
         </div>
 
@@ -207,11 +264,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：推荐一个关于Go文档以及面试题的网站--来自Go学习群</li>
+        <li>Post title：Python爬虫框架Scrapy的运行流程详解</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-18 17:20:30</li>
+        <li>Create time：2022-01-17 15:29:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/18/推荐一个关于Go文档以及面试题的网站--来自Go学习群/
+            Post link：https://keep.xpoet.cn/2022/01/17/Python爬虫框架Scrapy的运行流程详解/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -227,14 +284,29 @@
         
             <div class="article-nav">
                 
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/01/18/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8EGo%E6%96%87%E6%A1%A3%E4%BB%A5%E5%8F%8A%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9A%84%E7%BD%91%E7%AB%99--%E6%9D%A5%E8%87%AAGo%E5%AD%A6%E4%B9%A0%E7%BE%A4/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">推荐一个关于Go文档以及面试题的网站--来自Go学习群</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/"
+                           href="/2022/01/17/Python%E8%A3%85%E9%A5%B0%E5%99%A8%E8%AF%A6%E8%A7%A3/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python爬虫框架Scrapy的运行流程详解</span>
+                                <span class="post-nav-title-item">Python装饰器详解</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
