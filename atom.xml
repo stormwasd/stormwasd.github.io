@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-16T16:00:31.462Z</updated>
+  <updated>2022-01-17T01:32:09.817Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sublime如何添加Gobuildsystem并运行Go代码</title>
+    <link href="http://example.com/2022/01/17/Sublime%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0Gobuildsystem%E5%B9%B6%E8%BF%90%E8%A1%8CGo%E4%BB%A3%E7%A0%81/"/>
+    <id>http://example.com/2022/01/17/Sublime%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0Gobuildsystem%E5%B9%B6%E8%BF%90%E8%A1%8CGo%E4%BB%A3%E7%A0%81/</id>
+    <published>2022-01-17T01:21:30.000Z</published>
+    <updated>2022-01-17T01:32:09.817Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天早上来到公司，这边电脑是没有Goland编辑器的，这边有Sublime然后就想着在Sublime上写示例代码，下面来讲讲如何在Sublime上运行Go代码:</p><p>首先你需要安装Go的开发环境，并添加到环境变量，一般在安装的时候会默认添加，然后就看以下操作了:</p><ol><li><p>打开Sublime然后点击tools再点击Build System再点击New Build System:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_09-25-44.15upn81oyxr4.webp"                      alt="Snipaste_2022-01-17_09-25-44"                ></p></li><li><p>然后复制以下代码并保存(可以命名为go-sublime-build):</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cmd&quot;: [&quot;go&quot;, &quot;run&quot;, &quot;$file_name&quot;], </span><br><span class="line">    &quot;file_regex&quot;: &quot;^[ ]*File \&quot;(…*?)\&quot;, line ([0-9]*)&quot;, </span><br><span class="line">    &quot;working_dir&quot;: &quot;$file_path&quot;, </span><br><span class="line">    &quot;selector&quot;: &quot;source.go&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：文件直接保存在默认打开的位置，不要另存到新的文件夹</p></li><li><p>然后便可以运行Go代码啦(CTRL+B运行)</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_09-30-30.5mup3yw2pxs0.webp"                      alt="Snipaste_2022-01-17_09-30-30"                ></p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天早上来到公司，这边电脑是没有Goland编辑器的，这边有Sublime然后就想着在Sublime上写示例代码，下面来讲讲如何在Sublime上运行Go代码:&lt;/p&gt;
+&lt;p&gt;首先你需要安装Go的开发环境，并添加到环境变量，一般在安装的时候会默认添加，然后就看以下操作了:&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于Go的学习资讯宝藏站点--Go语言中文网</title>
@@ -420,29 +441,6 @@
 &lt;p&gt;调用: 只能由实例对象调用&lt;/p&gt;
 &lt;/li&gt;
 &lt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>“并发、并行、异步、同步”的区别</title>
-    <link href="http://example.com/2022/01/12/%E2%80%9C%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C%E3%80%81%E5%BC%82%E6%AD%A5%E3%80%81%E5%90%8C%E6%AD%A5%E2%80%9D%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://example.com/2022/01/12/%E2%80%9C%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C%E3%80%81%E5%BC%82%E6%AD%A5%E3%80%81%E5%90%8C%E6%AD%A5%E2%80%9D%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
-    <published>2022-01-12T09:30:30.000Z</published>
-    <updated>2022-01-12T10:52:59.853Z</updated>
-    
-    <content type="html"><![CDATA[<p>并发、并行、异步、同步，这些术语之间到底有什么区别和联系呢</p><p><a href="https://imgtu.com/i/7K9ibd"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7K9ibd.png"                      alt="7K9ibd.png"                ></a></p><p>首先并发是一个比较宽泛的概念，<strong>它单纯地代表计算机能够同时执行多项任务</strong></p><p><a href="https://imgtu.com/i/7K9aMF"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7K9aMF.png"                      alt="7K9aMF.png"                ></a></p><p>至于计算机怎么做到“并发”则有许多不同的形式，比如对于一个单核处理器，计算机可以通过分配时间片的方式，让一个任务运行一段时间，然后切换另一个任务，再运行一段时间，不同的任务会这样交替往复地一直执行下去，这个过程也被称作是进程或者线程的上下文切换(context switching)</p><p><a href="https://imgtu.com/i/7KCgkn"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KCgkn.png"                      alt="7KCgkn.png"                ></a></p><p>当然对于多核处理器，情况就有所不同了，我们<strong>可以在不同的核心上真正并行地执行任务，而不用通过分配时间片的方式运行</strong>，这种情况也就是我们所说的并行(parallelism)</p><p><a href="https://imgtu.com/i/7KPlhq"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KPlhq.png"                      alt="7KPlhq.png"                ></a></p><p>至于同步和异步则是两种不同的编程模型，<strong>“同步”代表需要等到必须前一个任务执行完毕之后才能进行下一个任务</strong>，因此在同步中并没有并发或者并行的概念，而<strong>“异步“”则代表不同的任务之间并不会相互等待，也就是说，你在执行任务A的时候，也可以同时运行任务B</strong>，一个典型实现异步的方式则是通过多线程编程，你可以创建多个线程，并且启动它们</p><p><a href="https://imgtu.com/i/7Ki7J1"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7Ki7J1.png"                      alt="7Ki7J1.png"                ></a></p><p>在多核的情况下，每个线程就会被分配到独立的核心上运行，实现真正的“并行”，当然如果你使用的是单核处理器，或者通过设置亲和力(Affinity)强制将线程绑定到某个核心上，操作系统则会通过分配时间片的方式来执行这些线程，这些线程依然是在“并发”地执行，当然像某些编程语言，比如JavaScript本身是没有多线程的概念的，不过通过它的函数回调(function callback)机制，我们依然能做到单线程的“并发”，比如你可以通过fetch()同时访问多个网络资源</p><p><a href="https://imgtu.com/i/7Kk5CR"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7Kk5CR.png"                      alt="7Kk5CR.png"                ></a></p><p>我们在调用fetch()函数的时候，程序并不会等待，而会直接继续执行下去，当获取到网路资源以后</p><p><a href="https://imgtu.com/i/7KAMrT"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KAMrT.png"                      alt="7KAMrT.png"                ></a></p><p>回调函数才会被掉起，需要注意的是，虽然主函数和回调函数看起来是同时进行的</p><p><a href="https://imgtu.com/i/7KAgzt"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KAgzt.png"                      alt="7KAgzt.png"                ></a></p><p>但它们依然是运行在同一个线程中</p><p><a href="https://imgtu.com/i/7KEX9A"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KEX9A.png"                      alt="7KEX9A.png"                ></a></p><p>因此通过这种异步编程方式，我们完全可以做到单线程的“并发”，而且这并不是JavaScript的专利，很多语言也都提供了原生的异步编程方式，比如C#，Rusut，C++2.0中的co_await，Python中的asyncio等等等等</p><p><a href="https://imgtu.com/i/7KVgDf"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KVgDf.png"                      alt="7KVgDf.png"                ></a></p><p><a href="https://imgtu.com/i/7KV2b8"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KV2b8.png"                      alt="7KV2b8.png"                ></a></p><p><a href="https://imgtu.com/i/7KVTvq"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/01/12/7KVTvq.png"                      alt="7KVTvq.png"                ></a></p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-39-15.3sta87zfdyg0.webp"                      alt="Snipaste_2022-01-12_18-39-15"                ></p><p>那到这里你肯定会问，对于多线程编程和这种单线程的异步编程，我们应当如何选择呢，简而言之，对于I/O密集型的应用程序，比如Web应用，就会经常执行网络操作，数据库访问，这类应用就非常适合使用异步编程的方式，反之如果我们使用多线程的方式，则会浪费不少的系统资源，因为每个线程的绝大多数时间都是在等待这些I/O操作，而线程自身会占用额外的内存，线程的切换也会有额外的开销，更不用说线程之间的资源竞争问题</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-46-30.h7nel7qo0fc.webp"                      alt="Snipaste_2022-01-12_18-46-30"                ></p><p>而多线程编程则非常适合于计算量密集的应用</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220112/Snipaste_2022-01-12_18-47-43.4urgzy14uec0.webp"                      alt="Snipaste_2022-01-12_18-47-43"                ></p><p>比如视频图像处理，科学计算等等，它能让每一个CPU核心发挥最大的功效，而不是消耗在空闲的等待上</p><p>纠错:</p><p>关于Python的例子我举得不太恰当，CPython中的GIL会导致Python代码的线程并不能做到真正并发，使用htop查看CPU使用率尽管在多核处理器也不会超过100%</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;并发、并行、异步、同步，这些术语之间到底有什么区别和联系呢&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/7K9ibd&quot;&gt;&lt;img  
-                     lazyload
-                     src=&quot;</summary>
       
     
     
