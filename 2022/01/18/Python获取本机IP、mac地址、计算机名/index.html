@@ -9,7 +9,7 @@
     
     <title>
         
-            推荐一个关于Go文档以及面试题的网站--来自Go学习群 |
+            Python获取本机IP、Mac地址和计算机名 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">推荐一个关于Go文档以及面试题的网站--来自Go学习群</span>
+            <span class="title-hover-animation">Python获取本机IP、Mac地址和计算机名</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-18 17:20:30</span>
-        <span class="mobile">2022-01-18 17:20</span>
+        <span class="pc">2022-01-18 09:06:30</span>
+        <span class="mobile">2022-01-18 09:06</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>50 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>72 Words</span>
         </span>
     
     
@@ -192,14 +192,24 @@
         
 
         <div class="article-content markdown-body">
-            <p>今天在Go语言中文网的QQ群中发现了一个分享Go文档以及面试题的网站，感觉挺不错的，<a class="link"   target="_blank" rel="noopener" href="https://www.topgoer.cn/" >点击跳转<i class="fas fa-external-link-alt"></i></a>:</p>
+            <p>获得本机Mac地址:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mac_address</span>():</span> </span><br><span class="line">    mac=uuid.UUID(<span class="built_in">int</span> = uuid.getnode()).<span class="built_in">hex</span>[-<span class="number">12</span>:] </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;:&quot;</span>.join([mac[e:e+<span class="number">2</span>] <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">11</span>,<span class="number">2</span>)])</span><br></pre></td></tr></table></figure>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_14-22-11.4q114603jaw0.webp"
-                      alt="Snipaste_2022-01-17_14-22-11"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-12-58.4d2sxwbsox00.webp"
+                      alt="Snipaste_2022-01-18_09-12-58"
                 ></p>
-<p>关于Go面试题，<a class="link"   target="_blank" rel="noopener" href="https://www.topgoer.cn/docs/gomianshiti/mianshiti" >点这里直达<i class="fas fa-external-link-alt"></i></a></p>
+<p>获得本机IP(内网IP)和计算机名:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="comment">#获取本机电脑名</span></span><br><span class="line">myname = socket.getfqdn(socket.gethostname())</span><br><span class="line"><span class="comment">#获取本机ip</span></span><br><span class="line">myaddr = socket.gethostbyname(myname)</span><br><span class="line"><span class="built_in">print</span> (myname)</span><br><span class="line"><span class="built_in">print</span> (myaddr)</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-16-43.24q861f1g5fk.webp"
+                      alt="Snipaste_2022-01-18_09-16-43"
+                ></p>
 
         </div>
 
@@ -207,11 +217,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：推荐一个关于Go文档以及面试题的网站--来自Go学习群</li>
+        <li>Post title：Python获取本机IP、Mac地址和计算机名</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-18 17:20:30</li>
+        <li>Create time：2022-01-18 09:06:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/18/推荐一个关于Go文档以及面试题的网站--来自Go学习群/
+            Post link：https://keep.xpoet.cn/2022/01/18/Python获取本机IP、mac地址、计算机名/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -227,14 +237,29 @@
         
             <div class="article-nav">
                 
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/01/18/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8EGo%E6%96%87%E6%A1%A3%E4%BB%A5%E5%8F%8A%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9A%84%E7%BD%91%E7%AB%99--%E6%9D%A5%E8%87%AAGo%E5%AD%A6%E4%B9%A0%E7%BE%A4/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">推荐一个关于Go文档以及面试题的网站--来自Go学习群</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/18/Python%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAIP%E3%80%81mac%E5%9C%B0%E5%9D%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D/"
+                           href="/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python获取本机IP、Mac地址和计算机名</span>
+                                <span class="post-nav-title-item">Python爬虫框架Scrapy的运行流程详解</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

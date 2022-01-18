@@ -37,6 +37,27 @@
   </entry>
   
   <entry>
+    <title>Python获取本机IP、Mac地址和计算机名</title>
+    <link href="http://example.com/2022/01/18/Python%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAIP%E3%80%81mac%E5%9C%B0%E5%9D%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D/"/>
+    <id>http://example.com/2022/01/18/Python%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAIP%E3%80%81mac%E5%9C%B0%E5%9D%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D/</id>
+    <published>2022-01-18T01:06:30.000Z</published>
+    <updated>2022-01-18T01:17:37.714Z</updated>
+    
+    <content type="html"><![CDATA[<p>获得本机Mac地址:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mac_address</span>():</span> </span><br><span class="line">    mac=uuid.UUID(<span class="built_in">int</span> = uuid.getnode()).<span class="built_in">hex</span>[-<span class="number">12</span>:] </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;:&quot;</span>.join([mac[e:e+<span class="number">2</span>] <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">11</span>,<span class="number">2</span>)])</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-12-58.4d2sxwbsox00.webp"                      alt="Snipaste_2022-01-18_09-12-58"                ></p><p>获得本机IP(内网IP)和计算机名:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="comment">#获取本机电脑名</span></span><br><span class="line">myname = socket.getfqdn(socket.gethostname())</span><br><span class="line"><span class="comment">#获取本机ip</span></span><br><span class="line">myaddr = socket.gethostbyname(myname)</span><br><span class="line"><span class="built_in">print</span> (myname)</span><br><span class="line"><span class="built_in">print</span> (myaddr)</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-16-43.24q861f1g5fk.webp"                      alt="Snipaste_2022-01-18_09-16-43"                ></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;获得本机Mac地址:&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/s</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Python爬虫框架Scrapy的运行流程详解</title>
     <link href="http://example.com/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/"/>
     <id>http://example.com/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</id>
@@ -412,30 +433,6 @@
       
       
     <summary type="html">&lt;p&gt;第二题是js混线，动态cookie，这也是提取全部5页的数据，题目链接:&lt;a class=&quot;link&quot;   href=&quot;https://match.yuanrenxue.com/match/2&quot; &gt;https://match.yuanrenxue.com/match/2&lt;i</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2022-1-13每日英语</title>
-    <link href="http://example.com/2022/01/13/2022-1-13%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    <id>http://example.com/2022/01/13/2022-1-13%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/</id>
-    <published>2022-01-13T07:03:30.000Z</published>
-    <updated>2022-01-14T01:08:45.302Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>interval n. 间隔，间隙；幕间休息；[ˈɪntərvl]</li><li>query n. 疑问，询问；问号；v. 质疑，对…表示疑问；询问，提问；[ˈkwɪri]</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;interval n. 间隔，间隙；幕间休息；[ˈɪntərvl]&lt;/li&gt;
-&lt;li&gt;query n. 疑问，询问；问号；v. 质疑，对…表示疑问；询问，提问；[ˈkwɪri]&lt;/li&gt;
-&lt;/ol&gt;
-</summary>
       
     
     
