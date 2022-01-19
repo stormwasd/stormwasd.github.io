@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-19T08:28:41.314Z</updated>
+  <updated>2022-01-19T08:53:55.425Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于HTTP状态码</title>
+    <link href="http://example.com/2022/01/19/%E5%85%B3%E4%BA%8EHTTP%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    <id>http://example.com/2022/01/19/%E5%85%B3%E4%BA%8EHTTP%E7%8A%B6%E6%80%81%E7%A0%81/</id>
+    <published>2022-01-19T08:34:30.000Z</published>
+    <updated>2022-01-19T08:53:55.425Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>各类常见状态码</strong>:</p><ol><li><p>2xx(3种)</p><p><strong>200 OK</strong>: 表示从客户端发送给服务器的请求被<strong>正常处理并返回</strong></p><p><strong>204 No Content</strong>: 表示客户端发送给客户端的<strong>请求得到了成功处理</strong>，但在返回的响应报文中不含实体的主体部分(<strong>没有资源可以返回</strong>)</p><p><strong>206 Patial Content</strong>: 表示<strong>客户端进行了范围请求</strong>，并且服务器成功执行了这部分的GET请求，<strong>响应报文中包含由Content-Range指定范围的实体内容</strong></p></li><li><p>3xx(5种)</p><p><strong>301 Moved Permanently</strong>: 永久性重定向，<strong>表示请求的资源被分配了新的URL</strong>，之后应使用更改的URL</p><p><strong>302 Found</strong>: 临时性重定向，表示<strong>请求的资源被分配了新的URL，希望本次访问使用新的UR</strong>L；301与302的区别：前者是永久移动，后者是临时移动(之后可能还会更改URL)</p><p><strong>303 See Other</strong>: 表示<strong>请求的资源被分配了新的URL，应使用GET方法定向获取请求的资源</strong>；302与303的区别：后者明确表示客户端应当采用GET方式获取资源</p><p><strong>304 Not Modified</strong>: 关于这个状态码请见: <a class="link"   href="https://blog.csdn.net/franknotbad/article/details/79399809" >https://blog.csdn.net/franknotbad/article/details/79399809<i class="fas fa-external-link-alt"></i></a></p><p><strong>307 Temporary Redirect</strong>: 临时重定向，与303有着相同的含义，307会遵照浏览器标准不会从POST变成GET；(不同浏览器可能会出现不同的情况)</p></li><li><p>4XX(4种)</p><p><strong>400 Bad Request</strong>: 表示请求报文中存在语法错误</p><p><strong>401 Unauthorized</strong>: 未经许可，需要通过HTTP认证</p><p><strong>403 Forbidden</strong>: 服务器拒绝该次访问(访问权限出现问题)</p><p><strong>404 Not Found</strong>: 表示服务器上无法找到请求的资源，除此之外，也可以在服务器拒绝请求但不想给拒绝原因时使用</p></li><li><p>5xx(2种)</p><p><strong>500 Inter Server Error</strong>: 表示服务器在执行请求时发生了错误，也有可能是web应用存在的bug或某些临时的错误时，<strong>服务器内部错误</strong></p><p><strong>503 Server Unavailable</strong>: 表示服务器暂时处于超负载或正在进行停机维护，无法处理请求，<strong>服务器不可用，服务器当前超负荷</strong></p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;各类常见状态码&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;2xx(3种)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;200 OK&lt;/strong&gt;: 表示从客户端发送给服务器的请求被&lt;strong&gt;正常处理并返回&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Chrome开发者工具使用技巧总结</title>
@@ -421,26 +445,6 @@
 &lt;p&gt;异: &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;__new__&lt;/code&gt;是在实例创建之前被调用的，因为它的任务就是创建实例然后直接返回该实例对象，是个&lt;st</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS逆向的时候Python如何调用JavaScript代码呢</title>
-    <link href="http://example.com/2022/01/14/JS%E9%80%86%E5%90%91%E7%9A%84%E6%97%B6%E5%80%99Python%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8JavaScript%E4%BB%A3%E7%A0%81%E5%91%A2/"/>
-    <id>http://example.com/2022/01/14/JS%E9%80%86%E5%90%91%E7%9A%84%E6%97%B6%E5%80%99Python%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8JavaScript%E4%BB%A3%E7%A0%81%E5%91%A2/</id>
-    <published>2022-01-14T03:35:30.000Z</published>
-    <updated>2022-01-14T03:37:04.471Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天在逛崔庆才博客的时候发现这个讲得还不错，是关于Python如何调用JS代码的，点击<a class="link"   href="https://cuiqingcai.com/9581.html" >这里<i class="fas fa-external-link-alt"></i></a>调转阅读</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;今天在逛崔庆才博客的时候发现这个讲得还不错，是关于Python如何调用JS代码的，点击&lt;a class=&quot;link&quot;   href=&quot;https://cuiqingcai.com/9581.html&quot; &gt;这里&lt;i class=&quot;fas fa-external-link-al</summary>
       
     
     
