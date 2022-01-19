@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            js逆向模拟登录搜狐案例--关于md5但未解决cookie版 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">js逆向模拟登录搜狐案例--关于md5但未解决cookie版</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-17 14:20:30</span>
+        <span class="mobile">2022-01-17 14:20</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>14 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>需求: js逆向模拟登录<a class="link"   target="_blank" rel="noopener" href="https://www.sohu.com/" >搜狐网<i class="fas fa-external-link-alt"></i></a></p>
+<p>首先我们点击登录打开登录框，抓包找接口，发现POST接口:<a class="link"   target="_blank" rel="noopener" href="https://v4.passport.sohu.com/i/login/116005%EF%BC%8C%E5%85%B6%E4%B8%AD%E7%9A%84Payload%E4%B8%8B%E9%9D%A2%E7%9A%84Form" >https://v4.passport.sohu.com/i/login/116005，其中的Payload下面的Form<i class="fas fa-external-link-alt"></i></a> Data中的userid是输入的用户名，password是加密后的密码:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_16-25-32.1ukmoiv9izq8.webp"
+                      alt="Snipaste_2022-01-17_16-25-32"
+                ></p>
+<p>没有找到调用对象，那么CTRL+F全局搜索password:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_16-28-07.3t02t9swmka0.webp"
+                      alt="Snipaste_2022-01-17_16-28-07"
+                ></p>
+<p>这里搜出了三个，大家觉得会是在哪个，其中有一个passport什么什么.js，我猜测就是在这里面，因为passport意为护照，就是表示通行证，所以我猜测就在这里面有我们想要的东西</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_16-35-45.1tlkrlg2diqo.webp"
+                      alt="Snipaste_2022-01-17_16-35-45"
+                ></p>
+<p>(不好意思哈，上图标错了)按路径找到这个文件后，进去我们再搜索password</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_16-46-53.6uyfgq96oyk0.webp"
+                      alt="Snipaste_2022-01-17_16-46-53"
+                ></p>
+<p>上图红框中的已经很明显了哈，是一个MD5加密，我们打断点然后跳转到md5函数中:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_16-50-56.1wr7cs9cxbls.webp"
+                      alt="Snipaste_2022-01-17_16-50-56"
+                ></p>
+<p>我们新建一个html文件然后把上图的md5函数复制到html文件中，单单复制一个函数能在浏览器中运行嘛，答案是不能的，所以我们起码要加个body，然后把md5:去点，然后在function后面加个md5:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">md5</span>(<span class="params">args</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">hex_md5</span>(<span class="params">s</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> binl2hex(core_md5(str2binl(s), s.length * chrsz))</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">core_md5</span>(<span class="params">x, len</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                x[len &gt;&gt; <span class="number">5</span>] |= <span class="number">128</span> &lt;&lt; len % <span class="number">32</span>,</span></span><br><span class="line"><span class="javascript">                x[<span class="number">14</span> + (len + <span class="number">64</span> &gt;&gt;&gt; <span class="number">9</span> &lt;&lt; <span class="number">4</span>)] = len;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="number">1732584193</span>, b = -<span class="number">271733879</span>, c = -<span class="number">1732584194</span>, d = <span class="number">271733878</span>, i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> olda = a</span></span><br><span class="line"><span class="javascript">                      , oldb = b</span></span><br><span class="line"><span class="javascript">                      , oldc = c</span></span><br><span class="line"><span class="javascript">                      , oldd = d;</span></span><br><span class="line"><span class="javascript">                    a = md5_ff(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">7</span>, -<span class="number">680876936</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ff(d, a, b, c, x[i + <span class="number">1</span>], <span class="number">12</span>, -<span class="number">389564586</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ff(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">17</span>, <span class="number">606105819</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ff(b, c, d, a, x[i + <span class="number">3</span>], <span class="number">22</span>, -<span class="number">1044525330</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ff(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">7</span>, -<span class="number">176418897</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ff(d, a, b, c, x[i + <span class="number">5</span>], <span class="number">12</span>, <span class="number">1200080426</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ff(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">17</span>, -<span class="number">1473231341</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ff(b, c, d, a, x[i + <span class="number">7</span>], <span class="number">22</span>, -<span class="number">45705983</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ff(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">7</span>, <span class="number">1770035416</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ff(d, a, b, c, x[i + <span class="number">9</span>], <span class="number">12</span>, -<span class="number">1958414417</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ff(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">17</span>, -<span class="number">42063</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ff(b, c, d, a, x[i + <span class="number">11</span>], <span class="number">22</span>, -<span class="number">1990404162</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ff(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">7</span>, <span class="number">1804603682</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ff(d, a, b, c, x[i + <span class="number">13</span>], <span class="number">12</span>, -<span class="number">40341101</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ff(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">17</span>, -<span class="number">1502002290</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ff(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">22</span>, <span class="number">1236535329</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_gg(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">5</span>, -<span class="number">165796510</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_gg(d, a, b, c, x[i + <span class="number">6</span>], <span class="number">9</span>, -<span class="number">1069501632</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_gg(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">14</span>, <span class="number">643717713</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_gg(b, c, d, a, x[i + <span class="number">0</span>], <span class="number">20</span>, -<span class="number">373897302</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_gg(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">5</span>, -<span class="number">701558691</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_gg(d, a, b, c, x[i + <span class="number">10</span>], <span class="number">9</span>, <span class="number">38016083</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_gg(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">14</span>, -<span class="number">660478335</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_gg(b, c, d, a, x[i + <span class="number">4</span>], <span class="number">20</span>, -<span class="number">405537848</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_gg(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">5</span>, <span class="number">568446438</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_gg(d, a, b, c, x[i + <span class="number">14</span>], <span class="number">9</span>, -<span class="number">1019803690</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_gg(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">14</span>, -<span class="number">187363961</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_gg(b, c, d, a, x[i + <span class="number">8</span>], <span class="number">20</span>, <span class="number">1163531501</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_gg(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">5</span>, -<span class="number">1444681467</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_gg(d, a, b, c, x[i + <span class="number">2</span>], <span class="number">9</span>, -<span class="number">51403784</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_gg(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">14</span>, <span class="number">1735328473</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_gg(b, c, d, a, x[i + <span class="number">12</span>], <span class="number">20</span>, -<span class="number">1926607734</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_hh(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">4</span>, -<span class="number">378558</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_hh(d, a, b, c, x[i + <span class="number">8</span>], <span class="number">11</span>, -<span class="number">2022574463</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_hh(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">16</span>, <span class="number">1839030562</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_hh(b, c, d, a, x[i + <span class="number">14</span>], <span class="number">23</span>, -<span class="number">35309556</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_hh(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">4</span>, -<span class="number">1530992060</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_hh(d, a, b, c, x[i + <span class="number">4</span>], <span class="number">11</span>, <span class="number">1272893353</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_hh(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">16</span>, -<span class="number">155497632</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_hh(b, c, d, a, x[i + <span class="number">10</span>], <span class="number">23</span>, -<span class="number">1094730640</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_hh(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">4</span>, <span class="number">681279174</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_hh(d, a, b, c, x[i + <span class="number">0</span>], <span class="number">11</span>, -<span class="number">358537222</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_hh(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">16</span>, -<span class="number">722521979</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_hh(b, c, d, a, x[i + <span class="number">6</span>], <span class="number">23</span>, <span class="number">76029189</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_hh(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">4</span>, -<span class="number">640364487</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_hh(d, a, b, c, x[i + <span class="number">12</span>], <span class="number">11</span>, -<span class="number">421815835</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_hh(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">16</span>, <span class="number">530742520</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_hh(b, c, d, a, x[i + <span class="number">2</span>], <span class="number">23</span>, -<span class="number">995338651</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ii(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">6</span>, -<span class="number">198630844</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ii(d, a, b, c, x[i + <span class="number">7</span>], <span class="number">10</span>, <span class="number">1126891415</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ii(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">15</span>, -<span class="number">1416354905</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ii(b, c, d, a, x[i + <span class="number">5</span>], <span class="number">21</span>, -<span class="number">57434055</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ii(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">6</span>, <span class="number">1700485571</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ii(d, a, b, c, x[i + <span class="number">3</span>], <span class="number">10</span>, -<span class="number">1894986606</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ii(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">15</span>, -<span class="number">1051523</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ii(b, c, d, a, x[i + <span class="number">1</span>], <span class="number">21</span>, -<span class="number">2054922799</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ii(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">6</span>, <span class="number">1873313359</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ii(d, a, b, c, x[i + <span class="number">15</span>], <span class="number">10</span>, -<span class="number">30611744</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ii(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">15</span>, -<span class="number">1560198380</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ii(b, c, d, a, x[i + <span class="number">13</span>], <span class="number">21</span>, <span class="number">1309151649</span>),</span></span><br><span class="line"><span class="javascript">                    a = md5_ii(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">6</span>, -<span class="number">145523070</span>),</span></span><br><span class="line"><span class="javascript">                    d = md5_ii(d, a, b, c, x[i + <span class="number">11</span>], <span class="number">10</span>, -<span class="number">1120210379</span>),</span></span><br><span class="line"><span class="javascript">                    c = md5_ii(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">15</span>, <span class="number">718787259</span>),</span></span><br><span class="line"><span class="javascript">                    b = md5_ii(b, c, d, a, x[i + <span class="number">9</span>], <span class="number">21</span>, -<span class="number">343485551</span>),</span></span><br><span class="line"><span class="javascript">                    a = safe_add(a, olda),</span></span><br><span class="line"><span class="javascript">                    b = safe_add(b, oldb),</span></span><br><span class="line"><span class="javascript">                    c = safe_add(c, oldc),</span></span><br><span class="line"><span class="javascript">                    d = safe_add(d, oldd)</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">Array</span>(a, b, c, d)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">md5_cmn</span>(<span class="params">q, a, b, x, s, t</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">md5_ff</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> md5_cmn(b &amp; c | ~b &amp; d, a, b, x, s, t)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">md5_gg</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> md5_cmn(b &amp; d | c &amp; ~d, a, b, x, s, t)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">md5_hh</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> md5_cmn(b ^ c ^ d, a, b, x, s, t)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">md5_ii</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> md5_cmn(c ^ (b | ~d), a, b, x, s, t)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">safe_add</span>(<span class="params">x, y</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> lsw = (<span class="number">65535</span> &amp; x) + (<span class="number">65535</span> &amp; y);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> (x &gt;&gt; <span class="number">16</span>) + (y &gt;&gt; <span class="number">16</span>) + (lsw &gt;&gt; <span class="number">16</span>) &lt;&lt; <span class="number">16</span> | <span class="number">65535</span> &amp; lsw</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">bit_rol</span>(<span class="params">num, cnt</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> num &lt;&lt; cnt | num &gt;&gt;&gt; <span class="number">32</span> - cnt</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">str2binl</span>(<span class="params">str</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">var</span> bin = <span class="built_in">Array</span>(), mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>, i = <span class="number">0</span>; i &lt; str.length * chrsz; i += chrsz)</span></span><br><span class="line"><span class="javascript">                    bin[i &gt;&gt; <span class="number">5</span>] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; i % <span class="number">32</span>;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> bin</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">binl2hex</span>(<span class="params">binarray</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">var</span> hex_tab = hexcase ? <span class="string">&quot;0123456789ABCDEF&quot;</span> : <span class="string">&quot;0123456789abcdef&quot;</span>, str = <span class="string">&quot;&quot;</span>, i = <span class="number">0</span>; i &lt; <span class="number">4</span> * binarray.length; i++)</span></span><br><span class="line"><span class="javascript">                    str += hex_tab.charAt(binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> + <span class="number">4</span> &amp; <span class="number">15</span>) + hex_tab.charAt(binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> &amp; <span class="number">15</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> str</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> hexcase = <span class="number">0</span></span></span><br><span class="line"><span class="javascript">              , chrsz = <span class="number">8</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> hex_md5(args)</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们在浏览器中的consle执行下md5函数:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-17_17-05-33.3gkr7zx5t020.webp"
+                      alt="Snipaste_2022-01-17_17-05-33"
+                ></p>
+<p>对比下之前payload中的fomdata中的加密password，会发现长度是一样的，只不过时间不一样然后结果就不一样</p>
+<p>那下面我们就来登录下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">unction <span class="function"><span class="title">md5</span>(<span class="params">args</span>)</span> &#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">hex_md5</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> binl2hex(core_md5(str2binl(s), s.length * chrsz))</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">core_md5</span>(<span class="params">x, len</span>) </span>&#123;</span><br><span class="line">                x[len &gt;&gt; <span class="number">5</span>] |= <span class="number">128</span> &lt;&lt; len % <span class="number">32</span>,</span><br><span class="line">                x[<span class="number">14</span> + (len + <span class="number">64</span> &gt;&gt;&gt; <span class="number">9</span> &lt;&lt; <span class="number">4</span>)] = len;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="number">1732584193</span>, b = -<span class="number">271733879</span>, c = -<span class="number">1732584194</span>, d = <span class="number">271733878</span>, i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> olda = a</span><br><span class="line">                      , oldb = b</span><br><span class="line">                      , oldc = c</span><br><span class="line">                      , oldd = d;</span><br><span class="line">                    a = md5_ff(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">7</span>, -<span class="number">680876936</span>),</span><br><span class="line">                    d = md5_ff(d, a, b, c, x[i + <span class="number">1</span>], <span class="number">12</span>, -<span class="number">389564586</span>),</span><br><span class="line">                    c = md5_ff(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">17</span>, <span class="number">606105819</span>),</span><br><span class="line">                    b = md5_ff(b, c, d, a, x[i + <span class="number">3</span>], <span class="number">22</span>, -<span class="number">1044525330</span>),</span><br><span class="line">                    a = md5_ff(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">7</span>, -<span class="number">176418897</span>),</span><br><span class="line">                    d = md5_ff(d, a, b, c, x[i + <span class="number">5</span>], <span class="number">12</span>, <span class="number">1200080426</span>),</span><br><span class="line">                    c = md5_ff(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">17</span>, -<span class="number">1473231341</span>),</span><br><span class="line">                    b = md5_ff(b, c, d, a, x[i + <span class="number">7</span>], <span class="number">22</span>, -<span class="number">45705983</span>),</span><br><span class="line">                    a = md5_ff(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">7</span>, <span class="number">1770035416</span>),</span><br><span class="line">                    d = md5_ff(d, a, b, c, x[i + <span class="number">9</span>], <span class="number">12</span>, -<span class="number">1958414417</span>),</span><br><span class="line">                    c = md5_ff(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">17</span>, -<span class="number">42063</span>),</span><br><span class="line">                    b = md5_ff(b, c, d, a, x[i + <span class="number">11</span>], <span class="number">22</span>, -<span class="number">1990404162</span>),</span><br><span class="line">                    a = md5_ff(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">7</span>, <span class="number">1804603682</span>),</span><br><span class="line">                    d = md5_ff(d, a, b, c, x[i + <span class="number">13</span>], <span class="number">12</span>, -<span class="number">40341101</span>),</span><br><span class="line">                    c = md5_ff(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">17</span>, -<span class="number">1502002290</span>),</span><br><span class="line">                    b = md5_ff(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">22</span>, <span class="number">1236535329</span>),</span><br><span class="line">                    a = md5_gg(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">5</span>, -<span class="number">165796510</span>),</span><br><span class="line">                    d = md5_gg(d, a, b, c, x[i + <span class="number">6</span>], <span class="number">9</span>, -<span class="number">1069501632</span>),</span><br><span class="line">                    c = md5_gg(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">14</span>, <span class="number">643717713</span>),</span><br><span class="line">                    b = md5_gg(b, c, d, a, x[i + <span class="number">0</span>], <span class="number">20</span>, -<span class="number">373897302</span>),</span><br><span class="line">                    a = md5_gg(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">5</span>, -<span class="number">701558691</span>),</span><br><span class="line">                    d = md5_gg(d, a, b, c, x[i + <span class="number">10</span>], <span class="number">9</span>, <span class="number">38016083</span>),</span><br><span class="line">                    c = md5_gg(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">14</span>, -<span class="number">660478335</span>),</span><br><span class="line">                    b = md5_gg(b, c, d, a, x[i + <span class="number">4</span>], <span class="number">20</span>, -<span class="number">405537848</span>),</span><br><span class="line">                    a = md5_gg(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">5</span>, <span class="number">568446438</span>),</span><br><span class="line">                    d = md5_gg(d, a, b, c, x[i + <span class="number">14</span>], <span class="number">9</span>, -<span class="number">1019803690</span>),</span><br><span class="line">                    c = md5_gg(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">14</span>, -<span class="number">187363961</span>),</span><br><span class="line">                    b = md5_gg(b, c, d, a, x[i + <span class="number">8</span>], <span class="number">20</span>, <span class="number">1163531501</span>),</span><br><span class="line">                    a = md5_gg(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">5</span>, -<span class="number">1444681467</span>),</span><br><span class="line">                    d = md5_gg(d, a, b, c, x[i + <span class="number">2</span>], <span class="number">9</span>, -<span class="number">51403784</span>),</span><br><span class="line">                    c = md5_gg(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">14</span>, <span class="number">1735328473</span>),</span><br><span class="line">                    b = md5_gg(b, c, d, a, x[i + <span class="number">12</span>], <span class="number">20</span>, -<span class="number">1926607734</span>),</span><br><span class="line">                    a = md5_hh(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">4</span>, -<span class="number">378558</span>),</span><br><span class="line">                    d = md5_hh(d, a, b, c, x[i + <span class="number">8</span>], <span class="number">11</span>, -<span class="number">2022574463</span>),</span><br><span class="line">                    c = md5_hh(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">16</span>, <span class="number">1839030562</span>),</span><br><span class="line">                    b = md5_hh(b, c, d, a, x[i + <span class="number">14</span>], <span class="number">23</span>, -<span class="number">35309556</span>),</span><br><span class="line">                    a = md5_hh(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">4</span>, -<span class="number">1530992060</span>),</span><br><span class="line">                    d = md5_hh(d, a, b, c, x[i + <span class="number">4</span>], <span class="number">11</span>, <span class="number">1272893353</span>),</span><br><span class="line">                    c = md5_hh(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">16</span>, -<span class="number">155497632</span>),</span><br><span class="line">                    b = md5_hh(b, c, d, a, x[i + <span class="number">10</span>], <span class="number">23</span>, -<span class="number">1094730640</span>),</span><br><span class="line">                    a = md5_hh(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">4</span>, <span class="number">681279174</span>),</span><br><span class="line">                    d = md5_hh(d, a, b, c, x[i + <span class="number">0</span>], <span class="number">11</span>, -<span class="number">358537222</span>),</span><br><span class="line">                    c = md5_hh(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">16</span>, -<span class="number">722521979</span>),</span><br><span class="line">                    b = md5_hh(b, c, d, a, x[i + <span class="number">6</span>], <span class="number">23</span>, <span class="number">76029189</span>),</span><br><span class="line">                    a = md5_hh(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">4</span>, -<span class="number">640364487</span>),</span><br><span class="line">                    d = md5_hh(d, a, b, c, x[i + <span class="number">12</span>], <span class="number">11</span>, -<span class="number">421815835</span>),</span><br><span class="line">                    c = md5_hh(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">16</span>, <span class="number">530742520</span>),</span><br><span class="line">                    b = md5_hh(b, c, d, a, x[i + <span class="number">2</span>], <span class="number">23</span>, -<span class="number">995338651</span>),</span><br><span class="line">                    a = md5_ii(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">6</span>, -<span class="number">198630844</span>),</span><br><span class="line">                    d = md5_ii(d, a, b, c, x[i + <span class="number">7</span>], <span class="number">10</span>, <span class="number">1126891415</span>),</span><br><span class="line">                    c = md5_ii(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">15</span>, -<span class="number">1416354905</span>),</span><br><span class="line">                    b = md5_ii(b, c, d, a, x[i + <span class="number">5</span>], <span class="number">21</span>, -<span class="number">57434055</span>),</span><br><span class="line">                    a = md5_ii(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">6</span>, <span class="number">1700485571</span>),</span><br><span class="line">                    d = md5_ii(d, a, b, c, x[i + <span class="number">3</span>], <span class="number">10</span>, -<span class="number">1894986606</span>),</span><br><span class="line">                    c = md5_ii(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">15</span>, -<span class="number">1051523</span>),</span><br><span class="line">                    b = md5_ii(b, c, d, a, x[i + <span class="number">1</span>], <span class="number">21</span>, -<span class="number">2054922799</span>),</span><br><span class="line">                    a = md5_ii(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">6</span>, <span class="number">1873313359</span>),</span><br><span class="line">                    d = md5_ii(d, a, b, c, x[i + <span class="number">15</span>], <span class="number">10</span>, -<span class="number">30611744</span>),</span><br><span class="line">                    c = md5_ii(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">15</span>, -<span class="number">1560198380</span>),</span><br><span class="line">                    b = md5_ii(b, c, d, a, x[i + <span class="number">13</span>], <span class="number">21</span>, <span class="number">1309151649</span>),</span><br><span class="line">                    a = md5_ii(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">6</span>, -<span class="number">145523070</span>),</span><br><span class="line">                    d = md5_ii(d, a, b, c, x[i + <span class="number">11</span>], <span class="number">10</span>, -<span class="number">1120210379</span>),</span><br><span class="line">                    c = md5_ii(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">15</span>, <span class="number">718787259</span>),</span><br><span class="line">                    b = md5_ii(b, c, d, a, x[i + <span class="number">9</span>], <span class="number">21</span>, -<span class="number">343485551</span>),</span><br><span class="line">                    a = safe_add(a, olda),</span><br><span class="line">                    b = safe_add(b, oldb),</span><br><span class="line">                    c = safe_add(c, oldc),</span><br><span class="line">                    d = safe_add(d, oldd)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">Array</span>(a, b, c, d)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">md5_cmn</span>(<span class="params">q, a, b, x, s, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">md5_ff</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> md5_cmn(b &amp; c | ~b &amp; d, a, b, x, s, t)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">md5_gg</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> md5_cmn(b &amp; d | c &amp; ~d, a, b, x, s, t)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">md5_hh</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> md5_cmn(b ^ c ^ d, a, b, x, s, t)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">md5_ii</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> md5_cmn(c ^ (b | ~d), a, b, x, s, t)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">safe_add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> lsw = (<span class="number">65535</span> &amp; x) + (<span class="number">65535</span> &amp; y);</span><br><span class="line">                <span class="keyword">return</span> (x &gt;&gt; <span class="number">16</span>) + (y &gt;&gt; <span class="number">16</span>) + (lsw &gt;&gt; <span class="number">16</span>) &lt;&lt; <span class="number">16</span> | <span class="number">65535</span> &amp; lsw</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">bit_rol</span>(<span class="params">num, cnt</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> num &lt;&lt; cnt | num &gt;&gt;&gt; <span class="number">32</span> - cnt</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">str2binl</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> bin = <span class="built_in">Array</span>(), mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>, i = <span class="number">0</span>; i &lt; str.length * chrsz; i += chrsz)</span><br><span class="line">                    bin[i &gt;&gt; <span class="number">5</span>] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; i % <span class="number">32</span>;</span><br><span class="line">                <span class="keyword">return</span> bin</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">binl2hex</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> hex_tab = hexcase ? <span class="string">&quot;0123456789ABCDEF&quot;</span> : <span class="string">&quot;0123456789abcdef&quot;</span>, str = <span class="string">&quot;&quot;</span>, i = <span class="number">0</span>; i &lt; <span class="number">4</span> * binarray.length; i++)</span><br><span class="line">                    str += hex_tab.charAt(binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> + <span class="number">4</span> &amp; <span class="number">15</span>) + hex_tab.charAt(binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> &amp; <span class="number">15</span>);</span><br><span class="line">                <span class="keyword">return</span> str</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> hexcase = <span class="number">0</span></span><br><span class="line">              , chrsz = <span class="number">8</span>;</span><br><span class="line">            <span class="keyword">return</span> hex_md5(args)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：js逆向模拟登录搜狐案例--关于md5但未解决cookie版</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-01-17 14:20:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/01/17/js逆向模拟登录搜狐案例/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python爬虫框架Scrapy的运行流程详解</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/17/Python%E8%A3%85%E9%A5%B0%E5%99%A8%E8%AF%A6%E8%A7%A3/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python装饰器详解</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
