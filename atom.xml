@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-20T08:11:28.861Z</updated>
+  <updated>2022-01-20T08:27:16.137Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python导入包的语法&#39;from module import *&#39;一定能导入包下面的所有方法嘛?</title>
+    <link href="http://example.com/2022/01/20/Python%E5%AF%BC%E5%85%A5%E5%8C%85%E7%9A%84%E8%AF%AD%E6%B3%95&#39;from%20module%20import&#39;%E7%9C%9F%E7%9A%84%E8%83%BD%E5%AF%BC%E5%85%A5%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%89%80%E6%9C%89%E6%96%B9%E6%B3%95%E5%98%9B/"/>
+    <id>http://example.com/2022/01/20/Python%E5%AF%BC%E5%85%A5%E5%8C%85%E7%9A%84%E8%AF%AD%E6%B3%95&#39;from%20module%20import&#39;%E7%9C%9F%E7%9A%84%E8%83%BD%E5%AF%BC%E5%85%A5%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%89%80%E6%9C%89%E6%96%B9%E6%B3%95%E5%98%9B/</id>
+    <published>2022-01-20T08:20:30.000Z</published>
+    <updated>2022-01-20T08:27:16.137Z</updated>
+    
+    <content type="html"><![CDATA[<p>在一个模块中，以单下划线<code>_</code>开头命名的函数(方法)是定义为私有的，用<code>from module import *</code>是导入不了这些私有方法；那么还有一种方法就是在<code>__all__</code>列表中去除不想导入的函数(方法)，如下所示以<code>_</code>开头命名的函数就不会导入到其他代码中(这是一个自写日志模板):</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getnowtime</span>():</span></span><br><span class="line">    <span class="keyword">return</span> datetime.datetime.now().strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_log</span>(<span class="params">content, level, *args</span>):</span></span><br><span class="line">    sys.stdout.write(<span class="string">&quot;%s - %s - %s\n&quot;</span> % (getnowtime(), level, content))</span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> args:</span><br><span class="line">        sys.stdout.write(<span class="string">&quot;%s\n&quot;</span> % arg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>(<span class="params">content, *args</span>):</span></span><br><span class="line">    _log(content, <span class="string">&#x27;DEBUG&#x27;</span>, *args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">info</span>(<span class="params">content, *args</span>):</span></span><br><span class="line">    _log(content, <span class="string">&#x27;INFO&#x27;</span>, *args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">warn</span>(<span class="params">content, *args</span>):</span></span><br><span class="line">    _log(content, <span class="string">&#x27;WARN&#x27;</span>, *args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">error</span>(<span class="params">content, *args</span>):</span></span><br><span class="line">    _log(content, <span class="string">&#x27;ERROR&#x27;</span>, *args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exception</span>(<span class="params">content</span>):</span></span><br><span class="line">    sys.stdout.write(<span class="string">&quot;%s - %s\n&quot;</span> % (getnowtime(), content))</span><br><span class="line">    traceback.print_exc(file=sys.stdout)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在一个模块中，以单下划线&lt;code&gt;_&lt;/code&gt;开头命名的函数(方法)是定义为私有的，用&lt;code&gt;from module import *&lt;/code&gt;是导入不了这些私有方法；那么还有一种方法就是在&lt;code&gt;__all__&lt;/code&gt;列表中去除不想导入的函数(方法</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python50个实用代码</title>
@@ -422,29 +442,6 @@
                      lazyload
                      src=&quot;/images/loading.svg&quot;
                      data-sr</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Goland编辑器配置GOROOT时报错The selected directory is not a valid home for Go SDK的解决方法</title>
-    <link href="http://example.com/2022/01/15/Goland%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AEGOROOT%E6%97%B6%E6%8A%A5%E9%94%99The%20selected%20directory%20is%20not%20a%20valid%20home%20for%20Go%20SDK%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://example.com/2022/01/15/Goland%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AEGOROOT%E6%97%B6%E6%8A%A5%E9%94%99The%20selected%20directory%20is%20not%20a%20valid%20home%20for%20Go%20SDK%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
-    <published>2022-01-15T14:20:28.509Z</published>
-    <updated>2022-01-15T14:19:41.345Z</updated>
-    
-    <content type="html"><![CDATA[<p>操作系统: win10</p><p>Go版本: 1.17.3</p><p>集成开发环境版本: GoLand 2019.3</p><p>GoLand指定Go版本报错: The selected directory is not a valid home for Go SDK</p><p>解决方法:</p><p>打开Go的安装目录，我这里的是: C:\Program Files\Go</p><p>然后进入这个文件: src\runtime\internal\sys\zversion.go</p><p>添加一条</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const TheVersion = `go1.17.3`</span><br></pre></td></tr></table></figure><p>然后即可添加，添加C:\Program Files\Go这个路径即可</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;操作系统: win10&lt;/p&gt;
-&lt;p&gt;Go版本: 1.17.3&lt;/p&gt;
-&lt;p&gt;集成开发环境版本: GoLand 2019.3&lt;/p&gt;
-&lt;p&gt;GoLand指定Go版本报错: The selected directory is not a valid home for Go S</summary>
       
     
     
