@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-19T08:53:55.425Z</updated>
+  <updated>2022-01-20T03:17:54.860Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用sourcetree提交代码显示 hint Updates were rejected because the remote contains work that you do的解决方法</title>
+    <link href="http://example.com/2022/01/20/%E4%BD%BF%E7%94%A8sourcetree%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%98%BE%E7%A4%BA%20hint%20Updates%20were%20rejected%20because%20the%20remote%20contains%20work%20that%20you%20do%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2022/01/20/%E4%BD%BF%E7%94%A8sourcetree%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%98%BE%E7%A4%BA%20hint%20Updates%20were%20rejected%20because%20the%20remote%20contains%20work%20that%20you%20do%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2022-01-20T03:11:30.000Z</published>
+    <updated>2022-01-20T03:17:54.860Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天由于在GitLab上修改了远程仓库的代码，然后忘了同步到本地，使用sourcetree提交就出现了上传错误:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hint Updates were rejected because the remote contains work that you do</span><br></pre></td></tr></table></figure><p>其实报错已经说的很明白了，就是远端还有在进行的工作，也就是我们的代码远程和本地不一致，所以我们就需要先同步下:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220119/Snipaste_2022-01-20_11-16-34.1j3h3p37w6e8.webp"                      alt="Snipaste_2022-01-20_11-16-34"                ></p><p>再次提交即可提交成功!</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天由于在GitLab上修改了远程仓库的代码，然后忘了同步到本地，使用sourcetree提交就出现了上传错误:&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于HTTP状态码</title>
@@ -422,29 +443,6 @@
       
       
     <summary type="html">&lt;p&gt;异步IO是个好东西，在网络读写场景中可以大大提高程序的并发能力，比如爬虫、web服务等；这样好的东西自然也要用到Python中，不过，在漫长的Python2时代，官方并没有推出一个自己的异步IO库，到了Python3.4才推出；我们先来看看异步IO在Python中的发展历史</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python 中__new__和__init__的异同点</title>
-    <link href="http://example.com/2022/01/14/Python%20%E4%B8%AD__new__%E5%92%8C__init__%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9/"/>
-    <id>http://example.com/2022/01/14/Python%20%E4%B8%AD__new__%E5%92%8C__init__%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9/</id>
-    <published>2022-01-14T03:50:30.000Z</published>
-    <updated>2022-01-14T07:01:13.653Z</updated>
-    
-    <content type="html"><![CDATA[<p>同: 二者均是Python面向对象语言中的函数，__new__比较少用，__init__则用的比较多</p><p>异: </p><ul><li><code>__new__</code>是在实例创建之前被调用的，因为它的任务就是创建实例然后直接返回该实例对象，是个<strong>静态方法</strong></li><li><code>__init__</code>是当实例对象创建完成后被调用的，然后设置对象属性的一些初始值，通常在初始化一个类实例的时候被调用，是一个<strong>实例方法</strong></li></ul><p>总结来说也就是: <code>__new__</code>先被调用，<code>__init__</code>后被调用，<code>__new__</code>的返回值（实例）将传递给<code>__init__</code>方法的第一个参数，然后<code>__init__</code>给这个实例设置一些参数</p><p>一些说明:</p><ol><li>继承自object的新式类才有<code>__new__</code></li><li><code>__new__</code>至少要有一个参数cls，代表当前类，此参数在实例化时由Python解释器自动识别</li><li><code>__new__</code><strong>必须要有返回值</strong>，返回实例化出来的实例，这点在自己实现<code>__new__</code>时要特别注意，可以return父类<code>__new__</code>出来的实例，或者是直接object<code>__new__</code>出来的 实例</li><li><code>__init__</code>有一个参数self，这个就是<code>__new__</code>返回的实例，<code>__init__</code>在<code>__new__</code>的基础上可以完成一些其它初始化的操作，<code>__init__</code><strong>不需要返回值</strong></li><li>如果<code>__new__</code>创建的是当前类的实例，会自动调用<code>__init__</code>函数，通过return语句里面调用的<code>__new__</code>函数的第一个参数是cls来保证是当前类实例，如果是其它类的类名，那么实际创建返回的就是其他类的实例</li><li>在定义子类时没有重新定义<code>__new__</code>时，Python默认是调用该类的直接父类的<code>__new__</code>来构造该类的实例，如果该类的父类也没有重写<code>__new__</code>，那么将一直按此规矩追溯至object的<code>__new__</code>方法，因为object是所有新式类的基类</li><li>而如果子类中重写了<code>__new__</code>，那么你可以自由选择任意一个的其他新式类(必定要是新式类，只有新式类必定都有<code>__new__</code>，因为所有新式类都是object的后代，而经典类则没有<code>__new__</code>方法)的<code>__new__</code>方法来制造实例</li><li>对于子类的<code>__init__</code>，其调用规制跟<code>__new__</code>是一致的，当然如果子类和父类的<code>__init__</code>都想调用，可以在子类的<code>__init__</code>中加入对父类<code>__init__</code>的调用</li><li>我们在使用时，尽量使用<code>__init__</code>，不要去自定义<code>__new__</code>，因为这两者在继承派生时的特性还是很不一样的</li><li><strong>将类比作制造商，<code>__new__</code>方法就是前期的原料购买环节，<code>__init__</code>方法就是在原有材料的基础上加工、初始化商品化环节</strong></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;同: 二者均是Python面向对象语言中的函数，__new__比较少用，__init__则用的比较多&lt;/p&gt;
-&lt;p&gt;异: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;__new__&lt;/code&gt;是在实例创建之前被调用的，因为它的任务就是创建实例然后直接返回该实例对象，是个&lt;st</summary>
       
     
     
