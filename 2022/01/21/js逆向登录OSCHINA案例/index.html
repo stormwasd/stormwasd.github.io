@@ -9,7 +9,7 @@
     
     <title>
         
-            稷生科技爬虫项目Apollo配置 |
+            js逆向登录OSCHINA案例 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">稷生科技爬虫项目Apollo配置</span>
+            <span class="title-hover-animation">js逆向登录OSCHINA案例</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-21 11:28:30</span>
-        <span class="mobile">2022-01-21 11:28</span>
+        <span class="pc">2022-01-21 14:48:30</span>
+        <span class="mobile">2022-01-21 14:48</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>120 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>668 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -192,13 +192,41 @@
         
 
         <div class="article-content markdown-body">
-            <p>﻿﻿### 第一个App_ID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MONGO_HOST = 192.168.3.85</span><br><span class="line">MONGO_PORT = 27017</span><br><span class="line"># 数据库地址</span><br><span class="line">MONGO_DATABASE = popular_industry</span><br><span class="line"></span><br><span class="line">MYSQL_HOST = 192.168.3.85</span><br><span class="line">MYSQL_PORT = 3306</span><br><span class="line">MYSQL_DATABASE = industry</span><br><span class="line">MYSQL_USER = root</span><br><span class="line">MYSQL_PASSWORD = 123456</span><br><span class="line">MYSQL_CHARSET = utf8</span><br><span class="line"></span><br><span class="line"># 文件上传地址</span><br><span class="line">send_url = http://192.168.3.85:8500/file/upload/</span><br><span class="line"># 代理地址</span><br><span class="line">PROXY_GET_URL = http://192.168.3.85:5010/get/</span><br><span class="line"># 卡夫卡地址</span><br><span class="line">KAFKA_URL = 192.168.0.11:9092</span><br><span class="line"></span><br><span class="line"># 开启爬虫监控</span><br><span class="line">EXTENSIONS = &#123;&quot;pybase.monitor_extension.Monitor&quot;: 300&#125;</span><br></pre></td></tr></table></figure>
+            <p>我们首先打开<a class="link"   target="_blank" rel="noopener" href="https://www.oschina.net/" >OSCHINA<i class="fas fa-external-link-alt"></i></a>的网站，然后我们点击登录，打开登录界面，随便输入一个手机号和密码，然后在点击登录前F12打开控制台，调到xhr/fetch去监控ajax请求，登录过程一般都是ajax完成的，我们会看到如下一个请求，并且看到这个请求所带的参数:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_14-52-59.1bls5oubwv8g.webp"
+                      alt="Snipaste_2022-01-21_14-52-59"
+                ></p>
+<p>我用postman测试了下这个请求，发现只有前两个是必选的参数:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_14-56-28.7j0m86i6esc0.webp"
+                      alt="Snipaste_2022-01-21_14-56-28"
+                ></p>
+<p>选中的这些数据都可以去掉</p>
+<p>然后我们就只剩下一个加密参数了也就是pwd，我们全局搜索下pwd，发现它只出现在一个js文件中，我们进入这个js文件，然后再在文件内局部搜索下pwd，很快就定位到了加密的代码:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_15-02-56.2mijdn4jbhu0.webp"
+                      alt="Snipaste_2022-01-21_15-02-56"
+                ></p>
+<p>然后在pwd的那一行打个断点，点击登录验证一下，确实就是我们登录那个POST请求所要求携带的pwd参数，我们把上图加密的代码扣下来看看:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd: CryptoJS.SHA1(passwordInput.val()).toString()</span><br></pre></td></tr></table></figure>
 
-<h3 id="第二个App-ID"><a href="#第二个App-ID" class="headerlink" title="第二个App_ID"></a>第二个App_ID</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 表名</span><br><span class="line">MONGO_TABLE = xxx_xxx_xxx</span><br><span class="line"># 去重字段</span><br><span class="line">MONGO_TABLE_UNIQUE_INDEX = [&quot;title&quot;,&quot;content_url&quot;]</span><br></pre></td></tr></table></figure>
+<p>从上面代码我们很容易发现这是个SHA1的加密方式，然后我们用代码实现下，其中参考了<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41354919/article/details/116494736" >这个博客<i class="fas fa-external-link-alt"></i></a>，代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"></span><br><span class="line">js_code = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">const CryptoJS = require(&#x27;crypto-js&#x27;);</span></span><br><span class="line"><span class="string">function get_pwd()&#123;</span></span><br><span class="line"><span class="string">pwd = CryptoJS.SHA1(&#x27;zx360828htc&#x27;).toString()</span></span><br><span class="line"><span class="string">return pwd</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">ctx = execjs.<span class="built_in">compile</span>(js_code, cwd=<span class="string">r&quot;C:\Users\Administrator\node_modules\crypto-js&quot;</span>)</span><br><span class="line">encrypted_password = ctx.call(<span class="string">&quot;get_pwd&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(encrypted_password)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(encrypted_password))</span><br><span class="line"><span class="comment"># 运行结果:</span></span><br><span class="line"><span class="comment"># 256666b697279162f5299bc24c6f321bc284b0e0</span></span><br><span class="line"><span class="comment"># 40</span></span><br></pre></td></tr></table></figure>
+
+<p>有了加密后的密码我们就可以进行模拟登录了，下面来看看如何用Python进行模拟登录:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> decrypt_pwd_ofoschina <span class="keyword">import</span> get_login_pwd</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.oschina.net/action/user/hash_login?from=&quot;</span></span><br><span class="line">pwd = get_login_pwd()</span><br><span class="line"></span><br><span class="line">payload = <span class="string">f&quot;email=18979685341&amp;pwd=<span class="subst">&#123;pwd&#125;</span>&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua&#x27;</span>: <span class="string">&#x27;&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;97&quot;, &quot;Chromium&quot;;v=&quot;97&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;*/*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded; charset=UTF-8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;X-Requested-With&#x27;</span>: <span class="string">&#x27;XMLHttpRequest&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-mobile&#x27;</span>: <span class="string">&#x27;?0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-platform&#x27;</span>: <span class="string">&#x27;&quot;Windows&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;https://www.oschina.net&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Site&#x27;</span>: <span class="string">&#x27;same-origin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Mode&#x27;</span>: <span class="string">&#x27;cors&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Dest&#x27;</span>: <span class="string">&#x27;empty&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;https://www.oschina.net/home/login&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.9&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;_user_behavior_=869ac9fb-a9c0-4b89-b84c-f3bd9b9e657e; __gads=ID=e804becd9a702ae8-2294f8f86ecc0047:T=1634122318:RT=1634122318:S=ALNI_MYpfoD33y1FqNGvewkr-WD0UROc7w; yp_riddler_id=eea8a882-b254-4e26-9e34-82dcc3ff5f5c; _reg_key_=pNX1Xow6usH8HciTyIjR; Hm_lvt_a411c4d1664dd70048ee98afe7b28f0b=1642068454,1642127481,1642736864; Hm_lpvt_a411c4d1664dd70048ee98afe7b28f0b=1642736864; oscid=9I1JeAH9dWYUkGb%2Fhmkhg5wb6PWH8sQSbjFU1yL96oZ4%2Ftn5l%2BoR%2FuOWEEMrD3gFoV7TwIofZyT%2Bk8Ii7KgZjEHIs%2FkSc6cZf9rTcCvUltmDLUZDlD5gRtVB63Kq6feyjasfipeSeXnrCMvUVOA7Rw%3D%3D&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.request(</span><br><span class="line">    <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=payload)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 
-<p>注意：要先在本地和docker上安装最新版  pycommon-pro-x.x.x.tar.gz</p>
+
+
+
 
         </div>
 
@@ -206,11 +234,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：稷生科技爬虫项目Apollo配置</li>
+        <li>Post title：js逆向登录OSCHINA案例</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-21 11:28:30</li>
+        <li>Create time：2022-01-21 14:48:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/21/稷生科技爬虫项目Apollo配置/
+            Post link：https://keep.xpoet.cn/2022/01/21/js逆向登录OSCHINA案例/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -226,29 +254,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/21/js%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95OSCHINA%E6%A1%88%E4%BE%8B/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">js逆向登录OSCHINA案例</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/21/%E5%9F%BA%E6%9C%AC%E5%8F%AF%E4%BB%A5%E5%8F%96%E4%BB%A3Postman%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7curl%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B/"
+                           href="/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">基本可以取代Postman的命令行工具curl使用简介</span>
+                                <span class="post-nav-title-item">稷生科技爬虫项目Apollo配置</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -466,7 +479,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AAApp-ID"><span class="nav-number">1.</span> <span class="nav-text">第二个App_ID</span></a></li></ol>
+        
     </div>
 </div>
         </aside>
