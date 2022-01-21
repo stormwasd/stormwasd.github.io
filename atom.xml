@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-21T03:26:48.479Z</updated>
+  <updated>2022-01-21T03:28:46.166Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>稷生科技爬虫项目Apollo配置</title>
+    <link href="http://example.com/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"/>
+    <id>http://example.com/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/</id>
+    <published>2022-01-21T03:28:30.000Z</published>
+    <updated>2022-01-21T03:28:46.166Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿﻿### 第一个App_ID</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MONGO_HOST = 192.168.3.85</span><br><span class="line">MONGO_PORT = 27017</span><br><span class="line"># 数据库地址</span><br><span class="line">MONGO_DATABASE = popular_industry</span><br><span class="line"></span><br><span class="line">MYSQL_HOST = 192.168.3.85</span><br><span class="line">MYSQL_PORT = 3306</span><br><span class="line">MYSQL_DATABASE = industry</span><br><span class="line">MYSQL_USER = root</span><br><span class="line">MYSQL_PASSWORD = 123456</span><br><span class="line">MYSQL_CHARSET = utf8</span><br><span class="line"></span><br><span class="line"># 文件上传地址</span><br><span class="line">send_url = http://192.168.3.85:8500/file/upload/</span><br><span class="line"># 代理地址</span><br><span class="line">PROXY_GET_URL = http://192.168.3.85:5010/get/</span><br><span class="line"># 卡夫卡地址</span><br><span class="line">KAFKA_URL = 192.168.0.11:9092</span><br><span class="line"></span><br><span class="line"># 开启爬虫监控</span><br><span class="line">EXTENSIONS = &#123;&quot;pybase.monitor_extension.Monitor&quot;: 300&#125;</span><br></pre></td></tr></table></figure><h3 id="第二个App-ID"><a href="#第二个App-ID" class="headerlink" title="第二个App_ID"></a>第二个App_ID</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 表名</span><br><span class="line">MONGO_TABLE = xxx_xxx_xxx</span><br><span class="line"># 去重字段</span><br><span class="line">MONGO_TABLE_UNIQUE_INDEX = [&quot;title&quot;,&quot;content_url&quot;]</span><br></pre></td></tr></table></figure><p>注意：要先在本地和docker上安装最新版  pycommon-pro-x.x.x.tar.gz</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;﻿﻿### 第一个App_ID&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;li</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>基本可以取代Postman的命令行工具curl使用简介</title>
@@ -49,27 +70,6 @@
       
       
     <summary type="html">&lt;p&gt;我们来看下LeetCode上一个相对简单的题，&lt;a class=&quot;link&quot;   href=&quot;https://leetcode-cn.com/problems/linked-list-cycle/&quot; &gt;环形链表&lt;i class=&quot;fas fa-external-link-a</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"/>
-    <id>http://example.com/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/</id>
-    <published>2022-01-21T02:58:18.406Z</published>
-    <updated>2021-12-09T11:00:29.373Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿### 第一个App_ID</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MONGO_HOST = 192.168.3.85</span><br><span class="line">MONGO_PORT = 27017</span><br><span class="line"># 数据库地址</span><br><span class="line">MONGO_DATABASE = popular_industry</span><br><span class="line"></span><br><span class="line">MYSQL_HOST = 192.168.3.85</span><br><span class="line">MYSQL_PORT = 3306</span><br><span class="line">MYSQL_DATABASE = industry</span><br><span class="line">MYSQL_USER = root</span><br><span class="line">MYSQL_PASSWORD = 123456</span><br><span class="line">MYSQL_CHARSET = utf8</span><br><span class="line"></span><br><span class="line"># 文件上传地址</span><br><span class="line">send_url = http://192.168.3.85:8500/file/upload/</span><br><span class="line"># 代理地址</span><br><span class="line">PROXY_GET_URL = http://192.168.3.85:5010/get/</span><br><span class="line"># 卡夫卡地址</span><br><span class="line">KAFKA_URL = 192.168.0.11:9092</span><br><span class="line"></span><br><span class="line"># 开启爬虫监控</span><br><span class="line">EXTENSIONS = &#123;&quot;pybase.monitor_extension.Monitor&quot;: 300&#125;</span><br></pre></td></tr></table></figure><h3 id="第二个App-ID"><a href="#第二个App-ID" class="headerlink" title="第二个App_ID"></a>第二个App_ID</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 表名</span><br><span class="line">MONGO_TABLE = xxx_xxx_xxx</span><br><span class="line"># 去重字段</span><br><span class="line">MONGO_TABLE_UNIQUE_INDEX = [&quot;title&quot;,&quot;content_url&quot;]</span><br></pre></td></tr></table></figure><p>注意：要先在本地和docker上安装最新版  pycommon-pro-x.x.x.tar.gz</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;﻿### 第一个App_ID&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;lin</summary>
       
     
     
