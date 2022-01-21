@@ -9,7 +9,7 @@
     
     <title>
         
-            Leetcode160.相交链表 |
+            Leetcode141.环形链表 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Leetcode160.相交链表</span>
+            <span class="title-hover-animation">Leetcode141.环形链表</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-21 09:35:30</span>
-        <span class="mobile">2022-01-21 09:35</span>
+        <span class="pc">2022-01-21 11:00:30</span>
+        <span class="mobile">2022-01-21 11:00</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>628 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>350 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -192,28 +192,14 @@
         
 
         <div class="article-content markdown-body">
-            <p>今天我们来看看一道简单的题，题意<a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" >点击跳转<i class="fas fa-external-link-alt"></i></a>，分析之后我们得知，这道题给定两个单链表的头结点<code>headA</code>和<code>headB</code>，然后要我们找出并返回这两个单链表相交的第一个节点，如果两个链表不存在节点，便返回<code>null</code></p>
-<p>我们可以分析下，两个链表，既然要相交，那么相交之前的那段链表必然有长有短或者是同样长度，相交的定义就是这两个单链表的某个值相同那就在这个地方相交，既然要判断值是否相同那就需要一个一个去对比，我们就需要在两个单链表都有值的地方开始遍历去判断值是否相同，所以我们可以有如下思路:</p>
+            <p>我们来看下LeetCode上一个相对简单的题，<a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/" >环形链表<i class="fas fa-external-link-alt"></i></a>，这里给定一个链表，要求我们判断链表中是否有环</p>
+<p>这道题的思路就是快慢指针，快慢指针这种算法证明，一快一慢两个指针肯定是会相遇的，快的指针一定会追上慢的指针，可以理解为操场上跑步，跑得快的人会超圈追上跑得慢的人，一般使用fast定义快指针，用slow定义慢指针，速度不同是指fast每次多走几步，slow少走几步，一般的设定都是fast走2步，slow走1步；本题就是使用快慢指针</p>
 <ul>
-<li><p>这里有两个链表A和B，headA指向链表A的头节点，headB指向链表B的头结点</p>
-</li>
-<li><p>初始化两个指针，flagA和flagB，以及链表的长度lenA和lenB</p>
-</li>
-<li><p>然后求得链表A和B的长度分别为lenA和lenB</p>
-</li>
-<li><p>求完两个长度之后，两个指针都重新指向链表头部</p>
-</li>
-<li><p>然后如果A是长链表，则指针flagA后移到和B链表同等长度的位置上</p>
-</li>
-<li><p>如果B是长链表，则指针flagB后移到和A链表同等长度的位置上</p>
-</li>
-<li><p>然后两个指针flagA和flagB同时遍历，如果遇到相同的就返回，遍历完没有遇到，就返回None</p>
-</li>
+<li>若是链表<strong>无环</strong>，那么fast指针回先指向Null</li>
+<li>若是链表<strong>有环</strong>，fast和slow迟早会在环中相遇</li>
 </ul>
 <p>Python代码实现:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIntersectionNode</span>(<span class="params">self, headA: ListNode, headB: ListNode</span>) -&gt; ListNode:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 链表A和B任一为空，链表不相交</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> headA <span class="keyword">or</span> <span class="keyword">not</span> headB:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化headA、headB的指针和长度</span></span><br><span class="line">        flagA, flagB = headA, headB</span><br><span class="line">        lenA, lenB = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 求链表 A 的长度</span></span><br><span class="line">        <span class="keyword">while</span> flagA:</span><br><span class="line">            flagA = flagA.<span class="built_in">next</span></span><br><span class="line">            lenA += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 求链表 B 的长度</span></span><br><span class="line">        <span class="keyword">while</span> flagB:</span><br><span class="line">            flagB = flagB.<span class="built_in">next</span></span><br><span class="line">            lenB += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 重新指向表头</span></span><br><span class="line">        flagA, flagB = headA, headB</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 为了让大家看的明白点，我就不用华丽花哨的写法了，用最笨的写法表示。</span></span><br><span class="line">        <span class="comment"># 当A是长链表，则指针flagA后移到和B链表同等长度的位置上。</span></span><br><span class="line">        <span class="keyword">if</span> lenA &gt; lenB:</span><br><span class="line">            d_value = lenA - lenB</span><br><span class="line">            <span class="keyword">while</span> d_value:</span><br><span class="line">                flagA = flagA.<span class="built_in">next</span></span><br><span class="line">                d_value -= <span class="number">1</span></span><br><span class="line">        <span class="comment"># 当B是长链表，则指针flagB后移到和A链表同等长度的位置上。</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d_value = lenB - lenA</span><br><span class="line">            <span class="keyword">while</span> d_value:</span><br><span class="line">                flagB = flagB.<span class="built_in">next</span></span><br><span class="line">                d_value -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 然后两个指针flagA和flagB同时遍历</span></span><br><span class="line">        <span class="keyword">while</span> flagA:</span><br><span class="line">            <span class="keyword">if</span> flagA == flagB:</span><br><span class="line">                <span class="keyword">return</span> flagA</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                flagA = flagA.<span class="built_in">next</span></span><br><span class="line">                flagB = flagB.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果没有相遇，返回 None</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasCycle</span>(<span class="params">self, head: ListNode</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 空链表或链表只有一个节点，无环</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> head.<span class="built_in">next</span> == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化快慢指针</span></span><br><span class="line">        fast = slow = head</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果不存在环，肯定 fast 先指向 null</span></span><br><span class="line">        <span class="comment"># 细节：fast 每次走 2 步，所以要确定 fast 和 fast.next 不为空，不然会报执行出错。</span></span><br><span class="line">        <span class="keyword">while</span> fast <span class="keyword">and</span> fast.<span class="built_in">next</span>:</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 快指针移动 2 步，慢指针移动 1 步</span></span><br><span class="line">            fast = fast.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">            slow = slow.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 快慢指针相遇，有环</span></span><br><span class="line">            <span class="keyword">if</span> fast == slow:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -222,11 +208,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Leetcode160.相交链表</li>
+        <li>Post title：Leetcode141.环形链表</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-21 09:35:30</li>
+        <li>Create time：2022-01-21 11:00:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/21/Leetcode160.相交链表/
+            Post link：https://keep.xpoet.cn/2022/01/21/Leetcode141.环形链表/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -242,29 +228,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%89%AB%E7%9B%B2--%E8%BD%AC%E8%BD%BD%E8%87%AA%E5%A4%B4%E6%9D%A1/"
+                           href="/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">计算机网络知识扫盲--转载自头条</span>
+                                <span class="post-nav-title-item"></span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
