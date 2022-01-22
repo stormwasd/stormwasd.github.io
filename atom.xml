@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-21T08:05:16.246Z</updated>
+  <updated>2022-01-22T01:11:39.327Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Ajax</title>
+    <link href="http://example.com/2022/01/22/%E5%85%B3%E4%BA%8EAjax/"/>
+    <id>http://example.com/2022/01/22/%E5%85%B3%E4%BA%8EAjax/</id>
+    <published>2022-01-22T01:02:30.000Z</published>
+    <updated>2022-01-22T01:11:39.327Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Ajax介绍"><a href="#Ajax介绍" class="headerlink" title="Ajax介绍"></a>Ajax介绍</h3><p>从数据的角度考虑，网页上呈现出来的数据的来源:</p><ol><li>html文件 60%</li><li>Ajax接口 30%</li><li>JavaScript加载 10%</li></ol><p>那么Ajax是什么，Ajax是<strong>异步的JavaScript和XML</strong>的英文翻译缩写，这个技术可以<strong>在页面不刷新的情况下，利用js和后端服务器进行交互，将内容显示在前端页面上</strong>，优点是<strong>可以大大提高网页的打开速度</strong>，从开发角度可以做到前后端分离，提高开发速度</p><h3 id="Ajax的工作步骤"><a href="#Ajax的工作步骤" class="headerlink" title="Ajax的工作步骤"></a>Ajax的工作步骤</h3><ol><li>发送请求: 通过接口，js向服务器发送xmlhttp请求(XHR)</li><li>解析内容: js得到响应后，返回的内容可能是html，也可能是json格式</li><li>渲染网页: js通过操纵dom树，改变dom节点的内容，达到修改网页的目的</li></ol><h3 id="如何找接口"><a href="#如何找接口" class="headerlink" title="如何找接口"></a>如何找接口</h3><p>浏览器的开发者工具</p><p>利用官方接口比如Facebook的graph api</p><p>restful api风格接口</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Ajax介绍&quot;&gt;&lt;a href=&quot;#Ajax介绍&quot; class=&quot;headerlink&quot; title=&quot;Ajax介绍&quot;&gt;&lt;/a&gt;Ajax介绍&lt;/h3&gt;&lt;p&gt;从数据的角度考虑，网页上呈现出来的数据的来源:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;html文件 60%&lt;/li&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>js逆向登录OSCHINA案例</title>
@@ -411,29 +434,6 @@
       
     <summary type="html">&lt;p&gt;获得本机Mac地址:&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/s</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2022-1-17每日英语</title>
-    <link href="http://example.com/2022/01/17/2022-1-17%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    <id>http://example.com/2022/01/17/2022-1-17%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/</id>
-    <published>2022-01-17T08:31:30.000Z</published>
-    <updated>2022-01-20T08:34:15.304Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>passport n.护照，途径，手段</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;passport n.护照，途径，手段&lt;/li&gt;
-&lt;/ol&gt;
-</summary>
       
     
     

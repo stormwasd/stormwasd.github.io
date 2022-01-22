@@ -9,7 +9,7 @@
     
     <title>
         
-            js逆向登录OSCHINA案例 |
+            关于Ajax |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">js逆向登录OSCHINA案例</span>
+            <span class="title-hover-animation">关于Ajax</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-21 14:48:30</span>
-        <span class="mobile">2022-01-21 14:48</span>
+        <span class="pc">2022-01-22 09:02:30</span>
+        <span class="mobile">2022-01-22 09:02</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>668 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>239 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -192,41 +192,21 @@
         
 
         <div class="article-content markdown-body">
-            <p>我们首先打开<a class="link"   target="_blank" rel="noopener" href="https://www.oschina.net/" >OSCHINA<i class="fas fa-external-link-alt"></i></a>的网站，然后我们点击登录，打开登录界面，随便输入一个手机号和密码，然后在点击登录前F12打开控制台，调到xhr/fetch去监控ajax请求，登录过程一般都是ajax完成的，我们会看到如下一个请求，并且看到这个请求所带的参数:</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_14-52-59.1bls5oubwv8g.webp"
-                      alt="Snipaste_2022-01-21_14-52-59"
-                ></p>
-<p>我用postman测试了下这个请求，发现只有前两个是必选的参数:</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_14-56-28.7j0m86i6esc0.webp"
-                      alt="Snipaste_2022-01-21_14-56-28"
-                ></p>
-<p>选中的这些数据都可以去掉</p>
-<p>然后我们就只剩下一个加密参数了也就是pwd，我们全局搜索下pwd，发现它只出现在一个js文件中，我们进入这个js文件，然后再在文件内局部搜索下pwd，很快就定位到了加密的代码:</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220121/Snipaste_2022-01-21_15-02-56.2mijdn4jbhu0.webp"
-                      alt="Snipaste_2022-01-21_15-02-56"
-                ></p>
-<p>然后在pwd的那一行打个断点，点击登录验证一下，确实就是我们登录那个POST请求所要求携带的pwd参数，我们把上图加密的代码扣下来看看:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd: CryptoJS.SHA1(passwordInput.val()).toString()</span><br></pre></td></tr></table></figure>
-
-<p>从上面代码我们很容易发现这是个SHA1的加密方式，然后我们用代码实现下，其中参考了<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41354919/article/details/116494736" >这个博客<i class="fas fa-external-link-alt"></i></a>，代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"></span><br><span class="line">js_code = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">const CryptoJS = require(&#x27;crypto-js&#x27;);</span></span><br><span class="line"><span class="string">function get_pwd()&#123;</span></span><br><span class="line"><span class="string">pwd = CryptoJS.SHA1(&#x27;zx360828htc&#x27;).toString()</span></span><br><span class="line"><span class="string">return pwd</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">ctx = execjs.<span class="built_in">compile</span>(js_code, cwd=<span class="string">r&quot;C:\Users\Administrator\node_modules\crypto-js&quot;</span>)</span><br><span class="line">encrypted_password = ctx.call(<span class="string">&quot;get_pwd&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(encrypted_password)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(encrypted_password))</span><br><span class="line"><span class="comment"># 运行结果:</span></span><br><span class="line"><span class="comment"># 256666b697279162f5299bc24c6f321bc284b0e0</span></span><br><span class="line"><span class="comment"># 40</span></span><br></pre></td></tr></table></figure>
-
-<p>有了加密后的密码我们就可以进行模拟登录了，下面来看看如何用Python进行模拟登录:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> decrypt_pwd_ofoschina <span class="keyword">import</span> get_login_pwd</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.oschina.net/action/user/hash_login?from=&quot;</span></span><br><span class="line">pwd = get_login_pwd()</span><br><span class="line"></span><br><span class="line">payload = <span class="string">f&quot;email=18979685341&amp;pwd=<span class="subst">&#123;pwd&#125;</span>&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua&#x27;</span>: <span class="string">&#x27;&quot; Not;A Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;97&quot;, &quot;Chromium&quot;;v=&quot;97&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;*/*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded; charset=UTF-8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;X-Requested-With&#x27;</span>: <span class="string">&#x27;XMLHttpRequest&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-mobile&#x27;</span>: <span class="string">&#x27;?0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sec-ch-ua-platform&#x27;</span>: <span class="string">&#x27;&quot;Windows&quot;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;https://www.oschina.net&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Site&#x27;</span>: <span class="string">&#x27;same-origin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Mode&#x27;</span>: <span class="string">&#x27;cors&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Sec-Fetch-Dest&#x27;</span>: <span class="string">&#x27;empty&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;https://www.oschina.net/home/login&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.9&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;_user_behavior_=869ac9fb-a9c0-4b89-b84c-f3bd9b9e657e; __gads=ID=e804becd9a702ae8-2294f8f86ecc0047:T=1634122318:RT=1634122318:S=ALNI_MYpfoD33y1FqNGvewkr-WD0UROc7w; yp_riddler_id=eea8a882-b254-4e26-9e34-82dcc3ff5f5c; _reg_key_=pNX1Xow6usH8HciTyIjR; Hm_lvt_a411c4d1664dd70048ee98afe7b28f0b=1642068454,1642127481,1642736864; Hm_lpvt_a411c4d1664dd70048ee98afe7b28f0b=1642736864; oscid=9I1JeAH9dWYUkGb%2Fhmkhg5wb6PWH8sQSbjFU1yL96oZ4%2Ftn5l%2BoR%2FuOWEEMrD3gFoV7TwIofZyT%2Bk8Ii7KgZjEHIs%2FkSc6cZf9rTcCvUltmDLUZDlD5gRtVB63Kq6feyjasfipeSeXnrCMvUVOA7Rw%3D%3D&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.request(</span><br><span class="line">    <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    url,</span><br><span class="line">    headers=headers,</span><br><span class="line">    data=payload)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+            <h3 id="Ajax介绍"><a href="#Ajax介绍" class="headerlink" title="Ajax介绍"></a>Ajax介绍</h3><p>从数据的角度考虑，网页上呈现出来的数据的来源:</p>
+<ol>
+<li>html文件 60%</li>
+<li>Ajax接口 30%</li>
+<li>JavaScript加载 10%</li>
+</ol>
+<p>那么Ajax是什么，Ajax是<strong>异步的JavaScript和XML</strong>的英文翻译缩写，这个技术可以<strong>在页面不刷新的情况下，利用js和后端服务器进行交互，将内容显示在前端页面上</strong>，优点是<strong>可以大大提高网页的打开速度</strong>，从开发角度可以做到前后端分离，提高开发速度</p>
+<h3 id="Ajax的工作步骤"><a href="#Ajax的工作步骤" class="headerlink" title="Ajax的工作步骤"></a>Ajax的工作步骤</h3><ol>
+<li>发送请求: 通过接口，js向服务器发送xmlhttp请求(XHR)</li>
+<li>解析内容: js得到响应后，返回的内容可能是html，也可能是json格式</li>
+<li>渲染网页: js通过操纵dom树，改变dom节点的内容，达到修改网页的目的</li>
+</ol>
+<h3 id="如何找接口"><a href="#如何找接口" class="headerlink" title="如何找接口"></a>如何找接口</h3><p>浏览器的开发者工具</p>
+<p>利用官方接口比如Facebook的graph api</p>
+<p>restful api风格接口</p>
 
         </div>
 
@@ -234,11 +214,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：js逆向登录OSCHINA案例</li>
+        <li>Post title：关于Ajax</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-21 14:48:30</li>
+        <li>Create time：2022-01-22 09:02:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/21/js逆向登录OSCHINA案例/
+            Post link：https://keep.xpoet.cn/2022/01/22/关于Ajax/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -254,29 +234,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/22/%E5%85%B3%E4%BA%8EAjax/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">关于Ajax</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/21/%E7%A8%B7%E7%94%9F%E7%A7%91%E6%8A%80%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AEApollo%E9%85%8D%E7%BD%AE/"
+                           href="/2022/01/21/js%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95OSCHINA%E6%A1%88%E4%BE%8B/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">稷生科技爬虫项目Apollo配置</span>
+                                <span class="post-nav-title-item">js逆向登录OSCHINA案例</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -494,7 +459,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Ajax介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">Ajax的工作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">如何找接口</span></a></li></ol>
     </div>
 </div>
         </aside>
