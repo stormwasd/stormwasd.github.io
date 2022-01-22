@@ -121,6 +121,29 @@
   </entry>
   
   <entry>
+    <title>2022-1-21每日英语</title>
+    <link href="http://example.com/2022/01/21/2022-1-21%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    <id>http://example.com/2022/01/21/2022-1-21%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/</id>
+    <published>2022-01-21T02:39:30.000Z</published>
+    <updated>2022-01-22T01:16:17.047Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>candidate n. 候选人[‘kændədets]</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;candidate n. 候选人[‘kændədets]&lt;/li&gt;
+&lt;/ol&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode160.相交链表</title>
     <link href="http://example.com/2022/01/21/Leetcode160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"/>
     <id>http://example.com/2022/01/21/Leetcode160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/</id>
@@ -413,27 +436,6 @@
     <summary type="html">&lt;p&gt;今天在爬网站的时候，由于页面的detail_url在json字符串中，所以用到了jsonpath.jsonpa()这个方法来解析，这个方法解析字符串是很方便的，但是今天遇到了一个坑，下面来详细说明下:&lt;/p&gt;
 &lt;p&gt;首先我们来说下这个方法的使用:&lt;/p&gt;
 &lt;figure c</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python获取本机IP、Mac地址和计算机名</title>
-    <link href="http://example.com/2022/01/18/Python%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAIP%E3%80%81mac%E5%9C%B0%E5%9D%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D/"/>
-    <id>http://example.com/2022/01/18/Python%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAIP%E3%80%81mac%E5%9C%B0%E5%9D%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D/</id>
-    <published>2022-01-18T01:06:30.000Z</published>
-    <updated>2022-01-18T01:17:37.714Z</updated>
-    
-    <content type="html"><![CDATA[<p>获得本机Mac地址:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mac_address</span>():</span> </span><br><span class="line">    mac=uuid.UUID(<span class="built_in">int</span> = uuid.getnode()).<span class="built_in">hex</span>[-<span class="number">12</span>:] </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;:&quot;</span>.join([mac[e:e+<span class="number">2</span>] <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">11</span>,<span class="number">2</span>)])</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-12-58.4d2sxwbsox00.webp"                      alt="Snipaste_2022-01-18_09-12-58"                ></p><p>获得本机IP(内网IP)和计算机名:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="comment">#获取本机电脑名</span></span><br><span class="line">myname = socket.getfqdn(socket.gethostname())</span><br><span class="line"><span class="comment">#获取本机ip</span></span><br><span class="line">myaddr = socket.gethostbyname(myname)</span><br><span class="line"><span class="built_in">print</span> (myname)</span><br><span class="line"><span class="built_in">print</span> (myaddr)</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220117/Snipaste_2022-01-18_09-16-43.24q861f1g5fk.webp"                      alt="Snipaste_2022-01-18_09-16-43"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;获得本机Mac地址:&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/s</summary>
       
     
     
