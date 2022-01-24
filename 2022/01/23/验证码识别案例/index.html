@@ -9,7 +9,7 @@
     
     <title>
         
-            关于Pycharm如何添加代码模板(脚本) |
+            验证码识别简单基础案例 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">关于Pycharm如何添加代码模板(脚本)</span>
+            <span class="title-hover-animation">验证码识别简单基础案例</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-22 15:35:30</span>
-        <span class="mobile">2022-01-22 15:35</span>
+        <span class="pc">2022-01-23 21:51:30</span>
+        <span class="mobile">2022-01-23 21:51</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>176 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>156 Words</span>
         </span>
     
     
@@ -192,37 +192,33 @@
         
 
         <div class="article-content markdown-body">
-            <p>我们看到有些人的Pycharm编辑器每个代码的顶端都有一个提示或者每次都是复用同一个代码，这个操作是怎么完成的呢，我们来看看:</p>
+            <p>案例网站，<a class="link"   target="_blank" rel="noopener" href="https://captcha7.scrape.center/" >点击跳转<i class="fas fa-external-link-alt"></i></a></p>
+<p>所用到的库: tesserocr</p>
+<p>步骤:</p>
 <ol>
-<li><p>打开设置</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_15-38-25.5pgxe4emzpo0.webp"
-                      alt="Snipaste_2022-01-22_15-38-25"
-                ></p>
-</li>
-<li><p>直接找不好找，机智的我们就开搜</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_15-40-14.635g036gxe00.webp"
-                      alt="Snipaste_2022-01-22_15-40-14"
-                ></p>
-<p>可以看到HTMLFile是已经默认配置了的，HTMLFile下方的我们都可以配置，配置完点击Apply再点击OK，或者直接点击OK都行</p>
-</li>
-<li><p>下面这是我配置的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">@Description : </span></span><br><span class="line"><span class="string">@File        : 11</span></span><br><span class="line"><span class="string">@Project     : test</span></span><br><span class="line"><span class="string">@Time        : 2022/1/22 15:52</span></span><br><span class="line"><span class="string">@Author      : LiHouJian</span></span><br><span class="line"><span class="string">@Software    : PyCharm</span></span><br><span class="line"><span class="string">@issue       : </span></span><br><span class="line"><span class="string">@change      : </span></span><br><span class="line"><span class="string">@reason      : </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> scrapy.utils <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">from</span> scrapy.utils.project <span class="keyword">import</span> get_project_settings</span><br><span class="line"><span class="keyword">from</span> pybase.util <span class="keyword">import</span> send_file</span><br></pre></td></tr></table></figure>
-
-<p>效果:</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_16-22-01.69naoak3lws0.webp"
-                      alt="Snipaste_2022-01-22_16-22-01"
-                ></p>
-</li>
+<li>在网页上保存验证码图片到本地</li>
+<li>然后调用tesserocr.image_to_text()方法进行解析</li>
 </ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220123/Snipaste_2022-01-23_21-57-52.2a8mqvug9c2s.webp"
+                      alt="Snipaste_2022-01-23_21-57-52"
+                ></p>
+<p>代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tesserocr</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\Administrator\Pictures\verificationcode-example.png&#x27;</span>)</span><br><span class="line">result = tesserocr.image_to_text(image)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220123/Snipaste_2022-01-24_01-38-44.i8h4hxzb16o.webp"
+                      alt="Snipaste_2022-01-24_01-38-44"
+                ></p>
+<p>在安装<code>tesserocr</code>之前要先安装<code>Tesseract</code>，可以参考<a class="link"   target="_blank" rel="noopener" href="https://cuiqingcai.com/31102.html" >这里<i class="fas fa-external-link-alt"></i></a>，然后我在测试上面代码的时候出现了以下错误:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to init API, possibly an invalid tessdata path: C:\Users\Administrator\AppData\Local\Programs\Python\Python37\/tessdata/</span><br></pre></td></tr></table></figure>
+
+<p>通过<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410428/article/details/82700006" >这个博客<i class="fas fa-external-link-alt"></i></a>我解决了这个问题，也就是需要把<code>tessdata</code>放在Python的目录下</p>
 
         </div>
 
@@ -230,11 +226,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：关于Pycharm如何添加代码模板(脚本)</li>
+        <li>Post title：验证码识别简单基础案例</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-22 15:35:30</li>
+        <li>Create time：2022-01-23 21:51:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/01/22/关于Pycharm如何添加代码模板(脚本)/
+            Post link：https://keep.xpoet.cn/2022/01/23/验证码识别案例/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -250,29 +246,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/23/GitHub%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96Token/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">GitHub如何获取Token</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/22/Python%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85.whl%E6%96%87%E4%BB%B6(%E5%BD%93pip%E5%AE%89%E8%A3%85%E4%B8%8D%E4%BA%86%E6%97%B6)/"
+                           href="/2022/01/23/GitHub%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96Token/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python如何安装.whl文件(当pip安装不了时)</span>
+                                <span class="post-nav-title-item">GitHub如何获取Token</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
