@@ -9,6 +9,8 @@
     
     <title>
         
+            关于asyncio异步编程 |
+        
         Alexander
     </title>
     
@@ -141,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation"></span>
+            <span class="title-hover-animation">关于asyncio异步编程</span>
         </div>
 
         
@@ -160,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-26 15:33:16</span>
-        <span class="mobile">2022-01-26 15:33</span>
+        <span class="pc">2022-01-26 09:42:30</span>
+        <span class="mobile">2022-01-26 09:42</span>
     </span>
     
     
@@ -190,8 +192,7 @@
         
 
         <div class="article-content markdown-body">
-            <p>title: 关于asyncio异步编程<br>date: 2022-1-26 9:42:30</p>
-<h3 id="协程-amp-异步编程-asyncio"><a href="#协程-amp-异步编程-asyncio" class="headerlink" title="协程&amp;异步编程(asyncio)"></a>协程&amp;异步编程(asyncio)</h3><p>协程(Coroutine)，也可以被称为微线程，是一种用户态内的上下文切换技术。简而言之，其实就是通过一个线程实现代码块相互切换执行，例如:</p>
+            <h3 id="协程-amp-异步编程-asyncio"><a href="#协程-amp-异步编程-asyncio" class="headerlink" title="协程&amp;异步编程(asyncio)"></a>协程&amp;异步编程(asyncio)</h3><p>协程(Coroutine)，也可以被称为微线程，是一种用户态内的上下文切换技术。简而言之，其实就是通过一个线程实现代码块相互切换执行，例如:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">1</span>)</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">3</span>)</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">func2()</span><br></pre></td></tr></table></figure>
 
 <p>上述代码是普通的函数定义和执行，按流程分别执行两个函数中的代码，并先后会输出：<code>1、2、3、4</code>。但如果介入协程技术那么就可以实现函数见代码切换执行，最终输入：<code>1、3、2、4</code></p>
@@ -303,6 +304,7 @@
                      data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220124/Snipaste_2022-01-26_15-28-54.22e4znwmjtz4.webp"
                       alt="Snipaste_2022-01-26_15-28-54"
                 ></p>
+<p>本文参考自:<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137057192" >https://zhuanlan.zhihu.com/p/137057192<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -310,9 +312,9 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：</li>
+        <li>Post title：关于asyncio异步编程</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-01-26 15:33:16</li>
+        <li>Create time：2022-01-26 09:42:30</li>
         <li>
             Post link：https://keep.xpoet.cn/2022/01/26/关于asyncio异步编程/
         </li>
