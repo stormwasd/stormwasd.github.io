@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            Python3网络爬虫开发实战第二版第1章-基本库的使用 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Python3网络爬虫开发实战第二版第1章-基本库的使用</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-02-07 17:18:30</span>
+        <span class="mobile">2022-02-07 17:18</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Python提供了功能齐全的类库来帮助我们实现需求，最基础的有HTTP库有urllib、requests、httpx等</p>
+<h2 id="urllib的使用"><a href="#urllib的使用" class="headerlink" title="urllib的使用"></a>urllib的使用</h2><p>注意: 在Python2中，有urllib和urllib2两个库来实现HTTP请求的发送，而在Python3中，urllib2库已经不存在了，统一为了urllib</p>
+<p>urllib是Python内置的HTTP请求库，也就是说不需要额外安装，可直接使用；urllib库包括如下4个模块:</p>
+<ul>
+<li>request: 这是最基本的HTTP请求模块，可以模拟请求的发送，就像在浏览器中输入网址然后按下了回车一样，只需要给库方法传入URL以及额外的参数，就可以模拟实现发送请求的过程了</li>
+<li>error: 异常处理模块，如果出现请求异常，那么我们可以捕获这些异常，然后进行重试或其他操作以保证程序运行不会意外终止</li>
+<li>parse: 一个工具模块，提供了许多URL的处理方法，例如拆分、解析、合并等</li>
+<li>robotparser: 主要用来识别网站的robots.txt文件，然后判断哪些网站可以爬，哪些网站不可以爬，它其实用的比较少</li>
+</ul>
+<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><h4 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen"></a>urlopen</h4><p>urllib.request模块提供了最基本的构造HTTP请求的方法，利用这个模块可以模拟浏览器的请求发起过程，同时它还具有处理授权验证，重定向，浏览器Cookie以及其他一些功能</p>
+<p>下面以Python官网为例体验下这个模块:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response = urllib.request.urlopen(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下图所示:</p>
+<p>我们来看看返回的是个什么类型:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response = urllib.request.urlopen(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(response))</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">http</span>.<span class="title">client</span>.<span class="title">HTTPResponse</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个HTTPResponse类型的对象，主要包含read、readinto、getheader、getheaders、fileno等方法，以及msg、version、status、reason、debuglevel、closed等属性</p>
+<p>我们来看看实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line">response = urllib.request.urlopen(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(response.status)</span><br><span class="line"><span class="built_in">print</span>(response.getheaders())</span><br><span class="line"><span class="built_in">print</span>(response.getheader(<span class="string">&#x27;Server&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span></span><br><span class="line">[(<span class="string">&#x27;Connection&#x27;</span>, <span class="string">&#x27;close&#x27;</span>), (<span class="string">&#x27;Content-Length&#x27;</span>, <span class="string">&#x27;49476&#x27;</span>), (<span class="string">&#x27;Server&#x27;</span>, <span class="string">&#x27;nginx&#x27;</span>), (<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/html; charset=utf-8&#x27;</span>), (<span class="string">&#x27;X-Frame-Options&#x27;</span>, <span class="string">&#x27;DENY&#x27;</span>), (<span class="string">&#x27;Via&#x27;</span>, <span class="string">&#x27;1.1 vegur, 1.1 varnish, 1.1 varnish&#x27;</span>), (<span class="string">&#x27;Accept-Ranges&#x27;</span>, <span class="string">&#x27;bytes&#x27;</span>), (<span class="string">&#x27;Date&#x27;</span>, <span class="string">&#x27;Sun, 06 Feb 2022 14:10:46 GMT&#x27;</span>), (<span class="string">&#x27;Age&#x27;</span>, <span class="string">&#x27;283&#x27;</span>), (<span class="string">&#x27;X-Served-By&#x27;</span>, <span class="string">&#x27;cache-iad-kcgs7200085-IAD, cache-nrt18330-NRT&#x27;</span>), (<span class="string">&#x27;X-Cache&#x27;</span>, <span class="string">&#x27;HIT, HIT&#x27;</span>), (<span class="string">&#x27;X-Cache-Hits&#x27;</span>, <span class="string">&#x27;3, 353&#x27;</span>), (<span class="string">&#x27;X-Timer&#x27;</span>, <span class="string">&#x27;S1644156646.362936,VS0,VE0&#x27;</span>), (<span class="string">&#x27;Vary&#x27;</span>, <span class="string">&#x27;Cookie&#x27;</span>), (<span class="string">&#x27;Strict-Transport-Security&#x27;</span>, <span class="string">&#x27;max-age=63072000; includeSubDomains&#x27;</span>)]</span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+
+<p>下面是urlopen方法的API:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urllib.request.urlopen(url, data=<span class="literal">None</span>, [timeout,]*, cafile=<span class="literal">None</span>, capath=<span class="literal">None</span>, cadefault=<span class="literal">False</span>, context=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>接下来详细说明下urlopen方法中几个参数的用法:</p>
+<ul>
+<li><p>data参数</p>
+<p>data参数为可选，使用该参数需要使用bytes方法将参数转化为字节流编码格式的内容即bytes类型，如果传递了这个参数，那么它的请求方式就不再是GET了，而是POST了</p>
+<p>以下是实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">data = <span class="built_in">bytes</span>(urllib.parse.urlencode(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;germey&#x27;</span>&#125;), encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(<span class="string">&#x27;https://www.httpbin.org/post&#x27;</span>, data=data)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中转码时使用了bytes方法，该方法的第一个参数得是str类型，因此用urllib.parse模块里的urlencode方法将字典参数转化为字符串，第二个参数指定编码格式</p>
+<p>此处我们请求的站点是<a class="link"   target="_blank" rel="noopener" href="http://www.httpbin.org,它可以提供http请求测试,上面实例的运行结果如下/" >www.httpbin.org，它可以提供HTTP请求测试，上面实例的运行结果如下<i class="fas fa-external-link-alt"></i></a>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;args&quot;</span>: &#123;&#125;, </span><br><span class="line">  <span class="string">&quot;data&quot;</span>: <span class="string">&quot;&quot;</span>, </span><br><span class="line">  <span class="string">&quot;files&quot;</span>: &#123;&#125;, </span><br><span class="line">  <span class="string">&quot;form&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;germey&quot;</span></span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="string">&quot;headers&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;Accept-Encoding&quot;</span>: <span class="string">&quot;identity&quot;</span>, </span><br><span class="line">    <span class="string">&quot;Content-Length&quot;</span>: <span class="string">&quot;11&quot;</span>, </span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>, </span><br><span class="line">    <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;www.httpbin.org&quot;</span>, </span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Python-urllib/3.7&quot;</span>, </span><br><span class="line">    <span class="string">&quot;X-Amzn-Trace-Id&quot;</span>: <span class="string">&quot;Root=1-61ffda7a-05a2c9b60ba676290898d9d9&quot;</span></span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="string">&quot;json&quot;</span>: null, </span><br><span class="line">  <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;182.101.213.95&quot;</span>, </span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://www.httpbin.org/post&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>timeout参数</p>
+<p>直接上实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(<span class="string">&#x27;https://www.httpbin.org/get&#x27;</span>, timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read())</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  File <span class="string">&quot;C:\Users\Administrator\AppData\Local\Programs\Python\Python37\lib\urllib\request.py&quot;</span>, line <span class="number">1360</span>, <span class="keyword">in</span> https_open</span><br><span class="line">    context=self._context, check_hostname=self._check_hostname)</span><br><span class="line">  File <span class="string">&quot;C:\Users\Administrator\AppData\Local\Programs\Python\Python37\lib\urllib\request.py&quot;</span>, line <span class="number">1319</span>, <span class="keyword">in</span> do_open</span><br><span class="line">    <span class="keyword">raise</span> URLError(err)</span><br><span class="line">urllib.error.URLError: &lt;urlopen error timed out&gt;</span><br></pre></td></tr></table></figure>
+
+<p>利用try except语句也可实现:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.error</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = urllib.request.urlopen(<span class="string">&#x27;https://www.httpbin.org/get&#x27;</span>, timeout=<span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(e.reason, socket.timeout):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;time out&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time out</span><br></pre></td></tr></table></figure></li>
+<li><p>其他参数</p>
+<p>除了以上两个参数，urlopen还有context参数，该参数必须是ssl.SSLContext类型，用来指定SSL的设置，此外，cafile和capath这连个参数分别用来指定CA证书和其路径，这两个在请求HTTPS链接时会有用，cadefault参数现在已经弃用了，其默认值为Flase，到这里我们就讲完了urlopen方法的用法</p>
+</li>
+</ul>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p>urlopen可以发起最基本的请求，但它那几个简单的参数并不足以构建一个完整的请求，如果需要往请求中加入Headers等信息，就需要使用更强大的Request来构建请求了</p>
+<p>来看看最基本的实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">request = urllib.request.Request(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line">response = urllib.request.urlopen(request)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>我们来看下可以通过怎样的参数来构造Request类，构造方法如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urllib.request.Request(url, data=<span class="literal">None</span>, headers=&#123;&#125;, origin_req_host=<span class="literal">None</span>, unverifiable=<span class="literal">False</span>, method=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>url为请求的URL，这是必传参数，其他都是可选参数</li>
+<li>data如果要传数据，必须传bytes类型的，如果数据是字典，可以先用urllib.parse模块里的urlencode方法进行编码</li>
+<li>第三个参数是一个字典，这是请求头，可以用headers参数直接构造，也可以调用请求实例的add_heade方法添加</li>
+<li>origin_req_host指的是请求方的host名称或者IP地址</li>
+<li>unverifiable表示请求是否是无法验证的，默认取值是False，意思是用户没有足够的权限来接收这个请求的结果</li>
+<li>method是一个字符串，指示请求使用的方法</li>
+</ul>
+<p>由于urllib使用不是太频繁，详情见书本</p>
+<h2 id="requests的使用"><a href="#requests的使用" class="headerlink" title="requests的使用"></a>requests的使用</h2><p>我们感觉使用urllib不太方便，接下来我们来看看requests库的强大之处叭</p>
+<p>首先我们需要安装requests:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install r</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Python3网络爬虫开发实战第二版第1章-基本库的使用</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-02-07 17:18:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/02/07/Python3网络爬虫开发实战第二版第1章-基本库的使用/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/02/08/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E7%AC%AC%E4%BA%8C%E7%89%88%E7%AC%AC4%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python3网络爬虫开发实战第二版第4章-数据的存储</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/26/js%E9%80%86%E5%90%91%E8%85%BE%E8%AE%AF%E5%8A%A8%E6%BC%AB/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">js逆向腾讯动漫</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">urllib的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">发送请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#urlopen"><span class="nav-number">1.1.1.</span> <span class="nav-text">urlopen</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Request"><span class="nav-number">1.1.2.</span> <span class="nav-text">Request</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">requests的使用</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
