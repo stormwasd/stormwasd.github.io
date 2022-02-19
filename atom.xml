@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-17T01:31:38.569Z</updated>
+  <updated>2022-02-19T01:39:29.648Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中的pip工具丢失的解决方法</title>
+    <link href="http://example.com/2022/02/19/Python%E4%B8%AD%E7%9A%84pip%E5%B7%A5%E5%85%B7%E4%B8%A2%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://example.com/2022/02/19/Python%E4%B8%AD%E7%9A%84pip%E5%B7%A5%E5%85%B7%E4%B8%A2%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2022-02-19T01:31:30.000Z</published>
+    <updated>2022-02-19T01:39:29.648Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天在使用更新pip的命令后，莫名其妙我的pip就被删除了:</p><p><a href="https://imgtu.com/i/HHQYsU"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/02/19/HHQYsU.png"                      alt="HHQYsU.png"                ></a></p><p>我当时就傻眼了，这怎么搞呢，我还要用pip工具安装包呢，然后我是用以下命令解决的:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m ensurepip</span><br></pre></td></tr></table></figure><p>ensurepip默认会安装标准库提供的一个pip副本，这个副本一般不是最新的，然后可以用这个版本安装pip的任意一个更新版本，当然如果你想直接安装pip的一个最新版本，可以在ensurepip命令中添加<code>-uupgrade</code>选项</p><p><a href="https://imgtu.com/i/HHQyQK"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/02/19/HHQyQK.png"                      alt="HHQyQK.png"                ></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;昨天在使用更新pip的命令后，莫名其妙我的pip就被删除了:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/HHQYsU&quot;&gt;&lt;img  
+                     lazyload
+                     src=</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Python3网络爬虫开发实战第二版第10章-模拟登陆</title>
@@ -415,29 +438,6 @@
 &lt;p&gt;&lt;img  
                      lazyload
         </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python如何安装.whl文件(当pip安装不了时)</title>
-    <link href="http://example.com/2022/01/22/Python%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85.whl%E6%96%87%E4%BB%B6(%E5%BD%93pip%E5%AE%89%E8%A3%85%E4%B8%8D%E4%BA%86%E6%97%B6)/"/>
-    <id>http://example.com/2022/01/22/Python%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85.whl%E6%96%87%E4%BB%B6(%E5%BD%93pip%E5%AE%89%E8%A3%85%E4%B8%8D%E4%BA%86%E6%97%B6)/</id>
-    <published>2022-01-22T02:12:30.000Z</published>
-    <updated>2022-01-22T02:25:57.223Z</updated>
-    
-    <content type="html"><![CDATA[<p>有时候我们通过<code>pip install xxx</code>的方式并不能成功安装想要的包，会出现如下所示报错:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-14-24.2b9njzxvdaf4.webp"                      alt="Snipaste_2022-01-22_10-14-24"                ></p><p>然后我们就需要去<a class="link"   href="https://pypi.org/" >pypi<i class="fas fa-external-link-alt"></i></a>这个网站上寻找我们想要的包，几乎都是可以找到的，比如我刚刚通过pip没安安装上fonttools，所以我在这边搜索并下载:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-17-37.4yuyyresvyo0.webp"                      alt="Snipaste_2022-01-22_10-17-37"                ></p><p>然后我们点进去点击Download files找到以.whl后缀的包再点击下载即可:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-19-33.767475sbhvc0.webp"                      alt="Snipaste_2022-01-22_10-19-33"                ></p><p>下载好之后我们点击在文件夹中显示:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-21-08.4yc2drl5xyc0.webp"                      alt="Snipaste_2022-01-22_10-21-08"                ></p><p>进入.whl包所在文件夹后，我们在路径一栏输入cmd，然后进入命令行(这个时候命令行就定位到了当前文件夹):</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-23-03.6pxy0sowr1s0.webp"                      alt="Snipaste_2022-01-22_10-23-03"                ></p><p>然后以下键入命令:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx.whl</span><br></pre></td></tr></table></figure><p><code>xxx.whl</code>就是我们刚刚下载的<code>.whl</code>包的全名，然后回车即可安装:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220122/Snipaste_2022-01-22_10-25-37.d1hqcbai83c.webp"                      alt="Snipaste_2022-01-22_10-25-37"                ></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;有时候我们通过&lt;code&gt;pip install xxx&lt;/code&gt;的方式并不能成功安装想要的包，会出现如下所示报错:&lt;/p&gt;
-&lt;p&gt;&lt;img  
-                     lazyload
-                     src=&quot;/image</summary>
       
     
     
