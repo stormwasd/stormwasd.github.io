@@ -9,7 +9,7 @@
     
     <title>
         
-            2022-2-24使用到的Linux命令 |
+            腾讯云服务器添加虚拟内存 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">2022-2-24使用到的Linux命令</span>
+            <span class="title-hover-animation">腾讯云服务器添加虚拟内存</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-02-24 11:20:30</span>
-        <span class="mobile">2022-02-24 11:20</span>
+        <span class="pc">2022-02-25 10:49:30</span>
+        <span class="mobile">2022-02-25 10:49</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>423 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>879 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -192,62 +192,48 @@
         
 
         <div class="article-content markdown-body">
-            <ol>
-<li><p>ubuntu删除用户:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel test </span><br><span class="line">cd /home/</span><br><span class="line">sudo rm -r test</span><br></pre></td></tr></table></figure>
-
-<p>如果提示tese is a directory，那就使用以下命令递归删除此文件夹:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf test</span><br></pre></td></tr></table></figure></li>
+            <p>我的小服务器是1核2G然后加50G的，这样有时候在上面运行服务就有点卡顿，特别是运行了Gitlab之后，下面我们来看看如何添加虚拟内存</p>
+<h4 id="查看内存使用情况"><a href="#查看内存使用情况" class="headerlink" title="查看内存使用情况"></a>查看内存使用情况</h4><p>用<code>free</code>命令查看内存使用情况，我们会发现swap分区大小为0，这说明原来腾讯云服务器默认是没有划分swap分区的，所以由于我的服务器物理内存本身就很少，而且又没设置<a class="link"   target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=swap&spm=1001.2101.3001.7020" >swap<i class="fas fa-external-link-alt"></i></a>分区，运行效果可想而知，稍有点并发量、或者恶意用户探测访问等，网站就很容易卡壳了</p>
+<h4 id="swap的作用"><a href="#swap的作用" class="headerlink" title="swap的作用"></a>swap的作用</h4><p>swap是用来做<a class="link"   target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020" >虚拟内存<i class="fas fa-external-link-alt"></i></a>的。虽然swap无法代替物理内存，但不可缺少</p>
+<p>swap分区作用:当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。这样，系统总是在物理内存不够时，才进行Swap交换</p>
+<h4 id="创建swap的两种方式"><a href="#创建swap的两种方式" class="headerlink" title="创建swap的两种方式"></a>创建swap的两种方式</h4><ol>
+<li>建立一个swap分区</li>
+<li>创建一个swap交换文件</li>
 </ol>
-<p>​        删除单个文件可以使用<code>sudo rm -r test</code>，如果是文件夹那就需要递归删除了</p>
-<p>​        这里做个解释:</p>
-<p>​        -r 就是向下递归，不管有多少级目录，一并删除</p>
-<p>​        -f 就是直接强行删除，不作任何提示的意思</p>
-<ol start="2">
-<li><p>ubuntu添加用户</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser test</span><br></pre></td></tr></table></figure>
+<p>运行速度: &gt; swap分区 &gt; swap文件</p>
+<p>这里我不用建立分区这个方法，如果你是以下情况我也不建议:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当你的数据盘已经装了很多内容，不方便重新规划的话，也只好使用swap文件了。像我由于只有一块磁盘，而且磁盘已经装了不少内容，所以就没有选择磁盘格式化，而是选择创建swap文件。</span><br></pre></td></tr></table></figure>
 
-<p>然后后面会要求输入密码和确认密码，在接着什么work/home phone都可以直接enter</p>
-</li>
-<li><p>ubuntu修改主机名</p>
-<ul>
-<li><p>修改hostname文件，这里修改为robot-home:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/hostname</span><br></pre></td></tr></table></figure></li>
-<li><p>修改hosts文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/hosts</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>查看某进程，这里以gitlab为例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep gitlab</span><br></pre></td></tr></table></figure>
-
-<p>或者:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep gitlab</span><br></pre></td></tr></table></figure></li>
-<li><p>杀掉某个进程:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -<span class="number">9</span> <span class="number">9527</span>    <span class="comment">##(-9为强制终止，9527为进程id)</span></span><br></pre></td></tr></table></figure></li>
-<li><p>删除所有包含xxx的文件，这里以gitlab为例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find / -name *gitlab* | xargs rm -rf</span><br></pre></td></tr></table></figure>
-
-<p>或者:</p>
+<p>下面介绍创建swap文件的方法:</p>
+<h4 id="创建swap文件"><a href="#创建swap文件" class="headerlink" title="创建swap文件"></a>创建swap文件</h4><h5 id="定义swap的大小及位置"><a href="#定义swap的大小及位置" class="headerlink" title="定义swap的大小及位置"></a>定义swap的大小及位置</h5><p>首先，选择你swap文件要放置的位置，比如直接在根目录/ 下创建或者选择一个目录，如/opt。比如我直接在根目录下创建，然后设置swap分区的名称为swapfile</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
 
-<p>然后:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name *gitlab* | xargs rm -rf</span><br></pre></td></tr></table></figure></li>
-<li><p>在没有运行image之前，删除docker中的image:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi tagid</span><br></pre></td></tr></table></figure></li>
-<li><p>如果是已经运行了image的，那就意味着已经生成了container，那我们可以这么操作:</p>
-<p>首先我们要找到对应的containerid，用如下命令查看:</p>
-<p>docker ps是查看目前在运行的container，docker ps -a是查看所有的，包括了停止的container也会展示出来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/dev/zero of=/swapfile bs=1k count=<span class="number">4096000</span></span><br></pre></td></tr></table></figure>
 
-<p>我们要操作的container必须先将它关闭再删除，所以我们先使用下面的命令关闭:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 117843ade696</span><br></pre></td></tr></table></figure>
+<p>上面swapfile为你创建swap文件的名称，你可以根据需要改成你自己的名称，如bs 即blocksizes，每个块大小为1k;count=4096000,总大小为4G的文件。因为建立swap分区大小的标准一般为物理内存的两倍，而我的内存是2G，所以我选择swap文件大小为4G，当然，也要考虑你硬盘剩余容量的大小。我的硬盘还剩30G，所以再划分4G给swap文件绰绰有余。如果你的内存是0.5G，那么count大小可以选择1024000(1G)</p>
+<h5 id="建立swap"><a href="#建立swap" class="headerlink" title="建立swap"></a>建立swap</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /swapfile</span><br></pre></td></tr></table></figure>
 
-<p>然后用rm命令删除container:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm containerid</span><br></pre></td></tr></table></figure>
+<h5 id="启动swap"><a href="#启动swap" class="headerlink" title="启动swap"></a>启动swap</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /swapfile</span><br></pre></td></tr></table></figure>
 
-<p>我们可以确认下，用<code>docker images</code>来查看对应image是否已被删除</p>
+<h5 id="检查是否正确"><a href="#检查是否正确" class="headerlink" title="检查是否正确"></a>检查是否正确</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+
+<p>或者:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon -s</span><br></pre></td></tr></table></figure>
+
+<p>以上命令能看到到swap总量大小然后使用了多少</p>
+<h5 id="设置开机自启swap文件"><a href="#设置开机自启swap文件" class="headerlink" title="设置开机自启swap文件"></a>设置开机自启swap文件</h5><p>原理:</p>
+<p>修改 <strong>/etc/fstab</strong> 使其启动时自动mount<br>添加方法如下:</p>
+<ul>
+<li><p>先赋予**/etc/fstab**修改权限</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod <span class="number">777</span> /etc/fstab</span><br></pre></td></tr></table></figure></li>
+<li><p>然后添加语句:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;/swapfile swap swap defaults 0 0&quot;</span> &gt;&gt;/etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>这里注意: /swapfile 路径可以修改,可以根据创建的swap文件具体路径来配置</p>
 </li>
-</ol>
+</ul>
+<h4 id="删除swap交换文件"><a href="#删除swap交换文件" class="headerlink" title="删除swap交换文件"></a>删除swap交换文件</h4><p>如果不再需要swap，可以清理该文件: <code>swapoff /swapfile</code></p>
+<p>以上内容参考自: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29856169/article/details/115430525" >https://blog.csdn.net/qq_29856169/article/details/115430525<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -255,11 +241,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：2022-2-24使用到的Linux命令</li>
+        <li>Post title：腾讯云服务器添加虚拟内存</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-02-24 11:20:30</li>
+        <li>Create time：2022-02-25 10:49:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/02/24/2022-2-24使用到的Linux命令/
+            Post link：https://keep.xpoet.cn/2022/02/25/腾讯云服务器添加虚拟内存/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -275,29 +261,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/02/25/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">腾讯云服务器添加虚拟内存</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/02/23/ubuntu16%E5%AE%89%E8%A3%85Jenkins/"
+                           href="/2022/02/24/2022-2-24%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84Linux%E5%91%BD%E4%BB%A4/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">ubuntu16安装Jenkins</span>
+                                <span class="post-nav-title-item">2022-2-24使用到的Linux命令</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -515,7 +486,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">查看内存使用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#swap%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">swap的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAswap%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">创建swap的两种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAswap%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">创建swap文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89swap%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%8F%8A%E4%BD%8D%E7%BD%AE"><span class="nav-number">4.1.</span> <span class="nav-text">定义swap的大小及位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8Bswap"><span class="nav-number">4.2.</span> <span class="nav-text">建立swap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8swap"><span class="nav-number">4.3.</span> <span class="nav-text">启动swap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE"><span class="nav-number">4.4.</span> <span class="nav-text">检查是否正确</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFswap%E6%96%87%E4%BB%B6"><span class="nav-number">4.5.</span> <span class="nav-text">设置开机自启swap文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4swap%E4%BA%A4%E6%8D%A2%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">删除swap交换文件</span></a></li></ol>
     </div>
 </div>
         </aside>

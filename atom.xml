@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-24T10:58:43.559Z</updated>
+  <updated>2022-02-25T03:55:44.054Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯云服务器添加虚拟内存</title>
+    <link href="http://example.com/2022/02/25/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
+    <id>http://example.com/2022/02/25/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
+    <published>2022-02-25T02:49:30.000Z</published>
+    <updated>2022-02-25T03:55:44.054Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的小服务器是1核2G然后加50G的，这样有时候在上面运行服务就有点卡顿，特别是运行了Gitlab之后，下面我们来看看如何添加虚拟内存</p><h4 id="查看内存使用情况"><a href="#查看内存使用情况" class="headerlink" title="查看内存使用情况"></a>查看内存使用情况</h4><p>用<code>free</code>命令查看内存使用情况，我们会发现swap分区大小为0，这说明原来腾讯云服务器默认是没有划分swap分区的，所以由于我的服务器物理内存本身就很少，而且又没设置<a class="link"   href="https://so.csdn.net/so/search?q=swap&spm=1001.2101.3001.7020" >swap<i class="fas fa-external-link-alt"></i></a>分区，运行效果可想而知，稍有点并发量、或者恶意用户探测访问等，网站就很容易卡壳了</p><h4 id="swap的作用"><a href="#swap的作用" class="headerlink" title="swap的作用"></a>swap的作用</h4><p>swap是用来做<a class="link"   href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020" >虚拟内存<i class="fas fa-external-link-alt"></i></a>的。虽然swap无法代替物理内存，但不可缺少</p><p>swap分区作用:当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。这样，系统总是在物理内存不够时，才进行Swap交换</p><h4 id="创建swap的两种方式"><a href="#创建swap的两种方式" class="headerlink" title="创建swap的两种方式"></a>创建swap的两种方式</h4><ol><li>建立一个swap分区</li><li>创建一个swap交换文件</li></ol><p>运行速度: &gt; swap分区 &gt; swap文件</p><p>这里我不用建立分区这个方法，如果你是以下情况我也不建议:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当你的数据盘已经装了很多内容，不方便重新规划的话，也只好使用swap文件了。像我由于只有一块磁盘，而且磁盘已经装了不少内容，所以就没有选择磁盘格式化，而是选择创建swap文件。</span><br></pre></td></tr></table></figure><p>下面介绍创建swap文件的方法:</p><h4 id="创建swap文件"><a href="#创建swap文件" class="headerlink" title="创建swap文件"></a>创建swap文件</h4><h5 id="定义swap的大小及位置"><a href="#定义swap的大小及位置" class="headerlink" title="定义swap的大小及位置"></a>定义swap的大小及位置</h5><p>首先，选择你swap文件要放置的位置，比如直接在根目录/ 下创建或者选择一个目录，如/opt。比如我直接在根目录下创建，然后设置swap分区的名称为swapfile</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/dev/zero of=/swapfile bs=1k count=<span class="number">4096000</span></span><br></pre></td></tr></table></figure><p>上面swapfile为你创建swap文件的名称，你可以根据需要改成你自己的名称，如bs 即blocksizes，每个块大小为1k;count=4096000,总大小为4G的文件。因为建立swap分区大小的标准一般为物理内存的两倍，而我的内存是2G，所以我选择swap文件大小为4G，当然，也要考虑你硬盘剩余容量的大小。我的硬盘还剩30G，所以再划分4G给swap文件绰绰有余。如果你的内存是0.5G，那么count大小可以选择1024000(1G)</p><h5 id="建立swap"><a href="#建立swap" class="headerlink" title="建立swap"></a>建立swap</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /swapfile</span><br></pre></td></tr></table></figure><h5 id="启动swap"><a href="#启动swap" class="headerlink" title="启动swap"></a>启动swap</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /swapfile</span><br></pre></td></tr></table></figure><h5 id="检查是否正确"><a href="#检查是否正确" class="headerlink" title="检查是否正确"></a>检查是否正确</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure><p>或者:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon -s</span><br></pre></td></tr></table></figure><p>以上命令能看到到swap总量大小然后使用了多少</p><h5 id="设置开机自启swap文件"><a href="#设置开机自启swap文件" class="headerlink" title="设置开机自启swap文件"></a>设置开机自启swap文件</h5><p>原理:</p><p>修改 <strong>/etc/fstab</strong> 使其启动时自动mount<br>添加方法如下:</p><ul><li><p>先赋予**/etc/fstab**修改权限</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod <span class="number">777</span> /etc/fstab</span><br></pre></td></tr></table></figure></li><li><p>然后添加语句:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;/swapfile swap swap defaults 0 0&quot;</span> &gt;&gt;/etc/fstab</span><br></pre></td></tr></table></figure><p>这里注意: /swapfile 路径可以修改,可以根据创建的swap文件具体路径来配置</p></li></ul><h4 id="删除swap交换文件"><a href="#删除swap交换文件" class="headerlink" title="删除swap交换文件"></a>删除swap交换文件</h4><p>如果不再需要swap，可以清理该文件: <code>swapoff /swapfile</code></p><p>以上内容参考自: <a class="link"   href="https://blog.csdn.net/qq_29856169/article/details/115430525" >https://blog.csdn.net/qq_29856169/article/details/115430525<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我的小服务器是1核2G然后加50G的，这样有时候在上面运行服务就有点卡顿，特别是运行了Gitlab之后，下面我们来看看如何添加虚拟内存&lt;/p&gt;
+&lt;h4 id=&quot;查看内存使用情况&quot;&gt;&lt;a href=&quot;#查看内存使用情况&quot; class=&quot;headerlink&quot; title=&quot;查</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>2022-2-24使用到的Linux命令</title>
@@ -408,27 +429,6 @@
     <summary type="html">&lt;h3 id=&quot;安装MySQL&quot;&gt;&lt;a href=&quot;#安装MySQL&quot; class=&quot;headerlink&quot; title=&quot;安装MySQL&quot;&gt;&lt;/a&gt;安装MySQL&lt;/h3&gt;&lt;p&gt;首先验证下是否安装，键入mysql:&lt;/p&gt;
 &lt;p&gt;&lt;img  
                  </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL常用命令</title>
-    <link href="http://example.com/2022/01/24/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://example.com/2022/01/24/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
-    <published>2022-01-24T06:46:30.000Z</published>
-    <updated>2022-01-24T10:18:39.339Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="连接MySQL"><a href="#连接MySQL" class="headerlink" title="连接MySQL"></a>连接MySQL</h3><p>格式:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h主机地址 -u用户名 －p用户密码</span><br></pre></td></tr></table></figure><ol><li><p>连接到本地的MySQL(<strong>-h主机地址可以省略</strong>)</p><p><strong>用户密码和<code>-p</code>之间不要有空格，否则会把空格当做密码的一部分</strong>，会再次要求你输入密码:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220124/Snipaste_2022-01-24_14-51-56.6d41tca5mu40.png"                      alt="Snipaste_2022-01-24_14-51-56"                ></p><p>下面则是正确格式的命令:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220124/Snipaste_2022-01-24_14-55-52.awe8823neeo.png"                      alt="Snipaste_2022-01-24_14-55-52"                ></p></li><li><p>连接到远程主机上的MySQL</p><p>具体见<a class="link"   href="https://www.cnblogs.com/bluealine/p/7832219.html" >这里<i class="fas fa-external-link-alt"></i></a></p></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;连接MySQL&quot;&gt;&lt;a href=&quot;#连接MySQL&quot; class=&quot;headerlink&quot; title=&quot;连接MySQL&quot;&gt;&lt;/a&gt;连接MySQL&lt;/h3&gt;&lt;p&gt;格式:&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table</summary>
       
     
     
