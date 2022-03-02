@@ -9,7 +9,7 @@
     
     <title>
         
-            浅谈一下我在我的小服务器上安装GitLab的坎坷历程 |
+            Python3网络爬虫开发实战第二版第14章-页面智能解析 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">浅谈一下我在我的小服务器上安装GitLab的坎坷历程</span>
+            <span class="title-hover-animation">Python3网络爬虫开发实战第二版第14章-页面智能解析</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-02-25 15:36:30</span>
-        <span class="mobile">2022-02-25 15:36</span>
+        <span class="pc">2022-03-02 16:19:30</span>
+        <span class="mobile">2022-03-02 16:19</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -192,73 +192,33 @@
         
 
         <div class="article-content markdown-body">
-            <p>云服务器系统: ubuntu18.04</p>
-<p>云服务器配置:1核2G+50G(建议这个配置的配置下虚拟内存，详情点击<a class="link"   target="_blank" rel="noopener" href="http://kest.club/2022/02/25/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" >这里<i class="fas fa-external-link-alt"></i></a>查看)</p>
-<p>首先我的服务器之前是安装过Docker的，所以我才决定用Docker来安装GitLab，如果还没安装Docker，请点击<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/tlojy/article/details/83653246" >这里<i class="fas fa-external-link-alt"></i></a>跳转，先安装Docker</p>
-<h4 id="关于GitLab版本的介绍"><a href="#关于GitLab版本的介绍" class="headerlink" title="关于GitLab版本的介绍"></a>关于GitLab版本的介绍</h4><p>GitLab有两个版本:</p>
+            <p>在前面所讲的内容中，解析页面利用的都是规制匹配，这种方式可能需要借助浏览器找到最佳的Selector、Xpath，甚至需要正则表达式辅助提取细节，同时利用Beautiful Soup、pyquery、Re等库和解析内容；在一般情况下，这么做是没有问题的</p>
+<p>但如果切换了场景，例如分析舆情，就需要爬取成千上万个新闻网站，把这些网站上的新闻文章都爬取下来，包括了标题、正文、发布时间等，我们会发现不同新闻网站的页面差别非常大，标题、正文、发布时间对应的正则表达式、Selector、Xpath等各不相同；这时如果手动针对每一个网站写正则表达式、Selector、Xpath等，那工作量就会非常大；如果配置不当，还会产生解析错误的问题；例如正则表达式在某些情况下就无法匹配，Selector、Xpath编写错误或者提取不全；另外，如果页面突然改版了，之前配置的规制就可能无法使用了，这也是一个非常大的隐患</p>
+<p>目前有一中更智能的方法可以帮助我们解析出网站内的新闻列表、标题、正文、发布时间等，用起来很方便；但内容的爬取过程毕竟是用算法实现的，所以正确率达不到100%，而且即便是人工写出来的正则表达式、Selector、Xpath，也难免会有不兼容和错误的情况，因此在能容忍一定错误的情况下，用比较智能的解析方案爬取页面是明智的</p>
+<h3 id="页面智能解析简介"><a href="#页面智能解析简介" class="headerlink" title="页面智能解析简介"></a>页面智能解析简介</h3><p>简而言之，页面的智能解析就是利用算法从页面的HTML代码中提取想要的内容，算法会自动计算出目标内容在代码中的位置并将它们提取出来</p>
+<h4 id="实例引入"><a href="#实例引入" class="headerlink" title="实例引入"></a>实例引入</h4><p>我们以一篇新闻的预览页面为例，这里就不展示图片了，然后我们如果是Safari浏览器就会有个阅读模式，发现广告啥的都没了，这是怎么做到的？难道是提前针对这个页面写好了提取规则了嘛，当然不可能，其实是阅读模式内置了一些页面解析算法，可以自动抽出并呈现页面中的标题</p>
+<h4 id="页面的智能解析"><a href="#页面的智能解析" class="headerlink" title="页面的智能解析"></a>页面的智能解析</h4><p>所谓的页面智能解析，就是不需要再专门写提取规则，而是利用算法直接计算页面中特定元素的位置和提取路径；针对我们的需求，可以通过算法计算出新闻标题是什么，正文应该在哪个区域，发布时间是什么时候</p>
+<p>其实智能解析操作起来非常难，人在看到网页上的一篇文章时，可以迅速找到它的标题、正文、发布时间、广告位、导航栏等；但把这篇文章放在机器面前，机器面对的仅仅是一堆HTML代码，那怎么做到智能提取呢，其中融合了多方面的信息和规律</p>
 <ul>
-<li>Community Edition 社区版</li>
-<li>Enterprise Edition 企业版，企业版比社区版功能更丰富，但需要授权码，如果没有授权码的情况下使用企业版相当于使用社区版</li>
+<li>标题: 其字号一般比较大，长度一般介于1句话和两句话之间，位置一般在页面的最上端，且大多数和时候和title节点中的内容一致</li>
+<li>正文: 其内容一般最多，且包含多个p标签，或者img标签，宽度一般占页面的三分之二，文本密度(字数除以标签数量)比较大</li>
+<li>时间: 不同语言的页面中显示的时间格式可能不同，比如有些是<code>2022-3-2</code>，然后有些是<code>2022/3/2</code>但是格式的种类是有限的，可以通过特定的模式识别</li>
+<li>广告: 其标签一般会带有ads字样，另外大部分广告会在页面顶部或者页面底部或者页面两侧，并包含一些特定的外链内容</li>
 </ul>
-<h4 id="GitLab安装-以企业版为例"><a href="#GitLab安装-以企业版为例" class="headerlink" title="GitLab安装(以企业版为例)"></a>GitLab安装(以企业版为例)</h4><p>我们执行以下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --hostname gitlab-server --publish <span class="number">9090</span>:<span class="number">9090</span> --publish <span class="number">8022</span>:<span class="number">22</span> --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ee:latest</span><br></pre></td></tr></table></figure>
-
-<p>如果你的终端显示没有权限，那就在命令的最开头加一个sudo，或者直接使用su命令然后输入root用户密码直接切换成root用户，如果你想以普通用户运行docker命令，那就需要将此普通用户加入到docker组中，使用以下命令将普通用户加入到docker组:(这里以test用户为例)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd -a test docker</span><br></pre></td></tr></table></figure>
-
-<p>然后我们来看看上面这一长串命令的各参数以及对应的值是啥意思:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bA4mQg"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/02/25/bA4mQg.png"
-                      alt="bA4mQg.png"
-                ></a></p>
-<p>这里有两个<code>--publish</code>参数，第一个是配置http的访问端口，这里我两个都配置的是9090端口，前一个9090代表云服务器的端口，后一个9090代表docker容器的端口，这两个端口是对接的，也就是说我们访问云服务的9090端口，就会跳进docker容器中的9090端口进行访问http服务，如果这个端口被占用了，那也可以设定其他的，总之就是设置你想以哪个端口访问docker容器中的GitLab，这两个端口都可随意设置，只要端口不被其他服务占用即可<br>第二个<code>--publish</code>参数那就是设置ssh的</p>
-<p>然后我们还要配置下gitlab.rb这个配置文件，用以下命令进入:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /srv/gitlab/config/gitlab.rb</span><br></pre></td></tr></table></figure>
-
+<p>所以说页面中的内容对应的节点是有一定特征的，包括节点位置、节点大小、节点标签，节点内容、节点文本密度等，智能提取除了利用这些特征，在很多情况下还需要，借助视觉特征和文本特征，因此其中结合了算法计算，视觉处理等多方面内容</p>
+<h4 id="业界进展"><a href="#业界进展" class="headerlink" title="业界进展"></a>业界进展</h4><p>其实，工业界已经有了落地的智能解析算法应用，例如Diffbot、Embedly等，目前，Diffbot的提取效果算是比较领先的，其官方曾做过一个评测，使用不同的算法依次提取Google新闻上的一些文章的标题和文本，然后与真实标注的内容进行比较，比较指标就是文字的正确率和召回率，以及根据二者计算出的F1分数，结果如下:</p>
 <ul>
-<li><p>设置external_url</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## GitLab URL</span></span><br><span class="line"><span class="comment">##! URL on which GitLab will be reachable.</span></span><br><span class="line"><span class="comment">##! For more details on configuring external_url see:</span></span><br><span class="line"><span class="comment">##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab</span></span><br><span class="line">external_url <span class="string">&#x27;http://192.168.199.175:9090&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>设置ssh_port</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### GitLab Shell settings for GitLab</span></span><br><span class="line">gitlab_rails[<span class="string">&#x27;gitlab_shell_ssh_port&#x27;</span>] = <span class="number">8022</span></span><br></pre></td></tr></table></figure></li>
+<li>正确率: 0.968</li>
+<li>召回率: 0.978</li>
+<li>F1: 0.971</li>
 </ul>
-<p>以上external_url和ssh_port可能不好定位，如果一个个找那就是考验我们的眼睛，我们可以用vi或者vim的查看功能，输入<code>:</code>，然后跟上一个<code>/</code>再跟上你要搜索的字符串，如果有很多个的话使用<code>n</code>键定位到下一个，只有一个的话vim会提示已经到底了并且再继续按<code>n</code>键还是定位的同一个</p>
-<p><strong>插一句</strong>: 我之前在docker上尝试了好多次然后到后面使用<code>docker ps</code>命令后面都提示<code>unhealthy</code>，这令我很苦恼，要不我为啥说坎坷呢，我查阅资料说在gitlab.rb这个配置文件中要把<code>worker_process = 2</code>这个配置项解除注释，或者改为<code>worker_process = 1</code>，后面我发现容器状态变为<code>healthy</code>了，可能是因为我改了这个叭</p>
-<p>然后我们就可以重启GitLab容器使得设置生效了，使用以下命令:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker restart gitlab</span><br></pre></td></tr></table></figure>
-
-<p>这个重启的过程稍微有点漫长，我们可以使用<code>docker ps</code>命令来查看容器的状态，如果显示<code>starting</code>那就是还在启动中，显示<code>healthy</code>那就是启动成功，若启动成功，我们就可以在浏览器中以<code>http://云服务器地址:9090</code>来访问GitLab了，这个时候就会要我们输入用户名和密码，在一个空的GitLab中，有一个初始用户叫<code>root</code>，但是我不知道密码啊，下面我们来看看如何设置密码</p>
-<h4 id="设置默认密码"><a href="#设置默认密码" class="headerlink" title="设置默认密码"></a>设置默认密码</h4><ul>
-<li><p>查看容器名称，其实容器名称我们在刚开始的一大段命令中就以<code>--name</code>指定了，如果记不住的话那就用以下命令查看下也行:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></li>
-<li><p>进入GitLab容器(这里以gitlab容器为例)，这个命令其实就是进入到了对应的主机，这里就是进入了gitlab-server这个主机，因为上面指定了主机名，输入<code>exit</code>便可返回宿主机</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it gitlab bash</span><br></pre></td></tr></table></figure></li>
-<li><p>启动Ruby on Rails控制台(这个过程要稍微等一下)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-rails console -e production</span><br></pre></td></tr></table></figure></li>
-<li><p>搜索用户</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = User.where(<span class="built_in">id</span>: <span class="number">1</span>).first</span><br></pre></td></tr></table></figure>
-
-<p>这个id:1是从哪儿来的呢，这里有有个小技巧，我们访问这个形式的链接就会返回以下结果:</p>
-<p>链接示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">175.24</span><span class="number">.172</span><span class="number">.64</span>:<span class="number">9090</span>/api/v4/users?username=root</span><br></pre></td></tr></table></figure>
-
-<p>返回结果示例:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bAbm4A"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s4.ax1x.com/2022/02/25/bAbm4A.png"
-                      alt="bAbm4A.png"
-                ></a></p>
-<p>从上图中我们就得到了root用户的id</p>
-</li>
-<li><p>更换密码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user.password = <span class="string">&#x27;xxxxxx&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>确认更换密码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user.password_confirmation = <span class="string">&#x27;xxxxxx&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>保存</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user.save!</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>可以发现，对于google新闻的这些数据，Diffbot大约能达到97%的正确率，效果还算不错</p>
+<p>但是Diffbot的算法并没有开源，只是以商业化API的形式售卖，我目前没有找到介绍其具体算法的论文，不过不妨碍拿它做案例，可以稍微体会一下智能解析算法达到的效果</p>
+<h4 id="Diffbot"><a href="#Diffbot" class="headerlink" title="Diffbot"></a>Diffbot</h4><p>打开Diffbot的官网: <a class="link"   target="_blank" rel="noopener" href="https://www.diffbot.com/%EF%BC%8C%E9%A6%96%E5%85%88%E6%B3%A8%E5%86%8C%E4%B8%80%E4%B8%AA%E8%B4%A6%E5%8F%B7%EF%BC%8C%E4%BC%9A%E6%9C%8915%E5%A4%A9%E7%9A%84%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8%E6%9C%9F%EF%BC%8C%E6%B3%A8%E5%86%8C%E4%B9%8B%E5%90%8E%E4%BC%9A%E8%8E%B7%E5%BE%97%E4%B8%80%E4%B8%AADeveloper" >https://www.diffbot.com/，首先注册一个账号，会有15天的免费试用期，注册之后会获得一个Developer<i class="fas fa-external-link-alt"></i></a> Token，这就是使用Diffbot接口服务的凭证</p>
+<p>接下来切换到测试页面(<a class="link"   target="_blank" rel="noopener" href="https://ww.diffbot.com/dev/home/)%EF%BC%8C%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8BDiffbot%E7%9A%84%E8%A7%A3%E6%9E%90%E6%95%88%E6%9E%9C%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%BB%AC%E9%80%89%E6%8B%A9%E7%9A%84%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2%E6%98%AF%EF%BC%8C%E5%A1%AB%E5%85%A5%E9%A1%B5%E9%9D%A2%E9%93%BE%E6%8E%A5%EF%BC%8CAPI%E7%B1%BB%E5%9E%8B%E9%80%89%E6%8B%A9&quot;Article" >https://ww.diffbot.com/dev/home/)，测试一下Diffbot的解析效果，这里我们选择的测试页面是，填入页面链接，API类型选择&quot;Article<i class="fas fa-external-link-alt"></i></a> API”，然后点击“Test Drive”按钮，就会出现对测试页面进行解析的结果，如下图所示:</p>
+<p>这里在注册中出现了问题，注册的时候要work email</p>
+<p>这里推荐一篇文章，也是关于Diffbot智能解析的: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qiulin_wu/article/details/106278690" >https://blog.csdn.net/qiulin_wu/article/details/106278690<i class="fas fa-external-link-alt"></i></a></p>
+<p>下面的内容太过于深奥，就暂时不予展示了</p>
 
         </div>
 
@@ -266,11 +226,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：浅谈一下我在我的小服务器上安装GitLab的坎坷历程</li>
+        <li>Post title：Python3网络爬虫开发实战第二版第14章-页面智能解析</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-02-25 15:36:30</li>
+        <li>Create time：2022-03-02 16:19:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/02/25/浅谈一下我在我的小服务器上安装GitLab的坎坷历程/
+            Post link：https://keep.xpoet.cn/2022/03/02/Python3网络爬虫开发实战第二版第14章-页面智能解析/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -286,29 +246,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/03/02/Python3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E7%AC%AC%E4%BA%8C%E7%89%88%E7%AC%AC14%E7%AB%A0-%E9%A1%B5%E9%9D%A2%E6%99%BA%E8%83%BD%E8%A7%A3%E6%9E%90/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python3网络爬虫开发实战第二版第14章-页面智能解析</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/02/25/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"
+                           href="/2022/02/25/%E6%B5%85%E8%B0%88%E4%B8%80%E4%B8%8B%E6%88%91%E5%9C%A8%E6%88%91%E7%9A%84%E5%B0%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85GitLab%E7%9A%84%E5%9D%8E%E5%9D%B7%E5%8E%86%E7%A8%8B/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">腾讯云服务器添加虚拟内存</span>
+                                <span class="post-nav-title-item">浅谈一下我在我的小服务器上安装GitLab的坎坷历程</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -526,7 +471,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EGitLab%E7%89%88%E6%9C%AC%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">关于GitLab版本的介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GitLab%E5%AE%89%E8%A3%85-%E4%BB%A5%E4%BC%81%E4%B8%9A%E7%89%88%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">GitLab安装(以企业版为例)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">设置默认密码</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%99%BA%E8%83%BD%E8%A7%A3%E6%9E%90%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">页面智能解析简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%BC%95%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">实例引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%99%BA%E8%83%BD%E8%A7%A3%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">页面的智能解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%9A%E7%95%8C%E8%BF%9B%E5%B1%95"><span class="nav-number">1.3.</span> <span class="nav-text">业界进展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Diffbot"><span class="nav-number">1.4.</span> <span class="nav-text">Diffbot</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
