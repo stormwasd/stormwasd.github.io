@@ -194,12 +194,12 @@
         <div class="article-content markdown-body">
             <ol>
 <li><p>ubuntu删除用户:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel test </span><br><span class="line">cd /home/</span><br><span class="line">sudo rm -r test</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel test </span><br><span class="line">cd /home/</span><br><span class="line">sudo rm -f test</span><br></pre></td></tr></table></figure>
 
 <p>如果提示tese is a directory，那就使用以下命令递归删除此文件夹:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf test</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>​        删除单个文件可以使用<code>sudo rm -r test</code>，如果是文件夹那就需要递归删除了</p>
+<p>​        删除单个文件可以使用<code>sudo rm -f test</code>，如果是文件夹那就需要递归删除了</p>
 <p>​        这里做个解释:</p>
 <p>​        -r 就是向下递归，不管有多少级目录，一并删除</p>
 <p>​        -f 就是直接强行删除，不作任何提示的意思</p>
