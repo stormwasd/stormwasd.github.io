@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>117 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>267 Words</span>
         </span>
     
     
@@ -192,12 +192,14 @@
         
 
         <div class="article-content markdown-body">
-            <p>以下并非书上内容，由个人在网上整理所得</p>
-<h2 id="Xpath的使用"><a href="#Xpath的使用" class="headerlink" title="Xpath的使用"></a>Xpath的使用</h2><p>详情见: <a class="link"   target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp" >https://www.w3school.com.cn/xpath/index.asp<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="Beautiful-Soup的使用"><a href="#Beautiful-Soup的使用" class="headerlink" title="Beautiful Soup的使用"></a>Beautiful Soup的使用</h2><p>详情见: <a class="link"   target="_blank" rel="noopener" href="https://cuiqingcai.com/1319.html" >https://cuiqingcai.com/1319.html<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="pyquery的使用"><a href="#pyquery的使用" class="headerlink" title="pyquery的使用"></a>pyquery的使用</h2><p>详情见: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_38682860/article/details/100165446" >https://blog.csdn.net/sinat_38682860/article/details/100165446<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="parsel的使用-Xpath和CSS选择器的结合"><a href="#parsel的使用-Xpath和CSS选择器的结合" class="headerlink" title="parsel的使用(Xpath和CSS选择器的结合)"></a>parsel的使用(Xpath和CSS选择器的结合)</h2><p>scrapy框架选择器的API和parsel的API相似，这是因为scrapy的选择器就是基于parsel的二次封装</p>
-<p>parsel的使用详情见: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/wangzhuanjia/article/details/122758186" >https://blog.csdn.net/wangzhuanjia/article/details/122758186<i class="fas fa-external-link-alt"></i></a></p>
+            <p>上一章中，我们实现了一个最基本的爬虫，但提取页面信息时使用的是正则表达式，过程比较繁琐，而且万一有地方写错了，可能会导致匹配失败，我们接下来还会再分别介绍几种其它的方法</p>
+<h3 id="Xpath的使用"><a href="#Xpath的使用" class="headerlink" title="Xpath的使用"></a>Xpath的使用</h3><p>这里我贴上一个链接，点击<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/xpath/xpath-tutorial.html" >此处<i class="fas fa-external-link-alt"></i></a>跳转，这个教程还是比较全面的，然后这里我要提一点，那就是如何对本地html代码进行解析，我们来看看:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">result = etree.tostring(html)</span><br><span class="line"><span class="built_in">print</span>(result.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>这里的tostring()会对HTML代码进行一个规范化</p>
+<h3 id="Beautiful-Soup的使用"><a href="#Beautiful-Soup的使用" class="headerlink" title="Beautiful Soup的使用"></a>Beautiful Soup的使用</h3><p>这里我贴上一个链接，点击<a class="link"   target="_blank" rel="noopener" href="https://cuiqingcai.com/1319.html" >此处<i class="fas fa-external-link-alt"></i></a>跳转，这个教程还是比较全面的</p>
+<h3 id="pyquery的使用"><a href="#pyquery的使用" class="headerlink" title="pyquery的使用"></a>pyquery的使用</h3><p>这里我贴上一个链接，点击<a class="link"   target="_blank" rel="noopener" href="https://cuiqingcai.com/2636.html" >此处<i class="fas fa-external-link-alt"></i></a>跳转，这个教程还是比较全面的</p>
+<h3 id="parsel的使用"><a href="#parsel的使用" class="headerlink" title="parsel的使用"></a>parsel的使用</h3><p>这里我贴上一个链接，点击<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/wangzhuanjia/article/details/122758186" >此处<i class="fas fa-external-link-alt"></i></a>跳转，这个教程还是比较全面的</p>
 
         </div>
 
@@ -465,7 +467,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xpath%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Xpath的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beautiful-Soup%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Beautiful Soup的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyquery%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">pyquery的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parsel%E7%9A%84%E4%BD%BF%E7%94%A8-Xpath%E5%92%8CCSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E7%BB%93%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">parsel的使用(Xpath和CSS选择器的结合)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xpath%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Xpath的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Beautiful-Soup%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Beautiful Soup的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pyquery%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">pyquery的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parsel%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">parsel的使用</span></a></li></ol>
     </div>
 </div>
         </aside>
