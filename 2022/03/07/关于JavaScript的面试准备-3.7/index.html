@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            关于JavaScript的面试准备-3.7 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">关于JavaScript的面试准备-3.7</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-07 17:45:30</span>
+        <span class="mobile">2022-03-07 17:45</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="Js中let和const有什么用"><a href="#Js中let和const有什么用" class="headerlink" title="Js中let和const有什么用?"></a>Js中let和const有什么用?</h3><p>在现代js中，let＆const是创建变量的不同方式。 在早期的js中，咱们使用var关键字来创建变量。 let＆const关键字是在ES6版本中引入的，其目的是在js中创建两种不同类型的变量，一种是不可变的，另一种是可变的。</p>
+<p><strong>const</strong>:它用于创建一个不可变变量。不可变变量是指其值在程序的整个生命周期中永不改变的变量。</p>
+<p><strong>let</strong>: let用于创建一个可变变量，可变变量是像var这样的普通变量，可以任意次数地更改</p>
+<h3 id="Js-中的主要有哪几类错误"><a href="#Js-中的主要有哪几类错误" class="headerlink" title="Js 中的主要有哪几类错误?"></a>Js 中的主要有哪几类错误?</h3><p><strong>加载时错误</strong>: 加载web页面时出现的错误(如语法错误)称为加载时错误，它会动态生成错误</p>
+<p><strong>运行时错误</strong>: 由于滥用html语言中的命令而导致的错误</p>
+<p><strong>逻辑错误</strong>: 这些错误是由于对具有不同操作的函数执行了错误的逻辑而导致的</p>
+<h3 id="Js如何通过类别名获取dom元素"><a href="#Js如何通过类别名获取dom元素" class="headerlink" title="Js如何通过类别名获取dom元素"></a>Js如何通过类别名获取dom元素</h3><p>在 JS 中使用document.getElementsByClassName() 方法来获取具有类名的元素</p>
+<h3 id="用纯JS编写一个程序来反转字符串"><a href="#用纯JS编写一个程序来反转字符串" class="headerlink" title="用纯JS编写一个程序来反转字符串"></a>用纯JS编写一个程序来反转字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str=<span class="string">&quot;jQuery&quot;</span>;</span><br><span class="line">str = str.split(<span class="string">&quot;&quot;</span>)</span><br><span class="line">str = str.reverse()</span><br><span class="line">str = str.join(<span class="string">&quot;&quot;</span>)</span><br><span class="line">alert(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="JS中如何将页面重定向到另一个页面"><a href="#JS中如何将页面重定向到另一个页面" class="headerlink" title="JS中如何将页面重定向到另一个页面?"></a>JS中如何将页面重定向到另一个页面?</h3><ul>
+<li><p>第一种</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.href：<span class="built_in">window</span>.location.href =“https:<span class="comment">//www.onlineinterviewquestions.com/”</span></span><br></pre></td></tr></table></figure></li>
+<li><p>第二种</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.replace： <span class="built_in">window</span>.location.replace(<span class="string">&quot; https://www.onlineinterviewquestions.com/;&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="解释下什么是promise"><a href="#解释下什么是promise" class="headerlink" title="解释下什么是promise?"></a>解释下什么是promise?</h3><p>promise是js中的一个对象，用于生成可能在将来产生结果的值。 值可以是已解析的值，也可以是说明为什么未解析该值的原因</p>
+<p>promise可以有三种状态:</p>
+<ul>
+<li>pending: 初始状态，既不是成功也不是失败</li>
+<li>fulfulled: 意味着操作完全成功</li>
+<li>rejected: 意味着操作失败</li>
+</ul>
+<p>一个等待状态的promise对象能够成功后返回一个值，也能失败后带回一个错误当这两种情况发生的时候，处理函数会排队执行通过then方法会被调用</p>
+<h3 id="数组去重的方法有哪些"><a href="#数组去重的方法有哪些" class="headerlink" title="数组去重的方法有哪些?"></a>数组去重的方法有哪些?</h3><ul>
+<li><p>使用set</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniquearray</span>(<span class="params">array</span>) </span>&#123; </span><br><span class="line"> <span class="keyword">let</span> unique_array= <span class="built_in">Array</span>.from(set(array)) </span><br><span class="line"> <span class="keyword">return</span> unique_array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用filter</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unque_array</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> unique_array = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem, index, self</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> index == self.indexOf(elem);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> unique_array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(unique_array(array_with_duplicates));</span><br></pre></td></tr></table></figure></li>
+<li><p>for循环</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span> dups_names = [<span class="string">&#x27;Ron&#x27;</span>, <span class="string">&#x27;Pal&#x27;</span>, <span class="string">&#x27;Fred&#x27;</span>, <span class="string">&#x27;Rongo&#x27;</span>, <span class="string">&#x27;Ron&#x27;</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dups_array</span>(<span class="params">dups_names</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> unique = &#123;&#125;;</span><br><span class="line"> names.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    If (!unique[i]) &#123;</span><br><span class="line">      unique[i] = <span class="literal">true</span>;    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.keys(unique);&#125;   <span class="comment">// Ron, Pal, Fred, Rongo</span></span><br><span class="line">Dups_array(names);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="undefined，null-和-undeclared-有什么区别"><a href="#undefined，null-和-undeclared-有什么区别" class="headerlink" title="undefined，null 和 undeclared 有什么区别?"></a>undefined，null 和 undeclared 有什么区别?</h3><ul>
+<li>null表示”没有对象”，即该处不应该有值，转为数值时为0，典型的用法是:<ul>
+<li>作为函数的参数，表示该函数的参数不是对象</li>
+<li>作为对象原型链的终点</li>
+</ul>
+</li>
+<li>undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义，转为数值时为NaN。典型用法是:<ul>
+<li>变量被声明了，但没有赋值时，就等于undefined</li>
+<li>调用函数时，应该提供的参数没有提供，该参数等于undefined</li>
+<li>对象没有赋值的属性，该属性的值为undefined</li>
+<li>函数没有返回值时，默认返回undefined</li>
+</ul>
+</li>
+<li>undeclared：js语法错误，没有申明直接使用，js无法找到对应的上下文</li>
+</ul>
+<h3 id="Js的基本数据类型"><a href="#Js的基本数据类型" class="headerlink" title="Js的基本数据类型"></a>Js的基本数据类型</h3><p>Undefined、Null、Boolean、Number、Symbol 和 String</p>
+<h3 id="如何给对象添加新属性"><a href="#如何给对象添加新属性" class="headerlink" title="如何给对象添加新属性"></a>如何给对象添加新属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.country= “India”;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JS中的深拷贝与浅拷贝的区别"><a href="#JS中的深拷贝与浅拷贝的区别" class="headerlink" title="JS中的深拷贝与浅拷贝的区别?"></a>JS中的深拷贝与浅拷贝的区别?</h3><p>深拷贝递归地复制新对象中的所有值或属性，而拷贝只复制引用</p>
+<p>在深拷贝中，<strong>新对象中的更改不会影响原始对象</strong>，而在浅拷贝中，<strong>新对象中的更改，原始对象中也会跟着改</strong></p>
+<p>在深拷贝中，原始对象不与新对象共享相同的属性，而在浅拷贝中，它们具有相同的属性</p>
+<h3 id="如何在JavaScript中每x秒调用一个函数"><a href="#如何在JavaScript中每x秒调用一个函数" class="headerlink" title="如何在JavaScript中每x秒调用一个函数?"></a>如何在JavaScript中每x秒调用一个函数?</h3><p>在JS中，咱们使用函数 setInterval() 在每x秒内调用函数:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123; alert(<span class="string">&quot;Hello&quot;</span>); &#125;, <span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解释一下JS的展开操作符"><a href="#解释一下JS的展开操作符" class="headerlink" title="解释一下JS的展开操作符?"></a>解释一下JS的展开操作符?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mid = [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newarray = [<span class="number">1</span>, <span class="number">2</span>, ...mid, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newarray);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="JS中的宿主对象与原生对象有何不同"><a href="#JS中的宿主对象与原生对象有何不同" class="headerlink" title="JS中的宿主对象与原生对象有何不同?"></a>JS中的宿主对象与原生对象有何不同?</h3><p><strong>宿主对象</strong>:这些是运行环境提供的对象。这意味着它们在不同的环境下是不同的。例如，浏览器包含像windows这样的对象，但是<strong>Node.js</strong>环境提供像Node List这样的对象</p>
+<p><strong>原生对象</strong>:这些是JS中的内置对象。它们也被称为全局对象，因为如果使用JS，内置对象不受是运行环境影响</p>
+<h3 id="JS中-和-区别是什么"><a href="#JS中-和-区别是什么" class="headerlink" title="JS中==和===区别是什么?"></a>JS中==和===区别是什么?</h3><h3 id="Js中的匿名函数是什么"><a href="#Js中的匿名函数是什么" class="headerlink" title="Js中的匿名函数是什么?"></a>Js中的匿名函数是什么?</h3><p>匿名函数：就是没有函数名的函数，如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    alert(x + y);  </span><br><span class="line">&#125;)(<span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这里创建了一个匿名函数(在第一个括号内)，<strong>第二个括号用于调用该匿名函数，并传入参数</strong></p>
+<h3 id="解释下什么是箭头函数"><a href="#解释下什么是箭头函数" class="headerlink" title="解释下什么是箭头函数?"></a>解释下什么是箭头函数?</h3><p>箭头函数是在es6或更高版本中编写函数表达式的简明方法。箭头函数不能用作构造函数，也不支持this，arguments，super或new.target关键字，它最适合非方法函数。</p>
+<p>详见: <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/liyuanhong/articles/10139214.html" >https://www.cnblogs.com/liyuanhong/articles/10139214.html<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="JS中有哪些不同类型的弹出框可用"><a href="#JS中有哪些不同类型的弹出框可用" class="headerlink" title="JS中有哪些不同类型的弹出框可用?"></a>JS中有哪些不同类型的弹出框可用?</h3><ul>
+<li>Alert</li>
+<li>Confirm</li>
+<li>Prompt</li>
+</ul>
+<h3 id="如何将-JS-日期转换为ISO标准"><a href="#如何将-JS-日期转换为ISO标准" class="headerlink" title="如何将 JS 日期转换为ISO标准?"></a>如何将 JS 日期转换为ISO标准?</h3><p><strong>toISOString()</strong> 方法用于将js日期转换为ISO标准。 它使用ISO标准将js Date对象转换为字符串，如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = date.toISOString();</span><br><span class="line"><span class="built_in">console</span>.log(n);</span><br><span class="line"><span class="comment">// YYYY-MM-DDTHH:mm:ss.sssZ</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="如何在JS中克隆对象"><a href="#如何在JS中克隆对象" class="headerlink" title="如何在JS中克隆对象?"></a>如何在JS中克隆对象?</h3><p>Object.assign() 方法用于在JS中克隆对象。如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = &#123;<span class="attr">myProp</span>: <span class="string">&quot;value&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> y = <span class="built_in">Object</span>.assign(&#123;&#125;, x); </span><br></pre></td></tr></table></figure>
+
+<h3 id="var和let的区别"><a href="#var和let的区别" class="headerlink" title="var和let的区别"></a>var和let的区别</h3><p>var是函数作用域，而let是块作用域。在函数内声明了var，整个函数内都是有效的，在for循环内定义了一个var变量，实际上其在for循环以外也是可以访问的，而let由于是块作用域，所以如果在块作用域内（for循环内）定义的变量，在其外面是不可被访问的</p>
+<h3 id="解释一下-“use-strict”"><a href="#解释一下-“use-strict”" class="headerlink" title="解释一下 “use strict”?"></a>解释一下 “use strict”?</h3><p>使用“use strict”指令的目的是强制执行严格模式下的代码。 在严格模式下，咱们不能在不声明变量的情况下使用变量</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：关于JavaScript的面试准备-3.7</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-03-07 17:45:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/03/07/关于JavaScript的面试准备-3.7/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/07/%E8%8F%9C%E9%B8%9F%E6%95%99%E7%A8%8B%E4%B8%8A%E7%9A%84JavaScript%E6%B5%8B%E9%AA%8C/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">菜鸟教程上的JavaScript测验</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Js%E4%B8%ADlet%E5%92%8Cconst%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Js中let和const有什么用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Js-%E4%B8%AD%E7%9A%84%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E5%87%A0%E7%B1%BB%E9%94%99%E8%AF%AF"><span class="nav-number">2.</span> <span class="nav-text">Js 中的主要有哪几类错误?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Js%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E7%B1%BB%E5%88%AB%E5%90%8D%E8%8E%B7%E5%8F%96dom%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">Js如何通过类别名获取dom元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E7%BA%AFJS%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E6%9D%A5%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">用纯JS编写一个程序来反转字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E4%B8%AD%E5%A6%82%E4%BD%95%E5%B0%86%E9%A1%B5%E9%9D%A2%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">JS中如何将页面重定向到另一个页面?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AFpromise"><span class="nav-number">6.</span> <span class="nav-text">解释下什么是promise?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">7.</span> <span class="nav-text">数组去重的方法有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined%EF%BC%8Cnull-%E5%92%8C-undeclared-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">8.</span> <span class="nav-text">undefined，null 和 undeclared 有什么区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">Js的基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BB%99%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%B1%9E%E6%80%A7"><span class="nav-number">10.</span> <span class="nav-text">如何给对象添加新属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E4%B8%AD%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">11.</span> <span class="nav-text">JS中的深拷贝与浅拷贝的区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8JavaScript%E4%B8%AD%E6%AF%8Fx%E7%A7%92%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="nav-number">12.</span> <span class="nav-text">如何在JavaScript中每x秒调用一个函数?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8BJS%E7%9A%84%E5%B1%95%E5%BC%80%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">13.</span> <span class="nav-text">解释一下JS的展开操作符?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E4%B8%AD%E7%9A%84%E5%AE%BF%E4%B8%BB%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%AF%B9%E8%B1%A1%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C"><span class="nav-number">14.</span> <span class="nav-text">JS中的宿主对象与原生对象有何不同?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E4%B8%AD-%E5%92%8C-%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">15.</span> <span class="nav-text">JS中&#x3D;&#x3D;和&#x3D;&#x3D;&#x3D;区别是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Js%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">16.</span> <span class="nav-text">Js中的匿名函数是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="nav-number">17.</span> <span class="nav-text">解释下什么是箭头函数?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%BC%B9%E5%87%BA%E6%A1%86%E5%8F%AF%E7%94%A8"><span class="nav-number">18.</span> <span class="nav-text">JS中有哪些不同类型的弹出框可用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86-JS-%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BAISO%E6%A0%87%E5%87%86"><span class="nav-number">19.</span> <span class="nav-text">如何将 JS 日期转换为ISO标准?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8JS%E4%B8%AD%E5%85%8B%E9%9A%86%E5%AF%B9%E8%B1%A1"><span class="nav-number">20.</span> <span class="nav-text">如何在JS中克隆对象?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var%E5%92%8Clet%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">21.</span> <span class="nav-text">var和let的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B-%E2%80%9Cuse-strict%E2%80%9D"><span class="nav-number">22.</span> <span class="nav-text">解释一下 “use strict”?</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
