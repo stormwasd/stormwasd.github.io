@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            字节抖音后端日常实习一面面经(部分) |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">字节抖音后端日常实习一面面经(部分)</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-08 09:20:30</span>
+        <span class="mobile">2022-03-08 09:20</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="MySQL的四个特性是什么"><a href="#MySQL的四个特性是什么" class="headerlink" title="MySQL的四个特性是什么?"></a>MySQL的四个特性是什么?</h4><ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>持久性</li>
+</ul>
+<h4 id="MySQL的隔离级别有哪些"><a href="#MySQL的隔离级别有哪些" class="headerlink" title="MySQL的隔离级别有哪些?"></a>MySQL的隔离级别有哪些?</h4><p><a class="link"   target="_blank" rel="noopener" href="http://lib.csdn.net/base/mysql" >数据库<i class="fas fa-external-link-alt"></i></a>事务的隔离级别有4个，由低到高依次为Read uncommitted、Read committed、Repeatable read、Serializable，这四个级别可以逐个解决<strong>脏读、不可重复读、幻读</strong>这几类问题</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bcV7OP"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/08/bcV7OP.png"
+                      alt="bcV7OP.png"
+                ></a></p>
+<ul>
+<li><p>Read Uncommitted(读未提交)</p>
+<p>案例讲解:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">公司发工资了，领导把5000元打到singo的账号上，但是该事务并未提交，而singo正好去查看账户，发现工资已经到账，是5000元整，非常高兴。可是不幸的是，领导发现发给singo的工资金额不对，是2000元，于是迅速回滚了事务，修改金额后，将事务提交，最后singo实际的工资只有2000元，singo空欢喜一场。</span><br><span class="line"></span><br><span class="line">出现上述情况，即我们所说的脏读，两个并发的事务，“事务A：领导给singo发工资”、“事务B：singo查询工资账户”，事务B读取了事务A尚未提交的数据。</span><br><span class="line"></span><br><span class="line">当隔离级别设置为Read uncommitted时，就可能出现脏读，甚至不可重复读、幻读，如何避免脏读，请看下一个隔离级别</span><br></pre></td></tr></table></figure></li>
+<li><p>Read Committed(读已提交)</p>
+<p>案例讲解:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">singo拿着工资卡去消费，系统读取到卡里确实有2000元，而此时她的老婆也正好在网上转账，把singo工资卡的2000元转到另一账户，并在singo之前提交了事务，当singo扣款时，系统检查到singo的工资卡已经没有钱，扣款失败，singo十分纳闷，明明卡里有钱，为何......</span><br><span class="line"></span><br><span class="line">出现上述情况，即我们所说的不可重复读，两个并发的事务，“事务A：singo消费”、“事务B：singo的老婆网上转账”，事务A事先读取了数据，事务B紧接了更新了数据，并提交了事务，而事务A再次读取该数据时，数据已经发生了改变。</span><br><span class="line"></span><br><span class="line">当隔离级别设置为Read committed时，避免了脏读，但是可能会造成不可重复读。</span><br><span class="line"></span><br><span class="line">大多数数据库的默认级别就是Read committed，比如SqlServer , Oracle，如何解决不可重复读这一问题，请看下一个隔离级别</span><br></pre></td></tr></table></figure></li>
+<li><p>Repeatable Read(可重复读)</p>
+<p>案例讲解:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当隔离级别设置为Repeatable read时，可以避免不可重复读。当singo拿着工资卡去消费时，一旦系统开始读取工资卡信息（即事务开始），singo的老婆就不可能对该记录进行修改，也就是singo的老婆不能在此时转账。</span><br><span class="line"></span><br><span class="line">虽然Repeatable read避免了不可重复读，但还有可能出现幻读。</span><br><span class="line"></span><br><span class="line">singo的老婆工作在银行部门，她时常通过银行内部系统查看singo的信用卡消费记录。有一天，她正在查询到singo当月信用卡的总消费金额（select sum(amount) from transaction where month = 本月）为80元，而singo此时正好在外面胡吃海塞后在收银台买单，消费1000元，即新增了一条1000元的消费记录（insert transaction ... ），并提交了事务，随后singo的老婆将singo当月信用卡消费的明细打印到A4纸上，却发现消费总额为1080元，singo的老婆很诧异，以为出现了幻觉，幻读就这样产生了</span><br></pre></td></tr></table></figure></li>
+<li><p>Serializable(串行化)</p>
+<p>案例讲解:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Serializable是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻像读</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>详见: <a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6844903805822173198" >https://juejin.cn/post/6844903805822173198<i class="fas fa-external-link-alt"></i></a></p>
+<p>详见: <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/sunpengblog/p/11791475.html" >https://www.cnblogs.com/sunpengblog/p/11791475.html<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="MySQL的默认隔离级别"><a href="#MySQL的默认隔离级别" class="headerlink" title="MySQL的默认隔离级别?"></a>MySQL的默认隔离级别?</h4><ul>
+<li>REPEATABLE READ(<strong>可重复读</strong>): 事务A在读到一条数据之后，此时事务B对该数据进行了修改并提交，那么事务A再读该数据，读到的还是原来的内容</li>
+</ul>
+<h4 id="为什么MySQL选可重复读作为默认的隔离级别"><a href="#为什么MySQL选可重复读作为默认的隔离级别" class="headerlink" title="为什么MySQL选可重复读作为默认的隔离级别?"></a>为什么MySQL选可重复读作为默认的隔离级别?</h4><p>首先，我们知道有四种隔离级别，但是可串行化和读未提交两种很少使用，而大部分的关系型数据库的默认隔离级别都是RC(读已提交)，但是MySQL的默认隔离级别是RR(可重复读)；</p>
+<p>为什么MySQL要独树一帜的选用RR的隔离级别呢?</p>
+<p>这是一个上古遗留问题:</p>
+<p>在MySQL的早期版本(大概是5.1)中，binlog的默认格式是语句格式。这时候如果启用了RC的隔离级别，binlog记录的顺序可能与实际不一致。所以系统做了一个判断，如果隔离级别为RC，则binlog格式必须要是Mix或者row，<strong>由于当时的默认参数binlog的默认格式是语句格式，所以隔离级别的默认值就设置到了RR</strong></p>
+<h4 id="MySQL的可重复读是如何实现的"><a href="#MySQL的可重复读是如何实现的" class="headerlink" title="MySQL的可重复读是如何实现的?"></a>MySQL的可重复读是如何实现的?</h4><p>InnoDB在每行记录后面保存两个隐藏的列来，分别保存了这个行的创建时间和行的删除时间。这里存储的并不是实际的时间值,而是系统版本号，当数据被修改时，版本号加1，在读取事务开始时，系统会给当前读事务一个版本号，事务会读取版本号&lt;=当前版本号的数据，此时如果其他写事务修改了这条数据，那么这条数据的版本号就会加1，从而比当前读事务的版本号高，读事务自然而然的就读不到更新后的数据了</p>
+<h4 id="读已提交和读未提交的区别"><a href="#读已提交和读未提交的区别" class="headerlink" title="读已提交和读未提交的区别?"></a>读已提交和读未提交的区别?</h4><p>详见上面<code>MySQL的隔离级别有哪些?</code>这个章节</p>
+<h4 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别?"></a>TCP和UDP的区别?</h4><ul>
+<li><strong>TCP是面向连接的</strong>(如打电话要先拨号，TCP通过三次握手)；<strong>UDP是无连接的</strong>，即发送数据之前不需要先建立连接(不需要握手)</li>
+<li><strong>TCP提供可靠服务</strong>，也就是说，通过TCP传送的数据，无差错，不丢失，不重复，且按序到达；<strong>UDP尽最大努力交付，即不保证可靠交付</strong></li>
+<li><strong>TCP面向字节流</strong>，实际上是TCP把数据看成一连串无结构的字节流；<strong>UDP是面向报文的</strong></li>
+<li><strong>UDP没有拥塞控制</strong>，因此网络出现拥塞不会使源主机的发送速率降低(<strong>对实时应用很有用，如IP电话，实时视频会议等</strong>)</li>
+<li>每一条<strong>TCP连接只能是点到点的</strong>；<strong>UDP支持一对一，一对多，多对一和多对多的交互通信</strong></li>
+<li>TCP首部开销20字节；UDP的首部开销小，只有8个字节</li>
+<li>TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</li>
+</ul>
+<h4 id="TCP的拥塞算法的了解"><a href="#TCP的拥塞算法的了解" class="headerlink" title="TCP的拥塞算法的了解?"></a>TCP的拥塞算法的了解?</h4><p>TCP协议有两个比较重要的控制算法，一个是流量控制，另一个就是阻塞控制</p>
+<p>详情见: <a class="link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018360050" >https://segmentfault.com/a/1190000018360050<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：字节抖音后端日常实习一面面经(部分)</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-03-08 09:20:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/03/08/字节抖音后端日常实习一面面经(部分)/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/07/%E5%85%B3%E4%BA%8EJavaScript%E7%9A%84%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87-3.7/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">关于JavaScript的面试准备-3.7</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">MySQL的四个特性是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">2.</span> <span class="nav-text">MySQL的隔离级别有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL%E7%9A%84%E9%BB%98%E8%AE%A4%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">MySQL的默认隔离级别?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88MySQL%E9%80%89%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E4%BD%9C%E4%B8%BA%E9%BB%98%E8%AE%A4%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">为什么MySQL选可重复读作为默认的隔离级别?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL%E7%9A%84%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="nav-number">5.</span> <span class="nav-text">MySQL的可重复读是如何实现的?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A4%E5%92%8C%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">读已提交和读未提交的区别?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">TCP和UDP的区别?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E7%9A%84%E6%8B%A5%E5%A1%9E%E7%AE%97%E6%B3%95%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="nav-number">8.</span> <span class="nav-text">TCP的拥塞算法的了解?</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
