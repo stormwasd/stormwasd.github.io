@@ -9,7 +9,7 @@
     
     <title>
         
-            JS逆向中烟新商盟 |
+            关于JS调试用xhr打断点没有停住的解决 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">JS逆向中烟新商盟</span>
+            <span class="title-hover-animation">关于JS调试用xhr打断点没有停住的解决</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-11 00:00:00</span>
-        <span class="mobile">2022-03-11 00:00</span>
+        <span class="pc">2022-03-11 16:19:30</span>
+        <span class="mobile">2022-03-11 16:19</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>312 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>159 Words</span>
         </span>
     
     
@@ -192,53 +192,23 @@
         
 
         <div class="article-content markdown-body">
-            <p>网址: <a class="link"   target="_blank" rel="noopener" href="https://www.xinshangmeng.com/xsm2/?Version=2022022600" >https://www.xinshangmeng.com/xsm2/?Version=2022022600<i class="fas fa-external-link-alt"></i></a></p>
-<p>加密参数:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5RNXn"><img  
+            <p>网站: <a class="link"   target="_blank" rel="noopener" href="https://www.gm99.com/" >https://www.gm99.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>加密参数如下:<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/bIhE8O"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5RNXn.png"
-                      alt="b5RNXn.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/bIhE8O.png"
+                      alt="bIhE8O.png"
                 ></a></p>
-<p>这里可以看到，貌似有两个加密参数，一个是密码加密，然后最后一个是时间戳</p>
-<p>由于前面我们是点击登录按钮触发请求的，所以我们可以从<strong>DOM事件</strong>为入口找到相关登录的代码，看看是否能找到加密逻辑:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5WCcj"><img  
+<p>我们在xhr中有看到这个请求，然后我们就在source面板中添加一个xhr breakpoint，然后来看看效果:</p>
+<p>那么添加什么参数呢，我们可以截取URL的一部分，比如这里我们就截取<code>/login/login3</code>，注意不要截取到了URL的参数部分</p>
+<p>点击登入后并没有反应，说明这断点没有断到，那我们可以直接在network中找:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bI5L5t"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5WCcj.png"
-                      alt="b5WCcj.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/bI5L5t.png"
+                      alt="bI5L5t.png"
                 ></a></p>
-<p>点击上图右侧的函数位置就能跳转到对应登录的代码，分析这段代码逻辑之后，我感觉在1126行对密码进行了加密，然后我们在该行打断点:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5ffJO"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5ffJO.png"
-                      alt="b5ffJO.png"
-                ></a></p>
-<p>可以看到这里最里面是调用了两次F函数，我们鼠标放在上面然后跳转进这个函数:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5fjfS"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5fjfS.png"
-                      alt="b5fjfS.png"
-                ></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5hPwq"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5hPwq.png"
-                      alt="b5hPwq.png"
-                ></a></p>
-<p>可以看到跳进了d(a)函数，我们在函数的结尾打个断点，看看函数里面的值是啥:</p>
-<p>用鼠标选中return后面的所有东西，可以看到这就是我们要的加密后的密码:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5h8fO"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/11/b5h8fO.png"
-                      alt="b5h8fO.png"
-                ></a></p>
-<p>参数a就是我们输入的密码</p>
-<p>d(a)函数内部又嵌套调用了n、e、o、m四个函数，那么接下来就只需要把代码抠出来再模拟执行即可</p>
-<p>这里就不赘述了</p>
+<p>点击上图中的函数地址，就能跳转到发包的位置，因为jQuery是一个js库，一个处理异步和发包的库</p>
 
         </div>
 
@@ -246,11 +216,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：JS逆向中烟新商盟</li>
+        <li>Post title：关于JS调试用xhr打断点没有停住的解决</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-03-11 00:00:00</li>
+        <li>Create time：2022-03-11 16:19:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/03/11/JS逆向中烟新商盟/
+            Post link：https://keep.xpoet.cn/2022/03/11/关于JS调试用xhr打断点没有停住的解决/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -266,29 +236,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/03/11/%E5%85%B3%E4%BA%8EJS%E8%B0%83%E8%AF%95%E7%94%A8xhr%E6%89%93%E6%96%AD%E7%82%B9%E6%B2%A1%E6%9C%89%E5%81%9C%E4%BD%8F%E7%9A%84%E8%A7%A3%E5%86%B3/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">关于JS调试用xhr打断点没有停住的解决</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/09/JS%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95%E5%9B%BD%E9%81%93%E8%B7%AF%E8%B4%A7%E8%BF%90%E8%BD%A6%E8%BE%86%E5%85%AC%E5%85%B1%E7%9B%91%E7%AE%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0/"
+                           href="/2022/03/11/JS%E9%80%86%E5%90%91%E4%B8%AD%E7%83%9F%E6%96%B0%E5%95%86%E7%9B%9F/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JS逆向登录国道路货运车辆公共监管与服务平台</span>
+                                <span class="post-nav-title-item">JS逆向中烟新商盟</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">

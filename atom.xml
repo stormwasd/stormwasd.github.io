@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-11T03:46:48.951Z</updated>
+  <updated>2022-03-11T08:30:34.848Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于JS调试用xhr打断点没有停住的解决</title>
+    <link href="http://example.com/2022/03/11/%E5%85%B3%E4%BA%8EJS%E8%B0%83%E8%AF%95%E7%94%A8xhr%E6%89%93%E6%96%AD%E7%82%B9%E6%B2%A1%E6%9C%89%E5%81%9C%E4%BD%8F%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
+    <id>http://example.com/2022/03/11/%E5%85%B3%E4%BA%8EJS%E8%B0%83%E8%AF%95%E7%94%A8xhr%E6%89%93%E6%96%AD%E7%82%B9%E6%B2%A1%E6%9C%89%E5%81%9C%E4%BD%8F%E7%9A%84%E8%A7%A3%E5%86%B3/</id>
+    <published>2022-03-11T08:19:30.000Z</published>
+    <updated>2022-03-11T08:30:34.848Z</updated>
+    
+    <content type="html"><![CDATA[<p>网站: <a class="link"   href="https://www.gm99.com/" >https://www.gm99.com/<i class="fas fa-external-link-alt"></i></a></p><p>加密参数如下:<br><a href="https://imgtu.com/i/bIhE8O"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s1.ax1x.com/2022/03/11/bIhE8O.png"                      alt="bIhE8O.png"                ></a></p><p>我们在xhr中有看到这个请求，然后我们就在source面板中添加一个xhr breakpoint，然后来看看效果:</p><p>那么添加什么参数呢，我们可以截取URL的一部分，比如这里我们就截取<code>/login/login3</code>，注意不要截取到了URL的参数部分</p><p>点击登入后并没有反应，说明这断点没有断到，那我们可以直接在network中找:</p><p><a href="https://imgtu.com/i/bI5L5t"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s1.ax1x.com/2022/03/11/bI5L5t.png"                      alt="bI5L5t.png"                ></a></p><p>点击上图中的函数地址，就能跳转到发包的位置，因为jQuery是一个js库，一个处理异步和发包的库</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;网站: &lt;a class=&quot;link&quot;   href=&quot;https://www.gm99.com/&quot; &gt;https://www.gm99.com/&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;加密参数如下:&lt;br&gt;&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>JS逆向中烟新商盟</title>
@@ -407,29 +428,6 @@
       
     <summary type="html">&lt;p&gt;上一篇笔记提到使用&lt;code&gt;python -m ensurepip&lt;/code&gt;将pip.exe文件下载下来，然后我们在Python主目录下中的Scripts文件夹内可以看到pip3.exe，然后我们要将这个.exe文件的路径添加进环境变量即可在小黑窗口使用&lt;/p&gt;
 </summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python中的pip工具丢失的解决方法</title>
-    <link href="http://example.com/2022/02/19/Python%E4%B8%AD%E7%9A%84pip%E5%B7%A5%E5%85%B7%E4%B8%A2%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://example.com/2022/02/19/Python%E4%B8%AD%E7%9A%84pip%E5%B7%A5%E5%85%B7%E4%B8%A2%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
-    <published>2022-02-19T01:31:30.000Z</published>
-    <updated>2022-02-19T01:39:29.648Z</updated>
-    
-    <content type="html"><![CDATA[<p>昨天在使用更新pip的命令后，莫名其妙我的pip就被删除了:</p><p><a href="https://imgtu.com/i/HHQYsU"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/02/19/HHQYsU.png"                      alt="HHQYsU.png"                ></a></p><p>我当时就傻眼了，这怎么搞呢，我还要用pip工具安装包呢，然后我是用以下命令解决的:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m ensurepip</span><br></pre></td></tr></table></figure><p>ensurepip默认会安装标准库提供的一个pip副本，这个副本一般不是最新的，然后可以用这个版本安装pip的任意一个更新版本，当然如果你想直接安装pip的一个最新版本，可以在ensurepip命令中添加<code>-uupgrade</code>选项</p><p><a href="https://imgtu.com/i/HHQyQK"><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s4.ax1x.com/2022/02/19/HHQyQK.png"                      alt="HHQyQK.png"                ></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;昨天在使用更新pip的命令后，莫名其妙我的pip就被删除了:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://imgtu.com/i/HHQYsU&quot;&gt;&lt;img  
-                     lazyload
-                     src=</summary>
       
     
     
