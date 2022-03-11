@@ -9,7 +9,7 @@
     
     <title>
         
-            Tabby的基本使用 |
+            JS逆向中烟新商盟 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Tabby的基本使用</span>
+            <span class="title-hover-animation">JS逆向中烟新商盟</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-09 09:33:30</span>
-        <span class="mobile">2022-03-09 09:33</span>
+        <span class="pc">2022-03-11 00:00:00</span>
+        <span class="mobile">2022-03-11 00:00</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>362 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>312 Words</span>
         </span>
     
     
@@ -192,85 +192,53 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>官网: <a class="link"   target="_blank" rel="noopener" href="https://tabby.sh/" >https://tabby.sh/<i class="fas fa-external-link-alt"></i></a></p>
-<p>github: <a class="link"   target="_blank" rel="noopener" href="https://github.com/Eugeny/tabby" >https://github.com/Eugeny/tabby<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="添加SSH连接"><a href="#添加SSH连接" class="headerlink" title="添加SSH连接"></a>添加SSH连接</h4><p>打开终端，点击设置，然后在Profiles&amp;connections页面点击+New profile:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2RUWq"><img  
+            <p>网址: <a class="link"   target="_blank" rel="noopener" href="https://www.xinshangmeng.com/xsm2/?Version=2022022600" >https://www.xinshangmeng.com/xsm2/?Version=2022022600<i class="fas fa-external-link-alt"></i></a></p>
+<p>加密参数:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5RNXn"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2RUWq.png"
-                      alt="b2RUWq.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5RNXn.png"
+                      alt="b5RNXn.png"
                 ></a></p>
-<p>选择SSH连接:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2RBOU"><img  
+<p>这里可以看到，貌似有两个加密参数，一个是密码加密，然后最后一个是时间戳</p>
+<p>由于前面我们是点击登录按钮触发请求的，所以我们可以从<strong>DOM事件</strong>为入口找到相关登录的代码，看看是否能找到加密逻辑:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5WCcj"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2RBOU.png"
-                      alt="b2RBOU.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5WCcj.png"
+                      alt="b5WCcj.png"
                 ></a></p>
-<p>填写SSH连接信息，完成后点击Save进行保存:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2RbtA"><img  
+<p>点击上图右侧的函数位置就能跳转到对应登录的代码，分析这段代码逻辑之后，我感觉在1126行对密码进行了加密，然后我们在该行打断点:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5ffJO"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2RbtA.png"
-                      alt="b2RbtA.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5ffJO.png"
+                      alt="b5ffJO.png"
                 ></a></p>
-<p>可以看到SSH连接已经添加成功，点击按钮进行连接:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2WEcV"><img  
+<p>可以看到这里最里面是调用了两次F函数，我们鼠标放在上面然后跳转进这个函数:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5fjfS"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2WEcV.png"
-                      alt="b2WEcV.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5fjfS.png"
+                      alt="b5fjfS.png"
                 ></a></p>
-<p>连接显示的效果如下:</p>
-<p><img  
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5hPwq"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://upload-images.jianshu.io/upload_images/3821938-9bfb53789dcaaef4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/815/format/webp"
-                      alt="img"
-                ></p>
-<h4 id="SFTP传输文件"><a href="#SFTP传输文件" class="headerlink" title="SFTP传输文件"></a>SFTP传输文件</h4><p>对于经常使用终端的小伙伴而言，文件传输啃食是个刚需，Tabby集成了SFTP，所以传输大文件时，我们不用再安装其他软件了，点击终端上方的SFTP按钮，可以将文件直接拖拽到目录下，还是挺方便的:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2WWNj"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2WWNj.png"
-                      alt="b2WWNj.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5hPwq.png"
+                      alt="b5hPwq.png"
                 ></a></p>
-<h4 id="修改配色方案"><a href="#修改配色方案" class="headerlink" title="修改配色方案"></a>修改配色方案</h4><p>如果你不满意终端显示的配色，可以选择其它的配色方案，Tabby内部集成了非常多的配色方案，总有一款适合你，配色方案可以到Color scheme界面中挑选，这里我选择了Adventure Time:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2fZ8I"><img  
+<p>可以看到跳进了d(a)函数，我们在函数的结尾打个断点，看看函数里面的值是啥:</p>
+<p>用鼠标选中return后面的所有东西，可以看到这就是我们要的加密后的密码:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b5h8fO"><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2fZ8I.png"
-                      alt="b2fZ8I.png"
+                     data-src="https://s1.ax1x.com/2022/03/11/b5h8fO.png"
+                      alt="b5h8fO.png"
                 ></a></p>
-<p>使用该方案后的显示效果如下:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2f35j"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2f35j.png"
-                      alt="b2f35j.png"
-                ></a></p>
-<h4 id="安装主题插件"><a href="#安装主题插件" class="headerlink" title="安装主题插件"></a>安装主题插件</h4><p>我觉得Tabby自带的主题已经很美观了，如果你想更换其他主题，可以到Windows界面修改:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2fUMV"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2fUMV.png"
-                      alt="b2fUMV.png"
-                ></a></p>
-<p>如果还是不喜欢自带的主题，可以试试安装主题插件，这里我安装了theme-gruvbox这个主题插件:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2f2M6"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2f2M6.png"
-                      alt="b2f2M6.png"
-                ></a></p>
-<p>安装完后重启Tabby，再回到Window界面，可以应用刚添加的主题:</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b2f7RI"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s1.ax1x.com/2022/03/09/b2f7RI.png"
-                      alt="b2f7RI.png"
-                ></a></p>
+<p>参数a就是我们输入的密码</p>
+<p>d(a)函数内部又嵌套调用了n、e、o、m四个函数，那么接下来就只需要把代码抠出来再模拟执行即可</p>
+<p>这里就不赘述了</p>
 
         </div>
 
@@ -278,11 +246,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Tabby的基本使用</li>
+        <li>Post title：JS逆向中烟新商盟</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-03-09 09:33:30</li>
+        <li>Create time：2022-03-11 00:00:00</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/03/09/Tabby的基本使用/
+            Post link：https://keep.xpoet.cn/2022/03/11/JS逆向中烟新商盟/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -298,29 +266,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/03/09/JS%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95%E5%9B%BD%E9%81%93%E8%B7%AF%E8%B4%A7%E8%BF%90%E8%BD%A6%E8%BE%86%E5%85%AC%E5%85%B1%E7%9B%91%E7%AE%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">JS逆向登录国道路货运车辆公共监管与服务平台</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/08/JS%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95%E6%88%BF%E5%A4%A9%E4%B8%8B/"
+                           href="/2022/03/09/JS%E9%80%86%E5%90%91%E7%99%BB%E5%BD%95%E5%9B%BD%E9%81%93%E8%B7%AF%E8%B4%A7%E8%BF%90%E8%BD%A6%E8%BE%86%E5%85%AC%E5%85%B1%E7%9B%91%E7%AE%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JS逆向登录房天下</span>
+                                <span class="post-nav-title-item">JS逆向登录国道路货运车辆公共监管与服务平台</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -538,7 +491,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0SSH%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.1.</span> <span class="nav-text">添加SSH连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SFTP%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">SFTP传输文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88"><span class="nav-number">2.3.</span> <span class="nav-text">修改配色方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">安装主题插件</span></a></li></ol></li></ol>
+        
     </div>
 </div>
         </aside>
