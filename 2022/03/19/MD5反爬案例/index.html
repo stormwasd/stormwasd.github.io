@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            MD5反爬万创邦案例 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">MD5反爬万创邦案例</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-19 16:18:30</span>
+        <span class="mobile">2022-03-19 16:18</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>11 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>目标网站: <a class="link"   target="_blank" rel="noopener" href="https://m.wcbchina.com/invite/invite.html" >https://m.wcbchina.com/invite/invite.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>我们打开工具，随便输入一串数字，随意输入11位数字，电话号码是11位的嘛，然后点击获取验证码，就会出现一个验证:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEPIrq"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEPIrq.png"
+                      alt="qEPIrq.png"
+                ></a></p>
+<p>我们要做的就是把加密的sign的加密逻辑给找出来，然后用Python模拟实现构造出这个sing</p>
+<p>我们还是先用老方法先搜索下:</p>
+<p>我们搜索sign，或者sign:，我这里搜索的是sing:，然后会看到两条数据，第一条是css的，那我们想要的很可能就在第二条:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEiEzd"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEiEzd.png"
+                      alt="qEiEzd.png"
+                ></a></p>
+<p>我们点进去，会发现直接就能看到加密的一个逻辑:</p>
+<p>可以看到就在15行</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEFSpQ"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEFSpQ.png"
+                      alt="qEFSpQ.png"
+                ></a></p>
+<p>我们在此处打个断点:</p>
+<p>然后看看是否就在此处构造出了我们想要的的sign:</p>
+<p>可以到的确就在15行得到了我们想要的sign，我们可以只看这一行了</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEF176"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEF176.png"
+                      alt="qEF176.png"
+                ></a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N = h.hex_md5((v || <span class="string">&quot;&quot;</span>) + (g || <span class="string">&quot;&quot;</span>) + c).toUpperCase()</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，我们想要的sign由对象h.hex_md5这个方法，然后跟了一大串的参数，最后改大写了，我们首先看看hex_md5到底跟了什么参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((v || <span class="string">&quot;&quot;</span>) + (g || <span class="string">&quot;&quot;</span>) + c)</span><br></pre></td></tr></table></figure>
+
+<p>我们来看看v和g存不存在先:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEkoqI"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEkoqI.png"
+                      alt="qEkoqI.png"
+                ></a></p>
+<p>根据调试情况可知，v和g都是undefined，所以都是不存在的，所以以上的表达式，就是空字符串加空字符串加上c，那么重点就是c了，我们需要搞清c是什么:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEAJQH"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEAJQH.png"
+                      alt="qEAJQH.png"
+                ></a></p>
+<p>根据经验，我们很容易就能看出这是一个时间戳，那么参数就很明显了，我们接下来要做的就是扣代码</p>
+<p>首先我们需要搞清楚h是个什么东西，我们在h的下一行下一个断点，看看h是个什么:</p>
+<p>这里由于这整个代码是一个自执行方法，我们一刷新就会执行，然后我们可以看看h:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEeQnH"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEeQnH.png"
+                      alt="qEeQnH.png"
+                ></a></p>
+<p>h是一个大的对象，然后里面有好多个方法，后面调用的就是hex_md5方法，我们可以进入这个方法看看:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEeBHs"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s1.ax1x.com/2022/03/19/qEeBHs.png"
+                      alt="qEeBHs.png"
+                ></a></p>
+<p>我们会发现，直接就进入了一个大的js里面，我们来分析下这个代码的结构，方法hex_md5在一个大的对象j之中，所以我们需要用对象来调用这个方法，我们可以先看看一个例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hex_md5;</span><br><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> j = &#123;</span><br><span class="line">        <span class="attr">hex_md5</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;111&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    _hex_md5 = j;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p>我们一但把这个代码贴在控制台，就会触发这个自执行函数，然后我们就需要通过过对象调用方法的方法<code>.</code>来调用hex_md5方法，所以对于上面的函数我们也是可以这样处理:</p>
+<p>首先我们可以看到j是一个对象，然后这个案例中的代码它其实也把这个j对象导出了，只不过它是使用的<code>module.exports = j</code></p>
+<p>这里我们需要了解下开头的<code>define</code>，这个关键字是定义一个模块的语法，我们这里可以不用模块，所以可以把<code>define</code>删除了，然后使用上面的方法把删除<code>define</code>关键字后的方法改成一个自执行方法，修改后如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> md5_test;</span><br><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>, <span class="built_in">exports</span>, <span class="built_in">module</span></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">x, c</span>) </span>&#123;</span><br><span class="line">        x[c &gt;&gt; <span class="number">5</span>] |= <span class="number">128</span> &lt;&lt; c % <span class="number">32</span>,</span><br><span class="line">        x[(c + <span class="number">64</span> &gt;&gt;&gt; <span class="number">9</span> &lt;&lt; <span class="number">4</span>) + <span class="number">14</span>] = c;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="number">1732584193</span>, _ = -<span class="number">271733879</span>, y = -<span class="number">1732584194</span>, d = <span class="number">271733878</span>, i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> b = a</span><br><span class="line">              , B = _</span><br><span class="line">              , D = y</span><br><span class="line">              , E = d;</span><br><span class="line">            a = h(a, _, y, d, x[i + <span class="number">0</span>], <span class="number">7</span>, -<span class="number">680876936</span>),</span><br><span class="line">            d = h(d, a, _, y, x[i + <span class="number">1</span>], <span class="number">12</span>, -<span class="number">389564586</span>),</span><br><span class="line">            y = h(y, d, a, _, x[i + <span class="number">2</span>], <span class="number">17</span>, <span class="number">606105819</span>),</span><br><span class="line">            _ = h(_, y, d, a, x[i + <span class="number">3</span>], <span class="number">22</span>, -<span class="number">1044525330</span>),</span><br><span class="line">            a = h(a, _, y, d, x[i + <span class="number">4</span>], <span class="number">7</span>, -<span class="number">176418897</span>),</span><br><span class="line">            d = h(d, a, _, y, x[i + <span class="number">5</span>], <span class="number">12</span>, <span class="number">1200080426</span>),</span><br><span class="line">            y = h(y, d, a, _, x[i + <span class="number">6</span>], <span class="number">17</span>, -<span class="number">1473231341</span>),</span><br><span class="line">            _ = h(_, y, d, a, x[i + <span class="number">7</span>], <span class="number">22</span>, -<span class="number">45705983</span>),</span><br><span class="line">            a = h(a, _, y, d, x[i + <span class="number">8</span>], <span class="number">7</span>, <span class="number">1770035416</span>),</span><br><span class="line">            d = h(d, a, _, y, x[i + <span class="number">9</span>], <span class="number">12</span>, -<span class="number">1958414417</span>),</span><br><span class="line">            y = h(y, d, a, _, x[i + <span class="number">10</span>], <span class="number">17</span>, -<span class="number">42063</span>),</span><br><span class="line">            _ = h(_, y, d, a, x[i + <span class="number">11</span>], <span class="number">22</span>, -<span class="number">1990404162</span>),</span><br><span class="line">            a = h(a, _, y, d, x[i + <span class="number">12</span>], <span class="number">7</span>, <span class="number">1804603682</span>),</span><br><span class="line">            d = h(d, a, _, y, x[i + <span class="number">13</span>], <span class="number">12</span>, -<span class="number">40341101</span>),</span><br><span class="line">            y = h(y, d, a, _, x[i + <span class="number">14</span>], <span class="number">17</span>, -<span class="number">1502002290</span>),</span><br><span class="line">            _ = h(_, y, d, a, x[i + <span class="number">15</span>], <span class="number">22</span>, <span class="number">1236535329</span>),</span><br><span class="line">            a = g(a, _, y, d, x[i + <span class="number">1</span>], <span class="number">5</span>, -<span class="number">165796510</span>),</span><br><span class="line">            d = g(d, a, _, y, x[i + <span class="number">6</span>], <span class="number">9</span>, -<span class="number">1069501632</span>),</span><br><span class="line">            y = g(y, d, a, _, x[i + <span class="number">11</span>], <span class="number">14</span>, <span class="number">643717713</span>),</span><br><span class="line">            _ = g(_, y, d, a, x[i + <span class="number">0</span>], <span class="number">20</span>, -<span class="number">373897302</span>),</span><br><span class="line">            a = g(a, _, y, d, x[i + <span class="number">5</span>], <span class="number">5</span>, -<span class="number">701558691</span>),</span><br><span class="line">            d = g(d, a, _, y, x[i + <span class="number">10</span>], <span class="number">9</span>, <span class="number">38016083</span>),</span><br><span class="line">            y = g(y, d, a, _, x[i + <span class="number">15</span>], <span class="number">14</span>, -<span class="number">660478335</span>),</span><br><span class="line">            _ = g(_, y, d, a, x[i + <span class="number">4</span>], <span class="number">20</span>, -<span class="number">405537848</span>),</span><br><span class="line">            a = g(a, _, y, d, x[i + <span class="number">9</span>], <span class="number">5</span>, <span class="number">568446438</span>),</span><br><span class="line">            d = g(d, a, _, y, x[i + <span class="number">14</span>], <span class="number">9</span>, -<span class="number">1019803690</span>),</span><br><span class="line">            y = g(y, d, a, _, x[i + <span class="number">3</span>], <span class="number">14</span>, -<span class="number">187363961</span>),</span><br><span class="line">            _ = g(_, y, d, a, x[i + <span class="number">8</span>], <span class="number">20</span>, <span class="number">1163531501</span>),</span><br><span class="line">            a = g(a, _, y, d, x[i + <span class="number">13</span>], <span class="number">5</span>, -<span class="number">1444681467</span>),</span><br><span class="line">            d = g(d, a, _, y, x[i + <span class="number">2</span>], <span class="number">9</span>, -<span class="number">51403784</span>),</span><br><span class="line">            y = g(y, d, a, _, x[i + <span class="number">7</span>], <span class="number">14</span>, <span class="number">1735328473</span>),</span><br><span class="line">            _ = g(_, y, d, a, x[i + <span class="number">12</span>], <span class="number">20</span>, -<span class="number">1926607734</span>),</span><br><span class="line">            a = v(a, _, y, d, x[i + <span class="number">5</span>], <span class="number">4</span>, -<span class="number">378558</span>),</span><br><span class="line">            d = v(d, a, _, y, x[i + <span class="number">8</span>], <span class="number">11</span>, -<span class="number">2022574463</span>),</span><br><span class="line">            y = v(y, d, a, _, x[i + <span class="number">11</span>], <span class="number">16</span>, <span class="number">1839030562</span>),</span><br><span class="line">            _ = v(_, y, d, a, x[i + <span class="number">14</span>], <span class="number">23</span>, -<span class="number">35309556</span>),</span><br><span class="line">            a = v(a, _, y, d, x[i + <span class="number">1</span>], <span class="number">4</span>, -<span class="number">1530992060</span>),</span><br><span class="line">            d = v(d, a, _, y, x[i + <span class="number">4</span>], <span class="number">11</span>, <span class="number">1272893353</span>),</span><br><span class="line">            y = v(y, d, a, _, x[i + <span class="number">7</span>], <span class="number">16</span>, -<span class="number">155497632</span>),</span><br><span class="line">            _ = v(_, y, d, a, x[i + <span class="number">10</span>], <span class="number">23</span>, -<span class="number">1094730640</span>),</span><br><span class="line">            a = v(a, _, y, d, x[i + <span class="number">13</span>], <span class="number">4</span>, <span class="number">681279174</span>),</span><br><span class="line">            d = v(d, a, _, y, x[i + <span class="number">0</span>], <span class="number">11</span>, -<span class="number">358537222</span>),</span><br><span class="line">            y = v(y, d, a, _, x[i + <span class="number">3</span>], <span class="number">16</span>, -<span class="number">722521979</span>),</span><br><span class="line">            _ = v(_, y, d, a, x[i + <span class="number">6</span>], <span class="number">23</span>, <span class="number">76029189</span>),</span><br><span class="line">            a = v(a, _, y, d, x[i + <span class="number">9</span>], <span class="number">4</span>, -<span class="number">640364487</span>),</span><br><span class="line">            d = v(d, a, _, y, x[i + <span class="number">12</span>], <span class="number">11</span>, -<span class="number">421815835</span>),</span><br><span class="line">            y = v(y, d, a, _, x[i + <span class="number">15</span>], <span class="number">16</span>, <span class="number">530742520</span>),</span><br><span class="line">            _ = v(_, y, d, a, x[i + <span class="number">2</span>], <span class="number">23</span>, -<span class="number">995338651</span>),</span><br><span class="line">            a = A(a, _, y, d, x[i + <span class="number">0</span>], <span class="number">6</span>, -<span class="number">198630844</span>),</span><br><span class="line">            d = A(d, a, _, y, x[i + <span class="number">7</span>], <span class="number">10</span>, <span class="number">1126891415</span>),</span><br><span class="line">            y = A(y, d, a, _, x[i + <span class="number">14</span>], <span class="number">15</span>, -<span class="number">1416354905</span>),</span><br><span class="line">            _ = A(_, y, d, a, x[i + <span class="number">5</span>], <span class="number">21</span>, -<span class="number">57434055</span>),</span><br><span class="line">            a = A(a, _, y, d, x[i + <span class="number">12</span>], <span class="number">6</span>, <span class="number">1700485571</span>),</span><br><span class="line">            d = A(d, a, _, y, x[i + <span class="number">3</span>], <span class="number">10</span>, -<span class="number">1894986606</span>),</span><br><span class="line">            y = A(y, d, a, _, x[i + <span class="number">10</span>], <span class="number">15</span>, -<span class="number">1051523</span>),</span><br><span class="line">            _ = A(_, y, d, a, x[i + <span class="number">1</span>], <span class="number">21</span>, -<span class="number">2054922799</span>),</span><br><span class="line">            a = A(a, _, y, d, x[i + <span class="number">8</span>], <span class="number">6</span>, <span class="number">1873313359</span>),</span><br><span class="line">            d = A(d, a, _, y, x[i + <span class="number">15</span>], <span class="number">10</span>, -<span class="number">30611744</span>),</span><br><span class="line">            y = A(y, d, a, _, x[i + <span class="number">6</span>], <span class="number">15</span>, -<span class="number">1560198380</span>),</span><br><span class="line">            _ = A(_, y, d, a, x[i + <span class="number">13</span>], <span class="number">21</span>, <span class="number">1309151649</span>),</span><br><span class="line">            a = A(a, _, y, d, x[i + <span class="number">4</span>], <span class="number">6</span>, -<span class="number">145523070</span>),</span><br><span class="line">            d = A(d, a, _, y, x[i + <span class="number">11</span>], <span class="number">10</span>, -<span class="number">1120210379</span>),</span><br><span class="line">            y = A(y, d, a, _, x[i + <span class="number">2</span>], <span class="number">15</span>, <span class="number">718787259</span>),</span><br><span class="line">            _ = A(_, y, d, a, x[i + <span class="number">9</span>], <span class="number">21</span>, -<span class="number">343485551</span>),</span><br><span class="line">            a = C(a, b),</span><br><span class="line">            _ = C(_, B),</span><br><span class="line">            y = C(y, D),</span><br><span class="line">            d = C(d, E)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Array</span>(a, _, y, d)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">q, c, a, x, s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> C(y(C(C(c, q), C(x, t)), s), a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">c, h, g, d, x, s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a(h &amp; g | ~h &amp; d, c, h, x, s, t)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params">c, h, g, d, x, s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a(h &amp; d | g &amp; ~d, c, h, x, s, t)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">v</span>(<span class="params">c, h, g, d, x, s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a(h ^ g ^ d, c, h, x, s, t)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">c, h, g, d, x, s, t</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a(g ^ (h | ~d), c, h, x, s, t)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_</span>(<span class="params">a, h</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> g = b(a);</span><br><span class="line">        g.length &gt; <span class="number">16</span> &amp;&amp; (g = c(g, a.length * U));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> v = <span class="built_in">Array</span>(<span class="number">16</span>), A = <span class="built_in">Array</span>(<span class="number">16</span>), i = <span class="number">0</span>; <span class="number">16</span> &gt; i; i++)</span><br><span class="line">            v[i] = <span class="number">909522486</span> ^ g[i],</span><br><span class="line">            A[i] = <span class="number">1549556828</span> ^ g[i];</span><br><span class="line">        <span class="keyword">var</span> _ = c(v.concat(b(h)), <span class="number">512</span> + h.length * U);</span><br><span class="line">        <span class="keyword">return</span> c(A.concat(_), <span class="number">640</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">C</span>(<span class="params">x, c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = (<span class="number">65535</span> &amp; x) + (<span class="number">65535</span> &amp; c)</span><br><span class="line">          , h = (x &gt;&gt; <span class="number">16</span>) + (c &gt;&gt; <span class="number">16</span>) + (a &gt;&gt; <span class="number">16</span>);</span><br><span class="line">        <span class="keyword">return</span> h &lt;&lt; <span class="number">16</span> | <span class="number">65535</span> &amp; a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">y</span>(<span class="params">c, a</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> c &lt;&lt; a | c &gt;&gt;&gt; <span class="number">32</span> - a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="built_in">Array</span>(), h = (<span class="number">1</span> &lt;&lt; U) - <span class="number">1</span>, i = <span class="number">0</span>; i &lt; c.length * U; i += U)</span><br><span class="line">            a[i &gt;&gt; <span class="number">5</span>] |= (c.charCodeAt(i / U) &amp; h) &lt;&lt; i % <span class="number">32</span>;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="string">&quot;&quot;</span>, h = (<span class="number">1</span> &lt;&lt; U) - <span class="number">1</span>, i = <span class="number">0</span>; i &lt; <span class="number">32</span> * c.length; i += U)</span><br><span class="line">            a += <span class="built_in">String</span>.fromCharCode(c[i &gt;&gt; <span class="number">5</span>] &gt;&gt;&gt; i % <span class="number">32</span> &amp; h);</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">D</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> a = F ? <span class="string">&quot;0123456789ABCDEF&quot;</span> : <span class="string">&quot;0123456789abcdef&quot;</span>, h = <span class="string">&quot;&quot;</span>, i = <span class="number">0</span>; i &lt; <span class="number">4</span> * c.length; i++)</span><br><span class="line">            h += a.charAt(c[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> + <span class="number">4</span> &amp; <span class="number">15</span>) + a.charAt(c[i &gt;&gt; <span class="number">2</span>] &gt;&gt; i % <span class="number">4</span> * <span class="number">8</span> &amp; <span class="number">15</span>);</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">E</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>, h = <span class="string">&quot;&quot;</span>, i = <span class="number">0</span>; i &lt; <span class="number">4</span> * c.length; i += <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> g = (c[i &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (i % <span class="number">4</span>) &amp; <span class="number">255</span>) &lt;&lt; <span class="number">16</span> | (c[i + <span class="number">1</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">1</span>) % <span class="number">4</span>) &amp; <span class="number">255</span>) &lt;&lt; <span class="number">8</span> | c[i + <span class="number">2</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">2</span>) % <span class="number">4</span>) &amp; <span class="number">255</span>, v = <span class="number">0</span>; <span class="number">4</span> &gt; v; v++)</span><br><span class="line">                h += <span class="number">8</span> * i + <span class="number">6</span> * v &gt; <span class="number">32</span> * c.length ? S : a.charAt(g &gt;&gt; <span class="number">6</span> * (<span class="number">3</span> - v) &amp; <span class="number">63</span>);</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> F = <span class="number">0</span></span><br><span class="line">      , S = <span class="string">&quot;&quot;</span></span><br><span class="line">      , U = <span class="number">8</span></span><br><span class="line">      , j = &#123;</span><br><span class="line">        <span class="attr">hex_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> D(c(b(s), s.length * U)).toUpperCase()</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">b64_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> E(c(b(s), s.length * U))</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">str_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> B(c(b(s), s.length * U))</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">hex_hmac_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">c, a</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> D(_(c, a))</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">b64_hmac_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">c, a</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> E(_(c, a))</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">str_hmac_md5</span>: <span class="function"><span class="keyword">function</span>(<span class="params">c, a</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> B(_(c, a))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    md5_test = j;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>导出变量我们就定义为md5_test，然后根据这个自执行方法我们就能得到加密后的sign</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：MD5反爬万创邦案例</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-03-19 16:18:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/03/19/MD5反爬案例/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/19/Python%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E6%AD%A5%E9%AA%A4/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python创建虚拟环境的步骤</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
