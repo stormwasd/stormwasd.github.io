@@ -229,50 +229,27 @@
 <p>下面我们就结合Python来综合实现下，上面用的是测试数据，我们可以用Python的`requests库然后结合一些提取库来拿到key值，然后完成一个连贯的构建加密后代码的动作:</p>
 <p>代码:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">@Description :</span></span><br><span class="line"><span class="string">@File        : Perfect_world</span></span><br><span class="line"><span class="string">@Project     : test</span></span><br><span class="line"><span class="string">@Time        : 2022/3/30 17:26</span></span><br><span class="line"><span class="string">@Author      : LiHouJian</span></span><br><span class="line"><span class="string">@Software    : PyCharm</span></span><br><span class="line"><span class="string">@issue       :</span></span><br><span class="line"><span class="string">@change      :</span></span><br><span class="line"><span class="string">@reason      :</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拿到key值</span></span><br><span class="line">headers = &#123;</span><br><span class="line">	<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">url = <span class="string">&#x27;https://passport.wanmei.com/sso/login?service=passport&amp;isiframe=1&amp;location=2f736166652f&#x27;</span></span><br><span class="line">res = requests.get(url, headers=headers).text</span><br><span class="line"><span class="comment"># tree = etree.HTML(res)</span></span><br><span class="line"><span class="comment"># value = tree.xpath(&quot;&quot;)</span></span><br><span class="line">key = re.search(<span class="string">&#x27;&lt;input id=&quot;e&quot; type=&quot;hidden&quot; value=&quot;(.*?)&quot; /&gt;&#x27;</span>, res, re.DOTALL).group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">node = execjs.get()</span><br><span class="line"><span class="comment"># ctx.call(&quot;getPwd&quot;, &#x27;123456&#x27;, key)</span></span><br><span class="line">ctx = node.<span class="built_in">compile</span>(<span class="built_in">open</span>(<span class="string">&#x27;./Perfect_world.js&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>).read())</span><br><span class="line">funcName = <span class="string">&#x27;getPwd(&quot;&#123;0&#125;&quot;, &quot;&#123;1&#125;&quot;)&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;123456&#x27;</span>, key)</span><br><span class="line">pwd = ctx.<span class="built_in">eval</span>(funcName)</span><br><span class="line"><span class="built_in">print</span>(pwd)</span><br></pre></td></tr></table></figure>
+
+<p>关于补环境，这里做个记录，看到别人写的一个博客:</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/huchong/p/11044238.html" >https://www.cnblogs.com/huchong/p/11044238.html<i class="fas fa-external-link-alt"></i></a></p>
+
         </div>
 
         
             <div class="post-copyright-info">
-                .article-copyright-info-container {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 6px;
-  font-size: 1rem;
-  background: var(--second-background-color);
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    width: 6px;
-    height: 100%;
-    background: var(--copyright-info-color);
-  }
-
-
-  ul {
-
-    margin-left: 10px;
-
-    li {
-      margin-bottom: 5px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: var(--default-text-color);
-
-      .license {
-        font-weight: bold;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：完美世界逆向分析</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-03-30 12:04:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/03/30/完美世界逆向分析/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
 
             </div>
         
