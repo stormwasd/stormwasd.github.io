@@ -9,7 +9,7 @@
     
     <title>
         
-            关于Docker |
+            关于修改Jenkins默认端口(8080) |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">关于Docker</span>
+            <span class="title-hover-animation">关于修改Jenkins默认端口(8080)</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-04-01 09:12:30</span>
-        <span class="mobile">2022-04-01 09:12</span>
+        <span class="pc">2022-04-01 11:15:30</span>
+        <span class="mobile">2022-04-01 11:15</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>12 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>128 Words</span>
         </span>
     
     
@@ -192,7 +192,14 @@
         
 
         <div class="article-content markdown-body">
-            <p>转载自csdn: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/javahelpyou/article/details/104587242" >https://blog.csdn.net/javahelpyou/article/details/104587242<i class="fas fa-external-link-alt"></i></a></p>
+            <p>Jenkins的安装请移步: <a class="link"   target="_blank" rel="noopener" href="http://kest.club/2022/02/23/ubuntu16%E5%AE%89%E8%A3%85Jenkins/" >http://kest.club/2022/02/23/ubuntu16%E5%AE%89%E8%A3%85Jenkins/<i class="fas fa-external-link-alt"></i></a></p>
+<p>然后下面我们来看看如何修改Jenkins这个默认的端口，主要是我安装爬虫可视化工具CrawLab遇到点问题，所以想着修改下</p>
+<p>总体来说就两步</p>
+<ol>
+<li>使用<code>vim /etc/init.d/jenkins</code>命令，修改<code>do_start</code>函数中的<code>check_tcp_port</code>命令，端口号从8080换成8082或者其他</li>
+<li>使用<code>vim /etc/default/jenkins</code>命令，将断口8080改成8082</li>
+</ol>
+<p>本文参考自: <a class="link"   target="_blank" rel="noopener" href="https://www.qieseo.com/217847.html" >https://www.qieseo.com/217847.html<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -200,11 +207,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：关于Docker</li>
+        <li>Post title：关于修改Jenkins默认端口(8080)</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-04-01 09:12:30</li>
+        <li>Create time：2022-04-01 11:15:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/04/01/关于Docker/
+            Post link：https://keep.xpoet.cn/2022/04/01/关于修改Jenkins默认端口(8080)/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -223,13 +230,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/04/01/17%E5%B9%B4%E6%98%9F%E7%81%AB%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A72000%E9%AB%98%E9%A2%91%E8%AF%8D%E6%B1%87/"
+                           href="/2022/04/01/%E5%85%B3%E4%BA%8Evim%E7%9A%84%E5%87%A0%E7%A7%8D%E4%BD%BF%E7%94%A8/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">17年星火英语六级2000高频词汇</span>
+                                <span class="post-nav-title-item">关于vim的几种使用</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -239,10 +246,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/30/100%E5%8F%A5%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD-1/"
+                           href="/2022/04/01/17%E5%B9%B4%E6%98%9F%E7%81%AB%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A72000%E9%AB%98%E9%A2%91%E8%AF%8D%E6%B1%87/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">100句英语口语-1</span>
+                                <span class="post-nav-title-item">17年星火英语六级2000高频词汇</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
