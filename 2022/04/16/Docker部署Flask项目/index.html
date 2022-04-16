@@ -9,7 +9,7 @@
     
     <title>
         
-            js混淆-动态cookie题目详解 |
+            Docker部署Flask项目 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">js混淆-动态cookie题目详解</span>
+            <span class="title-hover-animation">Docker部署Flask项目</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-13 16:11:30</span>
-        <span class="mobile">2022-01-13 16:11</span>
+        <span class="pc">2022-04-16 18:43:30</span>
+        <span class="mobile">2022-04-16 18:43</span>
     </span>
     
     
@@ -171,7 +171,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>446 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>381 Words</span>
         </span>
     
     
@@ -192,49 +192,32 @@
         
 
         <div class="article-content markdown-body">
-            <p>第二题是js混线，动态cookie，这也是提取全部5页的数据，题目链接:<a class="link"   target="_blank" rel="noopener" href="https://match.yuanrenxue.com/match/2" >https://match.yuanrenxue.com/match/2<i class="fas fa-external-link-alt"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-13-29.3z6b7ki67ye0.webp"
-                      alt="Snipaste_2022-01-13_16-13-29"
-                ></p>
-<p>我们先来抓下包叭，打开F12同样会在断点处断住，然后我们只需要右键点击Never parsed here即可，随后我们可以看到第一页的十条数据</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-19-31.7krfqxq74xc0.webp"
-                      alt="Snipaste_2022-01-13_16-19-31"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-21-02.2xas5aqu4jm0.webp"
-                      alt="Snipaste_2022-01-13_16-21-02"
-                ></p>
-<p>这是个xhr请求，而且它只有一个参数page</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-22-37.38mf806puvs0.webp"
-                      alt="Snipaste_2022-01-13_16-22-37"
-                ></p>
-<p>实际上这个题它这边已经说了是个动态cookie，所以是一定要有cookie才能去访问的，然后，一般情况下，如果我们碰到一个类似的网页，如果只是当时即时使用的话可以直接复制这个cookie去拿数据，但我们都知道cookie是具有一定时效性的，时间久了这种操作是不可取的，所以我们就需要去分析cookie是怎么来的，是本地生成的还是服务器返回的一个set-cookie，如果是服务器返回的，那就可以模拟浏览器的请求去开一个session即可，如果是本地生成的话就得分析cookie是怎么本地生成的，然后把这个cookie给它凑出来，扣js或者是怎么样把这个cookie给生成出来，如果是两种方法都有的话那就两种方法结合起来用</p>
-<p>我们继续抓一下包，点击第二页会弹出一个框说cookie失效，说明合格cookie的有效期是比较短的，点击确定后就会获取一个新的cookie，然后进入页面，以下是第一页抓到的包，我们看到这边是有cookie的</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-39-04.184fqz9f177g.webp"
-                      alt="Snipaste_2022-01-13_16-39-04"
-                ></p>
-<p>然后我们要拿到的数据就是它返回的数据，也就是Preview中的数据</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/stormwasd/image-hosting@master/20220113/Snipaste_2022-01-13_16-43-10.4q3e6sbq69w0.webp"
-                      alt="Snipaste_2022-01-13_16-43-10"
-                ></p>
-<p>未完待续</p>
+            <p>小项目其实用不着docker部署，不过这里也还是记录下，之前的文章(Flask以配置文件启动)其实就足够了</p>
+<p>首先我们需要创建一个<code>requirements.txt</code>，推荐使用<code>pipreqs</code>，可以参考这个文章，点击<a class="link"   target="_blank" rel="noopener" href="http://kest.club/2022/04/16/%E5%AF%B9%E6%AF%94pip%20freeze,%E6%88%91%E9%80%89%E6%8B%A9pipreqs/" >跳转<i class="fas fa-external-link-alt"></i></a>，示例如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django==<span class="number">1.8</span><span class="number">.7</span></span><br><span class="line">numpy</span><br><span class="line">pandas</span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要创建一个Dockerfile文件，该文件没有后缀，以便Docker镜像的构建，示例如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM python:<span class="number">3.6</span></span><br><span class="line"></span><br><span class="line">WORKDIR /usr/src/app</span><br><span class="line"></span><br><span class="line">COPY requirements.txt ./</span><br><span class="line">RUN pip install --no-cache-<span class="built_in">dir</span> -r requirements.txt</span><br><span class="line"></span><br><span class="line">COPY . .</span><br><span class="line"></span><br><span class="line">CMD [<span class="string">&quot;gunicorn&quot;</span>, <span class="string">&quot;app:app&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;./gunicorn.conf.py&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#基于的基础镜像</span></span><br><span class="line">FROM python:<span class="number">3.5</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#代码添加到code文件夹</span></span><br><span class="line">ADD ./package /code</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 设置code文件夹是工作目录</span></span><br><span class="line">WORKDIR /code</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 安装支持</span></span><br><span class="line">RUN pip install -i https://pypi.doubanio.com/simple/ -r requirements.txt</span><br><span class="line"> </span><br><span class="line">CMD [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;/code/docker_test/run.py&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>然后是把代码上传到云服务器创建镜像(反正我是这么做的):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t flask项目名 .</span><br></pre></td></tr></table></figure>
+
+<p>查看镜像:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>运行镜像，生成并启动容器:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p <span class="number">8000</span>:<span class="number">8000</span> --name xxx xxxx</span><br></pre></td></tr></table></figure>
+
+<p>-it: 表示交互式终端的容器，非启动后立刻结束的容器</p>
+<p>-p 8000:8000：表示将docker的8000端口，映射到Linux的8000端口</p>
+<p>–name xxx：给容器取个名字，嫌麻烦可以省去</p>
+<p>xxxx: 容器是用哪个镜像启动的(一个容器，必须依赖一个镜像启动)</p>
+<ul>
+<li>参考自: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42393859/article/details/106429198?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.pc_relevant_aa&amp;spm=1001.2101.3001.4242.2&amp;utm_relevant_index=4" >https://blog.csdn.net/qq_42393859/article/details/106429198?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.pc_relevant_aa&amp;spm=1001.2101.3001.4242.2&amp;utm_relevant_index=4<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6844904142159233038" >https://juejin.cn/post/6844904142159233038<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
 
         </div>
 
@@ -289,29 +272,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/01/13/Python%E5%8D%81%E5%A4%A7%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python十大高级用法</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/01/13/2022-1-13%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"
+                           href="/2022/04/16/Flask%E4%BB%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%AF%E5%8A%A8/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">2022-1-13每日英语</span>
+                                <span class="post-nav-title-item">Flask以配置文件启动</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
