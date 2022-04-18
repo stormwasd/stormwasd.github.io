@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker部署Django项目 |
+            详解如何进入、退出docker容器的方法 |
         
         Alexander
     </title>
@@ -143,7 +143,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Docker部署Django项目</span>
+            <span class="title-hover-animation">详解如何进入、退出docker容器的方法</span>
         </div>
 
         
@@ -162,8 +162,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-04-18 09:17:20</span>
-        <span class="mobile">2022-04-18 09:17</span>
+        <span class="pc">2022-04-18 09:29:30</span>
+        <span class="mobile">2022-04-18 09:29</span>
     </span>
     
     
@@ -171,12 +171,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>55 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>532 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -192,7 +192,62 @@
         
 
         <div class="article-content markdown-body">
-            <p>最近在搞毕设，然后想着前端这边还是用docker部署下，转载自CSDN: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42393859/article/details/106429198?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.pc_relevant_aa&amp;spm=1001.2101.3001.4242.2&amp;utm_relevant_index=4" >https://blog.csdn.net/qq_42393859/article/details/106429198?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1.pc_relevant_aa&amp;spm=1001.2101.3001.4242.2&amp;utm_relevant_index=4<i class="fas fa-external-link-alt"></i></a></p>
+            <ol>
+<li><p>启动docker服务:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
+
+<p>或者:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭docker服务:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker stop</span><br></pre></td></tr></table></figure>
+
+<p>或者:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure></li>
+<li><p>启动docker的某个image(镜像)的container(容器)，也就是从指定镜像生成一个容器并启动它，容器也被称为镜像的一个实例:</p>
+<p>Docker的镜像称为image，容器称为container；对于Docker来说，image是静态的，类似于操作系统快照，而container则是动态的，是image的运行实例；比如，有一个image名称为ubuntu，那么比如现在我们启动这个image的container<strong>并且进入到这个container的bash命令行中</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+
+<p>命令理解:</p>
+<ul>
+<li>docker run: 启动由指定image生成的container</li>
+<li>ubuntu: 你指定的image</li>
+<li>-t: 进入container的终端</li>
+<li>-i: 获得一个交互式的连接，通过获取container的输入</li>
+<li>/bin/bash: 在container中启动一个bash shell</li>
+</ul>
+<p>这样就进入container的内部了:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@af8bae53bdd3:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要退出当前容器，使用<code>exit</code>或者<code>Ctrl+D</code>，退出后，这个容器也会停止运行，我们要使用以下命令重启这个container:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start goofy_almeida</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>goofy_almeida</code>是容器的名称</p>
+<p>那么这里也提下，停止一个<code>container</code>使用以下命令:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop goofy_almeida</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>goofy_almeida</code>是容器的名称</p>
+</li>
+<li><p>进入container(容器)</p>
+<ul>
+<li><p>使用<code>docker attach</code>命令进入:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach goofy_almeida</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>goofy_almeida</code>是容器的名称</p>
+</li>
+<li><p>使用<code>docker exec -it</code>命令进入:</p>
+<p>使用<code>docker attach</code>命令进入<code>container</code>有一个缺点，那就是每次从<code>container</code>中退出到前台时，<code>container</code>也跟着退出了；要想退出<code>container</code>时，让<code>container</code>仍然在后台运行着，那就需要使用<code>docker exec -it</code>命令，每次使用这个命令进入<code>container</code>后，当退出<code>container</code>后，<code>container</code>仍然在后台运行，使用方法如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it goofy_almeida /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>goofy_almeida: 要进入容器的名称</li>
+<li>/bin/bash: 在container中启动一个bash shell</li>
+</ul>
+<p>这样输入<code>exit</code>或者按键<code>Ctrl+C</code>退出<code>container</code>时，这个<code>container</code>仍然在后台运行，我们可以使用<code>docker ps</code>来查看当前在运行的<code>container</code>，使用<code>docker ps -a</code>查看所有容器，包括在运行的和不在运行的</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>参考自: <a class="link"   target="_blank" rel="noopener" href="https://www.jb51.net/article/203279.htm" >https://www.jb51.net/article/203279.htm<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -200,11 +255,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Docker部署Django项目</li>
+        <li>Post title：详解如何进入、退出docker容器的方法</li>
         <li>Post author：Lhj</li>
-        <li>Create time：2022-04-18 09:17:20</li>
+        <li>Create time：2022-04-18 09:29:30</li>
         <li>
-            Post link：https://keep.xpoet.cn/2022/04/18/Docker部署Django项目/
+            Post link：https://keep.xpoet.cn/2022/04/18/详解如何进入、退出docker容器的方法/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -220,29 +275,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/04/18/%E8%AF%A6%E8%A7%A3%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E3%80%81%E9%80%80%E5%87%BAdocker%E5%AE%B9%E5%99%A8%E7%9A%84%E6%96%B9%E6%B3%95/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">详解如何进入、退出docker容器的方法</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/04/16/Docker%E9%83%A8%E7%BD%B2Flask%E9%A1%B9%E7%9B%AE/"
+                           href="/2022/04/18/Docker%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Docker部署Flask项目</span>
+                                <span class="post-nav-title-item">Docker部署Django项目</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
