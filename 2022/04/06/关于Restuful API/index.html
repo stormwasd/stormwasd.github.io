@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            关于Restuful API--未完待续 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">关于Restuful API--未完待续</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-06 23:52:30</span>
+        <span class="mobile">2022-04-06 23:52</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>8.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>32 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="课程简介"><a href="#课程简介" class="headerlink" title="课程简介"></a>课程简介</h2><h3 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h3><ol>
+<li>理解RESTful API的6个限制和若干最佳实践</li>
+<li>掌握Koa2、Postman、MongoDB、JWT等技术</li>
+<li>运用上述技术搭建仿知乎RESTful API</li>
+<li>掌握阿里云现上部署方法</li>
+</ol>
+<h3 id="功能技术分析"><a href="#功能技术分析" class="headerlink" title="功能技术分析"></a>功能技术分析</h3><ol>
+<li>RESTful API理论</li>
+<li>Koa2</li>
+<li>Postman</li>
+<li>MongoDB</li>
+<li>JWT</li>
+<li>阿里云部署</li>
+</ol>
+<h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><ol>
+<li>Node.js基础</li>
+<li>ES6、ES7基础</li>
+</ol>
+<h3 id="重难点分析"><a href="#重难点分析" class="headerlink" title="重难点分析"></a>重难点分析</h3><ol>
+<li>RESTful API理论</li>
+<li>JWT认证原理</li>
+<li>复杂的数据库关系(一对多、多对多等)</li>
+</ol>
+<h3 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h3><ol>
+<li>RESTful API理论</li>
+<li>Koa2、MongoDB、Postman、JWT等技术</li>
+<li>使用这些技术进行仿知乎后台接口的搭建</li>
+<li>阿里云线上部署</li>
+</ol>
+<h3 id="课程建议"><a href="#课程建议" class="headerlink" title="课程建议"></a>课程建议</h3><ol>
+<li>理论部分做到自问自答</li>
+<li>实战部分做到举一反三</li>
+<li>不至于本课程，学习更多技术</li>
+</ol>
+<h2 id="REST简介"><a href="#REST简介" class="headerlink" title="REST简介"></a>REST简介</h2><h3 id="REST是什么"><a href="#REST是什么" class="headerlink" title="REST是什么"></a>REST是什么</h3><p>REST是一个风格，是一个<strong>万维网软件架构风格</strong>，风格这个关键词是非常重要的，因为它告诉了我们REST并不是什么协议，也并不是什么硬性的规范，它仅仅是一种架构风格而已，那么这种风格是用来干什么的呢?</p>
+<p>很显然它既然是万维网软件架构风格，那么它必然是用来架构万维网软件的，换句话来说，它就是<strong>用来创建网络服务</strong>的</p>
+<h3 id="为何叫REST"><a href="#为何叫REST" class="headerlink" title="为何叫REST?"></a>为何叫REST?</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/kDMarHnjZ8WXKoJ.png"
+                      alt="image.png"
+                ></p>
+<h3 id="依然不明白REST"><a href="#依然不明白REST" class="headerlink" title="依然不明白REST?"></a>依然不明白REST?</h3><p>到这还不明白没有关系，REST的字面意思其实很难表达它的精髓，所以仅仅通过字面解读是无法理解REST的，那么怎么办呢，我们可以通过REST的6个限制详细了解它，<strong>这6个限制是REST的精髓，是它的重中之重，在面试中会经常考到</strong></p>
+<h4 id="来看看6个限制"><a href="#来看看6个限制" class="headerlink" title="来看看6个限制"></a>来看看6个限制</h4><h5 id="客户-服务器-Client-Server"><a href="#客户-服务器-Client-Server" class="headerlink" title="客户-服务器(Client-Server)"></a>客户-服务器(Client-Server)</h5><p>也叫CS架构，这个限制其实现在已经非常常见了，现在几乎没有什么不是CS架构的，所以它也是没有任何争议的，值得一提的是，这个限制的本质其实是一种软件架构思想叫做<strong>关注点分离</strong>，所谓关注点分离就是各扫门前雪，自己管好自己的事，在这里指的是<strong>服务端专注数据存储，提高了简单性，而前端专注用户界面，提高了可移植性</strong></p>
+<p>这里用到了一些专有名词，简单性和可移植性，这来着REST作者的博士论文</p>
+<p><strong>简单性</strong>其实就是<strong>让服务端的代码更简单</strong>，那么为什么更简单了呢，因为在过去，服务端还要渲染页面，还要数据存储，那么现在它就什么都不需要管了，它不用管用户界面这一块，只要写好数据存储的逻辑就行了，所以说就更简单了</p>
+<p><strong>可移植性</strong>就是说一个软件<strong>能够很方便地移植到其它平台</strong>，为什么在这里说它更方便移植了呢，这是因为在过去我们的前端其实都是在操作系统里写的那些软件，那时候前端还需要管一些数据存储一些计算一些很复杂的东西，现在的前端就是在浏览器中，不用管一些复杂的计算过程，只需要调用接口，渲染用户界面即可</p>
+<h5 id="无状态-Stateless"><a href="#无状态-Stateless" class="headerlink" title="无状态(Stateless)"></a>无状态(Stateless)</h5><ol>
+<li><p>所有用户会话信息都保存在客户端</p>
+</li>
+<li><p>每次请求必须包括所有信息，不能依赖上下文信息</p>
+<p>举个栗子吧:</p>
+<p>比如说你在看一本小说，你看到某一页，你要进入小说的下一页，这时候你必须要把具体的页数告诉服务端，不能单纯地和服务端说我要进入下一页，因为服务端根本不知道你当前在第几页，你说下一页它根本就无法理解；所以就是说你这个<strong>请求必须要包括所有的信息，不能依赖你当前的上下文，这就是无状态</strong>，那么无状态有什么好处呢，那就是下面这一条:</p>
+</li>
+<li><p>服务端不用保存会话信息，提升了简单性、可靠性、可见性</p>
+<p>简单性刚才已经说了，也就是服务端少了很多代码，那么什么是可靠性呢，<strong>可靠性指的是一个软件的稳定程度，以及它从一次故障中恢复正常的能力</strong>，那么为什么说提升了可靠性呢，因为如果服务端要管理用户会话信息的话，一旦服务端出现故障，用户会话信息就会完全丢失，想要恢复起来几乎是不可能；如果<strong>服务端不管理用户会话信息，那么从故障中恢复起来就会非常容易</strong>，那么可见性指的是什么呢，可见性指的就是在软件工程中那些模块啊，接口之间的透明程度，为什么说提升了可见性呢，因为<strong>每次请求都必须包括所有信息，所以说接口之间就更加透明，因为我了解你所有信息，很多信息你都是传给我了，而不是存在服务端，这就更加透明了，可见性更高</strong></p>
+</li>
+</ol>
+<h5 id="缓存-Cache"><a href="#缓存-Cache" class="headerlink" title="缓存(Cache)"></a>缓存(Cache)</h5><ol>
+<li><p>所有服务端响应都要被标为可缓存或不可缓存</p>
+<p>那么哪些可缓存哪些不可缓存呢，举个栗子吧，比如前端的JS、CSS、静态文件啥的就可以缓存，请求一次就行了，不用请求第二次，因为它们之间变化的可能性不大；那么对于一些动态的接口也就是一些经常会变的接口，那就是不能缓存的，因为如果缓存了，如果更新了那还是会显示老样子，用户就会说，我明明已经更新了啊，为什么还是老样子；那么缓存有什么作用呢，那就是下面这一条:</p>
+</li>
+<li><p>减少前后端交互，提升了性能</p>
+<p>就比如说，<strong>如果没有缓存，那么你的一些JS文件每次都需要从服务端加载，速度很慢，如果缓存在浏览器里面的话，那么页面瞬间就能被打开</strong>，用户感知到的性能就得到了提升</p>
+</li>
+</ol>
+<h5 id="统一接口-Uniform-Interface"><a href="#统一接口-Uniform-Interface" class="headerlink" title="统一接口(Uniform Interface)"></a>统一接口(Uniform Interface)</h5><p>这个限制是<strong>所有限制中最重要的一个</strong>，别的限制，如果不是在REST里面，你也可以遵循，比如说CS架构，现在生活中几乎都是CS架构了，也不一定是REST风格，别的风格也可以用到缓存啥的；但是只有<strong>统一接口突出了REST的特点</strong>，那么统一接口是什么意思呢，我们要分开来看:</p>
+<p>统一:</p>
+<p>所谓统一就是接口设计尽可能统一通用，也就是说接口的设计要遵循同一个规范，所有的接口都像是学校的学生，穿上了校服一样</p>
+<p>提升了简单性:</p>
+<p>既然所有的接口都很相似，那么学习起来肯定就很轻松了，比如说你学会了用户接口，那么你学话题接口、评论接口都是同样的规范，学起来肯定简单了</p>
+<p>提升了可见性:</p>
+<p>所有接口都遵循同一套规范，所以它们之间就更加相似更加透明了</p>
+<p>那么接口又有什么作用呢?</p>
+<p>前后端可以使用接口来进行通信，前端只需要调用接口就可以了，不需要再实现具体的代码；就比如说在过去，我想实现一个PDF转WORLD的功能，我就必须要把这个代码写在前端，一些windows或者mac的软件上，但现在，我只需要调用接口就可以实现了，我的接口和实现是解耦的，这样一来前后端就可以独立开发和迭代，两者只需要遵循同一套接口规范即可，谁也不用依赖谁，谁也不用等谁；就比如说如果在你的团队里面前端说后端这个接口没写完，我根本就没法开发，你就可以告诉他 ，那要接口是干嘛的，接口就是让前后端可以独立开发迭代的，让你们之间是可以解耦的，如果后端没有把接口实现完，可以先让它先给前端一个假数据啊，只要遵循接口规范就可以了，这是接口的作用</p>
+<h5 id="分层系统-Layered-System"><a href="#分层系统-Layered-System" class="headerlink" title="分层系统(Layered System)"></a>分层系统(Layered System)</h5><p>这个限制的意思是，软件架构是分很多层的，而且<strong>每一层只知道相邻一层，后面隐藏的就不知道了</strong>，比如说客户端不知道是和代理还是真实服务器通信，客户端只知道自己最相邻的一层也就是接口，在这里呢，代理就可以算分层系统中的一层，同学们了解代理是什么嘛，就比如你想翻墙去看国外的一些网站，或者说你在家里想连接公司的内网进行办公，这时候你都需要用到代理，看起来你好像访问的还是谷歌、Facebook、YouTube但是你已经从代理那一层绕了一圈了才到了真实的服务器，这个分层系统远不止代理这么简单，在阿里巴巴这个企业有一个部门叫中间件，这个部门号称是阿里做技术的最想去的一个部门或者说那些做技术的最想去的一个部门，因为他们不用关心业务逻辑，只需要做一些中间件，也就是这些分层系统中的层；那么他们具体都做了哪些层呢，比如说有安全层、负载均衡、缓存层等，所谓安全层就是可以提前终止掉不安全的请求，另外有一个特别著名的层叫做负载均衡，所谓负载均衡就是说，如果你的软件或者你的网站用户量特别大，就像双十一那样，有很多很多请求，那你就要用很多服务器，让它们去共同分担这些流量，负载均衡这一层就是用来管理这些流量分发的，比如说这台服务器吃紧了，顶不住了，要挂了，怎么办呢， 负载均衡这一层就是把流量转到下一台服务器上，这就是负载均衡这一层的作用；缓存层一般就是缓存一些静态文件，这个前面也提到过</p>
+<h5 id="按需代码-Code-On-Demand-可选"><a href="#按需代码-Code-On-Demand-可选" class="headerlink" title="按需代码(Code-On_Demand 可选)"></a>按需代码(Code-On_Demand 可选)</h5><p>这个限制是可选的，它也不是很重要，但因为是6大限制之一，所以说我们为了完整性还是提到了它，所谓按需代码指的就是客户端可以下载运行服务端传来的代码(比如JS)，比如你可以服务端给你传一段JS字符串，然后你在浏览器里面执行一下，执行JS的方法是<code>eval</code>，那么这个按需代码有什么好处呢，它通过减少一些功能，简化了客户端，也就是说有些逻辑，前端不需要自己去写，交给服务端就好了，服务端给你传过来执行一下就行了，所以说简化了客户端</p>
+<h4 id="统一接口的限制"><a href="#统一接口的限制" class="headerlink" title="统一接口的限制"></a>统一接口的限制</h4><p>在前面的内容中，我们讲到了REST的6个限制，其中有一个很重要的限制是统一接口的限制，里面讲到了在REST风格中，接口都要设计的尽可能得统一，那么问题来了，接口都被统一成什么样了，这一节我们就要回答这个问题，也就是统一接口的限制，其实在这里应该是属于子限制，因为之前已经有6个限制了，而这属于限制里面的限制，也就是统一接口限制里面的子限制，用大白话说呢，就是想让大家看下REST风格的接口应该设计成什么样</p>
+<h5 id="资源的标识"><a href="#资源的标识" class="headerlink" title="资源的标识"></a>资源的标识</h5><ol>
+<li><p>资源是任何可以命名的事物，比如用户、评论等</p>
+<p>REST整个都是围绕资源展开的，不像其他的是围绕动词展开的，REST是围绕名词展开的</p>
+</li>
+<li><p>每个资源可以通过URI被唯一地标识</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://api.github.com/users" >https://api.github.com/users<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://api.github.com/users/lewis617" >https://api.github.com/users/lewis617<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+</li>
+</ol>
+<h5 id="通过表述来操作资源"><a href="#通过表述来操作资源" class="headerlink" title="通过表述来操作资源"></a>通过表述来操作资源</h5><ol>
+<li><p>表述就是Representation，比如JSON、XML等</p>
+<p>上面这句话可以反过来理解，也就成了下面这句:</p>
+</li>
+<li><p>客户端不能直接操作(比如MySQL)服务器资源</p>
+</li>
+<li><p>客户端只能通过表述(比如JSON)来操作资源</p>
+<p>我们可以以GitHub为例来看看通过表述来操作资源，这是我找的一个网站: <a class="link"   target="_blank" rel="noopener" href="http://docs2.lfe.io/v3/#http-verbs" >http://docs2.lfe.io/v3/#http-verbs<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ol>
+<h5 id="自描述消息"><a href="#自描述消息" class="headerlink" title="自描述消息"></a>自描述消息</h5><p>每个消息(请求或响应)必须提供足够的信息让接受者理解</p>
+<p>那么这个消息具体又指什么呢，大概有如下几种:</p>
+<p>媒体类型，也就是content-type(application/json、application/xml)</p>
+<p>HTTP 方法: GET(查)、POST(增)、DELETE(删)</p>
+<p>是否缓存: Cache-Control</p>
+<p>我们同样可以以这个网站来看看: <a class="link"   target="_blank" rel="noopener" href="http://docs2.lfe.io/v3/#http-verbs" >http://docs2.lfe.io/v3/#http-verbs<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="超媒体作为应用状态引擎"><a href="#超媒体作为应用状态引擎" class="headerlink" title="超媒体作为应用状态引擎"></a>超媒体作为应用状态引擎</h5><p>超媒体就是带文字的链接，应用状态指的是一个网页，引擎指的是驱动、跳转，那么合起来就是点击链接跳转到另一个网页，就是这个API点击后会跳转</p>
+<h2 id="RESTful-API简介"><a href="#RESTful-API简介" class="headerlink" title="RESTful API简介"></a>RESTful API简介</h2><h3 id="什么是RESTful-API"><a href="#什么是RESTful-API" class="headerlink" title="什么是RESTful API?"></a>什么是RESTful API?</h3><p>符合REST架构风格的API，API指的是应用编程接口</p>
+<h3 id="RESTful-API具体什么样子"><a href="#RESTful-API具体什么样子" class="headerlink" title="RESTful API具体什么样子"></a>RESTful API具体什么样子</h3><p>主要以以下三方面组成:</p>
+<ol>
+<li>基本的URI，如: <a class="link"   target="_blank" rel="noopener" href="https://api.github.com/users" >https://api.github.com/users<i class="fas fa-external-link-alt"></i></a></li>
+<li>标准的HTTP方法，如GET、POST、PUT、PATCH、DELETE</li>
+<li>传输的数据媒体类型，如: JSON，XML</li>
+</ol>
+<h3 id="现实举例"><a href="#现实举例" class="headerlink" title="现实举例"></a>现实举例</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/gNxH2pRW6BTJl8y.png"
+                      alt="image.png"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/RwaqdKhJo9k2NPl.png"
+                      alt="image.png"
+                ></p>
+<p>PATCH是部分更新，PUT是整体更新</p>
+<h2 id="RESTful-API设计最佳实践"><a href="#RESTful-API设计最佳实践" class="headerlink" title="RESTful API设计最佳实践"></a>RESTful API设计最佳实践</h2><h3 id="请求设计规范"><a href="#请求设计规范" class="headerlink" title="请求设计规范"></a>请求设计规范</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/SA7gKdOBNLv36pq.png"
+                      alt="image.png"
+                ></p>
+<h3 id="响应设计规范"><a href="#响应设计规范" class="headerlink" title="响应设计规范"></a>响应设计规范</h3><p>应该来说会有以下这几个大点:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/CVZ52Fgyvt1uk8A.png"
+                      alt="image.png"
+                ></p>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p>使用HTTPS: 现在几乎所有的网站都开始往HTTPS发展了，因为HTTP是容易被篡改的</p>
+<p>使用鉴权: 也就是需要先登录,保证用户的数据安全</p>
+<p>使用限流: 是为了防止那些想故意攻击你网站的，他们会不停地调用接口，让你的服务器撑不下去，最后挂掉；为了防止这类人，我们可以在接口中加一些限流的措施，比如在分层系统里面专门加一个限流的层</p>
+<p>同样参见这个网站: <a class="link"   target="_blank" rel="noopener" href="http://docs2.lfe.io/v3/#http-verbs" >http://docs2.lfe.io/v3/#http-verbs<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="开发者友好"><a href="#开发者友好" class="headerlink" title="开发者友好"></a>开发者友好</h3><ul>
+<li><p>文档</p>
+<p>共享出一份文档</p>
+</li>
+<li><p>超媒体(这个前面提到过)</p>
+</li>
+</ul>
+<h2 id="Koa简介"><a href="#Koa简介" class="headerlink" title="Koa简介"></a>Koa简介</h2><h3 id="一句话简介"><a href="#一句话简介" class="headerlink" title="一句话简介"></a>一句话简介</h3><p>老外的产品就喜欢搞个一句话简介</p>
+<ul>
+<li><p>基于Node.js的下一代Web框架</p>
+<p>基于Node.js这说明Koa基于Node.js模块，下一代表示正蚕食第一代Web框架Express的市场，因为Koa更好用，Koa是一个Web框架，不是我们所熟知的用JS写的命令行工具或算法</p>
+</li>
+</ul>
+<h3 id="官网简介"><a href="#官网简介" class="headerlink" title="官网简介"></a>官网简介</h3><p>链接直达: <a class="link"   target="_blank" rel="noopener" href="https://koa.bootcss.com/" >https://koa.bootcss.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>总结:</p>
+<ul>
+<li>由Express幕后原班人马打造</li>
+<li>Web应用和API开发领域</li>
+<li>更小、更富有表现、更健壮</li>
+<li>利用async函数，丢弃回调函数</li>
+</ul>
+<p>为什么要使用async函数，之前都是使用回调函数的，因为在JavaScript里面，如果多个异步串在一起就会出现回调地狱，写出来的代码非常丑，可读性非常差，自从有了async语法之后，写这种异步的逻辑看起来就和同步一样，非常的简洁，可读性大大提高</p>
+<ul>
+<li>增强错误处理: try…catch…</li>
+</ul>
+<p>也正是使用了async函数，使得代码就和同步一样，我们就可以用try…catch…进行一个错误处理</p>
+<ul>
+<li>没有捆绑任何中间件</li>
+</ul>
+<p>也就是说，你使用koa本身其实几乎什么都做不了，无法实现路由，甚至都无法实现一个静态服务器，但是不用担心，Koa社区里面有大量的中间件，利用这些中间件我们可以做几乎所有的事情；那么问题来了，没有捆绑任何中间件是不是很不方便啊，我们每次使用中间件还要再次安装啊，我的回答是，没错，但这样也有很多好处，就像买东西一样，我们非常不喜欢商家捆绑销售一些东西，这样的话我们就可以根据自己的实际需求来选择我们需要的商品，而不是被强迫购买一些商品；koa在这里的意图也是这样的，它并不想捆绑一些内置中间件，它希望开发者能够按照他自己的意愿使用他需要的中间件</p>
+<ul>
+<li><p>快速而愉快地编写程序</p>
+<p>这是画的一个大饼哈哈哈哈</p>
+</li>
+</ul>
+<h2 id="安装Koa并搭建首个Koa程序"><a href="#安装Koa并搭建首个Koa程序" class="headerlink" title="安装Koa并搭建首个Koa程序"></a>安装Koa并搭建首个Koa程序</h2><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><p>在windows电脑上推荐使用Git-bash这个命令行工具来初始化项目，因为在这里面我们可以使用上Linux相关命令</p>
+<p>我就在我的Python_LHJ中创建一个项目文件夹为zhihu-api，使用如下命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir zhihu-api</span><br></pre></td></tr></table></figure>
+
+<p>如果这个时候你想切换到vscode来写代码，就可以使用命令<code>code zhihu-api</code>来切换到vscode中来</p>
+<p>然后我们需要进入到该项目文件夹并初始化该项目，使用如下命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p>这个命令主要就是创建了一个<code>package.json</code>，这里面保存了项目的名称、描述、作者、依赖啊什么的，它最重要的功能其实是帮我们管理依赖，我们来看看它的用法:</p>
+<p>你输入这个命令后，它会以对话的形式来问你你想要输入哪些东西，第一个问题是包名，默认是和项目名一样的，这个通常保持默认即可，然后会要求我们输入描述，下面的我们都可保持默认，直接按回车即可:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/QrNgVIxyJ4pStwc.png"
+                      alt="image.png"
+                ></p>
+<p>我们来看看package.json长啥样:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;zhihu-api&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;仿知乎RESTful API&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是它最重要的作用还是管理依赖，那么怎么管理依赖呢，我们就通过</p>
+<h3 id="安装Koa"><a href="#安装Koa" class="headerlink" title="安装Koa"></a>安装Koa</h3><p>安装Koa来看看它怎么管理依赖，使用以下命令安装:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa --save</span><br></pre></td></tr></table></figure>
+
+<p>或者:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa --save</span><br></pre></td></tr></table></figure>
+
+<p><code>--save</code>参数表示将会保存到<code>package.json</code>中，那么保存到里面有什么好处呢，别人拿到你的项目的话就不用再执行<code>npm i koa</code>了，他只需要简单地在目录下执行<code>npm i</code>就行了，为什么呢，因为刚刚的<code>--save</code>已经把<code>koa</code>的安装信息已经保存到了<code>package.json</code>里面了，所以说你执行<code>npm i</code>的时候就会自动安装这个<code>koa</code>了</p>
+<h3 id="编写Hello-World"><a href="#编写Hello-World" class="headerlink" title="编写Hello World"></a>编写Hello World</h3><p>安装完了<code>koa</code>我们如何使用它呢，使用<code>koa</code>非常简单，我们先新建一个<code>index.js</code>文件，这个文件的名称是可以随便写的，新建完这个<code>index.js</code>后，我们先引用<code>koa</code>，那我们直上代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>)  <span class="comment">// 引入koa模块，const后面的变量名一般以大写字母开头，因为它可以看成是一个类，类就是首字母大写</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()  <span class="comment">// 实例化一个对象，app是应用程序(application)的简写，我们待会儿想搭建的应用程序都在这个app里面</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// use方法里面可以传递一个函数，这个函数就是我们所说的中间件</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;hello world!&#x27;</span>  <span class="comment">// 在中间件里面，我们就可以返回返回值了，在这里这个函数接受一个参数叫ctx，它是Context上下文的缩写，我们只需要给这个参数的.body属性赋值就可以</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);  <span class="comment">// 指定应用的监听端口</span></span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/mn6fKXYADey2ti3.png"
+                      alt="image.png"
+                ></p>
+<p>如上图所示，我们在运行后控制台是没有任何提示信息的，这个状态就是已经运行起来了，然后我们每次修改代码之后，都要重启服务才能在浏览器看到更改的效果，时间长了次数多了未免会有点繁琐，然后我们可以安装一个小工具，第一次使用这个工具运行了项目之后，后面如果代码又改动这个小工具就会帮我们自动重启，而不用手动了</p>
+<h3 id="学习自动重启"><a href="#学习自动重启" class="headerlink" title="学习自动重启"></a>学习自动重启</h3><p>安装命令为:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i nodemon --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意这个参数<code>--save-dev</code>，<code>--save</code>表示把这个模块加入<code>package.json</code>，后面如果有人使用该项目直接<code>npm i</code>即可完成此项目所有模块的安装，<code>-dev</code>表示它只在开发阶段使用，如果部署到服务器上，是不需要重启的</p>
+<p>之前我们运行项目是<code>node index.js</code>，那么在安装完<code>nodemon</code>后，把<code>node</code>改为<code>nodemon</code>即可</p>
+<p>但是当我们使用<code>nodemon index.js</code>时可能会报一个错:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;nodemon&#x27;不是内部或外部命令，也不是可运行的程序或批处理文件</span><br></pre></td></tr></table></figure>
+
+<p>这是为什么呢</p>
+<p>因为我们把<code>nodemon</code>安装到了<code>node_modules</code>里面，所以我们直接访问不到，我们要使用可能要先在<code>package.json</code>里面写脚本，但是如果我们全局安装了，也就是使用了<code>npm i nodemon -g</code>这个命令安装，就可以直接使用了</p>
+<p>我们可以在<code>package.json</code>中的<code>scripts</code>字典中新增一个<code>start</code>命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon index.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们使用命令<code>npm start</code>就可以启动项目了，<code>start</code>命令实际上就是指代了<code>nodemon index.js</code>命令</p>
+<h2 id="Koa中间件与洋葱模型"><a href="#Koa中间件与洋葱模型" class="headerlink" title="Koa中间件与洋葱模型"></a>Koa中间件与洋葱模型</h2><p>本节以操作为主</p>
+<h3 id="学习async-await"><a href="#学习async-await" class="headerlink" title="学习async await"></a>学习async await</h3><p>async await语法已经成了JavaScript的标准，所以说不管是在node.js还是在chrome的console面板，都可以直接使用这种语法</p>
+<p>我们看看传统的实现，我们对比着来看看:</p>
+<p>我们写的逻辑如下:</p>
+<p>首先请求下github的用户列表接口，这是个异步，请求完之后，我们再请求下github的特定用户的列表接口，并把两次请求接口的结果都打印出来:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统实现</span></span><br><span class="line">fetch(<span class="string">&#x27;//api.github.com/users&#x27;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">json</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(json)</span><br><span class="line">    fetch(<span class="string">&#x27;//api.github.com/storm999&#x27;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">json2</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(json2)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这里我们使用了一个嵌套，第一个json打印完毕之后就打印第二个了，但是我们会发现代码是比较丑的，这里只是请求了两个接口，如果是上十上百个就要一直嵌套了，上面代码运行结果如下: </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/07/WtnuLfTNeA8ka9g.png"
+                      alt="image.png"
+                ></p>
+<p>那么接下来我们就来看看如何使用async await语法来优化下上面的逻辑，首先，如果你要使用await的话，那么你必须在async的函数里面，直接上代码叭，如下所示:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span>() =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">&#x27;//api.github.com/users&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> json = <span class="keyword">await</span> res.json();  <span class="comment">// 转成json依然是一个异步操作，所以需要加关键字await</span></span><br><span class="line">    <span class="built_in">console</span>.log(json)  <span class="comment">// 打印用户列表接口</span></span><br><span class="line">    <span class="keyword">const</span> res2 = <span class="keyword">await</span> fetch(<span class="string">&#x27;//api.github.com/users/storm666&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> json2 = <span class="keyword">await</span> res2.json();  <span class="comment">// 转成json依然是一个异步操作，所以需要加关键字await</span></span><br><span class="line">    <span class="built_in">console</span>.log(json2 )  <span class="comment">// 打印特定用户接口</span></span><br><span class="line">&#125;)()  <span class="comment">// 这是一个立即执行函数</span></span><br></pre></td></tr></table></figure>
+
+<p>在async await里面就不用在then里面写回调函数了，相比来说比较方便</p>
+<p>我们可以明显感觉到用来异步之后的逻辑就会同步一样清晰明了，这就是async await的用法，这里只是用了async await一个典型的例子</p>
+<h3 id="学习编写Koa中间件"><a href="#学习编写Koa中间件" class="headerlink" title="学习编写Koa中间件"></a>学习编写Koa中间件</h3><p>在编写Hello World一节里面我们就写了一个中间件，现在我们要学习写多个中间件，我们在写了下一个中间件后，发现这个中间件什么都没有打印；其实在koa里面，如果你想执行下一个中间件，那你必须要申明它，在ctx后面加个参数叫next，next就是下一个，next()也是一个异步的函数(返回了一个promise)，所以这里要使用async await关键字，如下图所示:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/JLWabkCVwmeZDYt.png"
+                      alt="image.png"
+                ></p>
+<p>很明显可以知道是先打印2然后打印1，为了排除图标请求的干扰，我们可以使用fetch方法来看看结果:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/vhtZEx5TmFVz8pI.png"
+                      alt="image.png"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/3sCFS2DOQJrwyUu.png"
+                      alt="image.png"
+                ></p>
+<p>这就是写多个中间件的执行顺序，这个中间件的执行顺序就像洋葱一样:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/WFuo36d4CSpsQNP.png"
+                      alt="image.png"
+                ></p>
+<h2 id="路由简介"><a href="#路由简介" class="headerlink" title="路由简介"></a>路由简介</h2><h3 id="路由是什么"><a href="#路由是什么" class="headerlink" title="路由是什么"></a>路由是什么</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/eJAhQG5Dnaxu2Is.png"
+                      alt="image.png"
+                ></p>
+<h3 id="为什么要用路由"><a href="#为什么要用路由" class="headerlink" title="为什么要用路由"></a>为什么要用路由</h3><p>路由指向了不同资源，以此来进行区分</p>
+<h3 id="路由存在的意义"><a href="#路由存在的意义" class="headerlink" title="路由存在的意义"></a>路由存在的意义</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/ISkVKYOTXPCp6zH.png"
+                      alt="image.png"
+                ></p>
+<h2 id="自己编写Koa路由中间件"><a href="#自己编写Koa路由中间件" class="headerlink" title="自己编写Koa路由中间件"></a>自己编写Koa路由中间件</h2><p>主要用于实现:</p>
+<p>处理不同的URL，处理不同的HTTP方法，解析URL上的参数</p>
+<p>路由为<code>/users</code>就返回这是用户列表页，路由为<code>/</code>就返回这是主页，两个都不匹配的话就返回404，代码如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/EmPgZBqk1OKCWYI.png"
+                      alt="image.png"
+                ></p>
+<p>上面是一个较为简单的功能，下面我们在深入一点，像前面提到的那样，处理不同的HTTP方法，就是GET和POST方法作为区分，那我们就这么设计吧，getusers就返回用户列表页，如果是postusers就返回创建用户，两个都不匹配的话就是方法不允许，也就是返回405，代码如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/HQNgmD5osA1Ebwn.png"
+                      alt="image.png"
+                ></p>
+<p>最后我们来看看如何解析URL上的参数，比如用户请求了一个users/userid，然后返回这是用户，然后加上id，代码如下:</p>
+<p>这里是用的正则表达式，用的是JavaScript原生的match方法</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/njxod5HMhKzX6ul.png"
+                      alt="image.png"
+                ></p>
+<h2 id="使用Koa-router实现路由"><a href="#使用Koa-router实现路由" class="headerlink" title="使用Koa-router实现路由"></a>使用Koa-router实现路由</h2><p>本节要点:</p>
+<ul>
+<li>更优雅地实现路由基本功能</li>
+<li>演示一些高级路由功能，如前缀、多中间件</li>
+</ul>
+<p>要使用Koa-router首先我们需要先安装下它，使用如下命令安装:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa-router --save</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是使用了:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);  <span class="comment">// 引入&#x27;koa-router</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();  <span class="comment">// 实例化</span></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// 写一个路由</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;这是主页&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/users&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户列表&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">&#x27;/users&#x27;</span>, (ctx)) =&gt; &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;创建用户&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/users/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户&#x27;</span> $&#123;ctx.params.id&#125;;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routers());  <span class="comment">// 需要把router注册到app里面</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面我们通过代码更优雅地实现了路由的基本功能，现在我们来演示一些高级功能，比如前缀和高级中间件:<br>如果有了前缀的话，我们就不用每个路由都写个users了</p>
+<p>首先我们需要再实例化一个新的router，这里就叫usersRouter吧，然后在里面配置一个参数prefix，也就是前缀，然后用usersRouter把下面的router替换掉，那就可以省略之前每个路由中的users了，如下代码所示:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);  <span class="comment">// 引入&#x27;koa-router</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();  <span class="comment">// 实例化</span></span><br><span class="line"><span class="keyword">const</span> usresRouter = <span class="keyword">new</span> Router(&#123; <span class="attr">prefix</span>: <span class="string">&#x27;users/&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// 写一个路由</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;这是主页&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户列表&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.post(<span class="string">&#x27;/&#x27;</span>, (ctx)) =&gt; &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;创建用户&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户&#x27;</span> $&#123;ctx.params.id&#125;;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routers());  <span class="comment">// 需要把router注册到app里面</span></span><br><span class="line">app.use(usresRouter.routers())  <span class="comment">// 同样的注册下usresRouter</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>那么前缀的好处第一个就是能大大简洁我们路由中路径的编写，使得路由能灵活变换，使用前缀能帮我们节约一些代码</p>
+<p>接下来我们要实现一个多中间件的功能，多中间件通常用于用户校验或者是用户安全，下面我们伪造一个用户安全，用来说明多中间件，代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);  <span class="comment">// 引入&#x27;koa-router</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();  <span class="comment">// 实例化</span></span><br><span class="line"><span class="keyword">const</span> usresRouter = <span class="keyword">new</span> Router(&#123; <span class="attr">prefix</span>: <span class="string">&#x27;users/&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件</span></span><br><span class="line"><span class="keyword">const</span> auth = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.url !== <span class="string">&#x27;/users&#x27;</span>)&#123;</span><br><span class="line">        ctx.throw(<span class="number">401</span>);  <span class="comment">// 显示报错信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// 写一个路由</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;这是主页&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户列表&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.post(<span class="string">&#x27;/&#x27;</span>, auth, (ctx)) =&gt; &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;创建用户&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/:id&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户&#x27;</span> $&#123;ctx.params.id&#125;;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routers());  <span class="comment">// 需要把router注册到app里面</span></span><br><span class="line">app.use(usresRouter.routers())  <span class="comment">// 同样的注册下usresRouter</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP-options方法的作用是什么"><a href="#HTTP-options方法的作用是什么" class="headerlink" title="HTTP options方法的作用是什么?"></a>HTTP options方法的作用是什么?</h2><p>为什么要了解options方法的作用？首先这是一道面试题，很多面试官都喜欢通过这个来考察面试者对HTTP理解的深度以及对跨域理解的深度；其次就是它也可以帮助理解koa-router的allowedMethods的作用</p>
+<p>下面我们言归正传，那么HTTP options方法的作用是什么呢？</p>
+<p>第一它可以检测服务器所支持的请求方法，比如说我们之前实现的users这个接口，它支持get和post方法，并没有写其他方法，那么用户想知道users这个接口都支持哪些方法的话就可以使用options这个方法，比如:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/FVKZiXWr8JjbQpn.png"
+                      alt="image.png"
+                ></p>
+<p>第二呢，它可以在CORS里面进行预检请求，CORS是用作跨域的一个技术，但是这个技术可能只支持一个网站的其中的其中一部分的接口的其中一部分方法来跨域，那么如何知道这个方法是否可以跨域呢，在这里也可以使用options方法来提前检测下，如果允许跨域了，再发出真实的请求。</p>
+<p>讲了options方法我们就可以顺水推舟来讲讲allowedMethod是的作用，这个方法的第一个作用就是用来响应options方法的，告诉它所支持的请求方法，当用户使用options方法请求某个接口，那么就会自动返回这个接口所支持的方法。</p>
+<p>就以我们上面实现的users路由为例，本来是不支持options方法的的，我们如果直接使用options请求就会报错，我们可以加上<code>app.use(usersRouter.allowedMethods());</code>，再次请求就能返回此接口所支持的所有方法了，代码如下所示:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);  <span class="comment">// 引入&#x27;koa-router</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();  <span class="comment">// 实例化</span></span><br><span class="line"><span class="keyword">const</span> usresRouter = <span class="keyword">new</span> Router(&#123; <span class="attr">prefix</span>: <span class="string">&#x27;users/&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件</span></span><br><span class="line"><span class="keyword">const</span> auth = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.url !== <span class="string">&#x27;/users&#x27;</span>)&#123;</span><br><span class="line">        ctx.throw(<span class="number">401</span>);  <span class="comment">// 显示报错信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// 写一个路由</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;这是主页&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户列表&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.post(<span class="string">&#x27;/&#x27;</span>, auth, (ctx)) =&gt; &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;创建用户&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/:id&#x27;</span>, auth, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户&#x27;</span> $&#123;ctx.params.id&#125;;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routers());  <span class="comment">// 需要把router注册到app里面</span></span><br><span class="line">app.use(usresRouter.routers())  <span class="comment">// 同样的注册下usresRouter</span></span><br><span class="line">app.use(usersRouter.allowedMethods());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>allowedMethod的第二个作用就是它能相应的返回405和501</p>
+<p>刚刚我们配置了allowedMethod，如果用options方法请求接口的话就会返回这个接口所支持的所有方法是get、post和head，但如果我用put来请求呢，这个时候接口就会自动返回405，405就代表这个请求方法不支持；如果用一些比较偏僻的请求方法去请求这个接口，就会返回501，这是因为Koa只支持一些主流的请求 方法，</p>
+<h2 id="RESTful-API最佳实践–增删改查应该返回什么响应？"><a href="#RESTful-API最佳实践–增删改查应该返回什么响应？" class="headerlink" title="RESTful API最佳实践–增删改查应该返回什么响应？"></a>RESTful API最佳实践–增删改查应该返回什么响应？</h2><p>我们在前面的内容中实现了一些简单的路由，这部分内容我们要用路由实现一个完整的增删改查，并在增删改查的每一个接口中返回最适合它的一个响应；其实对查这个操作来说还是比较容易理解的，查列表那就返回一个数组，查单个信息就返回数组中某一项，这个很简单，那么增删改应该返回什么响应呢？在RESTful API最佳实践中，我们约定，增加和修改应该返回当前增加和修改的数据，通常就是一个对象，如果是删除的话因该返回一个204状态码，这个状态码代表没有内容，但是成功了。以上所说的只是RESTful API最佳实践，如果你非要返回其他内容，也是可以的，如果你不这么写就会显得另类和奇怪。</p>
+<p>这部分内容我们实现一个增删改查，然后返回正确的响应，下面来看看代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);  <span class="comment">// 引入&#x27;koa-router</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();  <span class="comment">// 实例化</span></span><br><span class="line"><span class="keyword">const</span> usresRouter = <span class="keyword">new</span> Router(&#123; <span class="attr">prefix</span>: <span class="string">&#x27;users/&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个中间件</span></span><br><span class="line"><span class="keyword">const</span> auth = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (ctx.url !== <span class="string">&#x27;/users&#x27;</span>)&#123;</span><br><span class="line">        ctx.throw(<span class="number">401</span>);  <span class="comment">// 显示报错信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;  <span class="comment">// 写一个路由</span></span><br><span class="line">    ctx.body = <span class="string">&#x27;这是主页&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户列表&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">usersRouter.post(<span class="string">&#x27;/&#x27;</span>, (ctx)) =&gt; &#123;  <span class="comment">// 返回当前增加和修改的对象</span></span><br><span class="line">    ctx.body = &#123; <span class="attr">name</span>: <span class="string">&#x27;li&#x27;</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">usersRouter.get(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = [&#123; <span class="attr">name</span>: <span class="string">&#x27;li&#x27;</span>&#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;hou&#x27;</span> &#125;];</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line">usersRouter.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;这是用户&#x27;</span> $&#123;ctx.params.id&#125;;</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line">usersRouter.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.status = <span class="number">204</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(router.routers());  <span class="comment">// 需要把router注册到app里面</span></span><br><span class="line">app.use(usresRouter.routers())  <span class="comment">// 同样的注册下usresRouter</span></span><br><span class="line">app.use(usersRouter.allowedMethods());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="控制器简介"><a href="#控制器简介" class="headerlink" title="控制器简介"></a>控制器简介</h2><p>控制器就是拿到路由分配的任务，并执行，其实在前面部分的内容中，注册在路由中的那个中间件就是个控制器，所以在Koa中控制器也是一个中间件，那么我们为什么要用控制器呢，控制器主要分为三个方面:</p>
+<ul>
+<li>可以用来获取HTTP请求参数</li>
+<li>然后它可以处理一些业务逻辑</li>
+<li>它会根据不同情况发送不同的HTTP响应</li>
+</ul>
+<p>HTTP请求参数主要有两方面:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/04/25/YXRjpk5ZLxDME9O.png"
+                      alt="image.png"
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：关于Restuful API--未完待续</li>
+        <li>Post author：Lhj</li>
+        <li>Create time：2022-04-06 23:52:30</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2022/04/06/关于Restuful API/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/04/08/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8WinSCP%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%8A%A5permission%20denied%E7%9A%84%E8%A7%A3%E5%86%B3/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">关于使用WinSCP上传文件报permission denied的解决</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/06/Flask%E5%86%99%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Flask写接口的一个案例</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">课程简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">课程目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">功能技术分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">1.3.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E9%9A%BE%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">重难点分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%AE%89%E6%8E%92"><span class="nav-number">1.5.</span> <span class="nav-text">课程安排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.6.</span> <span class="nav-text">课程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REST%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">REST简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#REST%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">REST是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E5%8F%ABREST"><span class="nav-number">2.2.</span> <span class="nav-text">为何叫REST?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E7%84%B6%E4%B8%8D%E6%98%8E%E7%99%BDREST"><span class="nav-number">2.3.</span> <span class="nav-text">依然不明白REST?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A5%E7%9C%8B%E7%9C%8B6%E4%B8%AA%E9%99%90%E5%88%B6"><span class="nav-number">2.3.1.</span> <span class="nav-text">来看看6个限制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8-Client-Server"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">客户-服务器(Client-Server)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81-Stateless"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">无状态(Stateless)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%93%E5%AD%98-Cache"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">缓存(Cache)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3-Uniform-Interface"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">统一接口(Uniform Interface)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E5%B1%82%E7%B3%BB%E7%BB%9F-Layered-System"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">分层系统(Layered System)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%89%E9%9C%80%E4%BB%A3%E7%A0%81-Code-On-Demand-%E5%8F%AF%E9%80%89"><span class="nav-number">2.3.1.6.</span> <span class="nav-text">按需代码(Code-On_Demand 可选)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%99%90%E5%88%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">统一接口的限制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E7%9A%84%E6%A0%87%E8%AF%86"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">资源的标识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E8%A1%A8%E8%BF%B0%E6%9D%A5%E6%93%8D%E4%BD%9C%E8%B5%84%E6%BA%90"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">通过表述来操作资源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E6%8F%8F%E8%BF%B0%E6%B6%88%E6%81%AF"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">自描述消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B6%85%E5%AA%92%E4%BD%93%E4%BD%9C%E4%B8%BA%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81%E5%BC%95%E6%93%8E"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">超媒体作为应用状态引擎</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API%E7%AE%80%E4%BB%8B"><span class="nav-number">3.</span> <span class="nav-text">RESTful API简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFRESTful-API"><span class="nav-number">3.1.</span> <span class="nav-text">什么是RESTful API?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API%E5%85%B7%E4%BD%93%E4%BB%80%E4%B9%88%E6%A0%B7%E5%AD%90"><span class="nav-number">3.2.</span> <span class="nav-text">RESTful API具体什么样子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E4%B8%BE%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">现实举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">4.</span> <span class="nav-text">RESTful API设计最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">4.1.</span> <span class="nav-text">请求设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">4.2.</span> <span class="nav-text">响应设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-number">4.3.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E5%8F%8B%E5%A5%BD"><span class="nav-number">4.4.</span> <span class="nav-text">开发者友好</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Koa%E7%AE%80%E4%BB%8B"><span class="nav-number">5.</span> <span class="nav-text">Koa简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%AE%80%E4%BB%8B"><span class="nav-number">5.1.</span> <span class="nav-text">一句话简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E7%AE%80%E4%BB%8B"><span class="nav-number">5.2.</span> <span class="nav-text">官网简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Koa%E5%B9%B6%E6%90%AD%E5%BB%BA%E9%A6%96%E4%B8%AAKoa%E7%A8%8B%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">安装Koa并搭建首个Koa程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">6.1.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Koa"><span class="nav-number">6.2.</span> <span class="nav-text">安装Koa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99Hello-World"><span class="nav-number">6.3.</span> <span class="nav-text">编写Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF"><span class="nav-number">6.4.</span> <span class="nav-text">学习自动重启</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%B8%8E%E6%B4%8B%E8%91%B1%E6%A8%A1%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">Koa中间件与洋葱模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0async-await"><span class="nav-number">7.1.</span> <span class="nav-text">学习async await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%BC%96%E5%86%99Koa%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">7.2.</span> <span class="nav-text">学习编写Koa中间件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E7%AE%80%E4%BB%8B"><span class="nav-number">8.</span> <span class="nav-text">路由简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">8.1.</span> <span class="nav-text">路由是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E8%B7%AF%E7%94%B1"><span class="nav-number">8.2.</span> <span class="nav-text">为什么要用路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%AD%98%E5%9C%A8%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">8.3.</span> <span class="nav-text">路由存在的意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E7%BC%96%E5%86%99Koa%E8%B7%AF%E7%94%B1%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">9.</span> <span class="nav-text">自己编写Koa路由中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Koa-router%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1"><span class="nav-number">10.</span> <span class="nav-text">使用Koa-router实现路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-options%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">11.</span> <span class="nav-text">HTTP options方法的作用是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%BA%94%E8%AF%A5%E8%BF%94%E5%9B%9E%E4%BB%80%E4%B9%88%E5%93%8D%E5%BA%94%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">RESTful API最佳实践–增删改查应该返回什么响应？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="nav-number">13.</span> <span class="nav-text">控制器简介</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
