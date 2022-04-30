@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            13天搞定爬虫听课笔记 |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">13天搞定爬虫听课笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-30 14:22:30</span>
+        <span class="mobile">2022-04-30 14:22</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>9.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>39 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="1-爬虫介绍"><a href="#1-爬虫介绍" class="headerlink" title="1. 爬虫介绍"></a>1. 爬虫介绍</h1><h3 id="1-1-什么是爬虫？"><a href="#1-1-什么是爬虫？" class="headerlink" title="1.1 什么是爬虫？"></a>1.1 什么是爬虫？</h3><p><strong>网络爬虫</strong>也叫<strong>网络蜘蛛</strong>，如果把互联网比喻成一个蜘蛛网，那么蜘蛛就是在网上爬来爬去的蜘蛛，爬虫程序通过请求url地址，根据响应的内容进行解析采集数据，<br>比如：如果响应内容是html，分析dom结构，进行dom解析、或者正则匹配，如果响应内容是xml/json数据，就可以转数据对象，然后对数据进行解析。</p>
+<h3 id="1-2-爬虫有什么作用？"><a href="#1-2-爬虫有什么作用？" class="headerlink" title="1.2 爬虫有什么作用？"></a>1.2 爬虫有什么作用？</h3><p>通过有效的爬虫手段批量采集数据，可以降低人工成本，提高有效数据量，给予运营/销售的数据支撑，加快产品发展。</p>
+<h3 id="1-3-业界的情况"><a href="#1-3-业界的情况" class="headerlink" title="1.3 业界的情况"></a>1.3 业界的情况</h3><p>目前互联网产品竞争激烈，业界大部分都会使用爬虫技术对竞品产品的数据进行挖掘、采集、大数据分析，这是必备手段，并且很多公司都设立了<code>爬虫工程师</code>的岗位</p>
+<h3 id="1-4-合法性"><a href="#1-4-合法性" class="headerlink" title="1.4 合法性"></a>1.4 合法性</h3><p>爬虫是利用程序进行批量爬取网页上的公开信息，也就是前端显示的数据信息。因为信息是完全公开的，所以是合法的。其实就像浏览器一样，浏览器解析响应内容并渲染为页面，而爬虫解析响应内容采集想要的数据进行存储。</p>
+<h3 id="1-5-反爬虫"><a href="#1-5-反爬虫" class="headerlink" title="1.5 反爬虫"></a>1.5 反爬虫</h3><p>爬虫很难完全的制止，道高一尺魔高一丈，这是一场没有硝烟的战争，码农VS码农<br>反爬虫一些手段：</p>
+<ul>
+<li>合法检测：请求校验(useragent，referer，接口加签名，等)</li>
+<li>小黑屋：IP/用户限制请求频率，或者直接拦截</li>
+<li>投毒：反爬虫高境界可以不用拦截，拦截是一时的，投毒返回虚假数据，可以误导竞品决策</li>
+<li>… …</li>
+</ul>
+<h3 id="1-6-选这一门语言"><a href="#1-6-选这一门语言" class="headerlink" title="1.6 选这一门语言"></a>1.6 选这一门语言</h3><p>爬虫可以用各种语言写, C++, Java都可以, 为什么要Python?</p>
+<p>首先用C++搞网络开发的例子不多(可能是我见得太少)<br>然后由于Oracle收购了Sun, Java目前虽然在Android开发上很重要, 但是如果Google官司进展不顺利, 那么很有可能用Go语言替代掉Java来做Android开发. 在这计算机速度高速增长的年代里, 选语言都要看他爹的业绩, 真是稍不注意就落后于时代. 随着计算机速度的高速发展, 某种语言开发的软件运行的时间复杂度的常数系数已经不像以前那么重要, 我们可以越来越偏爱为程序员打造的而不是为计算机打造的语言. 比如Ruby这种传说中的纯种而又飘逸的的OOP语言, 或者Python这种稍严谨而流行库又非常多的语言, 都大大弱化了针对计算机运行速度而打造的特性, 强化了为程序员容易思考而打造的特性. 所以我选择Python</p>
+<h3 id="1-7-选择Python版本"><a href="#1-7-选择Python版本" class="headerlink" title="1.7 选择Python版本"></a>1.7 选择Python版本</h3><p>有2和3两个版本, 3比较新, 听说改动大. 根据我在知乎上搜集的观点来看, 我还是倾向于使用”在趋势中将会越来越火”的版本, 而非”目前已经很稳定而且很成熟”的版本. 这是个人喜好, 而且预测不一定准确. 但是如果Python3无法像Python2那么火, 那么整个Python语言就不可避免的随着时间的推移越来越落后, 因此我想其实选哪个的最坏风险都一样, 但是最好回报却是Python3的大. 其实两者区别也可以说大也可以说不大, 最终都不是什么大问题. 我选择的是Python 3</p>
+<h3 id="1-8-爬虫基本套路"><a href="#1-8-爬虫基本套路" class="headerlink" title="1.8 爬虫基本套路"></a>1.8 爬虫基本套路</h3><ul>
+<li>基本流程<ul>
+<li>目标数据</li>
+<li>来源地址</li>
+<li>结构分析</li>
+<li>实现构思</li>
+<li>操刀编码</li>
+</ul>
+</li>
+<li>基本手段<ul>
+<li>破解请求限制<ul>
+<li>请求头设置，如：useragant为有效客户端</li>
+<li>控制请求频率(根据实际情景)</li>
+<li>IP代理</li>
+<li>签名/加密参数从html/cookie/js分析</li>
+</ul>
+</li>
+<li>破解登录授权<ul>
+<li>请求带上用户cookie信息</li>
+</ul>
+</li>
+<li>破解验证码<ul>
+<li>简单的验证码可以使用识图读验证码第三方库</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解析数据<ul>
+<li>HTML Dom解析<ul>
+<li>正则匹配，通过的正则表达式来匹配想要爬取的数据，如：有些数据不是在html 标签里，而是在html的script 标签的js变量中</li>
+<li>使用第三方库解析html dom，比较喜欢类jquery的库</li>
+</ul>
+</li>
+<li>数据字符串<ul>
+<li>正则匹配(根据情景使用) </li>
+<li>转 JSON/XML 对象进行解析</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-9-Python爬虫"><a href="#1-9-Python爬虫" class="headerlink" title="1.9  Python爬虫"></a>1.9  Python爬虫</h3><ul>
+<li>python写爬虫的优势<ul>
+<li>python语法易学，容易上手</li>
+<li>社区活跃，实现方案多可参考</li>
+<li>各种功能包丰富</li>
+<li>少量代码即可完成强大功能</li>
+</ul>
+</li>
+<li>涉及模块包<ul>
+<li>请求<ul>
+<li><code>urllib</code></li>
+<li><code>requests</code></li>
+</ul>
+</li>
+<li>多线程<ul>
+<li><code>threading</code></li>
+</ul>
+</li>
+<li>正则<ul>
+<li><code>re</code></li>
+</ul>
+</li>
+<li>json解析<ul>
+<li><code>json</code></li>
+</ul>
+</li>
+<li>html dom解析<ul>
+<li><code>beautiful soup</code></li>
+</ul>
+</li>
+<li>lxml<ul>
+<li>xpath</li>
+</ul>
+</li>
+<li>操作浏览器<ul>
+<li>selenium</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-常用的工具"><a href="#2-常用的工具" class="headerlink" title="2. 常用的工具"></a>2. 常用的工具</h1><ol>
+<li>python</li>
+<li>pycharm</li>
+<li>浏览器<ol>
+<li> chrome</li>
+<li> 火狐</li>
+</ol>
+</li>
+<li>fiddler</li>
+</ol>
+<h3 id="2-1-fiddler的使用"><a href="#2-1-fiddler的使用" class="headerlink" title="2.1 fiddler的使用"></a>2.1 fiddler的使用</h3><ol>
+<li><p>操作的界面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://i.loli.net/2021/07/31/MmgOfVh1Wz5LyHK.png"
+                      alt="image-20210731221436389"
+                ></p>
+</li>
+<li><p>界面含义</p>
+<p>请求 (Request) 部分详解：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Headers</td>
+<td>显示客户端发送到服务器的 HTTP 请求的,header 显示为一个分级视图，包含了 Web 客户端信息、Cookie、传输状态等</td>
+</tr>
+<tr>
+<td>Textview</td>
+<td>显示 POST 请求的 body 部分为文本</td>
+</tr>
+<tr>
+<td>WebForms</td>
+<td>显示请求的 GET 参数 和 POST body 内容</td>
+</tr>
+<tr>
+<td>HexView</td>
+<td>用十六进制数据显示请求</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>显示响应 header 中的 Proxy-Authorization(代理身份验证) 和 Authorization(授权) 信息</td>
+</tr>
+<tr>
+<td>Raw</td>
+<td>将整个请求显示为纯文本</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>显示JSON格式文件</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>如果请求的 body 是 XML格式，就是用分级的 XML 树来显示它</td>
+</tr>
+</tbody></table>
+<p>响应 (Response) 部分详解：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transformer</td>
+<td>显示响应的编码信息</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>用分级视图显示响应的 header</td>
+</tr>
+<tr>
+<td>TextView</td>
+<td>使用文本显示相应的 body</td>
+</tr>
+<tr>
+<td>ImageVies</td>
+<td>如果请求是图片资源，显示响应的图片</td>
+</tr>
+<tr>
+<td>HexView</td>
+<td>用十六进制数据显示响应</td>
+</tr>
+<tr>
+<td>WebView</td>
+<td>响应在 Web 浏览器中的预览效果</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>显示响应 header 中的 Proxy-Authorization(代理身份验证) 和 Authorization(授权) 信息</td>
+</tr>
+<tr>
+<td>Caching</td>
+<td>显示此请求的缓存信息</td>
+</tr>
+<tr>
+<td>Privacy</td>
+<td>显示此请求的私密 (P3P) 信息</td>
+</tr>
+<tr>
+<td>Raw</td>
+<td>将整个响应显示为纯文本</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>显示JSON格式文件</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>如果响应的 body 是 XML 格式，就是用分级的 XML 树来显示它</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>设置</p>
+<ul>
+<li><p>如何打开</p>
+<p>启动Fiddler，打开菜单栏中的 Tools &gt;Options，打开“Fiddler Options”对话框</p>
+</li>
+<li><p>设置</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://i.loli.net/2021/07/31/f2EsarPySVXDB6v.png"
+                      alt="image-20210731223601668"
+                ></p>
+<ul>
+<li>Capture HTTPS CONNECTs 捕捉HTTPS连接</li>
+<li>Decrypt HTTPS traffic 解密HTTPS通信</li>
+<li>Ignore server certificate errors 忽略服务器证书错误</li>
+<li>all processes 所有进程</li>
+<li>browsers onlye 仅浏览器</li>
+<li>nono- browsers only 仅非浏览器</li>
+<li>remote clients only 仅远程链接</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://i.loli.net/2021/07/31/L3YvZDrTbEyx6qU.png"
+                      alt="image-20210731223737528"
+                ></p>
+<p>Trust Root Certificate(受信任的根证书) 配置Windows信任这个根证书解决安全警告</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://i.loli.net/2021/07/31/QUWXT3vkCyNFBAi.png"
+                      alt="image-20210731223928199"
+                ></p>
+<ul>
+<li>Allow remote computers to connect 允许远程连接</li>
+<li>Act as system proxy on startup 作为系统启动代理</li>
+<li>resuse client connections 重用客户端链接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="3-urllib使用体验"><a href="#3-urllib使用体验" class="headerlink" title="3. urllib使用体验"></a>3. urllib使用体验</h1><h3 id="3-1-小试牛刀"><a href="#3-1-小试牛刀" class="headerlink" title="3.1 小试牛刀"></a>3.1 小试牛刀</h3><p>怎样扒网页呢？</p>
+<p>其实就是根据URL来获取它的网页信息，虽然我们在浏览器中看到的是一幅幅优美的画面，但是其实是由浏览器解释才呈现出来的，实质它是一段HTML代码，加 JS、CSS，如果把网页比作一个人，那么HTML便是他的骨架，JS便是他的肌肉，CSS便是它的衣服。所以最重要的部分是存在于HTML中的，下面我们就写个例子来扒一个网页下来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"> </span><br><span class="line">response = urlopen(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+<p>真正的程序就两行，执行如下命令查看运行结果，感受一下</p>
+<p>看，这个网页的源码已经被我们扒下来了，是不是很酸爽？</p>
+<h3 id="3-2-fake-useragent测试"><a href="#3-2-fake-useragent测试" class="headerlink" title="3.2 fake_useragent测试"></a>3.2 fake_useragent测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line">ua = UserAgent()</span><br><span class="line"><span class="built_in">print</span>(ua.chrome)</span><br><span class="line"><span class="built_in">print</span>(ua.firefox)</span><br><span class="line"><span class="built_in">print</span>(ua.ie)</span><br><span class="line"><span class="built_in">print</span>(ua.random)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-3-常见到的方法"><a href="#3-3-常见到的方法" class="headerlink" title="3.3 常见到的方法"></a>3.3 常见到的方法</h3><ul>
+<li><p>requset.urlopen(url,data,timeout)</p>
+<ul>
+<li><p>第一个参数url即为URL，第二个参数data是访问URL时要传送的数据，第三个timeout是设置超时时间。</p>
+</li>
+<li><p>第二三个参数是可以不传送的，data默认为空None，timeout默认为 socket._GLOBAL_DEFAULT_TIMEOUT</p>
+</li>
+<li><p>第一个参数URL是必须要传送的，在这个例子里面我们传送了百度的URL，执行urlopen方法之后，返回一个response对象，返回信息便保存在这里面。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>response.read()</p>
+<ul>
+<li>read()方法就是读取文件里的全部内容，返回bytes类型</li>
+</ul>
+</li>
+<li><p>response.getcode()</p>
+<ul>
+<li>返回 HTTP的响应码，成功返回200，4服务器页面出错，5服务器问题</li>
+</ul>
+</li>
+<li><p>response.geturl()</p>
+<ul>
+<li>返回 返回实际数据的实际URL，防止重定向问题</li>
+</ul>
+</li>
+<li><p>response.info()</p>
+<ul>
+<li>返回 服务器响应的HTTP报头</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-Request对象"><a href="#3-4-Request对象" class="headerlink" title="3.4 Request对象"></a>3.4 Request对象</h3><p>其实上面的urlopen参数可以传入一个request请求,它其实就是一个Request类的实例，构造时需要传入Url,Data等等的内容。比如上面的两行代码，我们可以这么改写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request</span><br><span class="line"></span><br><span class="line">request = Request(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">response = urlopen(requst)</span><br><span class="line"><span class="built_in">print</span> response.read().decode()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果是完全一样的，只不过中间多了一个request对象，推荐大家这么写，因为在构建请求时还需要加入好多内容，通过构建一个request，服务器响应请求得到应答，这样显得逻辑上清晰明确</p>
+<h3 id="3-5-Get请求"><a href="#3-5-Get请求" class="headerlink" title="3.5 Get请求"></a>3.5 Get请求</h3><p>大部分被传输到浏览器的html，images，js，css, … 都是通过GET方法发出请求的。它是获取数据的主要方法</p>
+<p>例如：<a class="link"   target="_blank" rel="noopener" href="http://www.baidu.com/" >www.baidu.com<i class="fas fa-external-link-alt"></i></a> 搜索</p>
+<p>Get请求的参数都是在Url中体现的,如果有中文，需要转码，这时我们可使用</p>
+<ul>
+<li>urllib.parse.urlencode()</li>
+<li>urllib.parse. quote()</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.baidu.com/s?wd=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(quote(<span class="string">&quot;尚学堂&quot;</span>))</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">request = Request(url, headers=headers)</span><br><span class="line">response = urlopen(request)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line">args = &#123;</span><br><span class="line">    <span class="string">&quot;wd&quot;</span>: <span class="string">&quot;尚学堂&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ie&quot;</span>: <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">url = <span class="string">&quot;https://www.baidu.com/s?&#123;&#125;&quot;</span>.<span class="built_in">format</span>(urlencode(args))</span><br><span class="line"><span class="built_in">print</span>(url)</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().random</span><br><span class="line">&#125;</span><br><span class="line">request = Request(url, headers=headers)</span><br><span class="line">response = urlopen(request)</span><br><span class="line">info = response.read()</span><br><span class="line"><span class="built_in">print</span>(info.decode())</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-贴吧案例"><a href="#3-6-贴吧案例" class="headerlink" title="3.6  贴吧案例"></a>3.6  贴吧案例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">    &#125;</span><br><span class="line">    request = Request(url, headers=headers)</span><br><span class="line">    response = urlopen(request)</span><br><span class="line">    <span class="built_in">print</span>(response.read().decode())</span><br><span class="line">    <span class="keyword">return</span> response.read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_html</span>(<span class="params">filename, html_bytes</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(html_bytes)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    content = <span class="built_in">input</span>(<span class="string">&quot;请输入要下载的内容：&quot;</span>)</span><br><span class="line">    num = <span class="built_in">input</span>(<span class="string">&quot;请输入要下载多少页：&quot;</span>)</span><br><span class="line">    base_url = <span class="string">&quot;http://tieba.baidu.com/f?ie=utf-8&amp;&#123;&#125;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> pn <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(num)):</span><br><span class="line">        args = &#123;</span><br><span class="line">            <span class="string">&quot;pn&quot;</span>: pn * <span class="number">50</span>,</span><br><span class="line">            <span class="string">&quot;kw&quot;</span>: content</span><br><span class="line">        &#125;</span><br><span class="line">        filename = <span class="string">&quot;第&quot;</span> + <span class="built_in">str</span>(pn + <span class="number">1</span>) + <span class="string">&quot;页.html&quot;</span></span><br><span class="line">        args = urlencode(args)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;正在下载&quot;</span> + filename)</span><br><span class="line">        html_bytes = get_html(base_url.<span class="built_in">format</span>(args))</span><br><span class="line">        save_html(filename, html_bytes)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-Post请求"><a href="#3-7-Post请求" class="headerlink" title="3.7 Post请求"></a>3.7 Post请求</h3><p>我们说了Request请求对象的里有data参数，它就是用在POST里的，我们要传送的数据就是这个参数data，data是一个字典，里面要匹配键值对</p>
+<p>发送请求/响应header头的含义：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept</td>
+<td>告诉服务器，客户端支持的数据类型</td>
+</tr>
+<tr>
+<td>Accept-Charset</td>
+<td>告诉服务器，客户端采用的编码</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>告诉服务器，客户机支持的数据压缩格式</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>告诉服务器，客户机的语言环境</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>客户机通过这个头告诉服务器，想访问的主机名</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td>客户机通过这个头告诉服务器，资源的缓存时间</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链）</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>客户机通过这个头告诉服务器，客户机的软件环境</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>客户机通过这个头告诉服务器，可以向服务器带数据</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>服务器通过这个头，告诉浏览器隔多长时间刷新一次</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>服务器通过这个头，回送数据的类型</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>服务器通过这个头，告诉服务器的语言环境</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>服务器通过这个头，告诉浏览器服务器的类型</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>服务器通过这个头，告诉浏览器数据采用的压缩格式</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>服务器通过这个头，告诉浏览器回送数据的长度</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.sxt.cn/index/login/login.html&quot;</span></span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&quot;user&quot;</span>: <span class="string">&quot;17703181473&quot;</span>,</span><br><span class="line">    <span class="string">&quot;password&quot;</span>: <span class="string">&quot;12346&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line">f_data = urlencode(form_data)</span><br><span class="line">request = Request(url, data=f_data.encode(), headers=headers)</span><br><span class="line">response = urlopen(request)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+<p>这里我们要注意我们要把data字典先用url_encode转化成字符编码然后再用encode转换成bytes类型，Request函数中的data参数只支持bytes类型的参数，其中的<a class="link"   target="_blank" rel="noopener" href="http://www.sxt.cn/index/login/login.html%E6%98%AF%E5%B0%9A%E5%AD%A6%E5%A0%82%E7%9A%84%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2" >http://www.sxt.cn/index/login/login.html是尚学堂的登陆界面<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="3-8-Ajax请求获取数据"><a href="#3-8-Ajax请求获取数据" class="headerlink" title="3.8 Ajax请求获取数据"></a>3.8 Ajax请求获取数据</h3><h4 id="3-8-1-Ajax简介"><a href="#3-8-1-Ajax简介" class="headerlink" title="3.8.1 Ajax简介"></a>3.8.1 Ajax简介</h4><p>Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术</p>
+<h4 id="3-8-2-什么是Ajax"><a href="#3-8-2-什么是Ajax" class="headerlink" title="3.8.2 什么是Ajax"></a>3.8.2 什么是Ajax</h4><p>Ajax = 异步 JavaScript 和 XML</p>
+<p>Ajax 是一种用于创建快速动态网页的技术</p>
+<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。有很多使用 AJAX 的应用程序案例：新浪微博、Google 地图、开心网等等</p>
+<p>有些网页内容使用Ajax加载，而Ajax一般返回的是json,直接对Ajax地址进行post或get，就返回json数据了</p>
+<h4 id="3-8-4-Ajax网站举例"><a href="#3-8-4-Ajax网站举例" class="headerlink" title="3.8.4 Ajax网站举例"></a>3.8.4 Ajax网站举例</h4><p>豆瓣电影排行：<a class="link"   target="_blank" rel="noopener" href="https://movie.douban.com/typerank?type_name=%E5%89%A7%E6%83%85&amp;type=11&amp;interval_id=100:90&amp;action=" >https://movie.douban.com/typerank?type_name=%E5%89%A7%E6%83%85&amp;type=11&amp;interval_id=100:90&amp;action=<i class="fas fa-external-link-alt"></i></a></p>
+<p>打开以上网站，然后打开开发者工具中的network会发现往下划，网页是不会刷新的然后动态新增了很多东西，点击XHR就能看到相应的Ajax请求，Headers能看到一些url以及请求头，然后点击Response这是他的响应信息，这是json格式的，我们可以把它复制出来在<a class="link"   target="_blank" rel="noopener" href="https://www.json.cn/%E8%BF%99%E4%B8%AA%E7%BD%91%E7%AB%99%E4%B8%8A%E6%96%B9%E4%BE%BF%E6%9F%A5%E7%9C%8B" >https://www.json.cn/这个网站上方便查看<i class="fas fa-external-link-alt"></i></a></p>
+<p>我们根据动态新增出来的东西headers中的requesturl，发现是有规律的</p>
+<h4 id="3-8-5-Ajax式网站资源爬取示例"><a href="#3-8-5-Ajax式网站资源爬取示例" class="headerlink" title="3.8.5 Ajax式网站资源爬取示例"></a>3.8.5 Ajax式网站资源爬取示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line">base_url = <span class="string">&quot;https://movie.douban.com/j/chart/top_list?type=11&amp;interval_id=100%3A90&amp;action=&amp;start=&#123;&#125;&amp;limit=20&quot;</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">    &#125;</span><br><span class="line">    url = base_url.<span class="built_in">format</span>(i * <span class="number">20</span>)</span><br><span class="line">    request = Request(url, headers=headers)</span><br><span class="line">    response = urlopen(request)</span><br><span class="line">    info = response.read().decode()</span><br><span class="line">    <span class="built_in">print</span>(info)</span><br><span class="line">    <span class="keyword">if</span> info == <span class="string">&quot;&quot;</span> <span class="keyword">or</span> info <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-9-请求SSL证书验证"><a href="#3-9-请求SSL证书验证" class="headerlink" title="3.9 请求SSL证书验证"></a>3.9 请求SSL证书验证</h3><p>现在随处可见 https 开头的网站，urllib可以为 HTTPS 请求验证SSL证书，就像web浏览器一样，如果网站的SSL证书是经过CA认证的，则能够正常访问，如：<a class="link"   target="_blank" rel="noopener" href="https://www.baidu.com/" >https://www.baidu.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>如果SSL证书验证不通过，或者操作系统不信任服务器的安全证书，比如浏览器在访问12306网站如：<a class="link"   target="_blank" rel="noopener" href="https://www.12306.cn/mormhweb/%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E4%BC%9A%E8%AD%A6%E5%91%8A%E7%94%A8%E6%88%B7%E8%AF%81%E4%B9%A6%E4%B8%8D%E5%8F%97%E4%BF%A1%E4%BB%BB%E3%80%82%EF%BC%88%E6%8D%AE%E8%AF%B4" >https://www.12306.cn/mormhweb/的时候，会警告用户证书不受信任。（据说<i class="fas fa-external-link-alt"></i></a> 12306 网站证书是自己做的，没有通过CA认证）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽略SSL安全认证</span></span><br><span class="line">context = ssl._create_unverified_context()</span><br><span class="line"><span class="comment"># 添加到context参数里</span></span><br><span class="line">response = urllib.request.urlopen(request, context = context)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-9-1-12306网站首页爬取示例"><a href="#3-9-1-12306网站首页爬取示例" class="headerlink" title="3.9.1 12306网站首页爬取示例"></a>3.9.1 12306网站首页爬取示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.12306.cn/mormhweb/&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line">request = Request(url, headers=headers)</span><br><span class="line"><span class="comment"># 忽略验证证书</span></span><br><span class="line">context = ssl._create_unverified_context()</span><br><span class="line">response = urlopen(request, context=context)</span><br><span class="line">info = response.read().decode()</span><br><span class="line"><span class="built_in">print</span>(info)</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-urllib高级使用-含反爬手段"><a href="#4-urllib高级使用-含反爬手段" class="headerlink" title="4. urllib高级使用(含反爬手段)"></a>4. urllib高级使用(含反爬手段)</h1><h3 id="4-1-设置请求头中加入referer以对付防盗链"><a href="#4-1-设置请求头中加入referer以对付防盗链" class="headerlink" title="4.1 设置请求头中加入referer以对付防盗链"></a>4.1 设置请求头中加入referer以对付防盗链</h3><p>对付防盗链，服务器会识别headers中的referer是不是它自己，如果不是，有的服务器不会响应，所以我们还可以在headers中加入referer</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123; </span><br><span class="line">         <span class="string">&#x27;User-Agent&#x27;</span> : <span class="string">&#x27;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;Referer&#x27;</span>:<span class="string">&#x27;http://www.zhihu.com/articles&#x27;</span> </span><br><span class="line">          &#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-导入ua-list随机选择User-Agent"><a href="#4-2-导入ua-list随机选择User-Agent" class="headerlink" title="4.2 导入ua_list随机选择User_Agent"></a>4.2 导入ua_list随机选择User_Agent</h3><p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">ua_list = [</span><br><span class="line">    <span class="string">&quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mozilla/5.0 (Windows; U; Windows NT 5.2) Gecko/2008070208 Firefox/3.0.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Version/3.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ;  QIHU 360EE)&quot;</span></span><br><span class="line">]</span><br><span class="line">user_agent = random.choice(ua_list)</span><br><span class="line">request = urllib.request.Request(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">request.add_header(<span class="string">&quot;User-Agent&quot;</span>,user_agent)</span><br><span class="line"><span class="comment">#区分大小写</span></span><br><span class="line"><span class="built_in">print</span>(request.get_header(<span class="string">&quot;User-agent&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>前面我们也介绍了fake_useragent，这个也可以使用</p>
+<h3 id="4-3-opener的使用"><a href="#4-3-opener的使用" class="headerlink" title="4.3 opener的使用"></a>4.3 opener的使用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> build_opener</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> HTTPHandler</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.baidu.com&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line">request = Request(url, headers=headers)</span><br><span class="line">handler = HTTPHandler()</span><br><span class="line">opener = build_opener(handler)</span><br><span class="line">response = opener.<span class="built_in">open</span>(request)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-4-设置代理Pxoxy"><a href="#4-4-设置代理Pxoxy" class="headerlink" title="4.4 设置代理Pxoxy"></a>4.4 设置代理Pxoxy</h3><p>假如一个网站它会检测某一段时间某个IP 的访问次数，如果访问次数过多，它会禁止你的访问。所以你可以设置一些代理服务器来帮助你做工作，每隔一段时间换一个代理，网站君都不知道是谁在捣鬼了，这酸爽！</p>
+<h5 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h5><p>透明代理：目标网站知道你使用了代理并且知道你的源IP地址，这种代理显然不符合我们这里使用代理的初衷</p>
+<p>匿名代理：匿名程度比较低，也就是网站知道你使用了代理，但是并不知道你的源IP地址</p>
+<p>高匿代理：这是最保险的方式，目标网站既不知道你使用的代理更不知道你的源IP </p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> ProxyHandler</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> build_opener</span><br><span class="line"></span><br><span class="line">proxy = ProxyHandler(&#123;<span class="string">&quot;http&quot;</span>: <span class="string">&quot;119.109.197.195:80&quot;</span>&#125;)</span><br><span class="line">opener = build_opener(proxy)</span><br><span class="line">url = <span class="string">&quot;http://www.baidu.com&quot;</span></span><br><span class="line">response = opener.<span class="built_in">open</span>(url)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode(<span class="string">&quot;utf-8&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-为方便调试使用DebugLog-提一下"><a href="#4-5-为方便调试使用DebugLog-提一下" class="headerlink" title="4.5 为方便调试使用DebugLog(提一下)"></a>4.5 为方便调试使用DebugLog(提一下)</h3><p>可以通过下面的方法把 Debug Log 打开，这样收发包的内容就会在屏幕上打印出来，方便调试，这个也不太常用，仅提一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> HTTPHandler</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> build_opener</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request</span><br><span class="line"></span><br><span class="line">handler = HTTPHandler(debuglevel=<span class="number">1</span>)</span><br><span class="line">opener = build_opener(handler)</span><br><span class="line">url = <span class="string">&quot;http://www.sohu.com&quot;</span></span><br><span class="line">request = Request(url)</span><br><span class="line">response = opener.<span class="built_in">open</span>(request)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-Cookie的使用"><a href="#4-6-Cookie的使用" class="headerlink" title="4.6 Cookie的使用"></a>4.6 Cookie的使用</h3><h4 id="4-6-1-为什么要使用Cookie"><a href="#4-6-1-为什么要使用Cookie" class="headerlink" title="4.6.1 为什么要使用Cookie"></a>4.6.1 为什么要使用Cookie</h4><p>Cookie，指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）</p>
+<p>比如说有些网站需要登录后才能访问某个页面，在登录之前，你想抓取某个页面内容是不允许的。那么我们可以利用Urllib库保存我们登录的Cookie，然后再抓取其他页面就达到目的了</p>
+<h4 id="4-6-2-如何看到登录后网站的Cookie"><a href="#4-6-2-如何看到登录后网站的Cookie" class="headerlink" title="4.6.2 如何看到登录后网站的Cookie"></a>4.6.2 如何看到登录后网站的Cookie</h4><p>我们以尚学堂为例，在登录后按f12然后点击network中的headers然后点击XHR就会看到登录后本地所保存的cookies：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://i.loli.net/2021/08/01/G1QcFZ2TB8m5IdP.png"
+                      alt="image-20210801163426055"
+                ></p>
+<h4 id="4-6-3-案例1-Cookie嵌入到headers中来使用"><a href="#4-6-3-案例1-Cookie嵌入到headers中来使用" class="headerlink" title="4.6.3 案例1:Cookie嵌入到headers中来使用"></a>4.6.3 案例1:Cookie嵌入到headers中来使用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.sxt.cn/index/user.html&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome,</span><br><span class="line">    <span class="string">&quot;Cookie&quot;</span>: <span class="string">&quot;UM_distinctid=163d8c88a6740c-01c2fe892f8d8c-737356c-100200-163d8c88a682a2; 53gid2=10466932807008; 53revisit=1528350416275; 53gid1=10466932807008; acw_tc=AQAAAIktZUa8ZQEAoCEsceTKxzX+LOad; CNZZDATA1261969808=52059414-1528348034-%7C1532407588; PHPSESSID=uh265s5725vojpqdsbagj0n726; visitor_type=old; 53gid0=10466932807008; 53kf_72085067_from_host=www.sxt.cn; 53kf_72085067_keyword=http%3A%2F%2Fwww.sxt.cn%2Findex%2Flogin%2Flogin.html; 53kf_72085067_land_page=http%253A%252F%252Fwww.sxt.cn%252F; kf_72085067_land_page_ok=1&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">request = Request(url, headers=headers)</span><br><span class="line">response = urlopen(request)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-4-案例2-使用HTTPCookieProcessor保存Cookie构造opener"><a href="#4-6-4-案例2-使用HTTPCookieProcessor保存Cookie构造opener" class="headerlink" title="4.6.4 案例2:使用HTTPCookieProcessor保存Cookie构造opener"></a>4.6.4 案例2:使用HTTPCookieProcessor保存Cookie构造opener</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> HTTPCookieProcessor,build_opener</span><br><span class="line"><span class="comment"># 登录</span></span><br><span class="line">login_url = <span class="string">&quot;http://www.sxt.cn/index/login/login&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome,</span><br><span class="line">&#125;</span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&quot;user&quot;</span>: <span class="string">&quot;17703181473&quot;</span>,</span><br><span class="line">    <span class="string">&quot;password&quot;</span>: <span class="string">&quot;123456&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">f_data = urlencode(form_data).encode()</span><br><span class="line">request = Request(login_url, headers=headers, data=f_data)</span><br><span class="line"><span class="comment">#response = urlopen(request) 错误的</span></span><br><span class="line">handler = HTTPCookieProcessor()</span><br><span class="line">opener = build_opener(handler)</span><br><span class="line">response = opener.<span class="built_in">open</span>(request)</span><br><span class="line"><span class="comment"># print(response.read().decode())</span></span><br><span class="line"><span class="comment"># 访问页面</span></span><br><span class="line">info_url = <span class="string">&quot;http://www.sxt.cn/index/user.html&quot;</span></span><br><span class="line">request = Request(info_url, headers=headers)</span><br><span class="line"><span class="comment">#response = urlopen(request)</span></span><br><span class="line">response = opener.<span class="built_in">open</span>(request)</span><br><span class="line"><span class="built_in">print</span>(response.read().decode())</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6-5-Cookielib"><a href="#4-6-5-Cookielib" class="headerlink" title="4.6.5 Cookielib"></a>4.6.5 Cookielib</h4><p>cookielib模块的主要作用是提供可存储cookie的对象，以便于与urllib模块配合使用来访问Internet资源。Cookielib模块非常强大，我们可以利用本模块的CookieJar类的对象来捕获cookie并在后续连接请求时重新发送，比如可以实现模拟登录功能。该模块主要的对象有CookieJar、FileCookieJar、MozillaCookieJar、LWPCookieJar, FileCookieJar是CookieJar的子类，CookieJar是FileCookieJar的子类；</p>
+<h5 id="4-6-5-1-MozillaCookieJar的使用"><a href="#4-6-5-1-MozillaCookieJar的使用" class="headerlink" title="4.6.5.1 MozillaCookieJar的使用"></a>4.6.5.1 MozillaCookieJar的使用</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, build_opener, HTTPCookieProcessor</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">from</span> http.cookiejar <span class="keyword">import</span> MozillaCookieJar</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 登录</span></span><br><span class="line"><span class="comment"># 保存cookie到文件中</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cookie</span>():</span></span><br><span class="line">    login_url = <span class="string">&quot;http://www.sxt.cn/index/login/login&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">    &#125;</span><br><span class="line">    form_data = &#123;</span><br><span class="line">        <span class="string">&quot;user&quot;</span>: <span class="string">&quot;17703181473&quot;</span>,</span><br><span class="line">        <span class="string">&quot;password&quot;</span>: <span class="string">&quot;123456&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    f_data = urlencode(form_data).encode()</span><br><span class="line">    request = Request(login_url, headers=headers, data=f_data)</span><br><span class="line">    cookie_jar = MozillaCookieJar()</span><br><span class="line">    handler = HTTPCookieProcessor(cookie_jar)</span><br><span class="line">    opener = build_opener(handler)</span><br><span class="line">    response = opener.<span class="built_in">open</span>(request)</span><br><span class="line">    cookie_jar.save(<span class="string">&quot;cookie.txt&quot;</span>, ignore_expires=<span class="literal">True</span>, ignore_discard=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_cookie</span>():</span></span><br><span class="line">    info_url = <span class="string">&quot;http://www.sxt.cn/index/user.html&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">    &#125;</span><br><span class="line">    request = Request(info_url, headers=headers)</span><br><span class="line">    cookie_jar = MozillaCookieJar()</span><br><span class="line">    cookie_jar.load(<span class="string">&quot;cookie.txt&quot;</span>, ignore_discard=<span class="literal">True</span>, ignore_expires=<span class="literal">True</span>)</span><br><span class="line">    handler = HTTPCookieProcessor(cookie_jar)</span><br><span class="line">    opener = build_opener(handler)</span><br><span class="line">    response = opener.<span class="built_in">open</span>(request)</span><br><span class="line">    <span class="built_in">print</span>(response.read().decode())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取cookie从文件中</span></span><br><span class="line"><span class="comment"># 访问页面</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># get_cookie()</span></span><br><span class="line">    use_cookie()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-URLError的使用"><a href="#4-7-URLError的使用" class="headerlink" title="4.7 URLError的使用"></a>4.7 URLError的使用</h3><p>首先解释下URLError可能产生的原因：</p>
+<ul>
+<li>网络无连接，即本机无法上网</li>
+<li>连接不到特定的服务器</li>
+<li>服务器不存在</li>
+</ul>
+<p>在代码中，我们需要用try-except语句来包围并捕获相应的异常,代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request, urlopen</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> URLError</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.sx123t.cn/index/login/login123&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    req = Request(url, headers=headers)</span><br><span class="line">    resp = urlopen(req)</span><br><span class="line">    <span class="built_in">print</span>(resp.read().decode())</span><br><span class="line"><span class="keyword">except</span> URLError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">if</span> e.args == ():</span><br><span class="line">        <span class="built_in">print</span>(e.code)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(e.args[<span class="number">0</span>].errno)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;访问完成&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-request使用体验"><a href="#5-request使用体验" class="headerlink" title="5. request使用体验"></a>5. request使用体验</h1><h3 id="5-1-介绍"><a href="#5-1-介绍" class="headerlink" title="5.1 介绍"></a>5.1 介绍</h3><p>对了解一些爬虫的基本理念，掌握爬虫爬取的流程有所帮助。入门之后，我们就需要学习一些更加高级的内容和工具来方便我们的爬取。那么这一节来简单介绍一下 requests 库的基本用法</p>
+<h3 id="5-2-安装"><a href="#5-2-安装" class="headerlink" title="5.2 安装"></a>5.2 安装</h3><p>利用 pip 安装：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>如果 pip install xxx 报错：Could not fetch URL，用以下命令代替,这个命令同时指定了豆瓣源：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx -i http://pypi.douban.com/simple --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-基本请求与运用"><a href="#5-3-基本请求与运用" class="headerlink" title="5.3 基本请求与运用"></a>5.3 基本请求与运用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">req = requests.get(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">req = requests.post(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">req = requests.put(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">req = requests.delete(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">req = requests.head(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">req = requests.options(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-1-get请求"><a href="#5-3-1-get请求" class="headerlink" title="5.3.1 get请求"></a>5.3.1 get请求</h4><p>参数是字典，我们也可以传递json类型的参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.baidu.com/s&quot;</span></span><br><span class="line">params = &#123;<span class="string">&#x27;wd&#x27;</span>: <span class="string">&#x27;尚学堂&#x27;</span>&#125;</span><br><span class="line">response = requests.get(url, params=params)</span><br><span class="line"><span class="built_in">print</span>(response.url)</span><br><span class="line">response.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">html = response.text</span><br><span class="line"><span class="comment"># print(html)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-2-post请求"><a href="#5-3-2-post请求" class="headerlink" title="5.3.2 post请求"></a>5.3.2 post请求</h4><p>参数是字典，我们也可以传递json类型的参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">&quot;http://www.sxt.cn/index/login/login.html&quot;</span></span><br><span class="line">formdata = &#123;</span><br><span class="line">    <span class="string">&quot;user&quot;</span>: <span class="string">&quot;17703181473&quot;</span>,</span><br><span class="line">    <span class="string">&quot;password&quot;</span>: <span class="string">&quot;123456&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.post(url, data=formdata)</span><br><span class="line">response.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">html = response.text</span><br><span class="line"><span class="comment"># print(html)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-3-代理访问"><a href="#5-3-3-代理访问" class="headerlink" title="5.3.3 代理访问"></a>5.3.3 代理访问</h4><p>采集时为避免被封IP，经常会使用代理。requests也有相应的proxies属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://httpbin.org/get&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://398707160:j8inhg2g@120.27.224.41:16818&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(url, headers=headers, proxies=proxies)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-4-SSL验证"><a href="#5-3-4-SSL验证" class="headerlink" title="5.3.4 SSL验证"></a>5.3.4 SSL验证</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用安全请求警告</span></span><br><span class="line">requests.packages.urllib3.disable_warnings()</span><br><span class="line"><span class="comment"># 过滤掉弹出来的错误</span></span><br><span class="line">resp = requests.get(url, verify=<span class="literal">False</span>, headers=headers)</span><br></pre></td></tr></table></figure>
+
+<p>访问12306：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.12306.cn/mormhweb/&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 关闭警告</span></span><br><span class="line">requests.packages.urllib3.disable_warnings()</span><br><span class="line">response = requests.get(url, verify=<span class="literal">False</span>, headers=headers)</span><br><span class="line"><span class="comment"># 如果结果有乱码就要改一下字符集</span></span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-5-session自动保存cookies"><a href="#5-3-5-session自动保存cookies" class="headerlink" title="5.3.5 session自动保存cookies"></a>5.3.5 session自动保存cookies</h4><p>seesion的意思是保持一个会话，比如 登陆后继续操作(记录身份信息) 而requests是单次请求的请求，身份信息不会被记录</p>
+<p>案例：访问尚学堂</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().chrome</span><br><span class="line">&#125;</span><br><span class="line">login_url = <span class="string">&quot;http://www.sxt.cn/index/login/login&quot;</span></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&quot;user&quot;</span>: <span class="string">&quot;17703181473&quot;</span>,</span><br><span class="line">    <span class="string">&quot;password&quot;</span>: <span class="string">&quot;123456&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">response = session.post(login_url, headers=headers, data=params)</span><br><span class="line">info_url = <span class="string">&quot;http://www.sxt.cn/index/user.html&quot;</span></span><br><span class="line">resp = session.get(info_url, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-6-获取不同响应格式的写法"><a href="#5-3-6-获取不同响应格式的写法" class="headerlink" title="5.3.6 获取不同响应格式的写法"></a>5.3.6 获取不同响应格式的写法</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>resp.json()</td>
+<td>获取响应内容（以json字符串）</td>
+</tr>
+<tr>
+<td>resp.text</td>
+<td>获取响应内容 (以字符串)</td>
+</tr>
+<tr>
+<td>resp.content</td>
+<td>获取响应内容（以字节的方式）</td>
+</tr>
+<tr>
+<td>resp.headers</td>
+<td>获取响应头内容</td>
+</tr>
+<tr>
+<td>resp.url</td>
+<td>获取访问地址</td>
+</tr>
+<tr>
+<td>resp.encoding</td>
+<td>获取网页编码</td>
+</tr>
+<tr>
+<td>resp.request.headers</td>
+<td>请求头内容</td>
+</tr>
+<tr>
+<td>resp.cookie</td>
+<td>获取cookie</td>
+</tr>
+</tbody></table>
+<h1 id="6-正则表达式"><a href="#6-正则表达式" class="headerlink" title="6. 正则表达式"></a>6. 正则表达式</h1><p>在前面我们已经搞定了怎样获取页面的内容，不过还差一步，这么多杂乱的代码夹杂文字我们怎样把它提取出来整理呢？下面就开始介绍一个十分强大的工具，正则表达式！</p>
+<p>正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。</p>
+<p>正则表达式是用来匹配字符串非常强大的工具，在其他编程语言中同样有正则表达式的概念，Python同样不例外，利用了正则表达式，我们想要从返回的页面内容提取出我们想要的内容就易如反掌了</p>
+<h3 id="6-1-规则"><a href="#6-1-规则" class="headerlink" title="6.1 规则"></a>6.1 规则</h3><table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td>匹配字符串的开头</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td>匹配字符串的末尾</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符</td>
+</tr>
+<tr>
+<td align="left">[…]</td>
+<td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
+</tr>
+<tr>
+<td align="left">[^…]</td>
+<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td>匹配0个或多个的表达式</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td>匹配1个或多个的表达式</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td>精确匹配n个前面表达式</td>
+</tr>
+<tr>
+<td align="left">{ n, m}</td>
+<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
+</tr>
+<tr>
+<td align="left">a | b</td>
+<td>匹配a或b</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td>匹配字母数字及下划线</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td>匹配非字母数字及下划线</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td>匹配任意空白字符，等价于 [\t\n\r\f]</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td>匹配任意非空字符</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td>匹配任意数字，等价于 [0-9]</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td>匹配任意非数字</td>
+</tr>
+<tr>
+<td align="left">\A</td>
+<td>匹配字符串开始</td>
+</tr>
+<tr>
+<td align="left">\Z</td>
+<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串</td>
+</tr>
+<tr>
+<td align="left">\z</td>
+<td>匹配字符串结束</td>
+</tr>
+<tr>
+<td align="left">\G</td>
+<td>匹配最后匹配完成的位置</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’</td>
+</tr>
+<tr>
+<td align="left">\n, \t, 等.</td>
+<td>匹配一个换行符。匹配一个制表符</td>
+</tr>
+<tr>
+<td align="left">\1…\9</td>
+<td>匹配第n个分组的内容</td>
+</tr>
+<tr>
+<td align="left">\10</td>
+<td>匹配第n个分组的内容，如果它经匹配。否则指的是八进制字符码的表达式</td>
+</tr>
+<tr>
+<td align="left">[\u4e00-\u9fa5]</td>
+<td>中文</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-正则表达式相关注解"><a href="#6-2-正则表达式相关注解" class="headerlink" title="6.2 正则表达式相关注解"></a>6.2 正则表达式相关注解</h3><h4 id="2-1-数量词的贪婪模式与非贪婪模式"><a href="#2-1-数量词的贪婪模式与非贪婪模式" class="headerlink" title="2.1 数量词的贪婪模式与非贪婪模式"></a>2.1 数量词的贪婪模式与非贪婪模式</h4><p>正则表达式通常用于在文本中查找匹配的字符串<br>Python里数量词默认是贪婪的（在少数语言里也可能是默认非贪婪），总是尝试匹配尽可能多的字符；非贪婪的则相反，总是尝试匹配尽可能少的字符</p>
+<p>例如：正则表达式”ab*<em>”如果用于查找”abbbc”，将找到”abbb”。而如果使用非贪婪的数量词”ab</em>?”，将找到”a”</p>
+<h4 id="2-2-常用方法"><a href="#2-2-常用方法" class="headerlink" title="2.2 常用方法"></a>2.2 常用方法</h4><ul>
+<li>re.match<ul>
+<li> re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none</li>
+<li>函数语法：<br> re.match(pattern, string, flags=0)</li>
+</ul>
+</li>
+<li>re.search<ul>
+<li>re.search 扫描整个字符串并返回第一个成功的匹配。</li>
+<li>函数语法：<br>re.search(pattern, string, flags=0)</li>
+</ul>
+</li>
+<li>re.sub<ul>
+<li>re.sub 替换字符串<br>re.sub(pattern,replace,string)</li>
+</ul>
+</li>
+<li>re.findall<ul>
+<li>re.findall 查找全部<br>re.findall(pattern,string,flags=0)</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-正则表达式修饰符-可选标志"><a href="#6-3-正则表达式修饰符-可选标志" class="headerlink" title="6.3 正则表达式修饰符-可选标志"></a>6.3 正则表达式修饰符-可选标志</h3><p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>re.I</td>
+<td>使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td>re.L</td>
+<td>做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td>re.M</td>
+<td></td>
+</tr>
+<tr>
+<td>re.S</td>
+<td>使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td>re.U</td>
+<td>根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B</td>
+</tr>
+<tr>
+<td>re.X</td>
+<td>该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解</td>
+</tr>
+</tbody></table>
+<h3 id="6-4-re使用相关代码"><a href="#6-4-re使用相关代码" class="headerlink" title="6.4 re使用相关代码"></a>6.4 re使用相关代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&quot;I Study Python3.6 Everyday&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-------------match()-----------------&quot;</span>)</span><br><span class="line"><span class="comment"># 匹配I字符</span></span><br><span class="line">m1 = re.match(<span class="string">r&#x27;I&#x27;</span>, str1)</span><br><span class="line">m2 = re.match(<span class="string">r&#x27;\w&#x27;</span>, str1)</span><br><span class="line">m3 = re.match(<span class="string">r&#x27;.&#x27;</span>, str1)</span><br><span class="line">m4 = re.match(<span class="string">r&#x27;\D&#x27;</span>, str1)</span><br><span class="line">m5 = re.match(<span class="string">r&#x27;i&#x27;</span>, str1, re.I)</span><br><span class="line">m6 = re.match(<span class="string">r&#x27;\S&#x27;</span>, str1)</span><br><span class="line"><span class="comment"># m7 = re.match(r&#x27;Study&#x27;, str1)  # 匹配不到，因为match是从左开始匹配</span></span><br><span class="line"><span class="built_in">print</span>(m6.group())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-------------search()-----------------&quot;</span>)</span><br><span class="line"><span class="comment"># 匹配Study</span></span><br><span class="line">s1 = re.search(<span class="string">r&#x27;Study&#x27;</span>, str1)</span><br><span class="line">s2 = re.search(<span class="string">r&#x27;S\w+&#x27;</span>, str1)</span><br><span class="line"><span class="comment"># 匹配Python3.6</span></span><br><span class="line">s3 = re.search(<span class="string">r&#x27;P\w+.\d&#x27;</span>, str1)</span><br><span class="line"><span class="built_in">print</span>(s3.group())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-------------findall()-----------------&quot;</span>)</span><br><span class="line"><span class="comment"># 查找所有y</span></span><br><span class="line">f1 = re.findall(<span class="string">r&#x27;y&#x27;</span>, str1)</span><br><span class="line"><span class="built_in">print</span>(f1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-------------test()-----------------&quot;</span>)</span><br><span class="line">str2 = <span class="string">&#x27;&lt;div&gt;&lt;a href=&quot;http://www.bjsxt.com&quot;&gt;bjsxt尚学堂&lt;/a&gt;&lt;/div&gt;&#x27;</span></span><br><span class="line"><span class="comment"># 提取a标签的内容</span></span><br><span class="line">t1 = re.findall(<span class="string">r&#x27;[\u4e00-\u9fa5]\w+&#x27;</span>, str2)</span><br><span class="line">t2 = re.findall(<span class="string">r&#x27;&lt;a href=&quot;http://www.bjsxt.com&quot;&gt;(.+)&lt;/a&gt;&#x27;</span>, str2)</span><br><span class="line"><span class="comment"># 提取herf</span></span><br><span class="line">t3 = re.findall(<span class="string">r&#x27;&lt;a href=&quot;(.+)&quot;&gt;&#x27;</span>, str2)</span><br><span class="line"><span class="built_in">print</span>(t3)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-------------sub()-----------------&quot;</span>)</span><br><span class="line"><span class="comment"># 将str2的div换成span</span></span><br><span class="line">su1 = re.sub(<span class="string">r&#x27;&lt;div&gt;(.+)&lt;/div&gt;&#x27;</span>, <span class="string">r&#x27;&lt;span&gt;\1&lt;/span&gt;&#x27;</span>, str2)</span><br><span class="line"><span class="built_in">print</span>(su1)</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-正则表达式实战之糗事百科"><a href="#7-正则表达式实战之糗事百科" class="headerlink" title="7. 正则表达式实战之糗事百科"></a>7. 正则表达式实战之糗事百科</h1><p>直接上代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://www.qiushibaike.com/text/page/1/&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: UserAgent().random</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 构造请求</span></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">info = response.text</span><br><span class="line"><span class="comment"># print(info)</span></span><br><span class="line">infos = re.findall(<span class="string">r&#x27;&lt;div class=&quot;content&quot;&gt;\s*&lt;span&gt;\s*(.+)\s*&lt;/span&gt;&#x27;</span>, info)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;duanzi.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> info <span class="keyword">in</span> infos:</span><br><span class="line">        f.write(info + <span class="string">&quot;\n\n\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-Beautiful-Soup"><a href="#8-Beautiful-Soup" class="headerlink" title="8. Beautiful Soup"></a>8. Beautiful Soup</h1><h3 id="8-1-utiful-Soup的简介"><a href="#8-1-utiful-Soup的简介" class="headerlink" title="8.1 utiful Soup的简介"></a>8.1 utiful Soup的简介</h3><blockquote>
+<p>Beautiful Soup提供一些简单的、python式的函数用来处理导航、搜索、修改分析树等功能。它是一个工具箱，通过解析文档为用户提供需要抓取的数据，因为简单，所以不需要多少代码就可以写出一个完整的应用程序。</p>
+</blockquote>
+<blockquote>
+<p>Beautiful Soup自动将输入文档转换为Unicode编码，输出文档转换为utf-8编码。你不需要考虑编码方式，除非文档没有指定一个编码方式，这时，Beautiful Soup就不能自动识别编码方式了。然后，你仅仅需要说明一下原始编码方式就可以了。</p>
+</blockquote>
+<blockquote>
+<p>Beautiful Soup已成为和lxml、html6lib一样出色的python解释器，为用户灵活地提供不同的解析策略或强劲</p>
+</blockquote>
+<p>官网：<a class="link"   target="_blank" rel="noopener" href="http://beautifulsoup.readthedocs.io/zh_CN/latest/" >http://beautifulsoup.readthedocs.io/zh_CN/latest/<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="8-2-Beautiful-Soup-安装"><a href="#8-2-Beautiful-Soup-安装" class="headerlink" title="8.2 Beautiful Soup 安装"></a>8.2 Beautiful Soup 安装</h3><p>Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Beautiful Soup 4，不过它已经被移植到BS4了,也就是说导入时我们需要 import bs4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+
+<p>Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方的解析器，如果我们不安装它，则 Python 会使用 Python默认的解析器，lxml 解析器更加强大，速度更快，推荐安装</p>
+<table>
+<thead>
+<tr>
+<th>解析器</th>
+<th>使用方法</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python标准库</td>
+<td>BeautifulSoup(markup, “html.parser”)</td>
+<td>1. Python的内置标准库  2. 执行速度适中 3.文档容错能力强</td>
+<td>Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td>lxml HTML 解析器</td>
+<td>BeautifulSoup(markup, “lxml”)</td>
+<td>1. 速度快 2.文档容错能力强</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>lxml XML 解析器</td>
+<td>BeautifulSoup(markup, [“lxml”, “xml”])  BeautifulSoup(markup, “xml”)</td>
+<td>1. 速度快 2.唯一支持XML的解析器 3.需要安装C语言库</td>
+<td></td>
+</tr>
+<tr>
+<td>html5lib</td>
+<td>BeautifulSoup(markup, “html5lib”)</td>
+<td>1. 最好的容错性 2.以浏览器的方式解析文档 3.生成HTML5格式的文档 4.速度慢</td>
+<td>不依赖外部扩展</td>
+</tr>
+</tbody></table>
+<h3 id="8-3-创建-Beautiful-Soup-对象"><a href="#8-3-创建-Beautiful-Soup-对象" class="headerlink" title="8.3 创建 Beautiful Soup 对象"></a>8.3 创建 Beautiful Soup 对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html,<span class="string">&quot;lxml&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-4-四大对象种类"><a href="#8-4-四大对象种类" class="headerlink" title="8.4 四大对象种类"></a>8.4 四大对象种类</h3><p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种:</p>
+<ul>
+<li>Tag</li>
+<li>NavigableString</li>
+<li>BeautifulSoup</li>
+<li>Comment</li>
+</ul>
+<h4 id="8-4-1-Tag-是什么？通俗点讲就是-HTML-中的一个个标签"><a href="#8-4-1-Tag-是什么？通俗点讲就是-HTML-中的一个个标签" class="headerlink" title="8.4.1 Tag 是什么？通俗点讲就是 HTML 中的一个个标签"></a>8.4.1 Tag 是什么？通俗点讲就是 HTML 中的一个个标签</h4><p>例如：<code>&lt;div&gt;</code> <code>&lt;title&gt;</code></p>
+<p>使用方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#以下代码为例子</span></span><br><span class="line">&lt;title&gt;尚学堂&lt;/title&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&#x27;<span class="title">info</span>&#x27; <span class="title">float</span>=&#x27;<span class="title">left</span>&#x27;&gt;<span class="title">Welcome</span> <span class="title">to</span> <span class="title">SXT</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;<span class="title">div</span> <span class="title">class</span>=&#x27;<span class="title">info</span>&#x27; <span class="title">float</span>=&#x27;<span class="title">right</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">span</span>&gt;<span class="title">Good</span> <span class="title">Good</span> <span class="title">Study</span>&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">a</span> <span class="title">href</span>=&#x27;<span class="title">www</span>.<span class="title">bjsxt</span>.<span class="title">cn</span>&#x27;&gt;&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">strong</span>&gt;&lt;!--没用--&gt;&lt;/strong&gt;</span></span><br><span class="line"><span class="class">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="8-4-1-1-获取标签"><a href="#8-4-1-1-获取标签" class="headerlink" title="8.4.1.1 获取标签"></a>8.4.1.1 获取标签</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#以lxml方式解析</span></span><br><span class="line">soup = BeautifulSoup(info, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(soup.title)</span><br><span class="line"><span class="comment"># &lt;title&gt;尚学堂&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<blockquote>
+<p>相同的标签只能获取第一个符合要求的标签</p>
+</blockquote>
+<h5 id="8-4-1-2-获取属性"><a href="#8-4-1-2-获取属性" class="headerlink" title="8.4.1.2 获取属性"></a>8.4.1.2 获取属性</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取所有属性</span></span><br><span class="line"><span class="built_in">print</span>(soup.title.attrs)</span><br><span class="line"><span class="comment">#class=&#x27;info&#x27; float=&#x27;left&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获取单个属性的值</span></span><br><span class="line"><span class="built_in">print</span>(soup.div.get(<span class="string">&#x27;class&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(soup.div[<span class="string">&#x27;class&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(soup.a[<span class="string">&#x27;href&#x27;</span>])</span><br><span class="line"><span class="comment">#info</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-2-NavigableString-获取内容"><a href="#8-4-2-NavigableString-获取内容" class="headerlink" title="8.4.2 NavigableString 获取内容"></a>8.4.2 NavigableString 获取内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.title.string)</span><br><span class="line"><span class="built_in">print</span>(soup.title.text)</span><br><span class="line"><span class="comment">#尚学堂</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-3-BeautifulSoup"><a href="#8-4-3-BeautifulSoup" class="headerlink" title="8.4.3 BeautifulSoup"></a>8.4.3 BeautifulSoup</h4><blockquote>
+<p>BeautifulSoup 对象表示的是一个文档的全部内容.大部分时候,可以把它当作 Tag 对象,它支持 遍历文档树 和 搜索文档树 中描述的大部分的方法.</p>
+</blockquote>
+<blockquote>
+<p>因为 BeautifulSoup 对象并不是真正的HTML或XML的tag,所以它没有name和attribute属性.但有时查看它的 .name 属性是很方便的,所以 BeautifulSoup 对象包含了一个值为 “[document]” 的特殊属性 .name</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.name)</span><br><span class="line"><span class="built_in">print</span>(soup.head.name)</span><br><span class="line"><span class="comment"># [document]</span></span><br><span class="line"><span class="comment"># head</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-4-Comment"><a href="#8-4-4-Comment" class="headerlink" title="8.4.4 Comment"></a>8.4.4 Comment</h4><p>Comment 对象是一个特殊类型的 NavigableString 对象，其实输出的内容仍然不包括注释符号，但是如果不好好处理它，可能会对我们的文本处理造成意想不到的麻烦</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">type</span>(soup.strong.string)==Comment:</span><br><span class="line">    <span class="built_in">print</span>(soup.strong.prettify())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(soup.strong.string)</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-5-搜索文档树"><a href="#8-5-搜索文档树" class="headerlink" title="8.5 搜索文档树"></a>8.5 搜索文档树</h3><p>Beautiful Soup定义了很多搜索方法,这里着重介绍2个: find() 和 find_all() .其它方法的参数和用法类似</p>
+<h4 id="8-5-1-过滤器"><a href="#8-5-1-过滤器" class="headerlink" title="8.5.1 过滤器"></a>8.5.1 过滤器</h4><p>介绍 find_all() 方法前,先介绍一下过滤器的类型 ,这些过滤器贯穿整个搜索的API.过滤器可以被用在tag的name中,节点的属性中,字符串中或他们的混合中</p>
+<h5 id="8-5-1-1-字符串"><a href="#8-5-1-1-字符串" class="headerlink" title="8.5.1.1 字符串"></a>8.5.1.1 字符串</h5><p>最简单的过滤器是字符串.在搜索方法中传入一个字符串参数,Beautiful Soup会查找与字符串完整匹配的内容,下面的例子用于查找文档中所有的<div>标签</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#返回所有的div标签</span></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;div&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>如果传入字节码参数,Beautiful Soup会当作UTF-8编码,可以传入一段Unicode 编码来避免Beautiful Soup解析编码出错</p>
+<h5 id="8-1-1-2-正则表达式"><a href="#8-1-1-2-正则表达式" class="headerlink" title="8.1.1.2 正则表达式"></a>8.1.1.2 正则表达式</h5><p>如果传入正则表达式作为参数,Beautiful Soup会通过正则表达式的 match() 来匹配内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#返回所有的div标签</span></span><br><span class="line"><span class="built_in">print</span> (soup.find_all(re.<span class="built_in">compile</span>(<span class="string">&quot;^div&quot;</span>)))</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-1-1-3-列表"><a href="#5-1-1-3-列表" class="headerlink" title="5.1.1.3 列表"></a>5.1.1.3 列表</h5><p>如果传入列表参数,Beautiful Soup会将与列表中任一元素匹配的内容返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#返回所有匹配到的span a标签</span></span><br><span class="line"><span class="built_in">print</span>(soup.find_all([<span class="string">&#x27;span&#x27;</span>,<span class="string">&#x27;a&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-1-1-4-keyword"><a href="#5-1-1-4-keyword" class="headerlink" title="5.1.1.4 keyword"></a>5.1.1.4 keyword</h5><p>如果一个指定名字的参数不是搜索内置的参数名,搜索时会把该参数当作指定名字tag的属性来搜索,如果包含一个名字为 id 的参数,Beautiful Soup会搜索每个tag的”id”属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#返回id为welcom的标签</span></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="built_in">id</span>=<span class="string">&#x27;welcom&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-1-1-5-True"><a href="#5-1-1-5-True" class="headerlink" title="5.1.1.5 True"></a>5.1.1.5 True</h5><p>True 可以匹配任何值,下面代码查找到所有的tag,但是不会返回字符串节点</p>
+<h5 id="5-1-1-6-按CSS搜索"><a href="#5-1-1-6-按CSS搜索" class="headerlink" title="5.1.1.6 按CSS搜索"></a>5.1.1.6 按CSS搜索</h5><p>按照CSS类名搜索tag的功能非常实用,但标识CSS类名的关键字 class 在Python中是保留字,使用 class 做参数会导致语法错误.从Beautiful Soup的4.1.1版本开始,可以通过 class_ 参数搜索有指定CSS类名的tag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回class等于info的div</span></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;div&#x27;</span>,class_=<span class="string">&#x27;info&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-1-1-7-按属性的搜索"><a href="#5-1-1-7-按属性的搜索" class="headerlink" title="5.1.1.7 按属性的搜索"></a>5.1.1.7 按属性的搜索</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup.find_all(<span class="string">&quot;div&quot;</span>, attrs=&#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;info&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                .article-copyright-info-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  font-size: 1rem;
+  background: var(--second-background-color);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--copyright-info-color);
+  }
+
+
+  ul {
+
+    margin-left: 10px;
+
+    li {
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--default-text-color);
+
+      .license {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/04/30/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8scrapy/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">快速入门Scrapy</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/30/Python%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python爬虫笔记</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%88%AC%E8%99%AB%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1. 爬虫介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%88%AC%E8%99%AB%EF%BC%9F"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 什么是爬虫？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%88%AC%E8%99%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 爬虫有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E4%B8%9A%E7%95%8C%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 业界的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%90%88%E6%B3%95%E6%80%A7"><span class="nav-number">1.0.4.</span> <span class="nav-text">1.4 合法性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%8F%8D%E7%88%AC%E8%99%AB"><span class="nav-number">1.0.5.</span> <span class="nav-text">1.5 反爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E9%80%89%E8%BF%99%E4%B8%80%E9%97%A8%E8%AF%AD%E8%A8%80"><span class="nav-number">1.0.6.</span> <span class="nav-text">1.6 选这一门语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E9%80%89%E6%8B%A9Python%E7%89%88%E6%9C%AC"><span class="nav-number">1.0.7.</span> <span class="nav-text">1.7 选择Python版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%A5%97%E8%B7%AF"><span class="nav-number">1.0.8.</span> <span class="nav-text">1.8 爬虫基本套路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-Python%E7%88%AC%E8%99%AB"><span class="nav-number">1.0.9.</span> <span class="nav-text">1.9  Python爬虫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">2. 常用的工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-fiddler%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 fiddler的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-urllib%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="nav-number">3.</span> <span class="nav-text">3. urllib使用体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 小试牛刀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-fake-useragent%E6%B5%8B%E8%AF%95"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 fake_useragent测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%B8%B8%E8%A7%81%E5%88%B0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.3 常见到的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Request%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.0.4.</span> <span class="nav-text">3.4 Request对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Get%E8%AF%B7%E6%B1%82"><span class="nav-number">3.0.5.</span> <span class="nav-text">3.5 Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E8%B4%B4%E5%90%A7%E6%A1%88%E4%BE%8B"><span class="nav-number">3.0.6.</span> <span class="nav-text">3.6  贴吧案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-Post%E8%AF%B7%E6%B1%82"><span class="nav-number">3.0.7.</span> <span class="nav-text">3.7 Post请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-Ajax%E8%AF%B7%E6%B1%82%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">3.0.8.</span> <span class="nav-text">3.8 Ajax请求获取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-1-Ajax%E7%AE%80%E4%BB%8B"><span class="nav-number">3.0.8.1.</span> <span class="nav-text">3.8.1 Ajax简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-2-%E4%BB%80%E4%B9%88%E6%98%AFAjax"><span class="nav-number">3.0.8.2.</span> <span class="nav-text">3.8.2 什么是Ajax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-4-Ajax%E7%BD%91%E7%AB%99%E4%B8%BE%E4%BE%8B"><span class="nav-number">3.0.8.3.</span> <span class="nav-text">3.8.4 Ajax网站举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-5-Ajax%E5%BC%8F%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E7%88%AC%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.0.8.4.</span> <span class="nav-text">3.8.5 Ajax式网站资源爬取示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-%E8%AF%B7%E6%B1%82SSL%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81"><span class="nav-number">3.0.9.</span> <span class="nav-text">3.9 请求SSL证书验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-1-12306%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E7%88%AC%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.0.9.1.</span> <span class="nav-text">3.9.1 12306网站首页爬取示例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-urllib%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8-%E5%90%AB%E5%8F%8D%E7%88%AC%E6%89%8B%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">4. urllib高级使用(含反爬手段)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%AE%BE%E7%BD%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%AD%E5%8A%A0%E5%85%A5referer%E4%BB%A5%E5%AF%B9%E4%BB%98%E9%98%B2%E7%9B%97%E9%93%BE"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 设置请求头中加入referer以对付防盗链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AF%BC%E5%85%A5ua-list%E9%9A%8F%E6%9C%BA%E9%80%89%E6%8B%A9User-Agent"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 导入ua_list随机选择User_Agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-opener%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.0.3.</span> <span class="nav-text">4.3 opener的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86Pxoxy"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.4 设置代理Pxoxy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="nav-number">4.0.4.0.1.</span> <span class="nav-text">分类：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%B8%BA%E6%96%B9%E4%BE%BF%E8%B0%83%E8%AF%95%E4%BD%BF%E7%94%A8DebugLog-%E6%8F%90%E4%B8%80%E4%B8%8B"><span class="nav-number">4.0.5.</span> <span class="nav-text">4.5 为方便调试使用DebugLog(提一下)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Cookie%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.0.6.</span> <span class="nav-text">4.6 Cookie的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8Cookie"><span class="nav-number">4.0.6.1.</span> <span class="nav-text">4.6.1 为什么要使用Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-2-%E5%A6%82%E4%BD%95%E7%9C%8B%E5%88%B0%E7%99%BB%E5%BD%95%E5%90%8E%E7%BD%91%E7%AB%99%E7%9A%84Cookie"><span class="nav-number">4.0.6.2.</span> <span class="nav-text">4.6.2 如何看到登录后网站的Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-3-%E6%A1%88%E4%BE%8B1-Cookie%E5%B5%8C%E5%85%A5%E5%88%B0headers%E4%B8%AD%E6%9D%A5%E4%BD%BF%E7%94%A8"><span class="nav-number">4.0.6.3.</span> <span class="nav-text">4.6.3 案例1:Cookie嵌入到headers中来使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-4-%E6%A1%88%E4%BE%8B2-%E4%BD%BF%E7%94%A8HTTPCookieProcessor%E4%BF%9D%E5%AD%98Cookie%E6%9E%84%E9%80%A0opener"><span class="nav-number">4.0.6.4.</span> <span class="nav-text">4.6.4 案例2:使用HTTPCookieProcessor保存Cookie构造opener</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-5-Cookielib"><span class="nav-number">4.0.6.5.</span> <span class="nav-text">4.6.5 Cookielib</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-5-1-MozillaCookieJar%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.0.6.5.1.</span> <span class="nav-text">4.6.5.1 MozillaCookieJar的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-URLError%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.0.7.</span> <span class="nav-text">4.7 URLError的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-request%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="nav-number">5.</span> <span class="nav-text">5. request使用体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.0.1.</span> <span class="nav-text">5.1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%AE%89%E8%A3%85"><span class="nav-number">5.0.2.</span> <span class="nav-text">5.2 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%9F%BA%E6%9C%AC%E8%AF%B7%E6%B1%82%E4%B8%8E%E8%BF%90%E7%94%A8"><span class="nav-number">5.0.3.</span> <span class="nav-text">5.3 基本请求与运用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-get%E8%AF%B7%E6%B1%82"><span class="nav-number">5.0.3.1.</span> <span class="nav-text">5.3.1 get请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-post%E8%AF%B7%E6%B1%82"><span class="nav-number">5.0.3.2.</span> <span class="nav-text">5.3.2 post请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-3-%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE"><span class="nav-number">5.0.3.3.</span> <span class="nav-text">5.3.3 代理访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-4-SSL%E9%AA%8C%E8%AF%81"><span class="nav-number">5.0.3.4.</span> <span class="nav-text">5.3.4 SSL验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-5-session%E8%87%AA%E5%8A%A8%E4%BF%9D%E5%AD%98cookies"><span class="nav-number">5.0.3.5.</span> <span class="nav-text">5.3.5 session自动保存cookies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-6-%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%90%8C%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number">5.0.3.6.</span> <span class="nav-text">5.3.6 获取不同响应格式的写法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">6. 正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E8%A7%84%E5%88%99"><span class="nav-number">6.0.1.</span> <span class="nav-text">6.1 规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3"><span class="nav-number">6.0.2.</span> <span class="nav-text">6.2 正则表达式相关注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%95%B0%E9%87%8F%E8%AF%8D%E7%9A%84%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E4%B8%8E%E9%9D%9E%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">2.1 数量词的贪婪模式与非贪婪模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">6.0.2.2.</span> <span class="nav-text">2.2 常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6-%E5%8F%AF%E9%80%89%E6%A0%87%E5%BF%97"><span class="nav-number">6.0.3.</span> <span class="nav-text">6.3 正则表达式修饰符-可选标志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-re%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="nav-number">6.0.4.</span> <span class="nav-text">6.4 re使用相关代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E6%88%98%E4%B9%8B%E7%B3%97%E4%BA%8B%E7%99%BE%E7%A7%91"><span class="nav-number">7.</span> <span class="nav-text">7. 正则表达式实战之糗事百科</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Beautiful-Soup"><span class="nav-number">8.</span> <span class="nav-text">8. Beautiful Soup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-utiful-Soup%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="nav-number">8.0.1.</span> <span class="nav-text">8.1 utiful Soup的简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-Beautiful-Soup-%E5%AE%89%E8%A3%85"><span class="nav-number">8.0.2.</span> <span class="nav-text">8.2 Beautiful Soup 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-%E5%88%9B%E5%BB%BA-Beautiful-Soup-%E5%AF%B9%E8%B1%A1"><span class="nav-number">8.0.3.</span> <span class="nav-text">8.3 创建 Beautiful Soup 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-%E5%9B%9B%E5%A4%A7%E5%AF%B9%E8%B1%A1%E7%A7%8D%E7%B1%BB"><span class="nav-number">8.0.4.</span> <span class="nav-text">8.4 四大对象种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-1-Tag-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E9%80%9A%E4%BF%97%E7%82%B9%E8%AE%B2%E5%B0%B1%E6%98%AF-HTML-%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E4%B8%AA%E6%A0%87%E7%AD%BE"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">8.4.1 Tag 是什么？通俗点讲就是 HTML 中的一个个标签</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4-1-1-%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE"><span class="nav-number">8.0.4.1.1.</span> <span class="nav-text">8.4.1.1 获取标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-4-1-2-%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7"><span class="nav-number">8.0.4.1.2.</span> <span class="nav-text">8.4.1.2 获取属性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-2-NavigableString-%E8%8E%B7%E5%8F%96%E5%86%85%E5%AE%B9"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">8.4.2 NavigableString 获取内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-3-BeautifulSoup"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">8.4.3 BeautifulSoup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-4-Comment"><span class="nav-number">8.0.4.4.</span> <span class="nav-text">8.4.4 Comment</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-%E6%90%9C%E7%B4%A2%E6%96%87%E6%A1%A3%E6%A0%91"><span class="nav-number">8.0.5.</span> <span class="nav-text">8.5 搜索文档树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-1-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">8.0.5.1.</span> <span class="nav-text">8.5.1 过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8-5-1-1-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">8.0.5.1.1.</span> <span class="nav-text">8.5.1.1 字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-1-1-2-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">8.0.5.1.2.</span> <span class="nav-text">8.1.1.2 正则表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-3-%E5%88%97%E8%A1%A8"><span class="nav-number">8.0.5.1.3.</span> <span class="nav-text">5.1.1.3 列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-4-keyword"><span class="nav-number">8.0.5.1.4.</span> <span class="nav-text">5.1.1.4 keyword</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-5-True"><span class="nav-number">8.0.5.1.5.</span> <span class="nav-text">5.1.1.5 True</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-6-%E6%8C%89CSS%E6%90%9C%E7%B4%A2"><span class="nav-number">8.0.5.1.6.</span> <span class="nav-text">5.1.1.6 按CSS搜索</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-7-%E6%8C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E6%90%9C%E7%B4%A2"><span class="nav-number">8.0.5.1.7.</span> <span class="nav-text">5.1.1.7 按属性的搜索</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

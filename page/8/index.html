@@ -145,6 +145,114 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2022/01/24/Ubuntu%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85MySQL/">
+                        Ubuntu云服务器如何安装MySQL
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        安装MySQL首先验证下是否安装，键入mysql:
+
+像这样就是没有安装
+然后下面我们就开始安装
+
+首先更新软件包(这个命令很常用)
+1sudo apt-get update
+
+如果当前系统已经是root用户则不用键入sudo，输入也是没关系的:
+
+...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 24 2022 15:09:30 GMT+0800">2022-01-24</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/24/Ubuntu%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85MySQL/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/01/24/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        MySQL常用命令
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        连接MySQL格式:
+1mysql -h主机地址 -u用户名 －p用户密码
+
+
+连接到本地的MySQL(-h主机地址可以省略)
+用户密码和-p之间不要有空格，否则会把空格当做密码的一部分，会再次要求你输入密码:
+
+下面则是正确格式的命令:
+
+
+连接到...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 24 2022 14:46:30 GMT+0800">2022-01-24</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/24/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2022/01/24/Python%E6%93%8D%E4%BD%9C%E5%90%84%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">
+                        Python操作各数据库的代码示例
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        操作MySQL首先安装pymysql包:
+1pip install pymysql
+
+然后在mysql里创建数据库名为test，然后在里面创建一个Product表:
+1234567891011DROP TABLE IF EXISTS `Product...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 24 2022 14:29:30 GMT+0800">2022-01-24</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/24/Python%E6%93%8D%E4%BD%9C%E5%90%84%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2022/01/24/2022-1-24%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/">
                         2022-1-24每日英语
                     </a>
@@ -371,103 +479,6 @@ evaluation [ɪˌvæljuˈeɪʃn] n. 评价，评估
     </div>
 
     <a href="/2022/01/22/2022-1-22%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/01/22/Pycharm%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/">
-                        Pycharm激活方法
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        激活方式选择License server，然后填入以下服务器地址任意一个:
-12http://39.105.114.41:1027http://36.110.99.11:3456
-
-如果License server激活不了下面介绍activation...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Jan 22 2022 09:21:00 GMT+0800">2022-01-22</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/01/22/Pycharm%E6%BF%80%E6%B4%BB%E6%96%B9%E6%B3%95/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/01/22/%E5%85%B3%E4%BA%8EAjax/">
-                        关于Ajax
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        Ajax介绍从数据的角度考虑，网页上呈现出来的数据的来源:
-
-html文件 60%
-Ajax接口 30%
-JavaScript加载 10%
-
-那么Ajax是什么，Ajax是异步的JavaScript和XML的英文翻译缩写，这个技术可以在页面不刷新的情...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Jan 22 2022 09:02:30 GMT+0800">2022-01-22</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/01/22/%E5%85%B3%E4%BA%8EAjax/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/01/21/%E8%A7%A3%E5%86%B3%E7%8C%AB%E7%9C%BC%E5%AD%97%E4%BD%93%E5%8F%8D%E7%88%AC/">
-                        解决猫眼字体反爬
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        目标网站: https://piaofang.maoyan.com/dashboard
-首先我们来看看字体反爬的效果是咋样的:
-我们要拿的数据是综合票房，然后我们点进浏览器自带的抓包工具看看:
-
-我们定位到票房的数据，但是在代码中显示的却是几个特殊符...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Jan 21 2022 18:35:30 GMT+0800">2022-01-21</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/01/21/%E8%A7%A3%E5%86%B3%E7%8C%AB%E7%9C%BC%E5%AD%97%E4%BD%93%E5%8F%8D%E7%88%AC/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>

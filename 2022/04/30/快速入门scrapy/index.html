@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Lhj">
+    
+    <title>
+        
+            快速入门Scrapy |
+        
+        Alexander
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Alexander
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                NOTE
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">NOTE</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">快速入门Scrapy</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Lhj</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-30 14:28:30</span>
+        <span class="mobile">2022-04-30 14:28</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.9k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="1-Scrapy架构流程介绍"><a href="#1-Scrapy架构流程介绍" class="headerlink" title="1. Scrapy架构流程介绍"></a>1. Scrapy架构流程介绍</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/aa3757afba708f8e.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/fe25a16f652610d7.png"
+                     
+                ></p>
+<p>spiders就是我们自己写的爬虫文件，我们写的爬虫文件只有两个功能，一个是提取数据，另一个就是发送请求(构建请求), 提取数据会提取到两种，一个是item数据，也就是需要保存的数据，就交给item pipeline去存储，如果是url的话，我们把它构建成一个请求，交给调度器，调度器再交给下载器去下载</p>
+<p>下载中间件(Downloader Middlewares)是位于引擎和下载器之间的一个组件，这个组件是可以自己定制的，比如说我们在这边定制一个随机的代理处理，给每个请求拿过来之后加个代理，或者给每个请求拿过来之后加个user-agent，又或者说每个请求过来之后我们使用selenium加phantomjs去下载；这就是下载中间件的一个作用</p>
+<p>爬虫中间件(Spider  Middlewares)是用来爬虫文件和引擎之间的一个交互的，可以处理引擎和爬虫之间的通信，这个用的比较少，大部分都会在spiders中写完</p>
+<h4 id="1-1-Scrapy的运行流程"><a href="#1-1-Scrapy的运行流程" class="headerlink" title="1.1 Scrapy的运行流程"></a>1.1 Scrapy的运行流程</h4><p>我们来梳理一下，首先从我们定义的(自己写的)spiders，spiders会定义一个一开始要爬取的url地址，这里假设我们要爬新浪(新浪里面分了很多种类，但这些种类的内容都由新浪的主url发散出来)，然后spiders构建好请求后就把请求交给引擎，引擎交给调度器，调度器把请求入队列之后然后就把请求出队列(这个时候只有一个请求)，然后请求就到了下载器去下载，下载器下到分类的url地址之后返回响应文件返回到spiders，spiders从响应文件中再提取具体的url地址再构建成请求交给引擎，引擎再交给调度器，调度器把所有的请求入队列，为什么要入队列呢，因为要在队列里面做去重处理，做请求出队的处理,然后就又是交给下载器去下载，一层一层往下深挖，直到我们要的数据浮出水面，然后这个时候item pipeline就派上用场了，就对数据进行持久化处理</p>
+<p>我们再来看一个小故事，也是Scrapy的一个运行流程：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/a3ef1f51495e93f8.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/6ddc3a76000e407d.png"
+                     
+                ></p>
+<p>引擎就是用来控制整个框架的信号的，信号就是每个部分完成什么东西后的一个返回标志，然后引擎就会根据信号做下一步的处理，比如该叫谁往下处理</p>
+<p>流程总结：<br>首先我们写好一个爬虫(spiders)然后构建请求</p>
+<p>请求交给引擎，引擎交给调度器</p>
+<p>调度器入队列，入完队列就交给下载器</p>
+<p>下载器返回的响应文件会交给爬虫文件(spiders)</p>
+<p>爬虫文件处理数据</p>
+<p>如果是url地址就接着交给调度器入队列然后再交给下载器去下载</p>
+<p>如果是item数据就交给管道去存储</p>
+<p>以此循环</p>
+<p>什么时候请求会停止呢，就是当调度器中不存在任何请求的时候才会停止</p>
+<h4 id="1-2-制作Scrapy的四大步骤"><a href="#1-2-制作Scrapy的四大步骤" class="headerlink" title="1.2 制作Scrapy的四大步骤"></a>1.2 制作Scrapy的四大步骤</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/a3477b76b0743352.png"
+                     
+                ></p>
+<h2 id="2-Scrapy框架配置安装和命令介绍"><a href="#2-Scrapy框架配置安装和命令介绍" class="headerlink" title="2. Scrapy框架配置安装和命令介绍"></a>2. Scrapy框架配置安装和命令介绍</h2><h3 id="2-1-制作Scrapy爬虫的四大步骤"><a href="#2-1-制作Scrapy爬虫的四大步骤" class="headerlink" title="2.1 制作Scrapy爬虫的四大步骤"></a>2.1 制作Scrapy爬虫的四大步骤</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/a3477b76b0743352.png"
+                     
+                ></p>
+<h3 id="2-2-Scrapy的安装介绍"><a href="#2-2-Scrapy的安装介绍" class="headerlink" title="2.2 Scrapy的安装介绍"></a>2.2 Scrapy的安装介绍</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/c2e4cf49de46270f.png"
+                     
+                ></p>
+<h4 id="2-2-1-windows安装方式"><a href="#2-2-1-windows安装方式" class="headerlink" title="2.2.1 windows安装方式"></a>2.2.1 windows安装方式</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/c7cd5c9943b28113.png"
+                     
+                ></p>
+<h4 id="2-2-3-ubuntu需要9-10或以上版本安装方式"><a href="#2-2-3-ubuntu需要9-10或以上版本安装方式" class="headerlink" title="2.2.3 ubuntu需要9.10或以上版本安装方式"></a>2.2.3 ubuntu需要9.10或以上版本安装方式</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/5e9cb6edcdaed1ee.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/e3049ac99a3c2c15.png"
+                     
+                ></p>
+<p>安装好之后键入scrapy如果出现以下字符则安装成功：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/b7157f871e586ffe.png"
+                     
+                ></p>
+<p>bench：用来测试</p>
+<p>fdtch：用来查看响应的</p>
+<p>genspider：用来创建爬虫的</p>
+<p>runspider：用来启动一个爬虫的</p>
+<p>settings：用来设置配置文件的</p>
+<p>shell：shell环境，用来处理响应环境</p>
+<p>startproject：创建一个项目</p>
+<p>version：查看scrapy版本号</p>
+<p>view：使用浏览器视图</p>
+<h2 id="3-入门案例-1"><a href="#3-入门案例-1" class="headerlink" title="3. 入门案例(1)"></a>3. 入门案例(1)</h2><h3 id="学习目标："><a href="#学习目标：" class="headerlink" title="学习目标："></a>学习目标：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/cc0b64e6127819d0.png"
+                     
+                ></p>
+<h3 id="3-1-新建项目-scrapy-startproject"><a href="#3-1-新建项目-scrapy-startproject" class="headerlink" title="3.1 新建项目(scrapy startproject)"></a>3.1 新建项目(scrapy startproject)</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/b79f11d345496e34.png"
+                     
+                ></p>
+<p>比如我们这边创建个项目叫ITcast</p>
+<p>然后我们进入ITcast这个文件夹然后发现里面还有一个ITcast和scrapy.cfg,scrapy.cfg是scrapy的配置文件</p>
+<p>我们在进入ITcast发现有以下文件：<br><strong>init</strong>.py, items.py, middlewares.py, settings.py, spiders文件夹</p>
+<p><strong>init</strong>.py是控制包的</p>
+<p>我们打开items.py看看：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/3d62eb007b568a27.png"
+                     
+                ></p>
+<p>import scrapy表示导入框架的一个组件</p>
+<p>下面的类继承了scrapy.Item,然后它提供了一个使用方式是这样的：name = scrapy.Field()，这个就是用来创建一个item字段的，这个字段的格式和字典很相似(它本身不是一个字典,但可以和字典做一个转换)，比如我们先定义一个item = {}，然后item[“name” ] = “bigcat”,我们在spiders中就可以这样写</p>
+<p>我们需要提取的字段就可以放到item里面去</p>
+<p>我们打开middlewares.py(中间件)来看看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/8d921eb14b79c030.png"
+                     
+                ></p>
+<p>可以看到里面有一堆</p>
+<p>加代理或者加user-agent都可以在中间件里面写</p>
+<p>早期版本的scrapy是没有middlewares.py的，如果不是太复杂项目可以不用它</p>
+<p>我们打开pipelines.py来看看：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/f8236258c0b67305.png"
+                     
+                ></p>
+<p>管道文件就是用来处理我们的item数据的，从上图中我们可以看到类名也是创建项目时生成的，这边有个process_item的一个方法，他会帮我们处理传进来的每个item，我们可以创建一个文件将item写进去，如果downloader传递给spiders的是item就交给pipilines.py里面来处理item</p>
+<p>我们打开settings.py看看：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/803171307035a62d.png"
+                     
+                ></p>
+<p>项目在执行的时候就会参考配置文件来执行也就是看这里的settings.py</p>
+<p>首先看到的第一个BOT_NAME就是我们爬虫的一个项目名称</p>
+<p>SPIDER_MODULES表示爬虫文件在什么位置</p>
+<p>NEWSPIDER_MODULE表示新建一个爬虫文件放在什么位置</p>
+<p>我们发现在settings.py中有一个user-agent，我们可以直接在里面写，之后发出去的每个请求都会携带这个user-agent</p>
+<p>ROBOTSTXT_OBEY表示爬虫是否遵循网站的robots协议，这个一般都是Flase或者注释掉</p>
+<p>CONCURRENT_REQUESTS表示请求的一个并发量，默认是32，也就是说我们一次可以发出32个请求来处理这些响应,只要机器性能和网络足够好可以改大一点</p>
+<p>DOWNLOAD_DELAY表示下载延迟，默认是3秒，我们可以注释它选择为不等待</p>
+<p>CONCURRENT_REQUESTS_PER_DOMAIN和CONCURRENT_REQUESTS_PER_IP表示当前请求的域和ip</p>
+<p>COOKIES_ENABLED表示是否启用cookie,在爬取页面的时候会生成cookie，如果这边选择注释，也就是启用cookie，有的网站会根据cookie来监测我们的爬虫行为</p>
+<p>TELNETCONSOLE_ENABLED表示是否启用telnet，相当于是一个爬虫监控</p>
+<p>DEFAULT_REQUEST_HEADERS是一个默认的一个请求报头</p>
+<p>SPIDER_MIDDLEWARES爬虫中间件，介于爬虫和引擎之间的一个中间件注释就表示不启动</p>
+<p>DOWNLOADER_MIDDLEWARES下载中间件，介于下载器和引擎之间的一个中间件注释表示不启动，这边都是字典，表示可以再加其他中间件，字典的值是介于0到1000的，值越小，优先级越高，如果有多个中间件就会根据这个数值来排序，数值就是优先级，先启用优先级大的</p>
+<p>ITEM_PIPELINES管道文件也可以写多个，比如一个管道文件用来写入json的，一个用来写入xml的，后面的数字也是表示优先级</p>
+<p>我们打开spiders文件来看看</p>
+<p>发现里面就一个__init__.py</p>
+<p>但是我们不能删除这个文件，不然导包就导不进，爬虫就执行不了</p>
+<p>spiders文件夹就是我们写爬虫文件的，我们可以使用scrapy genspider xxx “允许的一个域的范围”来创建一个爬虫文件</p>
+<p>比如创建一个爬虫叫itcast：scrapy genspider itcast “<a class="link"   target="_blank" rel="noopener" href="http://www.itcast.cn&quot;/" >http://www.itcast.cn&quot;<i class="fas fa-external-link-alt"></i></a>, 后面跟一个域的作用是如果在爬取过程中遇到其他网站的就不会爬了，会局限在这个域去爬取</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/c13696f97880a75a.png"
+                     
+                ></p>
+<p>basic模板是比较常用的</p>
+<p>在生成这个爬虫文件时也会生成一个init.pyc(高版本是没有的),我们打开刚刚创建的爬虫看看：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/b69737487f6d0e43.png"
+                     
+                ></p>
+<p>打开之后我们看到这是一个基于scrapy.Spider这个类的一个基本的模板(后面还会有个scrapy.Crawlspider)，然后给了一个爬虫名称，后面我们在命令行中如果要执行这个爬虫就要用到爬虫名称，是可以改的，然后给了一个爬虫允许的域的范围，start_urls表示第一个请求获取的url地址，上面的域和这里的start_urls都是列表都可以是多个，下面定义了一个parse方法也就是一个解析方法，针对上面的每个url放进调度器进队列出队列然后进入下载器后所下载下来的资源都要经过这个parse方法的过滤</p>
+<p>现在我们来测试一下，不写管道文件啥的，就单独打印传智播客的官网html信息测试下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/b498ab98c0e884ac.png"
+                     
+                ></p>
+<p>这个时候我们发现好像多了几项：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/00882ca6985ace81.png"
+                     
+                ></p>
+<p>首先我们来check一下(测试爬虫是否正常)：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/500531551c9c5c5e.png"
+                     
+                ></p>
+<p>然后我们用scrapy crawl itcast来运行下爬虫：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/451a947f444f30c8.png"
+                     
+                ></p>
+<h2 id="4-入门案例-2"><a href="#4-入门案例-2" class="headerlink" title="4. 入门案例(2)"></a>4. 入门案例(2)</h2><p>一，新建项目(scrapy startproject)</p>
+<p>在开始爬取之前，必须创建一个新的scrapy项目，进入自定义的项目目录中，运行下列命令：<br>scrapy startproject myspider</p>
+<p>其中，myscrapy为项目名称，可以看到将会创建一个myspider文件夹，目录结构大致如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/1d515f9654dde099.png"
+                     
+                ></p>
+<p>简单介绍下各个文件的主要作用：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/a72d0ec7f88b6083.png"
+                     
+                ></p>
+<p>二，明确目标(myspider/items.py)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/daeaf27a132ad566.png"
+                     
+                ></p>
+<p>三，制作爬虫(spiders/itcastSpider.py)</p>
+<ol>
+<li><p>爬数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/da31a6ce52d21044.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/8bec8fedb52a1106.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/7a115c715664b556.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/16d205cf1464333d.png"
+                     
+                ></p>
+</li>
+<li><p>取数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/e495953b4c2beeae.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/84f462e47d98de71.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/60411b2de0a464f2.png"
+                     
+                ></p>
+</li>
+<li><p>保存数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/33c050135764291e.png"
+                     
+                ></p>
+</li>
+<li><p>返回item，将上面的parse函数改为生成器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/1eba42ba2969f3cb.png"
+                     
+                ></p>
+<p>yield是把数据返回给管道了，管道处理完之后会回到这里再继续执行没有完成的for循环语句</p>
+</li>
+<li><p>由于上面改写了方法，我们就需要处理管道了</p>
+<p>我们itcast.py中的item就是返回到了pipelines.py中process_item()中</p>
+<p>return item就是告诉引擎，这个item处理完了，一定要返回，不然影响后面的就处理不了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/acf3f5b50a3934b5.png"
+                     
+                ></p>
+<p>我们管道可以写多个，可以写个处理数据库的或者其他的，那么我们怎么去定制管道呢，可以在settings.py去启用管道，在67行的管道item_pipelines里去配置</p>
+<p>每个item都会经过我们定义的管道，根据优先级来决定顺序：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/8293803b4688d34c.png"
+                     
+                ></p>
+</li>
+<li><p>总结</p>
+<p>首先第一个启动的是爬虫文件(这里是itcast.py)爬虫文件会发送url里面的请求获取响应，响应再通过xpath，或者是re，或者是json去提取数据，提取数据之后呢我们就把提取到的数据存到item.py里面的字段去，然后通过yield去返回给管道，管道就对item进行进一步的处理(比如存文件),然后接着处理一次次yield返回过来的值</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/96db5300305ce01b.png"
+                     
+                ></p>
+</li>
+</ol>
+<h2 id="5-Scrapy-shell"><a href="#5-Scrapy-shell" class="headerlink" title="5. Scrapy shell"></a>5. Scrapy shell</h2><h3 id="5-1-什么是Scrapy-shell："><a href="#5-1-什么是Scrapy-shell：" class="headerlink" title="5.1 什么是Scrapy shell："></a>5.1 什么是Scrapy shell：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/a8b0331368ac7435.png"
+                     
+                ></p>
+<h3 id="5-2-启动Scrapy-shell"><a href="#5-2-启动Scrapy-shell" class="headerlink" title="5.2 启动Scrapy shell"></a>5.2 启动Scrapy shell</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/3a3d8f21ea195bba.png"
+                     
+                ></p>
+<p>Scrapy shell返回的就相当于写的爬虫文件里的parse函数中的response：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/ea5ba70034a79c3e.png"
+                     
+                ></p>
+<p>Scrapy shell的响应文件就是response</p>
+<p>可以接着做一些测试，比如respose.xpath(“//h3”).extract()</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/6bc2d55f67aadb79.png"
+                     
+                ></p>
+<h3 id="5-3-Selectors选择器"><a href="#5-3-Selectors选择器" class="headerlink" title="5.3 Selectors选择器"></a>5.3 Selectors选择器</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/c205f37c5cfc96fb.png"
+                     
+                ></p>
+<h3 id="5-4-Spider主要属性和方法"><a href="#5-4-Spider主要属性和方法" class="headerlink" title="5.4 Spider主要属性和方法"></a>5.4 Spider主要属性和方法</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/fbf286726380f700.png"
+                     
+                ></p>
+<h2 id="6-分页爬取腾讯招聘案例"><a href="#6-分页爬取腾讯招聘案例" class="headerlink" title="6. 分页爬取腾讯招聘案例"></a>6. 分页爬取腾讯招聘案例</h2><p>爬虫文件,tencent.py:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/1268af3716f363cf.png"
+                     
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/0ed7777c760a5ecf.png"
+                     
+                ></p>
+<p>最后yield执行了一个回调函数，也可以自己再写个回调函数，这里没必要</p>
+<p>写字段,items.py:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/933971c43da457a0.png"
+                     
+                ></p>
+<p>写管道pipelines.py:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/ca7578cc9a6b9018.png"
+                     
+                ></p>
+<p>启动管道：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.tupians.top/imgs/2021/11/09f492ebc6f90fc5.png"
+                     
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                .article-copyright-info-container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  font-size: 1rem;
+  background: var(--second-background-color);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--copyright-info-color);
+  }
+
+
+  ul {
+
+    margin-left: 10px;
+
+    li {
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--default-text-color);
+
+      .license {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+            </div>
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/30/13%E5%A4%A9%E6%90%9E%E5%AE%9A%E7%88%AC%E8%99%AB%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">13天搞定爬虫听课笔记</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nIcO1O6cSVuRH8EROCWwNFWN-gzGzoHsz',
+                    appKey: 'qrglokTeum8DXiYRzM4k4NF4',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Lhj';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Lhj</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Scrapy%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">1. Scrapy架构流程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 Scrapy的运行流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E5%88%B6%E4%BD%9CScrapy%E7%9A%84%E5%9B%9B%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 制作Scrapy的四大步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Scrapy%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85%E5%92%8C%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">2. Scrapy框架配置安装和命令介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%88%B6%E4%BD%9CScrapy%E7%88%AC%E8%99%AB%E7%9A%84%E5%9B%9B%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 制作Scrapy爬虫的四大步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Scrapy%E7%9A%84%E5%AE%89%E8%A3%85%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Scrapy的安装介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-windows%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 windows安装方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-ubuntu%E9%9C%80%E8%A6%819-10%E6%88%96%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.3 ubuntu需要9.10或以上版本安装方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B-1"><span class="nav-number">3.</span> <span class="nav-text">3. 入门案例(1)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">学习目标：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE-scrapy-startproject"><span class="nav-number">3.2.</span> <span class="nav-text">3.1 新建项目(scrapy startproject)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B-2"><span class="nav-number">4.</span> <span class="nav-text">4. 入门案例(2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Scrapy-shell"><span class="nav-number">5.</span> <span class="nav-text">5. Scrapy shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BB%80%E4%B9%88%E6%98%AFScrapy-shell%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 什么是Scrapy shell：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%90%AF%E5%8A%A8Scrapy-shell"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 启动Scrapy shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-Selectors%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Selectors选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-Spider%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 Spider主要属性和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%88%86%E9%A1%B5%E7%88%AC%E5%8F%96%E8%85%BE%E8%AE%AF%E6%8B%9B%E8%81%98%E6%A1%88%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">6. 分页爬取腾讯招聘案例</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
