@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-30T06:28:32.869Z</updated>
+  <updated>2022-05-08T16:29:52.577Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos云服务器编译安装Python3.7.6小记</title>
+    <link href="http://example.com/2022/05/09/Centos%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Python3.7.6%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://example.com/2022/05/09/Centos%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Python3.7.6%E5%B0%8F%E8%AE%B0/</id>
+    <published>2022-05-08T16:00:45.000Z</published>
+    <updated>2022-05-08T16:29:52.577Z</updated>
+    
+    <content type="html"><![CDATA[<p>这两天在折腾一个Django项目，然后需要Linux的版本是Centos，我想着跟着视频大佬一步步来，就索性也花了几顿饭钱搞了个百度云的Centos的云服务器，然后进去发现这啥也没，Python3也没，然后就只有自力更生了:</p><p>安装Python3.7.6参考自以下文章:</p><p><a class="link"   href="https://blog.csdn.net/ispeasant/article/details/107791316?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165202122216781818787429%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165202122216781818787429&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-107791316-null-null.142" >https://blog.csdn.net/ispeasant/article/details/107791316?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165202122216781818787429%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165202122216781818787429&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-107791316-null-null.142<i class="fas fa-external-link-alt"></i></a></p><p>然后在使用<code>yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel libffi-devel gcc make</code>这个命令时候出现了报错，因为我的是Centos8，原来的镜像已经不在centos的官网进行托管了，迁移到了其他网站，然后通过相关资料，用以下文章解决了:</p><p><a class="link"   href="https://blog.csdn.net/weixin_43252521/article/details/124409151" >https://blog.csdn.net/weixin_43252521/article/details/124409151<i class="fas fa-external-link-alt"></i></a></p><p>但这里，Centos8.2安装Python3.7.6完结！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这两天在折腾一个Django项目，然后需要Linux的版本是Centos，我想着跟着视频大佬一步步来，就索性也花了几顿饭钱搞了个百度云的Centos的云服务器，然后进去发现这啥也没，Python3也没，然后就只有自力更生了:&lt;/p&gt;
+&lt;p&gt;安装Python3.7.6参考自以</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VMware创建Centos虚拟机小记</title>
+    <link href="http://example.com/2022/05/07/VMware%E5%88%9B%E5%BB%BACentos%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://example.com/2022/05/07/VMware%E5%88%9B%E5%BB%BACentos%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B0%8F%E8%AE%B0/</id>
+    <published>2022-05-07T09:15:10.000Z</published>
+    <updated>2022-05-08T09:28:23.003Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文章如下:</p><p><a class="link"   href="https://www.runoob.com/w3cnote/vmware-install-centos7.html" >https://www.runoob.com/w3cnote/vmware-install-centos7.html<i class="fas fa-external-link-alt"></i></a></p><p>上面这篇文章比较全面，但是在配置网络这一部分出了点问题，然后我直接按步骤网下走了</p><p>进入系统之后按下面的文章再配置的网络:</p><p><a class="link"   href="https://blog.csdn.net/jujudeyueyue/article/details/121358663" >https://blog.csdn.net/jujudeyueyue/article/details/121358663<i class="fas fa-external-link-alt"></i></a></p><p>这里附上centos7镜像:</p><p><a class="link"   href="https://www.aliyundrive.com/drive/folder/62778bb537bafc639f3b4e3ea3a58144d1139fe8" >https://www.aliyundrive.com/drive/folder/62778bb537bafc639f3b4e3ea3a58144d1139fe8<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考文章如下:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;link&quot;   href=&quot;https://www.runoob.com/w3cnote/vmware-install-centos7.html&quot; &gt;https://www.runoob.com/w3cnote/vmware</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>快速入门Scrapy</title>
@@ -383,48 +425,6 @@
       
       
     <summary type="html">&lt;p&gt;参考自: &lt;a class=&quot;link&quot;   href=&quot;https://blog.csdn.net/K_520_W/article/details/108309862?ops_request_misc=&amp;amp;request_id=&amp;amp;biz_id=102&amp;amp</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于使用WinSCP上传文件报permission denied的解决</title>
-    <link href="http://example.com/2022/04/08/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8WinSCP%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%8A%A5permission%20denied%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
-    <id>http://example.com/2022/04/08/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8WinSCP%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%8A%A5permission%20denied%E7%9A%84%E8%A7%A3%E5%86%B3/</id>
-    <published>2022-04-08T10:55:30.000Z</published>
-    <updated>2022-04-08T10:56:11.216Z</updated>
-    
-    <content type="html"><![CDATA[<p>详见: <a class="link"   href="https://www.likecs.com/show-204385837.html" >https://www.likecs.com/show-204385837.html<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;详见: &lt;a class=&quot;link&quot;   href=&quot;https://www.likecs.com/show-204385837.html&quot; &gt;https://www.likecs.com/show-204385837.html&lt;i class=&quot;fas fa-exter</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Flask写接口的一个案例</title>
-    <link href="http://example.com/2022/04/06/Flask%E5%86%99%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B/"/>
-    <id>http://example.com/2022/04/06/Flask%E5%86%99%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B/</id>
-    <published>2022-04-06T08:55:30.000Z</published>
-    <updated>2022-04-06T10:53:50.600Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="面向的人群"><a href="#面向的人群" class="headerlink" title="面向的人群"></a>面向的人群</h2><p>具有Python基础知识</p><p>只写接口，想好好学做接口的</p><h2 id="Flask是什么"><a href="#Flask是什么" class="headerlink" title="Flask是什么"></a>Flask是什么</h2><p>以下来自百度百科:</p><p>Flask是一个使用 <a class="link"   href="https://baike.baidu.com/item/Python" >Python<i class="fas fa-external-link-alt"></i></a> 编写的轻量级 Web 应用框架。其 <a class="link"   href="https://baike.baidu.com/item/WSGI" >WSGI<i class="fas fa-external-link-alt"></i></a> 工具箱采用 Werkzeug ，<a class="link"   href="https://baike.baidu.com/item/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/907667" >模板引擎<i class="fas fa-external-link-alt"></i></a>则使用 Jinja2 。Flask使用 BSD 授权。</p><p>Flask也被称为 “microframework” ，因为它使用简单的核心，用 extension 增加其他功能。Flask没有默认使用的数据库、窗体验证工具</p><h2 id="推荐使用虚拟环境"><a href="#推荐使用虚拟环境" class="headerlink" title="推荐使用虚拟环境"></a>推荐使用虚拟环境</h2><p>关于环境可以参考:</p><p><a class="link"   href="http://kest.club/2022/03/19/Python%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E6%AD%A5%E9%AA%A4/" >http://kest.club/2022/03/19/Python%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E6%AD%A5%E9%AA%A4/<i class="fas fa-external-link-alt"></i></a></p><p>以下所写的项目是没有用虚拟环境的，这个见仁见智</p><h2 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h2><p>app.py:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span>():</span>  <span class="comment"># put application&#x27;s code here</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s2.loli.net/2022/04/06/yc4NCBEdqgAP3Sl.png"                      alt="image.png"                ></p><h2 id="路由加入变量"><a href="#路由加入变量" class="headerlink" title="路由加入变量"></a>路由加入变量</h2><p>app.py:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span>():</span>  <span class="comment"># put application&#x27;s code here</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hey/&lt;username&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hey_lihoujian</span>(<span class="params">username</span>):</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&quot;hey, &#123;&#125;&quot;</span>.<span class="built_in">format</span>(username)  <span class="comment"># 要注意这里传入的username会转化为字符串，比如我们如果返回&quot;hey,&#123;&#125;&quot;.format(username + username)，当路由中的username我们传入的是1，那么实际上会返回hey, 11</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><p>那如果我们就是不想它默认转化为字符串呢，这里有四个选择:</p><ul><li>int 接受正整数</li><li>float 接受正浮点数</li><li>path 类似<code>string</code>但可以包含斜杠</li><li>uuid 接受UUID字符串</li><li><strong>String</strong> (缺省值)接受任何不包含斜杠的文本<code>&lt;&gt;</code></li></ul><p>app.py:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/&lt;int:number&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_number</span>(<span class="params">number</span>):</span>  <span class="comment"># put application&#x27;s code here</span></span><br><span class="line"><span class="keyword">return</span> <span class="string">&#x27;test &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(number + number)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><p>这个路由一定要注意，我们路由一定要匹配特别是路由的末尾不要多一个反斜杠，如果在浏览器的路径中多了个反斜杠，那么相应的在flask的代码中也要在路由末尾加个反斜杠，如果是路由中有反斜杠而我们在浏览器中忘了在最末尾加上一个反斜杠，这是可以的，因为浏览器会帮我们加反斜杠，如果在路由中没有斜杆而我们在浏览器中添加了斜杠，这就会报错</p><h2 id="URL的重定向行为"><a href="#URL的重定向行为" class="headerlink" title="URL的重定向行为"></a>URL的重定向行为</h2><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s2.loli.net/2022/04/06/TtWEJCXHNjlRS5n.png"                      alt="image.png"                ></p><h2 id="FlaskHTTP方法"><a href="#FlaskHTTP方法" class="headerlink" title="FlaskHTTP方法"></a>FlaskHTTP方法</h2><p>以下引用自菜鸟教程:</p><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s2.loli.net/2022/04/06/PfJsFdLZRpUozqM.png"                      alt="image.png"                ></p><h2 id="Json格式的API"><a href="#Json格式的API" class="headerlink" title="Json格式的API"></a>Json格式的API</h2><p>这里以post为例，常见的提交格式有:</p><ul><li>json</li><li>form</li><li>xml</li></ul><p>获取前端过来的数据:</p><p>app.py</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/my/first&#x27;</span>, methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">first_post</span>():</span></span><br><span class="line">my_json = request.get_json()</span><br><span class="line"><span class="built_in">print</span>(my_json)</span><br><span class="line"><span class="keyword">return</span> my_json.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s2.loli.net/2022/04/06/APaDvSVZMY4RfyO.png"                      alt="image.png"                ></p><p>返回json格式的数据:</p><p>app.py</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/my/first&#x27;</span>, methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">first_post</span>():</span></span><br><span class="line">my_json = request.get_json()</span><br><span class="line"><span class="built_in">print</span>(my_json)</span><br><span class="line">get_name = my_json.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">get_age = my_json.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line">get_age += <span class="number">10</span></span><br><span class="line"><span class="keyword">return</span> jsonify(name=get_name, age=get_age)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><p><img                       lazyload                     src="/images/loading.svg"                     data-src="https://s2.loli.net/2022/04/06/XgPdGBvHTlobKFn.png"                      alt="image.png"                ></p><p>然后我们还可以加一些异常处理:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/test/my/first&#x27;</span>, methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">first_post</span>():</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">my_json = request.get_json()</span><br><span class="line"><span class="built_in">print</span>(my_json)</span><br><span class="line">get_name = my_json.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">get_age = my_json.get(<span class="string">&#x27;age&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">all</span>([get_age, get_name]):</span><br><span class="line"><span class="keyword">return</span> jsonify(msg=<span class="string">&quot;缺少参数!&quot;</span>)</span><br><span class="line">get_age += <span class="number">10</span></span><br><span class="line"><span class="keyword">return</span> jsonify(name=get_name, age=get_age)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="keyword">return</span> jsonify(msg=<span class="string">&quot;请查看是否正确访问!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure><h2 id="Cookie和Session"><a href="#Cookie和Session" class="headerlink" title="Cookie和Session"></a>Cookie和Session</h2><p>具体参见: <a class="link"   href="https://dormousehole.readthedocs.io/en/latest/" >https://dormousehole.readthedocs.io/en/latest/<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;面向的人群&quot;&gt;&lt;a href=&quot;#面向的人群&quot; class=&quot;headerlink&quot; title=&quot;面向的人群&quot;&gt;&lt;/a&gt;面向的人群&lt;/h2&gt;&lt;p&gt;具有Python基础知识&lt;/p&gt;
-&lt;p&gt;只写接口，想好好学做接口的&lt;/p&gt;
-&lt;h2 id=&quot;Flask是什么&quot;&gt;&lt;a</summary>
       
     
     
