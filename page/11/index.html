@@ -145,6 +145,35 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2022/01/20/%E4%BD%BF%E7%94%A8sourcetree%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%98%BE%E7%A4%BA%20hint%20Updates%20were%20rejected%20because%20the%20remote%20contains%20work%20that%20you%20do%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                        使用sourcetree提交代码显示 hint Updates were rejected because the remote contains work that you do的解决方法
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        今天由于在GitLab上修改了远程仓库的代码，然后忘了同步到本地，使用sourcetree提交就出现了上传错误:
+1hint Updates were rejected because the remote contains work that yo...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Jan 20 2022 11:11:30 GMT+0800">2022-01-20</span></span>
+        
+        
+    </div>
+
+    <a href="/2022/01/20/%E4%BD%BF%E7%94%A8sourcetree%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%98%BE%E7%A4%BA%20hint%20Updates%20were%20rejected%20because%20the%20remote%20contains%20work%20that%20you%20do%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2022/01/20/Linux%E6%8A%8A%E8%84%89%E4%B9%8B%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E3%80%81%E7%A3%81%E7%9B%98%E3%80%81CPU%E3%80%81%E7%BD%91%E7%BB%9C/">
                         Linux把脉之查看内存、磁盘、CPU、网络
                     </a>
@@ -432,35 +461,6 @@ passport n.护照，途径，手段
 
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/">
-                        Python爬虫框架Scrapy的运行流程详解
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        首先来看看Scrapy框架的介绍:
-Scrapy是用纯Python语言实现的一个为爬取网站数据、提取结构性数据而编写的应用框架，Scrapy使用了Twisted异步网络框架来处理网络通信，可以加快我们的下载速度，不用自己去实现异步框架，并且包含了各种...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 17 2022 15:29:30 GMT+0800">2022-01-17</span></span>
-        
-        
-    </div>
-
-    <a href="/2022/01/17/Python%E7%88%AC%E8%99%AB%E6%A1%86%E6%9E%B6Scrapy%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
     </ul>
 
     <div class="home-paginator">
@@ -527,119 +527,55 @@ Scrapy是用纯Python语言实现的一个为爬取网站数据、提取结构�
     
 
     <div class="right-bottom-side-tools">
-        $tools-item-width = 32px;
-$tools-item-font-size = 1.1rem;
-$tools-item-border-radius = 1px;
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
 
-.side-tools-container {
-  position: relative;
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
 
-  .tools-item {
-    width: $tools-item-width;
-    height: $tools-item-width;
-    font-size: $tools-item-font-size;
-    margin-bottom: 3px;
-    cursor: pointer;
-    border-right: none;
-    border-radius: $tools-item-border-radius;
-    box-shadow: 1px 1px 3px var(--shadow-color);
-    color: var(--default-text-color);
-    background: var(--background-color);
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
 
-    i {
-      color: var(--default-text-color);
-    }
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
 
-    &:hover {
-      color: var(--background-color);
-      background: var(--primary-color);
-      box-shadow: 2px 2px 6px var(--shadow-color);
+        
 
-      i {
-        color: var(--background-color);
-      }
-    }
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
 
-    +keep-tablet() {
-      width: $tools-item-width * 0.9;
-      height: $tools-item-width * 0.9;
-      font-size: $tools-item-font-size * 0.9;
-      margin-bottom: 2px;
-    }
-
-    &.rss {
-
-      a {
-        border-radius: $tools-item-border-radius;
-        width: 100%;
-        height: 100%;
-
-        &:hover {
-          color: var(--background-color);
-          background: var(--primary-color);
-          box-shadow: 2px 2px 6px var(--shadow-color);
-        }
-      }
-    }
-  }
-
-
-  .side-tools-list {
-    opacity: 0;
-    transform: translateX(100%);
-    transition-t("transform, opacity", "0, 0", "0.2, 0.2", "linear, linear");
-
-    .tool-expand-width {
-      +keep-tablet() {
-        display: none;
-      }
-    }
-
-
-    &.show {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-
-  .exposed-tools-list {
-
-    if (hexo-config('style.scroll.percent.enable') == true) {
-      .tool-scroll-to-top {
-        display: none;
-
-        &.show {
-          display: flex;
-        }
-
-        &:hover {
-
-          .percent {
-            display: none;
-          }
-
-          .arrow-up {
-            display: flex;
-          }
-
-        }
-
-        .arrow-up {
-          display: none;
-        }
-
-        .percent {
-          display: flex;
-          font-size: 1rem;
-        }
-
-      }
-
-    }
-  }
-}
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
 
     </div>
 
