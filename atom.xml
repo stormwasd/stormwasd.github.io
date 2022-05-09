@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-08T16:29:52.577Z</updated>
+  <updated>2022-05-09T06:38:16.592Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos8安装MySQL8.0和Redis</title>
+    <link href="http://example.com/2022/05/09/Centos8%E5%AE%89%E8%A3%85MySQL8.0%E5%92%8CRedis/"/>
+    <id>http://example.com/2022/05/09/Centos8%E5%AE%89%E8%A3%85MySQL8.0%E5%92%8CRedis/</id>
+    <published>2022-05-09T06:34:30.000Z</published>
+    <updated>2022-05-09T06:38:16.592Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装MySQL8.0:</p><p><a class="link"   href="https://blog.csdn.net/weixin_46353366/article/details/120188992" >https://blog.csdn.net/weixin_46353366/article/details/120188992<i class="fas fa-external-link-alt"></i></a></p><p>安装Redis5:</p><p><a class="link"   href="https://www.jianshu.com/p/18add77c8038" >https://www.jianshu.com/p/18add77c8038<i class="fas fa-external-link-alt"></i></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;安装MySQL8.0:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;link&quot;   href=&quot;https://blog.csdn.net/weixin_46353366/article/details/120188992&quot; &gt;https://blog.csdn.net/weixin</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Centos云服务器编译安装Python3.7.6小记</title>
@@ -405,26 +426,6 @@
       
       
     <summary type="html">&lt;p&gt;参考自: &lt;a class=&quot;link&quot;   href=&quot;https://blog.csdn.net/hhs_1996/article/details/114590778&quot; &gt;https://blog.csdn.net/hhs_1996/article/details/11</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>删除mongodb中存在的用户</title>
-    <link href="http://example.com/2022/04/11/%E5%88%A0%E9%99%A4mongodb%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E7%94%A8%E6%88%B7/"/>
-    <id>http://example.com/2022/04/11/%E5%88%A0%E9%99%A4mongodb%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E7%94%A8%E6%88%B7/</id>
-    <published>2022-04-11T07:55:30.000Z</published>
-    <updated>2022-04-11T07:55:40.408Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考自: <a class="link"   href="https://blog.csdn.net/K_520_W/article/details/108309862?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=mongodb%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-108309862.nonecase&amp;spm=1018.2226.3001.4187" >https://blog.csdn.net/K_520_W/article/details/108309862?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=mongodb%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-108309862.nonecase&amp;spm=1018.2226.3001.4187<i class="fas fa-external-link-alt"></i></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;参考自: &lt;a class=&quot;link&quot;   href=&quot;https://blog.csdn.net/K_520_W/article/details/108309862?ops_request_misc=&amp;amp;request_id=&amp;amp;biz_id=102&amp;amp</summary>
       
     
     
